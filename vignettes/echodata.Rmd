@@ -19,6 +19,13 @@ editor_options:
     wrap: 72
 ---
 
+
+```{r style, echo=FALSE, results='asis', message=FALSE}
+BiocStyle::markdown()
+knitr::opts_chunk$set(tidy = FALSE,
+                      message = FALSE)
+```
+
 ```{r setup}
 library(echodata)
 ```
@@ -34,7 +41,7 @@ Parkinson's Disease GWAS from
 [Nalls et al., 2019](https://doi.org/10.1016/S1474-4422(19)30320-5). 
 
 ```{r}
-fullSS_Nalls2019 <-echodata::example_fullSS(dataset = "Nalls2019")
+fullSS_Nalls2019 <- echodata::example_fullSS(dataset = "Nalls2019")
 ```
 
 ## Kunkle 2019
@@ -43,7 +50,7 @@ Alzheimer's Disease GWAS from
 [Kunkle et al., 2019](https://www.nature.com/articles/s41588-019-0358-2). 
 
 ```{r}
-fullSS_Kunkle2019 <-echodata::example_fullSS(dataset = "Kunkle2019")
+fullSS_Kunkle2019 <- echodata::example_fullSS(dataset = "Kunkle2019")
 ```
 
 

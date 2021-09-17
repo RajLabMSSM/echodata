@@ -1,5 +1,5 @@
 ---
-title: "echodata: echolocatoR Fine-mapping Portal" 
+title: "echolocatoR Fine-mapping Portal" 
 author: "<h4>Author: <i>Brian M. Schilder</i></h4>" 
 date: "<h4>Most recent update: <i>`r format( Sys.Date(), '%b-%d-%Y')`</i></h4>"
 output:
@@ -18,6 +18,12 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+
+```{r style, echo=FALSE, results='asis', message=FALSE}
+BiocStyle::markdown()
+knitr::opts_chunk$set(tidy = FALSE,
+                      message = FALSE)
+```
 
 ```{r setup}
 library(echodata)
@@ -52,7 +58,7 @@ local_finemap <- echodata::portal_query(dataset_types="GWAS",
                                         phenotypes = c("schizophrenia",
                                                        "parkinson"),
                                         file_types = "multi_finemap",
-                                        loci = c("BST1","CHRNB1","LRRK2", seq(1,3)),
+                                        loci = c("BST1","CHRNB1","LRRK2"),
                                         LD_panels = "1KGphase3")
 ```
 
