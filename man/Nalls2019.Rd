@@ -3,11 +3,14 @@
 \docType{data}
 \name{Nalls2019}
 \alias{Nalls2019}
-\title{Example GWAS summary statistics}
+\title{Example GWAS summary statistics: Nalls2019}
 \format{
 path string
 }
 \source{
+\href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
+Nalls et al. 2019, The Lancet Neurology}
+
 \code{
 path <- echolocatoR::example_fullSS()
 Nalls2019 <- data.table::fread(path)

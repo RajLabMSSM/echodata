@@ -7,7 +7,7 @@
 #' \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
 #' Nalls et al. 2019} (excluding 23andMe data).}
 #' \item{"Kunkle2019"}{Alzheimer's Disease GWAS from
-#' \href{https://www.nature.com/articles/s41588-019-0358-2}{
+#' \href{https://doi.org/10.1038/s41588-019-0358-2}{
 #' Kunkle et al. 2019}.}
 #' }
 #'

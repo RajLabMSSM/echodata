@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
 Title: echoverse module: Fine-mapping results data
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -27,14 +27,11 @@ LazyData: true
 Depends: R (>= 4.1)
 SystemRequirements: Python (>= 3.7.0)
 biocViews:
-Imports: 
-    magrittr,
+Imports:  
     dplyr,
     data.table,
-    utils,
-    R.utils,
-    stats,
-    methods,
+    utils, 
+    stats, 
     tidyr,
     parallel,
     httr,

@@ -67,21 +67,19 @@ portal_query <- function(dataset_types = NULL,
 
     meta <- if (!is.null(datasets)) {
         meta[grepl(paste(datasets, collapse = "|"), meta$dataset,
-            ignore.case = TRUE
-        ), ]
+            ignore.case = TRUE), ]
     } else {
         meta
     }
 
     meta <- if (!is.null(phenotypes)) {
         meta[grepl(paste(phenotypes, collapse = "|"), meta$phenotype,
-            ignore.case = TRUE
-        ), ]
+            ignore.case = TRUE), ]
     } else {
         meta
     }
     messager("+", nrow(meta), "datasets remain after filtering.", v = verbose)
-
+    if(nrow(meta)==0) stop("Stopping.")
     #### Find URLs ####
     file_type_dict <- c(
         "multi_finemap" = ".multi_finemap.csv.gz",

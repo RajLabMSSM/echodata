@@ -3,11 +3,14 @@
 \docType{data}
 \name{Kunkle2019}
 \alias{Kunkle2019}
-\title{Example GWAS summary statistics}
+\title{Example GWAS summary statistics: Kunkle2019}
 \format{
 path string
 }
 \source{
+\href{https://doi.org/10.1038/s41588-019-0358-2}{
+Kunkle et al. 2019, The Lancet Neurology}
+
 \code{
 # meta <- MungeSumstats::find_sumstats(ids = "ieu_b_2")
 # Kunkle2019 <- MungeSumstats::import_sumstats(ids = meta$id[1])
