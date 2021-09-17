@@ -1,0 +1,59 @@
+---
+title: "echodata: Getting Started" 
+author: "<h4>Author: <i>Brian M. Schilder</i></h4>" 
+date: "<h4>Most recent update: <i>`r format( Sys.Date(), '%b-%d-%Y')`</i></h4>"
+output:
+  BiocStyle::html_document:
+    self_contained: yes
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: show
+    df_print: paged
+vignette: >
+    %\VignetteIndexEntry{echodata} 
+    %\usepackage[utf8]{inputenc}
+    %\VignetteEngine{knitr::rmarkdown} 
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup}
+library(echodata)
+```
+
+
+# Example full SS
+
+Example full GWAS summary statistics.
+
+## Nalls 2019
+
+Parkinson's Disease GWAS from
+[Nalls et al., 2019](https://doi.org/10.1016/S1474-4422(19)30320-5). 
+
+```{r}
+fullSS_Nalls2019 <-echodata::example_fullSS(dataset = "Nalls2019")
+```
+
+## Kunkle 2019
+
+Alzheimer's Disease GWAS from
+[Kunkle et al., 2019](https://www.nature.com/articles/s41588-019-0358-2). 
+
+```{r}
+fullSS_Kunkle2019 <-echodata::example_fullSS(dataset = "Kunkle2019")
+```
+
+
+# Session Info 
+
+<details> 
+
+```{r Session Info}
+utils::sessionInfo()
+```
+
+</details>  
+

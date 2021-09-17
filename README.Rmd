@@ -1,32 +1,46 @@
+---
+title: "README"
+author: "Brian M. Schilder"
+date: "Most recent update:<br> `r Sys.Date()`"
+output: 
+  md_document:
+    variant: "markdown_github"
+    toc: FALSE
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 <!-- badges: start -->
-<!-- badger::badge_codecov() -->
+<!-- badger::badge_codecov() --> 
 <!-- badger::badge_last_commit()  -->
 <!-- badger::badge_license() -->
-
 [![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
 [![R-CMD-check](https://github.com/RajLabMSSM/echodata/workflows/R-full/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
 [![](https://img.shields.io/github/last-commit/RajLabMSSM/echodata.svg)](https://github.com/RajLabMSSM/echodata/commits/main)
-<!-- badges: end -->
+<!-- badges: end --> 
 
-# echoverse: echodata
+
+# echoverse: echodata 
 
 ## Fine-mapping results data
 
-Provides both built-in fine-mapping results and API access to the
-[**echolocatoR Fine-mapping
-Portal**](https://rajlab.shinyapps.io/Fine_Mapping_Shiny/).
-
-``` r
+Provides both built-in fine-mapping results and API access to the [**echolocatoR Fine-mapping Portal**](https://rajlab.shinyapps.io/Fine_Mapping_Shiny/).
+ 
+```{r, eval=FALSE}
 if(!"remotes" %in% rownames(installed.packages())){install.packages("remotes")}
 
 remotes::install_github("RajLabMSSM/echodata")
 library(echodata)
 ```
 
+
 ## [Documentation website](https://rajlabmssm.github.io/echodata/)
-
-## [Vignette](https://rajlabmssm.github.io/echodata/articles/echodata)
-
+## [Vignette](https://rajlabmssm.github.io/echodata/articles/echodata) 
 <hr>
 
 ## Creator
@@ -35,4 +49,4 @@ library(echodata)
 M. Schilder, Bioinformatician II</a>  
 <a href="https://rajlab.org" target="_blank">Raj Lab</a>  
 <a href="https://icahn.mssm.edu/about/departments/neuroscience" target="_blank">Department
-of Neuroscience, Icahn School of Medicine at Mount Sinai</a>
+of Neuroscience, Icahn School of Medicine at Mount Sinai</a>  
