@@ -57,7 +57,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/echolocatoR_Finemapping_Portal.html">echodata: echolocatoR Fine-mapping Portal</a>
+      <a href="../articles/echolocatoR_Finemapping_Portal.html">echolocatoR Fine-mapping Portal</a>
     </li>
   </ul>
 </li>
@@ -98,7 +98,18 @@ Most recent update: <i>Sep-17-2021</i>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector("h1").className = "title";
+});
+</script><script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var links = document.links;  
+  for (var i = 0, linksLength = links.length; i < linksLength; i++)
+    if (links[i].hostname != window.location.hostname)
+      links[i].target = '_blank';
+});
+</script><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RajLabMSSM/echodata">echodata</a></span><span class="op">)</span></code></pre></div>
 <div id="example-full-ss" class="section level1">
 <h1 class="hasAnchor">
@@ -109,22 +120,20 @@ Most recent update: <i>Sep-17-2021</i>
 <a href="#nalls-2019" class="anchor"></a>Nalls 2019</h2>
 <p>Parkinson’s Disease GWAS from <a href="https://doi.org/10.1016/S1474-4422(19)30320-5">Nalls et al., 2019</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fullSS_Nalls2019</span> <span class="op">&lt;-</span><span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/example_fullSS.html">example_fullSS</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"Nalls2019"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Writing file to ==&gt; /var/folders/zq/h7mtybc533b1qzkys_ttgpth0000gn/T//RtmptTsH9U/nalls2019.fullSS_subset.tsv</code></pre>
+<code class="sourceCode R"><span class="va">fullSS_Nalls2019</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/example_fullSS.html">example_fullSS</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"Nalls2019"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="kunkle-2019" class="section level2">
 <h2 class="hasAnchor">
 <a href="#kunkle-2019" class="anchor"></a>Kunkle 2019</h2>
 <p>Alzheimer’s Disease GWAS from <a href="https://www.nature.com/articles/s41588-019-0358-2">Kunkle et al., 2019</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fullSS_Kunkle2019</span> <span class="op">&lt;-</span><span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/example_fullSS.html">example_fullSS</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"Kunkle2019"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Writing file to ==&gt; /var/folders/zq/h7mtybc533b1qzkys_ttgpth0000gn/T//RtmptTsH9U/kunkle2019.fullSS_subset.tsv</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fullSS_Kunkle2019</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/example_fullSS.html">example_fullSS</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"Kunkle2019"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session Info</h1>
-<details><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<details><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)

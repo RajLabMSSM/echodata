@@ -14,7 +14,7 @@
 #' @return A list of paths.
 #'
 #' @export
-#' @importFrom httr GET stop_for_status content
+#' @importFrom httr GET stop_for_status content timeout
 github_list_files <- function(creator = "RajLabMSSM",
                               repo = "Fine_Mapping_Shiny",
                               branch = c("main", "master"),
@@ -25,6 +25,7 @@ github_list_files <- function(creator = "RajLabMSSM",
         "https://api.github.com/repos", creator, repo,
         paste0("git/trees/", branch[1], "?recursive=1")
     )
+    httr::timeout(seconds = 15*60)
     req <- httr::GET(repo_api)
     httr::stop_for_status(req)
     filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"),

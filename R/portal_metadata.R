@@ -14,6 +14,7 @@ portal_metadata <- function(verbose = TRUE) {
     messager("Fetching echolocatoR Fine-mapping Portal study metadata.",
         v = verbose
     )
+    options(timeout = 15*60)
     meta <- data.table::fread(
         file.path(
             "https://github.com/RajLabMSSM/Fine_Mapping_Shiny",
