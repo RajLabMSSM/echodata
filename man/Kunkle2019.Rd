@@ -18,6 +18,9 @@ path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
                   "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
 Kunkle2019 <- data.table::fread(path)
 Kunkle2019 <- subset(Kunkle2019, P<5e-8)
+
+Kunkle2019 <- extract_loci(topSNPs = echodata::topSNPs_Kunkle2019, 
+                           fullSS = Kunkle2019)
 usethis::use_data(Kunkle2019, overwrite = TRUE)
 }
 }
