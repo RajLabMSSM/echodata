@@ -1,4 +1,3 @@
-
 #### Raw sum stats ####
 
 #' Example GWAS summary statistics: Nalls2019
@@ -12,6 +11,12 @@
 #' \code{
 #' path <- echolocatoR::example_fullSS()
 #' Nalls2019 <- data.table::fread(path)
+#' 
+#' # meta <- MungeSumstats::find_sumstats(ids = "ieu_b_7")
+#' # Nalls2019 <- MungeSumstats::import_sumstats(ids = meta$id[1])
+#' path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
+#'                   "GWAS_sumstats/OpenGWAS/ieu-b-7.tsv.gz")
+#' 
 #' usethis::use_data(Nalls2019, overwrite = TRUE)
 #' }
 #' @format path string
@@ -30,9 +35,8 @@
 #' \code{
 #' # meta <- MungeSumstats::find_sumstats(ids = "ieu_b_2")
 #' # Kunkle2019 <- MungeSumstats::import_sumstats(ids = meta$id[1])
-#' #path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
-#' #                  "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
-#' path <- "~/Desktop/ieu-b-2.tsv.gz"
+#' path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
+#'                   "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
 #' Kunkle2019 <- data.table::fread(path)
 #' Kunkle2019 <- subset(Kunkle2019, P<5e-8)
 #' usethis::use_data(Kunkle2019, overwrite = TRUE)
@@ -171,10 +175,12 @@
 
 #### Top SNPs ####
 
-#' TopSS example file
+#' TopSS example file: Nalls2019
 #'
 #' Summary stats of the top SNP(s) per locus.
 #' Used to query locus subsets.for fine-mapping.
+#' 
+#' Formerly \code{topSNPs_Nalls2019}.
 #'
 #' Data from \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
 #' Nalls et al. (bioRxiv)}, Table S2.
@@ -183,18 +189,21 @@
 #' local <- file.path(tempdir(),"Nalls2019_TableS2.xlsx")
 #' utils::download.file(
 #'     file.path("https://github.com/RajLabMSSM/Fine_Mapping",
-#'               "raw/master/Data/GWAS/Nalls23andMe_2019/Nalls2019_TableS2.xlsx"),
+#'               "raw/master/Data/GWAS/Nalls23andMe_2019",
+#'               "Nalls2019_TableS2.xlsx"),
 #'     local)
-#' Nalls_top_SNPs <- data.table::data.table(readxl::read_excel(local))
-#' usethis::use_data(Nalls_top_SNPs, overwrite=TRUE)
+#' topSNPs_Nalls2019_raw <- data.table::data.table(readxl::read_excel(local))
+#' usethis::use_data(topSNPs_Nalls2019_raw, overwrite=TRUE)
 #' }
-"Nalls_top_SNPs"
+"topSNPs_Nalls2019_raw"
 
 
-#' TopSS example file (processed)
+#' TopSS example file (processed): Nalls2019
 #'
-#'Summary stats of the top SNP(s) per locus.
+#' Summary stats of the top SNP(s) per locus.
 #' Used to query locus subsets.for fine-mapping.
+#' 
+#' Formerly \code{top_SNPs}.
 #'
 #' @source
 #' \code{
@@ -208,9 +217,60 @@
 #'                                         gene_col="Nearest Gene",  
 #'                                         locus_col="Nearest Gene", 
 #'                                         remove_variants="rs34637584")
-#' usethis::use_data(top_SNPs, overwrite=TRUE)
+#' topSNPs_Nalls2019 <- top_SNPs                                       
+#' usethis::use_data(topSNPs_Nalls2019, overwrite=TRUE)
 #' }
-"top_SNPs"
+"topSNPs_Nalls2019"
+
+
+#' TopSS example file (processed): Kunkle2019
+#'
+#' Summary stats of the top SNP(s) per locus.
+#' Used to query locus subsets.for fine-mapping.
+#'
+#' @source
+#' \code{
+#' library(dplyr)
+#' path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
+#'                   "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
+#' fullSS <- data.table::fread(path)
+#'
+#' supp_remote <- file.path(
+#'     "https://static-content.springer.com/esm",
+#'     "art%3A10.1038%2Fs41588-019-0358-2",
+#'     "MediaObjects/41588_2019_358_MOESM3_ESM.xlsx")
+#' supp_local <- file.path(tempdir(),basename(supp_remote))
+#' utils::download.file(supp_remote, supp_local)
+#' topSS <- readxl::read_excel(supp_local,
+#'                             sheet = "Supplementary Table 8",
+#'                             skip = 2) %>%
+#'     dplyr::rename(SNP="Top Associated SNV")
+#' topSS <- merge(topSS,
+#'       subset(fullSS, SNP %in% topSS$SNP),
+#'       by="SNP")
+#' 
+#' paths <- googledrive::drive_download(
+#'     file.path("https://docs.google.com/spreadsheets/d",
+#'               "1BgLQaRZd9L7JoO8IbpzhUCRFdTdLgJvD/edit#gid=236666677"),
+#'     overwrite = TRUE)
+#' meta <- readxl::read_excel(paths$local_path, sheet = "GWAS")
+#' meta <- subset(meta, dataset=="Kunkle_2019")
+#' 
+#' top_SNPs <- echolocatoR::import_topSNPs(
+#'     topSS = topSS,
+#'     sheet = meta$top_sheet,
+#'     chrom_col = meta$top_chrom,
+#'     position_col = meta$top_pos,
+#'     snp_col = meta$top_snp,
+#'     pval_col = "P",
+#'     effect_col = "BETA",
+#'     locus_col = meta$top_locus)
+#' topSNPs_Kunkle2019 <- top_SNPs
+#' usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
+#' }
+"topSNPs_Kunkle2019"
+
+
 
 
 #### LD ####
@@ -275,5 +335,7 @@
 #' usethis::use_data(genome_wide_dir, overwrite=TRUE)
 #' }
 "genome_wide_dir"
+
+
 
 

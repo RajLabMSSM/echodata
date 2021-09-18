@@ -8,6 +8,6 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-
 Dockerfile
 ^LICENSE\.md$
+^ieugwasr_oauth$

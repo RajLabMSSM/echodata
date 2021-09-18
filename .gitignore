@@ -40,3 +40,4 @@ vignettes/*.R
 *.knit.md
 # R Environment Variables
 .Renviron
+ieugwasr_oauth

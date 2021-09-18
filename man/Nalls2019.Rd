@@ -14,6 +14,12 @@ Nalls et al. 2019, The Lancet Neurology}
 \code{
 path <- echolocatoR::example_fullSS()
 Nalls2019 <- data.table::fread(path)
+
+# meta <- MungeSumstats::find_sumstats(ids = "ieu_b_7")
+# Nalls2019 <- MungeSumstats::import_sumstats(ids = meta$id[1])
+path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
+                  "GWAS_sumstats/OpenGWAS/ieu-b-7.tsv.gz")
+
 usethis::use_data(Nalls2019, overwrite = TRUE)
 }
 }

@@ -14,9 +14,8 @@ Kunkle et al. 2019, The Lancet Neurology}
 \code{
 # meta <- MungeSumstats::find_sumstats(ids = "ieu_b_2")
 # Kunkle2019 <- MungeSumstats::import_sumstats(ids = meta$id[1])
-#path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
-#                  "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
-path <- "~/Desktop/ieu-b-2.tsv.gz"
+path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
+                  "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
 Kunkle2019 <- data.table::fread(path)
 Kunkle2019 <- subset(Kunkle2019, P<5e-8)
 usethis::use_data(Kunkle2019, overwrite = TRUE)
