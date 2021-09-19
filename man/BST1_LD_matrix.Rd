@@ -17,14 +17,20 @@ data.table
 \url{https://www.ukbiobank.ac.uk}
 \url{https://doi.org/10.1038/s41588-020-00735-5}
  @examples
- \dontrun{ 
-data("BST1") 
+ \code{ 
+data("BST1")
 # Only including a small subset of the full
 # LD matrix for storage purposes.
 lead_snp <- subset(BST1, leadSNP)$SNP
-snp_list <-  BST1[which(BST1$SNP==lead_snp)-100:which(BST1$SNP==lead_snp)+100,]$SNP
-path <- portal_query(phenotypes = "parkinson", loci = "BST1", dataset_types = "LD", LD_panels = "UKB")
-BST1_LD_matrix <- readRDS("../Fine_Mapping/Data/GWAS/Nalls23andMe_2019/BST1/plink/UKB_LD.RDS")
+snp_list <-  BST1[which(BST1$SNP==lead_snp)-
+                      seq(100,which(BST1$SNP==lead_snp))+100,]$SNP
+path <- portal_query(phenotypes = "parkinson", 
+                     loci = "BST1", 
+                     dataset_types = "LD", 
+                     LD_panels = "UKB")
+# path <- file.path(
+#     "../Fine_Mapping/Data/GWAS/Nalls23andMe_2019/BST1/plink/UKB_LD.RDS")
+BST1_LD_matrix <- readRDS(path)
 BST1_LD_matrix <- BST1_LD_matrix[snp_list, snp_list]
 ### shortcut
 # BST1_LD_matrix <- echolocatoR::BST1_LD_matrix
@@ -32,7 +38,7 @@ usethis::use_data(BST1_LD_matrix, overwrite=TRUE)
  }
 }
 \usage{
-BST1_LD_matrix
+data("BST1_LD_matrix")
 }
 \description{
 Precomputed LD within the \emph{BST1} locus

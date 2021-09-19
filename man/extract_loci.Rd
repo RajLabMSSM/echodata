@@ -16,6 +16,9 @@ full GWAS/QTL summary statistics.}
 \item{bp_distance}{The width of the window size you want each locus to be.
 For example, if \code{bp_distance=500000} then the locus will span 500kb from the lead SNP in either direction,
 resulting in a locus that is ~1Mb long (depending on the dataset).}
+
+\item{munged}{Whether \code{fullSS} was previously munged with 
+\link[MungeSumstats]{format_sumstats}.}
 }
 \description{
 Extract loci from GWAS/QTL summary statistics

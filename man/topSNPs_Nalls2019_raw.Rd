@@ -21,7 +21,7 @@ usethis::use_data(topSNPs_Nalls2019_raw, overwrite=TRUE)
 }
 }
 \usage{
-topSNPs_Nalls2019_raw
+data("topSNPs_Nalls2019_raw")
 }
 \description{
 Summary stats of the top SNP(s) per locus.

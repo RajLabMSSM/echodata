@@ -33,9 +33,9 @@ example_fullSS <- function(save_dir = tempdir(),
         paste0(dataset, ".fullSS_subset.tsv")
     )
     dat <- if (dataset == "kunkle2019") {
-        echodata::Kunkle2019
+        get_Kunkle2019()
     } else if (dataset == "nalls2019") {
-        echodata::Nalls2019
+        get_Nalls2019()
     } else {
         all_datasets <- c("Nalls2019", "Kunkle2019")
         stop_msg <- paste0(

@@ -17,11 +17,11 @@ data.table
 \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
 }
 \usage{
-MEX3C
+data("MEX3C")
 }
 \description{
 An example results file after running
-\code{\link[echolocatoR]{finemap_loci()}}.
+\link[echolocatoR]{finemap_loci}.
 }
 \details{
 Data originally comes from the Parkinson's disease GWAS
@@ -33,7 +33,7 @@ Nalls et al. (The Lancet Neurology)}.
 library(echodata)
 data("Nalls2019_merged")
 MEX3C <- subset(Nalls2019_merged, Locus=="MEX3C")
-MEX3C <- echolocatoR::assign_lead_SNP(MEX3C)
+MEX3C <- echoannot::assign_lead_SNP(MEX3C)
 usethis::use_data(MEX3C, overwrite = TRUE)
 }
 }

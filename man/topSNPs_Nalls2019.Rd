@@ -10,7 +10,7 @@ An object of class \code{data.table} (inherits from \code{data.frame}) with 0 ro
 \source{
 \code{
 data("Nalls_top_SNPs")
-top_SNPs <- echolocatoR::import_topSNPs(topSS=Nalls_top_SNPs,
+top_SNPs <- echodata::import_topSNPs(topSS=Nalls_top_SNPs,
                                         chrom_col="CHR",
                                         position_col="BP", 
                                         snp_col="SNP", 
@@ -24,7 +24,7 @@ usethis::use_data(topSNPs_Nalls2019, overwrite=TRUE)
 }
 }
 \usage{
-topSNPs_Nalls2019
+data("topSNPs_Nalls2019")
 }
 \description{
 Summary stats of the top SNP(s) per locus.

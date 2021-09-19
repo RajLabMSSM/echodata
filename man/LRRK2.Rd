@@ -17,11 +17,11 @@ data.table
 \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
 }
 \usage{
-LRRK2
+data("LRRK2")
 }
 \description{
 An example results file after running
-\code{\link[echolocatoR]{finemap_loci()}}.
+\link[echolocatoR]{finemap_loci}.
 }
 \details{
 Data originally comes from the Parkinson's disease GWAS
@@ -33,7 +33,7 @@ Nalls et al. (The Lancet Neurology)}.
 library(echodata)
 data("Nalls2019_merged")
 LRRK2 <- subset(Nalls2019_merged, Locus=="LRRK2")
-LRRK2 <- echolocatoR::assign_lead_SNP(LRRK2)
+LRRK2 <- echoannot::assign_lead_SNP(LRRK2)
 usethis::use_data(LRRK2, overwrite = TRUE)
 }
 }

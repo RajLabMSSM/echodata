@@ -17,11 +17,11 @@ data.table
 \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
 }
 \usage{
-BST1
+data("BST1")
 }
 \description{
 An example results file after running
-\code{\link[echolocatoR]{finemap_loci()}}.
+\link[echolocatoR]{finemap_loci}.
 }
 \details{
 Data originally comes from the Parkinson's disease GWAS

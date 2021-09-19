@@ -4,6 +4,8 @@
 #' \link[echolocatoR]{import_topSNPs}.
 #' @param fullSS \link[data.table]{data.table} of the 
 #' full GWAS/QTL summary statistics.
+#' @param munged Whether \code{fullSS} was previously munged with 
+#' \link[MungeSumstats]{format_sumstats}.
 #' @inheritParams echolocatoR::finemap_pipeline
 #' 
 #' @export
@@ -13,10 +15,12 @@ extract_loci <- function(topSNPs,
                          fullSS,
                          bp_distance=5e+05,
                          munged=TRUE){
+    CHR <- POS <- Locus <- NULL;
+    
     # topSNPs <- echodata::topSNPs_Kunkle2019
-    # fullSS <- echodata::Kunkle2019
+    # fullSS <- get_Kunkle2019()
     if(munged){
-        fullSS <- echolocatoR::MUNGESUMSTATS.to_echolocatoR(dat = fullSS)    
+        fullSS <- MUNGESUMSTATS.to_echolocatoR(dat = fullSS)    
     }
     #### Subset loci ####
     locusSS <- lapply(seq(1,nrow(topSNPs)), function(i){

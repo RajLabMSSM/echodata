@@ -8,7 +8,7 @@
 An object of class \code{character} of length 1.
 }
 \usage{
-genome_wide_dir
+data("genome_wide_dir")
 }
 \description{
 Example results path for genome-wide results

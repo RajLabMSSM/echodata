@@ -35,7 +35,10 @@ Imports:
     tidyr,
     parallel,
     httr,
-    stringr
+    stringr,
+    openxlsx,
+    DT,
+    piggyback
 Suggests:
     markdown,
     rmarkdown,
@@ -43,7 +46,9 @@ Suggests:
     knitr,
     BiocStyle,
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    htmltools,
+    boot
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

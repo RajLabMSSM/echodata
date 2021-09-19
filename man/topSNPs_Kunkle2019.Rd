@@ -35,7 +35,7 @@ paths <- googledrive::drive_download(
 meta <- readxl::read_excel(paths$local_path, sheet = "GWAS")
 meta <- subset(meta, dataset=="Kunkle_2019")
 
-top_SNPs <- echolocatoR::import_topSNPs(
+top_SNPs <- echodata::import_topSNPs(
     topSS = topSS,
     sheet = meta$top_sheet,
     chrom_col = meta$top_chrom,
@@ -49,7 +49,7 @@ usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
 }
 }
 \usage{
-topSNPs_Kunkle2019
+data("topSNPs_Kunkle2019")
 }
 \description{
 Summary stats of the top SNP(s) per locus.
