@@ -1,6 +1,6 @@
 Package: echodata
 Type: Package
-Title: echoverse module: Fine-mapping results data
+Title: Echoverse Module: Example Data and Formatting.
 Version: 0.99.1
 Authors@R: 
     c(person(given = "Brian",
@@ -35,6 +35,7 @@ Imports:
     utils, 
     R.utils,
     stats, 
+    XML2,
     tidyr,
     parallel,
     httr,
@@ -50,8 +51,7 @@ Suggests:
     BiocStyle,
     covr,
     testthat (>= 3.0.0),
-    htmltools,
-    boot
+    htmltools
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL (>= 3)
