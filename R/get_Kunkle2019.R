@@ -24,6 +24,7 @@
 #'                      repo = "RajLabMSSM/echodata")
 #' } 
 #' @export
+#' @importFrom data.table fread
 get_Kunkle2019 <- function(){
     tmp <- get_data(fname = "Kunkle2019.tsv.gz")
     dat <- data.table::fread(tmp, nThread = 1)
