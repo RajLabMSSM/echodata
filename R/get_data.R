@@ -7,7 +7,7 @@ get_data <- function(fname,
                      overwrite = FALSE){
     tmp <- file.path(tempdir(),fname)
     if(!file.exists(tmp)){
-        # options(timeout = 5*60)
+        Sys.setenv("piggyback_cache_duration"=10)
         piggyback::pb_download(file = fname,
                                dest = tmp,
                                repo = repo, 

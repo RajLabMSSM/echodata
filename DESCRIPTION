@@ -5,7 +5,7 @@ Version: 0.99.1
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
-           role = c("cre"),
+           role = c("aut","cre"),
            email = "brian_schilder@alumni.brown.edu",
            comment = c(ORCID = "0000-0001-5949-2191")),
     person(given = "Jack",
