@@ -25,7 +25,9 @@ BugReports: https://github.com/RajLabMSSM/echodata/issues
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1)
-SystemRequirements: Python (>= 3.7.0)
+SystemRequirements: 
+    Python (>= 3.7.0), 
+    xml2
 biocViews:
 Imports:  
     dplyr,
@@ -52,5 +54,5 @@ Suggests:
     boot
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-License: GPL-3
+License: GPL (>= 3)
 Config/testthat/edition: 3
