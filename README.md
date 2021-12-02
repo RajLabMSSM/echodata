@@ -1,11 +1,21 @@
-<!-- badges: start -->
-<!-- badger::badge_codecov() -->
-<!-- badger::badge_last_commit()  -->
-<!-- badger::badge_license() -->
+README
+================
+<h5>
+Author: <i>Brian M. Schilder</i>
+</h5>
+<h5>
+Updated: <i>Dec-02-2021</i>
+</h5>
 
-[![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
-[![R-CMD-check](https://github.com/RajLabMSSM/echodata/workflows/R-full/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
+<!-- badges: start -->
+
+[![](https://img.shields.io/badge/devel%20version-0.99.2-black.svg)](https://github.com/RajLabMSSM/echodata)
+[![R build
+status](https://github.com/RajLabMSSM/echodata/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
 [![](https://img.shields.io/github/last-commit/RajLabMSSM/echodata.svg)](https://github.com/RajLabMSSM/echodata/commits/main)
+[![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
+[![License: GPL (&gt;=
+3)](https://img.shields.io/badge/license-GPL%20(%3E=%203)-blue.svg)](https://cran.r-project.org/web/licenses/GPL%20(%3E=%203))
 <!-- badges: end -->
 
 # echoverse: echodata
