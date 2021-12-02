@@ -1,27 +1,36 @@
+#' Find pages
+#' 
+#' Find html files on GitHub Pages.
+#' @inheritParams github_list_files
+#' @keywords internal 
 github_find_pages <- function(creator = "RajLabMSSM",
                               repo = "Fine_Mapping_Shiny",
+                              branch = "master",
                               local_repo = NULL,
                               return_table = TRUE,
                               save_path = NULL) {
+    requireNamespace("data.table")
     if (is.null(local_repo)) {
         filelist <- github_list_files(
             creator = creator,
             repo = repo,
-            query = "*.*.html",
-            return_download_api = F
+            query = "*.*.html$",
+            branch = branch,
+            return_download_api = FALSE
         )
     } else {
         filelist <- gsub("^[.][/]", "", list.files(
             path = local_repo,
-            pattern = "*.*.html",
+            pattern = "*.*.html$",
             full.names = TRUE,
             recursive = TRUE
         ))
     }
+    if(length(filelist)==0) stop("No files identified.")
     gh_pages_url <- file.path(paste0("https://", creator, ".github.io"), repo)
     gh_pages_links <- file.path(gh_pages_url, filelist)
     if (return_table) {
-        links_df <- data.frame(
+        links_df <- data.table::data.table(
             creator = creator,
             repo = repo,
             dir = unlist(
@@ -49,7 +58,7 @@ github_find_pages <- function(creator = "RajLabMSSM",
             )
         )
         if (!is.null(save_path)) {
-            print(paste("Writing links to ==>", save_path))
+            messager(paste("Writing links to ==>", save_path))
             data.table::fwrite(links_df, save_path, sep = ",")
             # utils::write.table(
             #     paste(pages[["link"]], collapse = "\n\n"),

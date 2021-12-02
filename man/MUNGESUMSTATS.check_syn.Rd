@@ -2,8 +2,7 @@
 % Please edit documentation in R/MUNGESUMSTATS.check_syn.R
 \name{MUNGESUMSTATS.check_syn}
 \alias{MUNGESUMSTATS.check_syn}
-\title{Check whether a table has headers that can be mapped 
-to an attribute in \pkg{MungeSumstats}}
+\title{Check colname synonyms}
 \usage{
 MUNGESUMSTATS.check_syn(dat, col_name = "P-value", col_type = "P")
 }

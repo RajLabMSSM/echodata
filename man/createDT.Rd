@@ -4,10 +4,10 @@
 \alias{createDT}
 \title{Interactive DT}
 \usage{
-createDT(DF, caption = "", scrollY = 400)
+createDT(dat, caption = "", scrollY = 400)
 }
 \arguments{
-\item{DF}{Data to show.}
+\item{dat}{Data to show.}
 
 \item{caption}{Table caption.}
 
@@ -16,8 +16,8 @@ createDT(DF, caption = "", scrollY = 400)
 \description{
 Generate an interactive data table with download buttons.
 }
-\seealso{
-Other general: 
-\code{\link{createDT_html}()}
+\examples{
+ 
+echodata::createDT(dat = echodata::BST1)
 }
 \concept{general}

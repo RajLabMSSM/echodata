@@ -14,8 +14,8 @@ Updated: <i>Dec-02-2021</i>
 status](https://github.com/RajLabMSSM/echodata/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
 [![](https://img.shields.io/github/last-commit/RajLabMSSM/echodata.svg)](https://github.com/RajLabMSSM/echodata/commits/main)
 [![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
-[![License: GPL (&gt;=
-3)](https://img.shields.io/badge/license-GPL%20(%3E=%203)-blue.svg)](https://cran.r-project.org/web/licenses/GPL%20(%3E=%203))
+[![License:
+GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3)
 <!-- badges: end -->
 
 # echoverse: echodata
@@ -27,7 +27,7 @@ Provides both built-in fine-mapping results and API access to the
 Portal**](https://rajlab.shinyapps.io/Fine_Mapping_Shiny/).
 
 ``` r
-if(!"remotes" %in% rownames(installed.packages())){install.packages("remotes")}
+if(!require("remotes")) install.packages("remotes")
 
 remotes::install_github("RajLabMSSM/echodata")
 library(echodata)

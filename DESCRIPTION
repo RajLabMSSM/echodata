@@ -51,7 +51,8 @@ Suggests:
     BiocStyle,
     covr,
     testthat (>= 3.0.0),
-    htmltools
+    htmltools,
+    badger
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

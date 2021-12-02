@@ -1,17 +1,14 @@
 #' Convert from \pkg{MungeSumstats} to \pkg{echolocatoR} format
-#'
-#' @examples
-#' \dontrun{
-#' eduAttainOkbayPth <- system.file("extdata","eduAttainOkbay.txt",
-#'                                  package="MungeSumstats")
-#' reformatted <- MungeSumstats::format_sumstats(path=eduAttainOkbayPth,
-#'                                               ref_genome="GRCh37", 
-#'                                               return_data = TRUE)
-#' dat_echoR <- MUNGESUMSTATS.to_echolocatoR(dat=reformatted)
-#' }
-#' @keywords internal
+#' 
+#' Convert column names between package-specific formats.
+#' @param dat Data
+#' @examples  
+#' dat <- dplyr::rename(echodata::BST1, BP=POS, FRQ=Freq, BETA=Effect)
+#' dat_echoR <- MUNGESUMSTATS.to_echolocatoR(dat=dat) 
+#' @export
 #' @importFrom data.table data.table setnames
 MUNGESUMSTATS.to_echolocatoR <- function(dat){
+    requireNamespace("data.table")
     messager("+ Mapping colnames from MungeSumstats ==> echolocatoR")
     dat <- data.table::data.table(dat)
     colMap <- c("BP"="POS",

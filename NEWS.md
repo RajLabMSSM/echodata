@@ -2,8 +2,10 @@
 
 ## New features 
 
-* Added new function `assign_lead_SNP`. 
 * Added a `NEWS.md` file to track changes to the package.
+* Added new function `assign_lead_SNP` with unit tests.
+* Added unit tests for `createDT` and `MUNGESUMSTATS.*` functions. 
+* Removed unused functions. 
 * Added dynamic badges to README.
 
 ## Bug fixes

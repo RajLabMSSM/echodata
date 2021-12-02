@@ -1,3 +1,5 @@
+#' Check colname synonyms 
+#' 
 #' Check whether a table has headers that can be mapped 
 #' to an attribute in \pkg{MungeSumstats}
 #'

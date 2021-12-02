@@ -6,17 +6,14 @@
 \usage{
 MUNGESUMSTATS.to_echolocatoR(dat)
 }
+\arguments{
+\item{dat}{Data}
+}
 \description{
-Convert from \pkg{MungeSumstats} to \pkg{echolocatoR} format
+Convert column names between package-specific formats.
 }
 \examples{
-\dontrun{
-eduAttainOkbayPth <- system.file("extdata","eduAttainOkbay.txt",
-                                 package="MungeSumstats")
-reformatted <- MungeSumstats::format_sumstats(path=eduAttainOkbayPth,
-                                              ref_genome="GRCh37", 
-                                              return_data = TRUE)
-dat_echoR <- MUNGESUMSTATS.to_echolocatoR(dat=reformatted)
+ 
+dat <- dplyr::rename(echodata::BST1, BP=POS, FRQ=Freq, BETA=Effect)
+dat_echoR <- MUNGESUMSTATS.to_echolocatoR(dat=dat) 
 }
-}
-\keyword{internal}

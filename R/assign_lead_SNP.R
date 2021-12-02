@@ -14,6 +14,7 @@
 #' dat <- echodata::assign_lead_SNP(dat = echodata::BST1)
 assign_lead_SNP <- function (dat, 
                              verbose = TRUE) {
+    P <- Effect <- NULL;
     if (sum(dat$leadSNP, na.rm = TRUE) == 0) {
         messager("+ leadSNP missing. Assigning new one by min p-value.", 
                 v = verbose)
