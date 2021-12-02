@@ -26,7 +26,10 @@ github_find_pages <- function(creator = "RajLabMSSM",
             recursive = TRUE
         ))
     }
-    if(length(filelist)==0) stop("No files identified.")
+    if(length(filelist)==0) {
+        message("WARNING: No files identified.")
+        return(NULL)
+    }
     gh_pages_url <- file.path(paste0("https://", creator, ".github.io"), repo)
     gh_pages_links <- file.path(gh_pages_url, filelist)
     if (return_table) {
