@@ -3,7 +3,7 @@
 #' @keywords internal
 #' @importFrom stringr str_split
 #' @importFrom parallel detectCores mclapply
-#' @importFrom utils download.file
+#' @importFrom utils download.file 
 github_download_files <- function(filelist,
                                   download_dir = tempdir(),
                                   overwrite = FALSE,
@@ -16,7 +16,7 @@ github_download_files <- function(filelist,
         folder_structure <- paste(stringr::str_split(
             string = x,
             pattern = "/"
-        )[[1]][-c(1:7)], collapse = "/")
+        )[[1]][-c(seq_len(7))], collapse = "/")
         destfile <- gsub("/www/data", "", file.path(
             download_dir,
             folder_structure
