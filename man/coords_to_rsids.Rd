@@ -14,8 +14,9 @@ coords_to_rsids(
 )
 }
 \arguments{
-\item{dat}{Data.table of SNP positions,
-with the columns \code{CHR} and \code{POS}. Extra columns allowed.}
+\item{dat}{\link[data.table]{data.table} or 
+\link[base]{data.frame} with SNP positions in the columns 
+\code{CHR} and \code{POS}. Extra columns are allowed.}
 
 \item{genome_build}{Which genome build \code{dat} is in
 (e.g. "hg19" or "hg38").}
@@ -23,6 +24,13 @@ with the columns \code{CHR} and \code{POS}. Extra columns allowed.}
 \item{drop_unannotated}{Drop SNPs that RSIDs couldn't be found for.}
 
 \item{drop_duplicates}{Drop any duplicate SNPs rows.}
+
+\item{snp_colname}{Name of the new column with RSIDs.}
+
+\item{verbose}{Print messages.}
+}
+\value{
+\link[data.table]{data.table} with new columns for RSIDs.
 }
 \description{
 Get RSIDS from SNP coordinates using Bioconductor genome references.
