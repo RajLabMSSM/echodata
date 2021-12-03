@@ -1,0 +1,16 @@
+citHeader("To cite echodata in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "echolocatoR: an automated end-to-end statistical and functional genomic fine-mapping pipeline",
+  author   = "Brian M Schilder, Jack Humphrey, Towfique Raj",
+  journal  = "Bioinformatics",
+  year     = "2021",
+  volume   = "btab658",
+  number   = ,
+  pages    = ,
+  url      = "https://doi.org/10.1093/bioinformatics/btab658",
+  textVersion = paste(
+
+  )
+)

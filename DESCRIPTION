@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
-Title: Echoverse Module: Example Data and Formatting Functions
-Version: 0.99.2
+Title: echoverse module: Fine-mapping data access and formatting
+Version: 0.99.3
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -19,14 +19,13 @@ Authors@R:
            email = "towfique.raj@mssm.edu",
            comment = c(ORCID = "0000-0002-9355-5704"))
            ) 
-Description: echoverse module: Fine-mapping results data.
+Description: echoverse module: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
 URL: https://github.com/RajLabMSSM/echodata
 BugReports: https://github.com/RajLabMSSM/echodata/issues
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1)
-SystemRequirements: 
-    Python (>= 3.7.0), 
+SystemRequirements:
     xml2
 biocViews:
 Imports:  

@@ -1,30 +1,28 @@
-README
-================
-<h5>
-Author: <i>Brian M. Schilder</i>
-</h5>
-<h5>
-Updated: <i>Dec-02-2021</i>
-</h5>
-
-<!-- badges: start -->
-
-[![](https://img.shields.io/badge/devel%20version-0.99.2-black.svg)](https://github.com/RajLabMSSM/echodata)
+<img src='https://github.com/RajLabMSSM/echodata/raw/master/inst/hex/hex.png' height='300'><br><br>
+[![](https://img.shields.io/badge/devel%20version-0.99.3-black.svg)](https://github.com/RajLabMSSM/echodata)
 [![R build
 status](https://github.com/RajLabMSSM/echodata/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
 [![](https://img.shields.io/github/last-commit/RajLabMSSM/echodata.svg)](https://github.com/RajLabMSSM/echodata/commits/main)
 [![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
 [![License:
 GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3)
-<!-- badges: end -->
+<h5>
+Author: <i>Brian M. Schilder</i>
+</h5>
+<h5>
+README updated: <i>Dec-03-2021</i>
+</h5>
 
-# echoverse: echodata
+## Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
 
-## Fine-mapping results data
+If you use `echodata`, please cite:
 
-Provides both built-in fine-mapping results and API access to the
-[**echolocatoR Fine-mapping
-Portal**](https://rajlab.shinyapps.io/Fine_Mapping_Shiny/).
+> Brian M Schilder, Jack Humphrey, Towfique Raj (2021) echolocatoR: an
+> automated end-to-end statistical and functional genomic fine-mapping
+> pipeline, *Bioinformatics*; btab658,
+> <https://doi.org/10.1093/bioinformatics/btab658>
+
+## Installation
 
 ``` r
 if(!require("remotes")) install.packages("remotes")
@@ -33,13 +31,15 @@ remotes::install_github("RajLabMSSM/echodata")
 library(echodata)
 ```
 
-## [Documentation website](https://rajlabmssm.github.io/echodata/)
+## Documentation
 
-## [Vignette](https://rajlabmssm.github.io/echodata/articles/echodata)
+### [Website](https://rajlabmssm.github.io/echodata)
+
+### [Getting started](https://rajlabmssm.github.io/echodata/articles/echodata)
 
 <hr>
 
-## Creator
+## Contact
 
 <a href="https://bschilder.github.io/BMSchilder/" target="_blank">Brian
 M. Schilder, Bioinformatician II</a>  
