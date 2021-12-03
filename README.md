@@ -13,7 +13,11 @@ Author: <i>Brian M. Schilder</i>
 README updated: <i>Dec-03-2021</i>
 </h5>
 
-## Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
+## `echodata`: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
+
+This R package is part of the *echoverse* suite that supports
+[`echolocatoR`](https://github.com/RajLabMSSM/echolocatoR): an automated
+genomic fine-mapping pipeline.
 
 If you use `echodata`, please cite:
 

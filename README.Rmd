@@ -1,6 +1,6 @@
 ---
 title: ""  
-author: "<img src='https://github.com/RajLabMSSM/`r read.dcf('DESCRIPTION', fields = 'Package')[1]`/raw/main/inst/hex/hex.png' height='300'><br><br>
+author: "<img src='https://github.com/RajLabMSSM/`r read.dcf('DESCRIPTION', fields = 'Package')[1]`/raw/`r gsub('[*] ','',system('git branch', intern = TRUE)[1])`/inst/hex/hex.png' height='300'><br><br>
         `r badger::badge_github_version(color = 'black')` 
         `r badger::badge_github_actions(action = 'R-CMD-check-bioc')`
         `r badger::badge_last_commit()`
@@ -17,13 +17,14 @@ pkg <- read.dcf("DESCRIPTION", fields = "Package")[1]
 description <- read.dcf("DESCRIPTION", fields = "Description")[1]
 ```
  
-## `r gsub("echoverse module: ","", description)`
+## ``r pkg``: `r gsub("echoverse module: ","", description)`
+
+This R package is part of the *echoverse* suite that supports [`echolocatoR`](https://github.com/RajLabMSSM/echolocatoR):
+an automated genomic fine-mapping pipeline. 
 
 If you use ``r pkg``, please cite: 
 
-> Brian M Schilder, Jack Humphrey, Towfique Raj (2021) 
-echolocatoR: an automated end-to-end statistical and functional genomic
-fine-mapping pipeline, *Bioinformatics*; btab658, [https://doi.org/10.1093/bioinformatics/btab658](https://doi.org/10.1093/bioinformatics/btab658)
+> `r citation(pkg)$textVersion`
 
 ## Installation 
 
