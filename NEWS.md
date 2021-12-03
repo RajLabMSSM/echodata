@@ -1,3 +1,9 @@
+# echodata 0.99.3
+
+## New features
+
+* Added new function `coords_to_rsids`, copied over from `catalogueR`. 
+
 # echodata 0.99.2
 
 ## New features 

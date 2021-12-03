@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
 Title: echoverse module: Fine-mapping data access and formatting
-Version: 0.99.3
+Version: 0.99.4
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -51,7 +51,11 @@ Suggests:
     covr,
     testthat (>= 3.0.0),
     htmltools,
-    badger
+    badger,
+    BSgenome,
+    GenomicRanges,
+    SNPlocs.Hsapiens.dbSNP144.GRCh37,
+    SNPlocs.Hsapiens.dbSNP144.GRCh38
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3
