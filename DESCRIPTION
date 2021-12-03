@@ -31,10 +31,7 @@ biocViews:
 Imports:  
     dplyr,
     data.table,
-    utils, 
-    R.utils,
-    stats, 
-    xml2,
+    utils,
     tidyr,
     parallel,
     httr,

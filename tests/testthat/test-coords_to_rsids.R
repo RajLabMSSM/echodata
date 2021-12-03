@@ -11,4 +11,9 @@ test_that("coords_to_rsids works", {
     testthat::expect_gte(
         sum(dat_annot$SNP_old==dat_annot$SNP)/nrow(dat_annot),
         .95)
+    
+    testthat::expect_error(
+      echodata::coords_to_rsids(dat = dat_annot,
+                                snp_colname = "SNP")
+    )
 })
