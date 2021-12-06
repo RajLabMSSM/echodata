@@ -13,7 +13,7 @@ gene_trimmer <- function(dat,
   messager(
     "BIOMART:: Trimming data to only include SNPs within gene coordinates."
     )
-  gene_info <- echoannot:::biomart_geneInfo(gene)
+  gene_info <-  biomart_geneInfo(gene)
   gene_info_sub <- subset(gene_info, hgnc_symbol==gene)
   # Take most limiting min position
   min_POS <- max(min_POS, gene_info_sub$start_position, na.rm = TRUE)

@@ -28,9 +28,9 @@
 #' message(x)
 #'         if(file.exists(x) && file.size(x)>0){
 #'             dat <- data.table::fread(x)
-#'             dat <- echoannot:::update_cols(dat)
+#'             dat <- update_cols(dat)
 #'             dat <- find_consensus_snps(dat=dat)
-#'             dat <- echoannot::assign_lead_snp(dat)
+#'             dat <- assign_lead_snp(dat)
 #'             return(dat)
 #'         }else {return(NULL)}
 #' }) %>% data.table::rbindlist(fill = TRUE) 

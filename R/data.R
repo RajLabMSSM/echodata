@@ -48,7 +48,7 @@
 #' library(echodata)
 #' data("Nalls2019_merged")
 #' LRRK2 <- subset(Nalls2019_merged, Locus=="LRRK2")
-#' LRRK2 <- echoannot::assign_lead_snp(LRRK2)
+#' LRRK2 <- echodata::assign_lead_snp(LRRK2)
 #' usethis::use_data(LRRK2, overwrite = TRUE)
 #' }
 #' @usage data("LRRK2")
@@ -77,7 +77,7 @@
 #' library(echodata)
 #' data("Nalls2019_merged")
 #' MEX3C <- subset(Nalls2019_merged, Locus=="MEX3C")
-#' MEX3C <- echoannot::assign_lead_snp(MEX3C)
+#' MEX3C <- echodata::assign_lead_snp(MEX3C)
 #' usethis::use_data(MEX3C, overwrite = TRUE)
 #' }
 #' @usage data("MEX3C")
