@@ -1,3 +1,18 @@
+# echodata 0.99.4
+
+* Added new functions (with unit tests):
+    - `snp_group_filters`
+    - `find_consensus_SNPs`
+    - `find_consensus_SNPs_no_PolyFun`
+    - `filter_snps` 
+    - `limit_SNPs`
+    - `gene_trimmer` 
+    - `fillNA_CS_PP`
+    - `determine_chrom_type`
+    - `check_if_empty`
+    - `column_dictionary`
+    - `get_header`
+    
 # echodata 0.99.3
 
 ## New features

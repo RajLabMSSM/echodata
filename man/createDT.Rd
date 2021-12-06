@@ -20,4 +20,9 @@ Generate an interactive data table with download buttons.
  
 echodata::createDT(dat = echodata::BST1)
 }
+\seealso{
+Other general: 
+\code{\link{fillNA_CS_PP}()},
+\code{\link{get_header}()}
+}
 \concept{general}

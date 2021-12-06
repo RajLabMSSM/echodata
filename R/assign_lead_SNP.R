@@ -11,8 +11,8 @@
 #' @importFrom dplyr arrange desc
 #' @importFrom utils head
 #' @examples 
-#' dat <- echodata::assign_lead_SNP(dat = echodata::BST1)
-assign_lead_SNP <- function (dat, 
+#' dat <- echodata::assign_lead_snp(dat = echodata::BST1)
+assign_lead_snp <- function (dat, 
                              verbose = TRUE) {
     P <- Effect <- NULL;
     if (sum(dat$leadSNP, na.rm = TRUE) == 0) {

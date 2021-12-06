@@ -33,7 +33,7 @@ Nalls et al. (The Lancet Neurology)}.
 library(echodata)
 data("Nalls2019_merged")
 LRRK2 <- subset(Nalls2019_merged, Locus=="LRRK2")
-LRRK2 <- echoannot::assign_lead_SNP(LRRK2)
+LRRK2 <- echoannot::assign_lead_snp(LRRK2)
 usethis::use_data(LRRK2, overwrite = TRUE)
 }
 }
