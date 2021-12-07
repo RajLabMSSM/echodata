@@ -61,6 +61,9 @@
     <loc>/reference/createDT.html</loc>
   </url>
   <url>
+    <loc>/reference/dt_to_granges.html</loc>
+  </url>
+  <url>
     <loc>/reference/example_fullSS.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>/reference/find_consensus_snps_no_polyfun.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_top_consensus.html</loc>
   </url>
   <url>
     <loc>/reference/gene_trimmer.html</loc>
@@ -113,6 +119,9 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_granges.html</loc>
   </url>
   <url>
     <loc>/reference/limit_snps.html</loc>
