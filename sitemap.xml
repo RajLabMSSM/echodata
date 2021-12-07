@@ -46,6 +46,12 @@
     <loc>/reference/assign_lead_SNP.html</loc>
   </url>
   <url>
+    <loc>/reference/biomart_geneInfo.html</loc>
+  </url>
+  <url>
+    <loc>/reference/column_dictionary.html</loc>
+  </url>
+  <url>
     <loc>/reference/column_map.html</loc>
   </url>
   <url>
@@ -59,6 +65,21 @@
   </url>
   <url>
     <loc>/reference/extract_loci.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fillNA_CS_PP.html</loc>
+  </url>
+  <url>
+    <loc>/reference/filter_snps.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_consensus_snps.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_consensus_snps_no_polyfun.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gene_trimmer.html</loc>
   </url>
   <url>
     <loc>/reference/genome_wide_dir.html</loc>
@@ -76,6 +97,9 @@
     <loc>/reference/get_data.html</loc>
   </url>
   <url>
+    <loc>/reference/get_header.html</loc>
+  </url>
+  <url>
     <loc>/reference/github_download_files.html</loc>
   </url>
   <url>
@@ -91,7 +115,13 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/limit_snps.html</loc>
+  </url>
+  <url>
     <loc>/reference/locus_dir.html</loc>
+  </url>
+  <url>
+    <loc>/reference/melt_finemapping_results.html</loc>
   </url>
   <url>
     <loc>/reference/message_parallel.html</loc>
@@ -101,6 +131,9 @@
   </url>
   <url>
     <loc>/reference/portal_query.html</loc>
+  </url>
+  <url>
+    <loc>/reference/snp_group_filters.html</loc>
   </url>
   <url>
     <loc>/reference/standardise_sumstats_column_headers_crossplatform.html</loc>
@@ -119,5 +152,8 @@
   </url>
   <url>
     <loc>/reference/topSNPs_reader.html</loc>
+  </url>
+  <url>
+    <loc>/reference/update_cols.html</loc>
   </url>
 </urlset>
