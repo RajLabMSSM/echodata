@@ -115,10 +115,19 @@
     <loc>/reference/github_list_files.html</loc>
   </url>
   <url>
+    <loc>/reference/granges_to_bed.html</loc>
+  </url>
+  <url>
     <loc>/reference/import_topSNPs.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_ggbio.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_ggplot.html</loc>
   </url>
   <url>
     <loc>/reference/is_granges.html</loc>
