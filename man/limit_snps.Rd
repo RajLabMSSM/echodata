@@ -4,20 +4,30 @@
 \alias{limit_snps}
 \title{Limit the number of SNPs per locus.}
 \usage{
-limit_snps(max_snps = 500, dat)
+limit_snps(dat, max_snps = 500, verbose = TRUE)
 }
 \arguments{
-\item{max_snps}{The maximum number of SNPs to keep in the resulting data.frame.}
-
 \item{dat}{A data.frame that contains at least the following columns:
 \describe{
   \item{SNP}{RSID for each SNP.}
   \item{POS}{Each SNP's genomic position (in basepairs).}
 }}
+
+\item{max_snps}{The maximum number of SNPs to keep in the resulting
+\link[data.table]{data.table}.}
+
+\item{verbose}{Print messages.}
+}
+\value{
+A  filtered \link[data.table]{data.table}.
 }
 \description{
-Start with the lead SNP and keep expanding the window until you reach the desired number of snps.
+Start with the lead SNP and keep expanding the window until you reach 
+the desired number of SNPs.
 \code{dat} should only contain one locus from one chromosome.
+}
+\examples{
+dat2 <- echodata::limit_snps(dat = echodata::BST1)
 }
 \seealso{
 Other SNP filters: 
@@ -25,4 +35,3 @@ Other SNP filters:
 \code{\link{gene_trimmer}()}
 }
 \concept{SNP filters}
-\keyword{internal}

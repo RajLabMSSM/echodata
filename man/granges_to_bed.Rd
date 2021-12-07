@@ -2,17 +2,36 @@
 % Please edit documentation in R/granges_to_bed.R
 \name{granges_to_bed}
 \alias{granges_to_bed}
-\title{GRanges to BED format}
+\title{Convert from GRanges to BED format}
 \usage{
 granges_to_bed(
-  GR.annotations,
-  output_path,
+  grlist,
+  save_dir = tempdir(),
   sep = "\\t",
   nThread = 1,
-  gzip = FALSE
+  gzip = FALSE,
+  verbose = TRUE
 )
 }
-\description{
-Convert GRanges object to BED format and save
+\arguments{
+\item{grlist}{A list of \link[GenomicRanges]{GRanges} objects. 
+Can also be a single non-list \link[GenomicRanges]{GRanges} object.}
+
+\item{save_dir}{Where to save the BED file.}
+
+\item{sep}{The separator between columns. Default is \code{","}.}
+
+\item{nThread}{The number of threads to use. Experiment to see what works best for your data on your hardware.}
+
+\item{gzip}{Whether the BED file should be gzip compressed.}
+
+\item{verbose}{Print messages.}
 }
-\keyword{internal}
+\description{
+Convert \link[GenomicRanges]{GRanges} object to BED format 
+and save as a text file.
+}
+\examples{
+gr <- echodata::dt_to_granges(dat = echodata::BST1)
+bed_path <- echodata::granges_to_bed(grlist = gr)
+}

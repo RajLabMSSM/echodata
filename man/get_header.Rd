@@ -11,6 +11,7 @@ Reading in this way is more robust and able to handle bgz format.
 }
 \seealso{
 Other general: 
+\code{\link{check_if_empty}()},
 \code{\link{createDT}()},
 \code{\link{fillNA_CS_PP}()}
 }

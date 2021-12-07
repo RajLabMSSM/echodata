@@ -4,7 +4,7 @@
 \alias{fillNA_CS_PP}
 \title{Fill NAs in PP and CS columns}
 \usage{
-fillNA_CS_PP(dat, fillNA_CS = 0, fillNA_PP = 0)
+fillNA_CS_PP(dat, fillNA_CS = 0, fillNA_PP = 0, verbose = TRUE)
 }
 \arguments{
 \item{dat}{Fine-mapping results data.}
@@ -14,6 +14,8 @@ columns with.}
 
 \item{fillNA_PP}{What to fill NA values in Posterior Probability ("*.PP")
 columns with.}
+
+\item{verbose}{Print messages.}
 }
 \value{
 Modified \link[data.table]{data.table}
@@ -29,6 +31,7 @@ dat <- echodata::fillNA_CS_PP(dat = dat)
 }
 \seealso{
 Other general: 
+\code{\link{check_if_empty}()},
 \code{\link{createDT}()},
 \code{\link{get_header}()}
 }

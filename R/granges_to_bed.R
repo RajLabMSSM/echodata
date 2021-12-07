@@ -1,22 +1,38 @@
-#' GRanges to BED format
+#' Convert from GRanges to BED format
 #' 
-#' Convert GRanges object to BED format and save 
-#' @keywords internal
+#' Convert \link[GenomicRanges]{GRanges} object to BED format 
+#' and save as a text file.
+#' @param grlist A list of \link[GenomicRanges]{GRanges} objects. 
+#' Can also be a single non-list \link[GenomicRanges]{GRanges} object.
+#' 
+#' @param save_dir Where to save the BED file.
+#' @param gzip Whether the BED file should be gzip compressed.
+#' @param verbose Print messages.
+#' @inheritParams data.table::fwrite
 #' @importFrom data.table as.data.table fwrite
 #' @importFrom parallel mclapply
 #' @importFrom dplyr %>% select 
-granges_to_bed <- function(GR.annotations,
-                           output_path,
+#' @export
+#' @examples 
+#' gr <- echodata::dt_to_granges(dat = echodata::BST1)
+#' bed_path <- echodata::granges_to_bed(grlist = gr)
+granges_to_bed <- function(grlist,
+                           save_dir = tempdir(),
                            sep = "\t",
                            nThread = 1,
-                           gzip = FALSE) {
+                           gzip = FALSE,
+                           verbose = TRUE) {
     
     seqnames <- start <- end <- strand <- NULL;
+    if(!is.list(grlist)) grlist <- list(GRange = grlist)
+    messager("Converting",length(grlist),
+             "GRange object to separate BED files.",
+             v=verbose)
     BED_paths <- parallel::mclapply(
-        names(GR.annotations),
+        names(grlist),
             function(name,
                      .gzip = gzip) {
-                GR <- GR.annotations[[name]]
+                GR <- grlist[[name]]
                 BED <- data.table::as.data.table(GR) %>%
                     dplyr::select(
                         chrom = seqnames,
@@ -24,7 +40,7 @@ granges_to_bed <- function(GR.annotations,
                         chromEnd = end,
                         strand
                     )
-                BED_path <- file.path(output_path, paste0(
+                BED_path <- file.path(save_dir, paste0(
                     gsub(":", "-", name),
                     ".bed.txt"
                 ))
@@ -32,6 +48,7 @@ granges_to_bed <- function(GR.annotations,
                 dir.create(dirname(BED_path),
                            recursive = TRUE,
                            showWarnings = FALSE)
+                messager("Saving BED file ==>",BED_path,v=verbose)
                 data.table::fwrite(BED, BED_path,
                                    sep = sep,
                                    col.names = FALSE, 

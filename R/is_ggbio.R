@@ -8,5 +8,5 @@
 #' @examples 
 #' bool <- echodata::is_ggbio(mtcars)
 is_ggbio <- function(obj) {
-    methods::is(obj, "ggbio")
+    methods::is(obj, "GGbio")
 }
