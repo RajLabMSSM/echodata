@@ -12,6 +12,9 @@
     - `check_if_empty`
     - `column_dictionary`
     - `get_header`
+    - `melt_finemapping_results`
+    - `update_cols`
+    - `biomart_geneInfo`
     
 # echodata 0.99.3
 

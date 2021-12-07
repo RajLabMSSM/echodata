@@ -6,6 +6,11 @@
 \usage{
 find_consensus_snps_no_polyfun(dat, verbose = TRUE)
 }
+\arguments{
+\item{dat}{Fine-mapping results data.}
+
+\item{verbose}{Print messages.}
+}
 \description{
 Find Consensus SNPs in \link[echolocatoR]{finemap_loci} output, without 
 using any results from the functional fine-mapping tool PolyFun 
@@ -15,9 +20,5 @@ annotation that PolyFun may have been trained on.
 }
 \examples{
 BST1 <- echodata::find_consensus_snps_no_polyfun(dat = echodata::BST1)
-}
-\seealso{
-Other echolocatoR: 
-\code{\link{find_consensus_snps}()}
 }
 \concept{echolocatoR}

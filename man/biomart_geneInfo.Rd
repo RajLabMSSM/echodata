@@ -6,15 +6,16 @@
 \source{
 \href{https://bioconductor.org/packages/release/bioc/html/biomaRt.html}{
 biomaRt}
+
+\code{
+gene_info <- echodata::biomart_geneInfo(geneList = c("PTK2B", "CLU", "APOE"))
+}
 }
 \usage{
 biomart_geneInfo(geneList, reference_genome = "grch37")
 }
 \description{
 Get gene info using Biomart
-}
-\examples{
-gene_info <- echodata::biomart_geneInfo(geneList = c("PTK2B", "CLU", "APOE"))
 }
 \concept{annotate}
 \keyword{internal}

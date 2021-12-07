@@ -16,6 +16,27 @@ filter_snps(
   verbose = TRUE
 )
 }
+\arguments{
+\item{dat}{Fine-mapping results data.}
+
+\item{bp_distance}{Distance around the lead SNP to include.}
+
+\item{remove_variants}{A list of SNP RSIDs to remove.}
+
+\item{min_POS}{Minimum genomic position to include.}
+
+\item{max_POS}{Maximum genomic position to include.}
+
+\item{max_snps}{Maximum number of SNPs to include.}
+
+\item{min_MAF}{Minimum Minor Allele Frequency (MAF) of SNPs to include.}
+
+\item{trim_gene_limits}{If a gene name is supplied to this argument 
+(e.g. \code{trim_gene_limits="BST"}), only SNPs within the gene body
+ will be included.}
+
+\item{verbose}{Print messages.}
+}
 \description{
 Filter SNPs by MAF, window size, min/max position, maximum number of SNPs,
  or gene coordinates.

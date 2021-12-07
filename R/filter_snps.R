@@ -4,6 +4,17 @@
 #'  or gene coordinates.
 #' You can also explicitly remove certain variants.
 #'
+#' @param dat Fine-mapping results data.
+#' @param bp_distance Distance around the lead SNP to include.
+#' @param remove_variants A list of SNP RSIDs to remove.
+#' @param min_POS Minimum genomic position to include.
+#' @param max_POS Maximum genomic position to include.
+#' @param max_snps Maximum number of SNPs to include.
+#' @param min_MAF Minimum Minor Allele Frequency (MAF) of SNPs to include.
+#' @param trim_gene_limits If a gene name is supplied to this argument 
+#' (e.g. \code{trim_gene_limits="BST"}), only SNPs within the gene body
+#'  will be included.
+#' @param verbose Print messages.
 #' @family SNP filters
 #' @export
 #' @examples
@@ -17,6 +28,8 @@ filter_snps <- function(dat,
                         min_MAF=NULL,
                         trim_gene_limits=FALSE,
                         verbose=TRUE){
+  
+  SNP <- MAF <- leadSNP <- POS <- NULL;
   messager("FILTER:: Filtering by SNP features.",v=verbose)
   if(all(remove_variants!=FALSE)){
     messager("+ FILTER:: Removing specified variants:",
@@ -29,11 +42,7 @@ filter_snps <- function(dat,
                         gene=trim_gene_limits,
                         min_POS=min_POS,
                         max_POS=min_POS)
-  } else if (any(!is.na(c(min_POS, max_POS)))){
-    messager(
-      "Warning: min_POS/max_POS will be ignored when trim_gene_limits==FALSE."
-      )
-  }
+  } 
   if(!is.null(max_snps)){
     dat <- limit_snps(max_snps = max_snps,
                       dat = dat)

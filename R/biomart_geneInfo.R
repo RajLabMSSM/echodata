@@ -5,8 +5,10 @@
 #' @source
 #' \href{https://bioconductor.org/packages/release/bioc/html/biomaRt.html}{
 #' biomaRt}
-#' @examples 
+#' @source 
+#' \code{
 #' gene_info <- echodata::biomart_geneInfo(geneList = c("PTK2B", "CLU", "APOE"))
+#' } 
 biomart_geneInfo <- function(geneList,
                              reference_genome = "grch37") {
     requireNamespace("biomaRt")

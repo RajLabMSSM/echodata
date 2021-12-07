@@ -4,6 +4,11 @@
 #' (ending in ".PP") and and columns with Credible Set assignments 
 #' (ending in ".CS").
 #' 
+#' @param dat Fine-mapping results data.
+#' @param fillNA_CS What to fill NA values in Credible Set ("*.CS") 
+#' columns with.
+#' @param fillNA_PP What to fill NA values in Posterior Probability ("*.PP")
+#' columns with.
 #' @return Modified \link[data.table]{data.table}
 #' @family general
 #' @export

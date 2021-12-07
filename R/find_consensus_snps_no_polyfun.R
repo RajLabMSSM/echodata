@@ -5,6 +5,8 @@
 #' (in a new column "Consensus_SNP_noPF"). 
 #' This helps to avoid any circularity when validating results with functional 
 #' annotation that PolyFun may have been trained on.
+#' 
+#' @inheritParams find_consensus_snps
 #' @family echolocatoR
 #' @export
 #' @importFrom dplyr %>% arrange desc

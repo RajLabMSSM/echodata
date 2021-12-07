@@ -10,6 +10,8 @@ gene_trimmer <- function(dat,
                          gene,
                          min_POS=NA,
                          max_POS=NA){
+  
+  hgnc_symbol <- CHR <- POS <- NULL;
   messager(
     "BIOMART:: Trimming data to only include SNPs within gene coordinates."
     )

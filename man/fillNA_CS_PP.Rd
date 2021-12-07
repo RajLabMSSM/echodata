@@ -6,6 +6,15 @@
 \usage{
 fillNA_CS_PP(dat, fillNA_CS = 0, fillNA_PP = 0)
 }
+\arguments{
+\item{dat}{Fine-mapping results data.}
+
+\item{fillNA_CS}{What to fill NA values in Credible Set ("*.CS") 
+columns with.}
+
+\item{fillNA_PP}{What to fill NA values in Posterior Probability ("*.PP")
+columns with.}
+}
 \value{
 Modified \link[data.table]{data.table}
 }
