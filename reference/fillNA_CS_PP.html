@@ -70,7 +70,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">fillNA_CS_PP</span><span class="op">(</span><span class="va">dat</span>, fillNA_CS <span class="op">=</span> <span class="fl">0</span>, fillNA_PP <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">fillNA_CS_PP</span><span class="op">(</span><span class="va">dat</span>, fillNA_CS <span class="op">=</span> <span class="fl">0</span>, fillNA_PP <span class="op">=</span> <span class="fl">0</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,6 +83,8 @@ columns with.</p></dd>
 <dt>fillNA_PP</dt>
 <dd><p>What to fill NA values in Posterior Probability ("*.PP")
 columns with.</p></dd>
+<dt>verbose</dt>
+<dd><p>Print messages.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -91,6 +93,7 @@ columns with.</p></dd>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other general: 
+<code><a href="check_if_empty.html">check_if_empty</a>()</code>,
 <code><a href="createDT.html">createDT</a>()</code>,
 <code><a href="get_header.html">get_header</a>()</code></p></div>
     </div>
@@ -99,8 +102,8 @@ columns with.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span> </span>
 <span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">fillNA_CS_PP</span><span class="op">(</span>dat <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Filling NAs in CS cols with 0</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Filling NAs in PP cols with 0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Filling NAs in CS cols with 0.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Filling NAs in PP cols with 0.</span>
 </code></pre></div>
     </div>
   </div>
