@@ -17,9 +17,9 @@ Check if a summary statistics file subset is empty.
 }
 \examples{
 tmp <- tempfile()
-data.table::fwrite(data.table::data.table(), tmp)
+data.table::fwrite(echodata::BST1, tmp)
 
-is_empty <- echodata::check_if_empty(file_path = tmp)
+echodata::check_if_empty(file_path = tmp)
 }
 \seealso{
 Other general: 
