@@ -55,8 +55,7 @@ Suggests:
     GenomeInfoDb,
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
-    biomaRt,
-    tidyr
+    biomaRt
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

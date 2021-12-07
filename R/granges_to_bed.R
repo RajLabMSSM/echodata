@@ -10,6 +10,8 @@ granges_to_bed <- function(GR.annotations,
                            sep = "\t",
                            nThread = 1,
                            gzip = FALSE) {
+    
+    seqnames <- start <- end <- strand <- NULL;
     BED_paths <- parallel::mclapply(
         names(GR.annotations),
             function(name,

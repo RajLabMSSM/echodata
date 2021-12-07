@@ -8,11 +8,12 @@
 #' @param effect_col Name of the Effect column.
 #' @param grouping_vars Column names to group by when assigning lead SNPs.
 #' @param nThread Number of threads to parallelise across.
-#' @param verboes Print messages.
+#' @param verbose Print messages.
 #' @export
 #' @importFrom dplyr %>%  slice_min n_distinct all_of group_by_at
 #' @importFrom data.table rbindlist
 #' @importFrom parallel mclapply
+#' @importFrom tidyr unite
 #' @examples  
 #' merged_dat <- echodata::get_Nalls2019_merged()
 #' merged_dat2 <- echodata::reassign_lead_snps(merged_dat = merged_dat)
@@ -22,8 +23,7 @@ reassign_lead_snps <- function(merged_dat,
                                effect_col = "Effect",
                                grouping_vars = c("Dataset", "Locus"),
                                nThread = 1,
-                               verbose = TRUE) { 
-    requireNamespace("tidyr")
+                               verbose = TRUE) {  
     P <- Effect <- NULL;
     messager("Reassigning lead SNPs by:",
              paste(grouping_vars,collapse = ", "), v=verbose)

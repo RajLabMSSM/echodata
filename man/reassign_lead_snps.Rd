@@ -27,7 +27,7 @@ reassign_lead_snps(
 
 \item{nThread}{Number of threads to parallelise across.}
 
-\item{verboes}{Print messages.}
+\item{verbose}{Print messages.}
 }
 \description{
 Reassign lead SNPs per group.
