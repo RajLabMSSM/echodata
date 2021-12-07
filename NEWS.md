@@ -15,6 +15,9 @@
     - `melt_finemapping_results`
     - `update_cols`
     - `biomart_geneInfo`
+    - `find_top_consensus`
+    - `dt_to_granges`
+    - `is_granges`
     
 # echodata 0.99.3
 

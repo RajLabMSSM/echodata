@@ -31,6 +31,7 @@ biocViews:
 Imports:  
     dplyr,
     data.table,
+    methods,
     utils,
     tidyr,
     parallel,
@@ -51,6 +52,7 @@ Suggests:
     badger,
     BSgenome,
     GenomicRanges,
+    GenomeInfoDb,
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
     biomaRt
