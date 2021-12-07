@@ -8,5 +8,6 @@
 #' @examples 
 #' bool <- echodata::is_ggplot(mtcars)
 is_ggplot <- function(obj) {
-    methods::is(obj, "ggplot")
+    # methods::is(obj, "ggplot")
+    inherits(obj, "ggplot") 
 }

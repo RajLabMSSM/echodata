@@ -21,6 +21,7 @@
     - `is_ggplot`
     - `is_ggbio`
     - `granges_to_bed`
+    - `reassign_lead_snps`
     
 # echodata 0.99.3
 
