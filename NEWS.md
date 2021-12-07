@@ -18,6 +18,9 @@
     - `find_top_consensus`
     - `dt_to_granges`
     - `is_granges`
+    - `is_ggplot`
+    - `is_ggbio`
+    - `granges_to_bed`
     
 # echodata 0.99.3
 
