@@ -5,6 +5,11 @@
 * Added new functions (with unit tests):
     - `snp_group_colorDict`
 
+## Bug fixes
+
+- `reassign_lead_snps`: Handle situations where none of 
+the `grouping_vars` are available.
+
 # echodata 0.99.4
 
 ## New features 

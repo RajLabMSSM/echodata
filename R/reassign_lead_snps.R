@@ -28,6 +28,13 @@ reassign_lead_snps <- function(merged_dat,
     messager("Reassigning lead SNPs by:",
              paste(grouping_vars,collapse = ", "), v=verbose)
     grouping_vars <- grouping_vars[grouping_vars %in% colnames(merged_dat)]
+    if(length(grouping_vars)==0){
+        messager("Warning: None of the grouping_vars were",
+                 "found in merged_dat columns.",
+                 "Grouping by a new dummy variable called 'Dataset'.")
+        merged_dat$Dataset <- "Dataset"
+        grouping_vars <- "Dataset"
+    }
     #### Merge grouping_vars cols dynamically ####
     merged_dat <- tidyr::unite(merged_dat, 
                                col = "id",
