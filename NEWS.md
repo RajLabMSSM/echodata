@@ -1,4 +1,13 @@
+# echodata 0.99.5
+
+## New features 
+
+* Added new functions (with unit tests):
+    - `snp_group_colorDict`
+
 # echodata 0.99.4
+
+## New features 
 
 * Added new functions (with unit tests):
     - `snp_group_filters`
