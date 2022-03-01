@@ -24,6 +24,7 @@ echodata::createDT(dat = echodata::BST1)
 Other general: 
 \code{\link{check_if_empty}()},
 \code{\link{fillNA_CS_PP}()},
-\code{\link{get_header}()}
+\code{\link{get_header}()},
+\code{\link{get_sample_size}()}
 }
 \concept{general}

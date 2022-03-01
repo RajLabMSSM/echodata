@@ -13,7 +13,8 @@ Reading in this way is more robust and able to handle bgz format.
 Other general: 
 \code{\link{check_if_empty}()},
 \code{\link{createDT}()},
-\code{\link{fillNA_CS_PP}()}
+\code{\link{fillNA_CS_PP}()},
+\code{\link{get_sample_size}()}
 }
 \concept{general}
 \keyword{internal}
