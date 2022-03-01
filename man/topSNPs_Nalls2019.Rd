@@ -5,21 +5,20 @@
 \alias{topSNPs_Nalls2019}
 \title{TopSS example file (processed): Nalls2019}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 0 rows and 7 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 97 rows and 7 columns.
 }
 \source{
 \code{
-data("Nalls_top_SNPs")
-top_SNPs <- echodata::import_topSNPs(topSS=Nalls_top_SNPs,
+topSS <- echodata::topSNPs_Nalls2019_raw
+topSNPs_Nalls2019 <- echodata::import_topSNPs(topSS=topSS,
                                         chrom_col="CHR",
-                                        position_col="BP", 
-                                        snp_col="SNP", 
-                                        pval_col="P, all studies", 
-                                        effect_col="Beta, all studies", 
-                                        gene_col="Nearest Gene",  
-                                        locus_col="Nearest Gene", 
+                                        position_col="BP",
+                                        snp_col="SNP",
+                                        pval_col="P, all studies",
+                                        effect_col="Beta, all studies",
+                                        gene_col="Nearest Gene",
+                                        locus_col="Nearest Gene",
                                         remove_variants="rs34637584")
-topSNPs_Nalls2019 <- top_SNPs                                       
 usethis::use_data(topSNPs_Nalls2019, overwrite=TRUE)
 }
 }
