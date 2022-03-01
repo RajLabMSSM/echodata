@@ -12,6 +12,7 @@ get_sample_size <- function(dat,
                             method = c("ldsc", "giant", "metal", "sum"),
                             force_new = FALSE,
                             verbose=TRUE){
+  requireNamespace("MungeSumstats")
   d <- MungeSumstats:::standardise_sumstats_column_headers_crossplatform(dat)
   message("--")
   dat2 <- MungeSumstats:::compute_sample_size(sumstats_dt = d$sumstats_dt,
