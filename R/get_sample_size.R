@@ -19,6 +19,12 @@ get_sample_size <- function(dat,
   dat2 <- MungeSumstats:::compute_sample_size(sumstats_dt = d$sumstats_dt,
                                               method = method, 
                                               force_new = force_new) 
+  #### Rename Neff to N ####
+  if(!"N" %in% colnames(dat2) || isTRUE(force_new)){
+    if("Neff" %in% colnames(dat2)){
+      data.table::setnames(dat2,"Neff","N")
+    } 
+  }
   message("--")
   dat2 <- MUNGESUMSTATS.to_echolocatoR(dat2)
   return(dat2)
