@@ -1,7 +1,7 @@
 #' Column name mappings from \pkg{MungeSumstats} to \pkg{echolocatoR}
 #'
-#' @source https://github.com/neurogenomics/MungeSumstats
-#' @keywords internal
+#' @source \url{https://github.com/neurogenomics/MungeSumstats}
+#' @export
 MUNGESUMSTATS.col_map <- function(){
     list(chrom_col="CHR",
          position_col="BP",

@@ -4,7 +4,7 @@
 \alias{MUNGESUMSTATS.col_map}
 \title{Column name mappings from \pkg{MungeSumstats} to \pkg{echolocatoR}}
 \source{
-https://github.com/neurogenomics/MungeSumstats
+\url{https://github.com/neurogenomics/MungeSumstats}
 }
 \usage{
 MUNGESUMSTATS.col_map()
@@ -12,4 +12,3 @@ MUNGESUMSTATS.col_map()
 \description{
 Column name mappings from \pkg{MungeSumstats} to \pkg{echolocatoR}
 }
-\keyword{internal}
