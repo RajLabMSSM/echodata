@@ -65,11 +65,3 @@ Infer sample size from summary stats using \pkg{MungeSumstats}.
 dat <- echodata::BST1
 dat2 <- echodata::get_sample_size(dat = dat)
 }
-\seealso{
-Other general: 
-\code{\link{check_if_empty}()},
-\code{\link{createDT}()},
-\code{\link{fillNA_CS_PP}()},
-\code{\link{get_header}()}
-}
-\concept{general}

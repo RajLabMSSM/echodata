@@ -25,7 +25,6 @@ echodata::check_if_empty(file_path = tmp)
 Other general: 
 \code{\link{createDT}()},
 \code{\link{fillNA_CS_PP}()},
-\code{\link{get_header}()},
-\code{\link{get_sample_size}()}
+\code{\link{get_header}()}
 }
 \concept{general}

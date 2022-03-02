@@ -33,7 +33,6 @@ dat <- echodata::fillNA_CS_PP(dat = dat)
 Other general: 
 \code{\link{check_if_empty}()},
 \code{\link{createDT}()},
-\code{\link{get_header}()},
-\code{\link{get_sample_size}()}
+\code{\link{get_header}()}
 }
 \concept{general}
