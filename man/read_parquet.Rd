@@ -34,8 +34,13 @@ Import a file in parquet format (from python) as a
 \link[data.table]{data.table} in R.
 }
 \examples{
-path <- system.file(
-    "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
-    package = "echofinemap")
-parq <- echofinemap::read_parquet(path=path)
+#path <- system.file(
+#    "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
+#    package = "echofinemap")
+
+#### Write a parquet file ####
+dat <- echodata::BST1
+path <- echodata::write_parquet(dat)
+#### Read the parquet file back into R ####
+dat2 <- echodata::read_parquet(path=path)
 }

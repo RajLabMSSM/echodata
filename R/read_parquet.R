@@ -12,13 +12,18 @@
 #' }
 #' @param verbose Print messages.
 #' @inheritParams echoconda::yaml_to_env
-#' 
+#'  
 #' @export
-#' @examples
-#' path <- system.file(
-#'     "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
-#'     package = "echofinemap")
-#' parq <- echofinemap::read_parquet(path=path)
+#' @examples 
+#' #path <- system.file(
+#' #    "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
+#' #    package = "echofinemap")
+#' 
+#' #### Write a parquet file ####
+#' dat <- echodata::BST1
+#' path <- echodata::write_parquet(dat)
+#' #### Read the parquet file back into R ####
+#' dat2 <- echodata::read_parquet(path=path)
 read_parquet <- function(path,
                          conda_env="echoR",
                          conda = "auto",
@@ -35,7 +40,7 @@ read_parquet <- function(path,
         messager("+ Importing parquet file with `pandas (Python)`",v=verbose) 
         #### Create echoR conda env if you haven't already #### 
         conda_env <- echoconda::yaml_to_env(conda = conda, 
-                                            verbose = verbose) 
+                                            verbose = FALSE) 
         echoconda::activate_env(conda_env = conda_env)
         pd <- reticulate::import("pandas")
         parquor <- pd$read_parquet(path)

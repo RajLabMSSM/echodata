@@ -5,6 +5,7 @@
 * Added new functions (with unit tests):
     - `snp_group_colorDict` 
     - `read_parquet`
+    - `write_parquet`
 
 ## Bug fixes
 
