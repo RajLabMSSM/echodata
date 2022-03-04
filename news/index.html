@@ -29,7 +29,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,6 +66,8 @@
 <h3 id="new-features-0-99-5">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-5"></a></h3>
 <ul><li>Added new functions (with unit tests):
 <ul><li><code>snp_group_colorDict</code></li>
+<li><code>read_parquet</code></li>
+<li><code>write_parquet</code></li>
 </ul></li>
 </ul></div>
 <div class="section level3">
@@ -73,6 +75,9 @@
 <ul><li>
 <code>reassign_lead_snps</code>: Handle situations where none of the
 <code>grouping_vars</code> are available.</li>
+<li>Fix error in reporting number of Consensus_SNPs in
+<code>find_consensus_snps</code> (only affected console message, not the
+actual data).</li>
 </ul></div>
 </div>
     <div class="section level2">

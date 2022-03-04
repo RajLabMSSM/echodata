@@ -157,6 +157,9 @@
     <loc>/reference/portal_query.html</loc>
   </url>
   <url>
+    <loc>/reference/read_parquet.html</loc>
+  </url>
+  <url>
     <loc>/reference/reassign_lead_snps.html</loc>
   </url>
   <url>
@@ -185,5 +188,8 @@
   </url>
   <url>
     <loc>/reference/update_cols.html</loc>
+  </url>
+  <url>
+    <loc>/reference/write_parquet.html</loc>
   </url>
 </urlset>
