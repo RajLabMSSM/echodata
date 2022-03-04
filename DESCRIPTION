@@ -56,7 +56,10 @@ Suggests:
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
     biomaRt,
-    MungeSumstats
+    MungeSumstats,
+    echoconda
+Remotes:
+    github::RajLabMSSM/echoconda
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

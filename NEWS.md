@@ -3,12 +3,16 @@
 ## New features 
 
 * Added new functions (with unit tests):
-    - `snp_group_colorDict`
+    - `snp_group_colorDict` 
+    - `read_parquet`
 
 ## Bug fixes
 
-- `reassign_lead_snps`: Handle situations where none of 
-the `grouping_vars` are available.
+* `reassign_lead_snps`: Handle situations where none of 
+the `grouping_vars` are available. 
+* Fix error in reporting number of Consensus_SNPs in `find_consensus_snps` 
+(only affected console message, not the actual data).  
+
 
 # echodata 0.99.4
 

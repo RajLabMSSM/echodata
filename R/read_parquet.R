@@ -14,8 +14,6 @@
 #' @inheritParams echoconda::yaml_to_env
 #' 
 #' @export
-#' @importFrom echoconda yaml_to_env
-#' 
 #' @examples
 #' path <- system.file(
 #'     "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
@@ -33,6 +31,7 @@ read_parquet <- function(path,
         parquor <- SparkR::read.parquet(path)
         parquor <- SparkR::as.data.frame(parquor) 
     } else {
+        requireNamespace("echoconda")
         messager("+ Importing parquet file with `pandas (Python)`",v=verbose) 
         #### Create echoR conda env if you haven't already #### 
         conda_env <- echoconda::yaml_to_env(conda = conda, 
