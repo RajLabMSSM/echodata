@@ -4,28 +4,16 @@
 \alias{read_parquet}
 \title{Read parquet file}
 \usage{
-read_parquet(
-  path,
-  conda_env = "echoR",
-  conda = "auto",
-  method = "pandas",
-  verbose = TRUE
-)
+read_parquet(path, conda_env = "echoR", conda = "auto", verbose = TRUE)
 }
 \arguments{
 \item{path}{Path to parquet file.}
 
+\item{conda_env}{Conda environment to use.}
+
 \item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow
 \code{reticulate} to automatically find an appropriate \code{conda} binary.
 See \strong{Finding Conda} and \code{\link[reticulate:conda-tools]{conda_binary()}} for more details.}
-
-\item{method}{Method to read parquet with:
-\itemize{
-\item{"pandas"}{Python package,
- but can be imported via \link[reticulate]{import.}}
-\item{"SparkR"}{R package,
- but requires installation of SQL first.}
-}}
 
 \item{verbose}{Print messages.}
 }

@@ -57,7 +57,9 @@ Suggests:
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
     biomaRt,
     MungeSumstats,
-    echoconda
+    echoconda,
+    reticulate,
+    ggplot2
 Remotes:
     github::RajLabMSSM/echoconda
 RoxygenNote: 7.1.2

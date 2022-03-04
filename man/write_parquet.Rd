@@ -12,6 +12,8 @@ write_parquet(
 )
 }
 \arguments{
+\item{dat}{\link[base]{data.frame}.}
+
 \item{path}{Path to write parquet file to.}
 
 \item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow
@@ -21,9 +23,9 @@ See \strong{Finding Conda} and \code{\link[reticulate:conda-tools]{conda_binary(
 \item{verbose}{Print messages.}
 }
 \description{
-Export a \link[data.table]{data.table} to parquet format (from python).
+Export a \link[base]{data.frame} to parquet format (from python).
 }
 \examples{
 dat <- echodata::BST1
-path <- echofinemap::write_parquet(dat = dat)
+path <- echodata::write_parquet(dat = dat)
 }

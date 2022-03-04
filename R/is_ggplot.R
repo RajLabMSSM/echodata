@@ -1,6 +1,6 @@
 #' Is an object of class ggplot
 #'
-#' Check whether an object is of the class \link[ggplot2]{ggplot}.
+#' Check whether an object is of the class \code{ggplot}.
 #' @param obj Any R object.
 #' @returns Boolean.
 #' @export

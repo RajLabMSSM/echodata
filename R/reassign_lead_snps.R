@@ -25,6 +25,8 @@ reassign_lead_snps <- function(merged_dat,
                                grouping_vars = c("Dataset", "Locus"),
                                nThread = 1,
                                verbose = TRUE) {  
+    P <- NULL;
+    
     messager("Reassigning lead SNPs by:",
              paste(grouping_vars,collapse = ", "), v=verbose)
     grouping_vars <- grouping_vars[grouping_vars %in% colnames(merged_dat)]

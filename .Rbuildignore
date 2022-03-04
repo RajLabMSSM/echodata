@@ -10,4 +10,8 @@
 ^pkgdown$
 Dockerfile
 ^LICENSE\.md$
-^ieugwasr_oauth$
+
+node_modules$
+package-lock\.json$
+package\.json$
+

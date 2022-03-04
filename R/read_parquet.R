@@ -2,16 +2,10 @@
 #' 
 #' Import a file in parquet format (from python) as a
 #' \link[data.table]{data.table} in R.
-#' @param path Path to parquet file.
-#' @param method Method to read parquet with:
-#' \itemize{
-#' \item{"pandas"}{Python package,
-#'  but can be imported via \link[reticulate]{import.}}
-#' \item{"SparkR"}{R package,
-#'  but requires installation of SQL first.}
-#' }
+#' @param path Path to parquet file. 
 #' @param verbose Print messages.
 #' @inheritParams echoconda::yaml_to_env
+#' @inheritParams echoconda::activate_env
 #'  
 #' @export
 #' @examples 
@@ -27,16 +21,17 @@
 read_parquet <- function(path,
                          conda_env="echoR",
                          conda = "auto",
-                         method="pandas",
+                         # method="pandas",
                          verbose=TRUE){
-    if(tolower(method)=="sparkr"){
-        requireNamespace("SparkR")
-        messager("+ Importing parquet file with `SparkR (R)`",v=verbose)
-        SparkR::sparkR.session()
-        parquor <- SparkR::read.parquet(path)
-        parquor <- SparkR::as.data.frame(parquor) 
-    } else {
+    # if(tolower(method)=="sparkr"){
+    #     requireNamespace("SparkR")
+    #     messager("+ Importing parquet file with `SparkR (R)`",v=verbose)
+    #     SparkR::sparkR.session()
+    #     parquor <- SparkR::read.parquet(path)
+    #     parquor <- SparkR::as.data.frame(parquor) 
+    # } else {
         requireNamespace("echoconda")
+        requireNamespace("reticulate")
         messager("+ Importing parquet file with `pandas (Python)`",v=verbose) 
         #### Create echoR conda env if you haven't already #### 
         conda_env <- echoconda::yaml_to_env(conda = conda, 
@@ -44,6 +39,6 @@ read_parquet <- function(path,
         echoconda::activate_env(conda_env = conda_env)
         pd <- reticulate::import("pandas")
         parquor <- pd$read_parquet(path)
-    }
+    # }
     return(data.table::data.table(parquor))
 }

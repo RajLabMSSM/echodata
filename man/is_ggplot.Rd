@@ -13,7 +13,7 @@ is_ggplot(obj)
 Boolean.
 }
 \description{
-Check whether an object is of the class \link[ggplot2]{ggplot}.
+Check whether an object is of the class \code{ggplot}.
 }
 \examples{
 bool <- echodata::is_ggplot(mtcars)
