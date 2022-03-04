@@ -71,7 +71,7 @@ find_consensus_snps <- function(dat,
         "Credible Set SNPs identified."
     )
     messager(
-        "+", formatC(dim(subset(dat, Consensus_SNP = TRUE))[1], big.mark = ","),
+        "+", formatC(dim(subset(dat, Consensus_SNP == TRUE))[1], big.mark = ","),
         "Consensus SNPs identified."
     )
     return(dat)

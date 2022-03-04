@@ -13,8 +13,8 @@ get_sample_size <- function(dat,
                             method = c("ldsc", "giant", "metal", "sum"),
                             force_new = FALSE,
                             verbose=TRUE){
-  requireNamespace("MungeSumstats")
   if("N" %in% colnames(dat) && force_new==FALSE) return(dat)
+  requireNamespace("MungeSumstats")
   if(is.null(method)) method <- "ldsc" 
   message("--")
   dat2 <- data.table::copy(dat)
