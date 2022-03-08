@@ -73,14 +73,13 @@
     <h2>Arguments</h2>
     <dl><dt>topSNPs</dt>
 <dd><p>Positions of the top SNPs prepare using
-import_topSNPs.</p></dd>
+<a href="import_topSNPs.html">import_topSNPs</a>.</p></dd>
 <dt>fullSS</dt>
 <dd><p><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a> of the 
 full GWAS/QTL summary statistics.</p></dd>
 <dt>bp_distance</dt>
-<dd><p>The width of the window size you want each locus to be.
-For example, if <code>bp_distance=500000</code> then the locus will span 500kb from the lead SNP in either direction,
-resulting in a locus that is ~1Mb long (depending on the dataset).</p></dd>
+<dd><p>The basepair distance upstream/downstream of the proxy 
+SNP (in <code>topSNPs</code>) to extract.</p></dd>
 <dt>munged</dt>
 <dd><p>Whether <code>fullSS</code> was previously munged with 
 <a href="https://rdrr.io/pkg/MungeSumstats/man/format_sumstats.html" class="external-link">format_sumstats</a>.</p></dd>

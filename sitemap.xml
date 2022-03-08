@@ -34,15 +34,6 @@
     <loc>/reference/MEX3C.html</loc>
   </url>
   <url>
-    <loc>/reference/MUNGESUMSTATS.check_syn.html</loc>
-  </url>
-  <url>
-    <loc>/reference/MUNGESUMSTATS.col_map.html</loc>
-  </url>
-  <url>
-    <loc>/reference/MUNGESUMSTATS.to_echolocatoR.html</loc>
-  </url>
-  <url>
     <loc>/reference/assign_lead_SNP.html</loc>
   </url>
   <url>
@@ -148,7 +139,19 @@
     <loc>/reference/melt_finemapping_results.html</loc>
   </url>
   <url>
+    <loc>/reference/merge_robust.html</loc>
+  </url>
+  <url>
     <loc>/reference/message_parallel.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mungesumstats_check_syn.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mungesumstats_col_map.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mungesumstats_to_echolocatoR.html</loc>
   </url>
   <url>
     <loc>/reference/portal_metadata.html</loc>

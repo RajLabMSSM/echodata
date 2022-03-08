@@ -66,16 +66,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_header</span><span class="op">(</span><span class="va">large_file</span>, colnames_only <span class="op">=</span> <span class="cn">TRUE</span>, n <span class="op">=</span> <span class="fl">2</span>, nThread <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_header</span><span class="op">(</span><span class="va">file</span>, colnames_only <span class="op">=</span> <span class="cn">TRUE</span>, n <span class="op">=</span> <span class="fl">2</span>, nThread <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
     </div>
 
-    <div id="see-also">
-    <h2>See also</h2>
-    <div class="dont-index"><p>Other general: 
-<code><a href="check_if_empty.html">check_if_empty</a>()</code>,
-<code><a href="createDT.html">createDT</a>()</code>,
-<code><a href="fillNA_CS_PP.html">fillNA_CS_PP</a>()</code></p></div>
-    </div>
+    <div id="arguments">
+    <h2>Arguments</h2>
+    <dl><dt>file</dt>
+<dd><p>File name in working directory, path to file (passed through <code><a href="https://rdrr.io/r/base/path.expand.html" class="external-link">path.expand</a></code> for convenience), or a URL starting http://, file://, etc. Compressed files with extension <code class="file">.gz</code> and <code class="file">.bz2</code> are supported if the <code>R.utils</code> package is installed.</p></dd>
+<dt>colnames_only</dt>
+<dd><p>Whether to return only column names 
+(default: <code>TRUE</code>), or the first <code>n</code> rows as well.</p></dd>
+<dt>n</dt>
+<dd><p>integer.  The (maximal) number of lines to
+    read.  Negative values indicate that one should read up to the end of
+    input on the connection.</p></dd>
+<dt>nThread</dt>
+<dd><p>The number of threads to use. Experiment to see what works best for your data on your hardware.</p></dd>
+</dl></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

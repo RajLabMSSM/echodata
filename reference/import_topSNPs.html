@@ -109,13 +109,9 @@ or a string to identify the tab by name.</p></dd>
 <dt>munge</dt>
 <dd><p>Standardise column names.</p></dd>
 <dt>chrom_col</dt>
-<dd><p>Name of the chromosome column in the full summary stats file.
-Can be "chr1" or "1" format.
-(<em>default: ="CHR"</em>)</p></dd>
+<dd><p>Column containing chromosome (can be "chr1" or "1" format).</p></dd>
 <dt>position_col</dt>
-<dd><p>Name of the genomic position column in the full summary stats file.
-Must be in units of basepairs.
-(<em>default: ="POS"</em>)</p></dd>
+<dd><p>Column containing genomic position in units of basepairs.</p></dd>
 <dt>min_POS_col</dt>
 <dd><p>Column containing minimum genomic position 
 (used instead of an arbitrary window size).</p></dd>
@@ -123,19 +119,13 @@ Must be in units of basepairs.
 <dd><p>Column containing maximum genomic position 
 (used instead of an arbitrary window size).</p></dd>
 <dt>snp_col</dt>
-<dd><p>Name of the SNP RSID column in the full summary stats file.
-(<em>default: ="SNP"</em>)</p></dd>
+<dd><p>Column containing SNP RSIDs.</p></dd>
 <dt>pval_col</dt>
-<dd><p>Name of the p-value column in the full summary stats file.
-Raw p-values are preferred, but if not available corrected p-values (e.g. FDR) can be used instead.
-(<em>default: ="P"</em>)</p></dd>
+<dd><p>Column containing uncorrected p-values.</p></dd>
 <dt>effect_col</dt>
-<dd><p>Name of the effect size column in the full summary stats file.
-Effect size is preferred, but if not available other metrics like Beta for Odds Ratio can be used instead.
-(<em>default: ="Effect"</em>)</p></dd>
+<dd><p>Column containing effect size (e.g. Beta, OR).</p></dd>
 <dt>locus_col</dt>
-<dd><p>Name of the locus column in the full summary stats file.
-(<em>default: ="Locus"</em>)</p></dd>
+<dd><p>Column containing unique locus name.</p></dd>
 <dt>grouping_vars</dt>
 <dd><p>The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
@@ -146,15 +136,27 @@ GWAS locus pair, you could supply:
 <dd><p>An optional column to keep track of the causal 
 gene(s) in each locus (if known).</p></dd>
 <dt>remove_variants</dt>
-<dd><p>A list of variants to remove from the locus subset file.</p></dd>
+<dd><p>SNPs to remove from <code>topSS</code>,</p></dd>
 <dt>verbose</dt>
-<dd><p>Whether <span class="pkg">echolocatoR</span> should be verbose or silent.</p></dd>
+<dd><p>Print messages.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>topSS table</p>
+    <p>Munged topSNPs table.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">topSNPs</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">import_topSNPs</span><span class="op">(</span></span>
+<span class="r-in">    topSS <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="topSNPs_Nalls2019_raw.html">topSNPs_Nalls2019_raw</a></span>, </span>
+<span class="r-in">    pval_col <span class="op">=</span> <span class="st">"P, all studies"</span>,</span>
+<span class="r-in">    effect_col <span class="op">=</span> <span class="st">"Beta, all studies"</span>,</span>
+<span class="r-in">    locus_col <span class="op">=</span> <span class="st">"Nearest Gene"</span>, </span>
+<span class="r-in">    gene_col <span class="op">=</span> <span class="st">"QTL Nominated Gene (nearest QTL)"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "+ Assigning gene_col and locus_col independently"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Munging top_SNPs</span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
