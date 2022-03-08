@@ -4,7 +4,7 @@
 #' to an attribute in \pkg{MungeSumstats}
 #'
 #' @keywords internal
-MUNGESUMSTATS.check_syn <- function(dat,
+mungesumstats_check_syn <- function(dat,
                                     col_name="P-value",
                                     col_type="P"){
     Corrected <- NULL;

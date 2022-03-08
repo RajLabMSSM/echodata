@@ -10,7 +10,7 @@ determine_chrom_type <- function(chrom_type=NULL,
   } else {
     # Slow, but it works
     messager("Determining chrom type from file header")
-    header <- get_header(large_file = file_path, colnames_only = FALSE)
+    header <- get_header(file = file_path, colnames_only = FALSE)
     has_chr <- grepl("ch",tolower(header[[chrom_col]][1]))
   }
   messager("Chromosome format =",if(has_chr) "chr1" else "1", v=verbose)

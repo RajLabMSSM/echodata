@@ -8,14 +8,13 @@ extract_loci(topSNPs, fullSS, bp_distance = 5e+05, munged = TRUE)
 }
 \arguments{
 \item{topSNPs}{Positions of the top SNPs prepare using
-\link[echolocatoR]{import_topSNPs}.}
+\link[echodata]{import_topSNPs}.}
 
 \item{fullSS}{\link[data.table]{data.table} of the 
 full GWAS/QTL summary statistics.}
 
-\item{bp_distance}{The width of the window size you want each locus to be.
-For example, if \code{bp_distance=500000} then the locus will span 500kb from the lead SNP in either direction,
-resulting in a locus that is ~1Mb long (depending on the dataset).}
+\item{bp_distance}{The basepair distance upstream/downstream of the proxy 
+SNP (in \code{topSNPs}) to extract.}
 
 \item{munged}{Whether \code{fullSS} was previously munged with 
 \link[MungeSumstats]{format_sumstats}.}

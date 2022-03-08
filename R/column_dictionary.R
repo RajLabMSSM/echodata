@@ -14,7 +14,7 @@
 #' cdict <- echodata::column_dictionary(file_path = tmp)
 column_dictionary <- function(file_path){
   # Get the index of each column name
-  cNames <- get_header(large_file = file_path, colnames_only = TRUE)
+  cNames <- get_header(file = file_path, colnames_only = TRUE)
   colDict <- stats::setNames(seq(1,length(cNames)), cNames)
   return(colDict)
 }

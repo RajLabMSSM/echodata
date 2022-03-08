@@ -1,3 +1,12 @@
+# echodata 0.99.6
+
+## New features
+
+* Added .zzz file with `.datatable.aware <- TRUE`
+* Added new function `merge_robust` to address issues with `data.table`. 
+    + See here for Issues: https://github.com/RajLabMSSM/echolocatoR/issues/72#issuecomment-1059423642
+* `import_topSNPs`: Added example and documented all params. 
+
 # echodata 0.99.5
 
 ## New features 

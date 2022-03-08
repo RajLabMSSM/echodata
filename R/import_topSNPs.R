@@ -12,6 +12,13 @@
 #' The lead SNP will be used as the center of the locus when
 #'  constructing the locus subset files.
 #' @param munge Standardise column names.
+#' @param chrom_col Column containing chromosome (can be "chr1" or "1" format).
+#' @param position_col Column containing genomic position in units of basepairs.
+#' @param snp_col Column containing SNP RSIDs.
+#' @param pval_col Column containing uncorrected p-values.
+#' @param effect_col Column containing effect size (e.g. Beta, OR).
+#' @param locus_col Column containing unique locus name.
+#' @param remove_variants SNPs to remove from \code{topSS},
 #' @param min_POS_col Column containing minimum genomic position 
 #' (used instead of an arbitrary window size).
 #' @param max_POS_col Column containing maximum genomic position 
@@ -27,15 +34,22 @@
 #' such that each grouping_var combination has its own index SNP.
 #' For example, if you want one index SNP per QTL eGene - 
 #' GWAS locus pair, you could supply:
-#' \code{grouping_vars=c("Locus","Gene")}.
-#' @inheritParams echolocatoR::finemap_pipeline
+#' \code{grouping_vars=c("Locus","Gene")}. 
+#' @param verbose Print messages.
 #' 
-#' @return topSS table
+#' @returns Munged topSNPs table.
 #' 
 #' @export
 #' @importFrom dplyr %>% rename mutate arrange group_by 
 #' @importFrom dplyr vars slice mutate_at select all_of
 #' @importFrom data.table data.table
+#' @examples
+#' topSNPs <- echodata::import_topSNPs(
+#'     topSS = echodata::topSNPs_Nalls2019_raw, 
+#'     pval_col = "P, all studies",
+#'     effect_col = "Beta, all studies",
+#'     locus_col = "Nearest Gene", 
+#'     gene_col = "QTL Nominated Gene (nearest QTL)")
 import_topSNPs <- function(topSS,
                            show_table=TRUE,
                            sheet = 1,
@@ -80,10 +94,10 @@ import_topSNPs <- function(topSS,
     
     if(munge){
         #### Check for necessary cols ####
-        top_SNPs <- MUNGESUMSTATS.check_syn(dat = top_SNPs,
+        top_SNPs <- mungesumstats_check_syn(dat = top_SNPs,
                                             col_name=pval_col,
                                             col_type = "P")
-        top_SNPs <- MUNGESUMSTATS.check_syn(top_SNPs, 
+        top_SNPs <- mungesumstats_check_syn(dat = top_SNPs, 
                                             col_name=effect_col, 
                                             col_type = "BETA")
         messager("+ Munging top_SNPs",v=verbose) 

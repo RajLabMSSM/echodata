@@ -4,10 +4,10 @@
 #' @param dat Data
 #' @examples  
 #' dat <- dplyr::rename(echodata::BST1, BP=POS, FRQ=Freq, BETA=Effect)
-#' dat_echoR <- MUNGESUMSTATS.to_echolocatoR(dat=dat) 
+#' dat_echoR <- mungesumstats_to_echolocatoR(dat=dat) 
 #' @export
 #' @importFrom data.table data.table setnames
-MUNGESUMSTATS.to_echolocatoR <- function(dat){
+mungesumstats_to_echolocatoR <- function(dat){
     requireNamespace("data.table")
     messager("+ Mapping colnames from MungeSumstats ==> echolocatoR")
     dat <- data.table::data.table(dat)

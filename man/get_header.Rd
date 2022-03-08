@@ -4,16 +4,20 @@
 \alias{get_header}
 \title{Get file header}
 \usage{
-get_header(large_file, colnames_only = TRUE, n = 2, nThread = 1)
+get_header(file, colnames_only = TRUE, n = 2, nThread = 1)
+}
+\arguments{
+\item{file}{ File name in working directory, path to file (passed through \code{\link[base]{path.expand}} for convenience), or a URL starting http://, file://, etc. Compressed files with extension \file{.gz} and \file{.bz2} are supported if the \code{R.utils} package is installed. }
+
+\item{colnames_only}{Whether to return only column names 
+(default: \code{TRUE}), or the first \code{n} rows as well.}
+
+\item{n}{integer.  The (maximal) number of lines to
+    read.  Negative values indicate that one should read up to the end of
+    input on the connection.}
+
+\item{nThread}{The number of threads to use. Experiment to see what works best for your data on your hardware.}
 }
 \description{
 Reading in this way is more robust and able to handle bgz format.
 }
-\seealso{
-Other general: 
-\code{\link{check_if_empty}()},
-\code{\link{createDT}()},
-\code{\link{fillNA_CS_PP}()}
-}
-\concept{general}
-\keyword{internal}

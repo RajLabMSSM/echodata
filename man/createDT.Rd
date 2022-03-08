@@ -23,7 +23,6 @@ echodata::createDT(dat = echodata::BST1)
 \seealso{
 Other general: 
 \code{\link{check_if_empty}()},
-\code{\link{fillNA_CS_PP}()},
-\code{\link{get_header}()}
+\code{\link{fillNA_CS_PP}()}
 }
 \concept{general}

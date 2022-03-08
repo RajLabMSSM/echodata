@@ -8,8 +8,10 @@ test_that("import_topSNPs works", {
                                 pval_col="P, all studies",
                                 effect_col="Beta, all studies",
                                 gene_col="Nearest Gene",
-                                locus_col="Nearest Gene",
+                                locus_col="QTL Nominated Gene (nearest QTL)",
                                 remove_variants="rs34637584")
     testthat::expect_true(methods::is(top_SNPs,"data.table"))
-    testthat::expect_gte(nrow(top_SNPs), 90)
+    testthat::expect_equal(nrow(top_SNPs), 62)
+    testthat::expect_equal(colnames(top_SNPs),
+                           c("Locus","Gene","CHR","POS","SNP","P","Effect"))
 })

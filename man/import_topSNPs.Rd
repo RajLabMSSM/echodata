@@ -42,13 +42,9 @@ or a string to identify the tab by name.}
 
 \item{munge}{Standardise column names.}
 
-\item{chrom_col}{Name of the chromosome column in the full summary stats file.
-Can be "chr1" or "1" format.
-(\emph{default: ="CHR"})}
+\item{chrom_col}{Column containing chromosome (can be "chr1" or "1" format).}
 
-\item{position_col}{Name of the genomic position column in the full summary stats file.
-Must be in units of basepairs.
-(\emph{default: ="POS"})}
+\item{position_col}{Column containing genomic position in units of basepairs.}
 
 \item{min_POS_col}{Column containing minimum genomic position 
 (used instead of an arbitrary window size).}
@@ -56,19 +52,13 @@ Must be in units of basepairs.
 \item{max_POS_col}{Column containing maximum genomic position 
 (used instead of an arbitrary window size).}
 
-\item{snp_col}{Name of the SNP RSID column in the full summary stats file.
-(\emph{default: ="SNP"})}
+\item{snp_col}{Column containing SNP RSIDs.}
 
-\item{pval_col}{Name of the p-value column in the full summary stats file.
-Raw p-values are preferred, but if not available corrected p-values (e.g. FDR) can be used instead.
-(\emph{default: ="P"})}
+\item{pval_col}{Column containing uncorrected p-values.}
 
-\item{effect_col}{Name of the effect size column in the full summary stats file.
-Effect size is preferred, but if not available other metrics like Beta for Odds Ratio can be used instead.
-(\emph{default: ="Effect"})}
+\item{effect_col}{Column containing effect size (e.g. Beta, OR).}
 
-\item{locus_col}{Name of the locus column in the full summary stats file.
-(\emph{default: ="Locus"})}
+\item{locus_col}{Column containing unique locus name.}
 
 \item{grouping_vars}{The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
@@ -79,14 +69,22 @@ GWAS locus pair, you could supply:
 \item{gene_col}{An optional column to keep track of the causal 
 gene(s) in each locus (if known).}
 
-\item{remove_variants}{A list of variants to remove from the locus subset file.}
+\item{remove_variants}{SNPs to remove from \code{topSS},}
 
-\item{verbose}{Whether \pkg{echolocatoR} should be verbose or silent.}
+\item{verbose}{Print messages.}
 }
 \value{
-topSS table
+Munged topSNPs table.
 }
 \description{
 The resulting top_SNPs data.frame can be used to guide
 the \link[echolocatoR]{finemap_loci} in querying and fine-mapping loci.
+}
+\examples{
+topSNPs <- echodata::import_topSNPs(
+    topSS = echodata::topSNPs_Nalls2019_raw, 
+    pval_col = "P, all studies",
+    effect_col = "Beta, all studies",
+    locus_col = "Nearest Gene", 
+    gene_col = "QTL Nominated Gene (nearest QTL)")
 }

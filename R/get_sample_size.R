@@ -35,6 +35,6 @@ get_sample_size <- function(dat,
     } 
   } 
   message("--")
-  dat2 <- MUNGESUMSTATS.to_echolocatoR(dat2)  
+  dat2 <- mungesumstats_to_echolocatoR(dat2)  
   return(dat2)
 }
