@@ -6,7 +6,7 @@
 \usage{
 get_sample_size(
   dat,
-  method = c("ldsc", "giant", "metal", "sum"),
+  compute_n = c("ldsc", "giant", "metal", "sum"),
   return_only = NULL,
   force_new = FALSE,
   verbose = TRUE,
@@ -16,43 +16,17 @@ get_sample_size(
 \arguments{
 \item{dat}{Fine-mapping results data.}
 
-\item{method}{Method for computing (effective) sample size.
-
+\item{compute_n}{How to compute per-SNP sample size (new column "N").
 \itemize{
-
-\item{"ldsc" : \cr}{
-\eqn{Neff = (N_CAS+N_CON) * (N_CAS/(N_CAS+N_CON)) /
- mean((N_CAS/(N_CAS+N_CON))[(N_CAS+N_CON)==max(N_CAS+N_CON)]))}\cr
-\href{https://github.com/bulik/ldsc/issues/95}{
-bulik/ldsc GitHub Issue}
-\href{https://github.com/bulik/ldsc/blob/aa33296abac9569a6422ee6ba7eb4b902422cc74/munge_sumstats.py#L321}{
-bulik/ldsc GitHub code}
-}
-
-\item{"giant" : \cr}{
-\eqn{Neff = 2 / (1/N_CAS + 1/N_CON)}\cr
-\href{https://www.nature.com/articles/nprot.2014.071}{
-Winkler et al. 2014, Nature}
-}
-
-\item{"metal" : \cr}{
-\eqn{Neff = 4 / (1/N_CAS + 1/N_CON)}\cr
-\href{https://pubmed.ncbi.nlm.nih.gov/20616382/}{
-Willer et al. 2010, Bioinformatics}
-}
-
-\item{"sum" : \cr}{
-\eqn{N = N_CAS + N_CON}\cr
-Simple summation of cases and controls
-that does not account for class imbalance.
-}
-
-\item{"\\<integer\\>" : \cr}{
-\code{N = \\<integer\\>}\cr
-If method is a positive integer, it will be used as N
-for every row.
-}
-
+\item{\code{0}: }{N will not be computed.}
+\item{\code{>0}: }{If any number >0 is provided,
+that value will be set as N for every row.
+\strong{Note}: Computing N this way is incorrect and should be avoided
+if at all possible.}
+\item{\code{"sum"}: }{N will be computed as:
+cases (N_CAS) + controls (N_CON), so long as both columns are present}.
+\item{\code{"effective"}: }{N will be computed as effective sample size:
+cases (N_CAS) + controls (N_CON), so long as both columns are present}.
 }}
 
 \item{return_only}{A function to return only a single value from the 
