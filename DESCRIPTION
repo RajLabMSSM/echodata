@@ -39,7 +39,8 @@ Imports:
     stringr,
     openxlsx,
     DT,
-    piggyback
+    piggyback,
+    MungeSumstats (>= 1.3.9)
 Suggests:
     markdown,
     rmarkdown,
@@ -55,13 +56,13 @@ Suggests:
     GenomeInfoDb,
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
-    biomaRt,
-    MungeSumstats,
+    biomaRt, 
     echoconda,
     reticulate,
     ggplot2
 Remotes:
-    github::RajLabMSSM/echoconda
+    github::RajLabMSSM/echoconda,
+    github::neurogenomics/MungeSumstats
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

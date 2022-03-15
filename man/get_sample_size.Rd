@@ -7,8 +7,10 @@
 get_sample_size(
   dat,
   method = c("ldsc", "giant", "metal", "sum"),
+  return_only = NULL,
   force_new = FALSE,
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 )
 }
 \arguments{
@@ -53,10 +55,16 @@ for every row.
 
 }}
 
+\item{return_only}{A function to return only a single value from the 
+inferred/imputed sample size column (e.g. \code{max}, \code{min}).}
+
 \item{force_new}{If "Neff" (or "N") already exists in \code{sumstats_dt},
 replace it with the recomputed version.}
 
 \item{verbose}{Print messages.}
+
+\item{...}{Additional argument passed to \code{return_only} function, 
+if \code{return_only}  is not \code{NULL}.}
 }
 \description{
 Infer sample size from summary stats using \pkg{MungeSumstats}.

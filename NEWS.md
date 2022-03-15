@@ -6,6 +6,8 @@
 * Added new function `merge_robust` to address issues with `data.table`. 
     + See here for Issues: https://github.com/RajLabMSSM/echolocatoR/issues/72#issuecomment-1059423642
 * `import_topSNPs`: Added example and documented all params. 
+* Rename `MUNGESUMSTATS.*` functions to `mungesumstats_`. 
+* `get_sample_size`: Add unit tests and new `return_only` function for min/max.  
 
 # echodata 0.99.5
 

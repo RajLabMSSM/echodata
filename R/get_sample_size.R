@@ -1,6 +1,10 @@
 #' Get sample size
 #' 
 #' Infer sample size from summary stats using \pkg{MungeSumstats}.
+#' @param return_only A function to return only a single value from the 
+#' inferred/imputed sample size column (e.g. \code{max}, \code{min}). 
+#' @param ... Additional argument passed to \code{return_only} function, 
+#' if \code{return_only}  is not \code{NULL}. 
 #' @inheritParams filter_snps
 #' @inheritParams MungeSumstats:::compute_sample_size
 #' @importFrom stats setNames
@@ -11,8 +15,10 @@
 #' dat2 <- echodata::get_sample_size(dat = dat)
 get_sample_size <- function(dat,
                             method = c("ldsc", "giant", "metal", "sum"),
+                            return_only=NULL,
                             force_new = FALSE,
-                            verbose=TRUE){
+                            verbose=TRUE,
+                            ...){
   
   if("N" %in% colnames(dat) && force_new==FALSE) return(dat)
   requireNamespace("MungeSumstats")
@@ -36,5 +42,8 @@ get_sample_size <- function(dat,
   } 
   message("--")
   dat2 <- mungesumstats_to_echolocatoR(dat2)  
+  if(!is.null(return_only)){
+    return(return_only(dat2$N, ...))
+  }
   return(dat2)
 }
