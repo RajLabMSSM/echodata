@@ -4,22 +4,16 @@
 \alias{read_parquet}
 \title{Read parquet file}
 \usage{
-read_parquet(path, conda_env = "echoR", conda = "auto", verbose = TRUE)
+read_parquet(path, verbose = TRUE)
 }
 \arguments{
 \item{path}{Path to parquet file.}
 
-\item{conda_env}{Conda environment to use.}
-
-\item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow
-\code{reticulate} to automatically find an appropriate \code{conda} binary.
-See \strong{Finding Conda} and \code{\link[reticulate:conda-tools]{conda_binary()}} for more details.}
-
 \item{verbose}{Print messages.}
 }
 \description{
-Import a file in parquet format (from python) as a
-\link[data.table]{data.table} in R.
+Import a file in parquet format as a
+\link[data.table]{data.table}.
 }
 \examples{
  

@@ -57,11 +57,10 @@ Suggests:
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
     biomaRt, 
-    echoconda,
+    arrow,
     reticulate,
     ggplot2
 Remotes:
-    github::RajLabMSSM/echoconda,
     github::neurogenomics/MungeSumstats
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
