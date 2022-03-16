@@ -8,11 +8,7 @@
 #' @inheritParams echoconda::activate_env
 #'  
 #' @export
-#' @examples 
-#' #path <- system.file(
-#' #    "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
-#' #    package = "echofinemap")
-#' 
+#' @examples  
 #' #### Write a parquet file ####
 #' dat <- echodata::BST1
 #' path <- echodata::write_parquet(dat)
@@ -32,11 +28,14 @@ read_parquet <- function(path,
     # } else {
         requireNamespace("echoconda")
         requireNamespace("reticulate")
-        messager("+ Importing parquet file with `pandas (Python)`",v=verbose) 
+        messager("+ Importing parquet file with `pandas (Python)`",
+                 v=verbose) 
         #### Create echoR conda env if you haven't already #### 
-        conda_env <- echoconda::yaml_to_env(conda = conda, 
+        conda_env <- echoconda::yaml_to_env(yaml_path = conda_env,
+                                            conda = conda, 
                                             verbose = FALSE) 
-        echoconda::activate_env(conda_env = conda_env)
+        echoconda::activate_env(conda_env = conda_env, 
+                                verbose = verbose)
         pd <- reticulate::import("pandas")
         parquor <- pd$read_parquet(path)
     # }

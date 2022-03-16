@@ -1,11 +1,9 @@
-test_that("multiplication works", {
+test_that("filter_snps works", {
   
     dat <- echodata::BST1
     
-    
     dat2 <- echodata::filter_snps(dat = dat)
     testthat::expect_equal(nrow(dat2), 2913)
-    
     
     dat3 <- echodata::filter_snps(dat = dat, 
                                   bp_distance = 5e+08)

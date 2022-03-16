@@ -1,5 +1,5 @@
 test_that("read/write_parquet works", {
-  
+    
     #### Write a parquet file ####
     dat <- echodata::BST1
     path <- echodata::write_parquet(dat)

@@ -13,14 +13,17 @@
 #' path <- echodata::write_parquet(dat = dat)
 write_parquet <- function(dat,
                           path = tempfile(fileext = ".parquet"),
+                          conda_env="echoR",
                           conda = "auto",
                           verbose = TRUE){
     requireNamespace("echoconda")
     requireNamespace("reticulate")
     #### Create echoR conda env if you haven't already #### 
-    conda_env <- echoconda::yaml_to_env(conda = conda, 
+    conda_env <- echoconda::yaml_to_env(yaml_path = conda_env,
+                                        conda = conda, 
                                         verbose = FALSE) 
-    echoconda::activate_env(conda_env = conda_env)
+    echoconda::activate_env(conda_env = conda_env, 
+                            verbose = verbose)
     pd <- reticulate::import("pandas")
     #### Convert data to python format ####
     dat <- reticulate::r_to_py(echodata::BST1)

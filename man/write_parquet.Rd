@@ -7,6 +7,7 @@
 write_parquet(
   dat,
   path = tempfile(fileext = ".parquet"),
+  conda_env = "echoR",
   conda = "auto",
   verbose = TRUE
 )
@@ -15,6 +16,8 @@ write_parquet(
 \item{dat}{\link[base]{data.frame}.}
 
 \item{path}{Path to write parquet file to.}
+
+\item{conda_env}{Conda environment to use.}
 
 \item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow
 \code{reticulate} to automatically find an appropriate \code{conda} binary.

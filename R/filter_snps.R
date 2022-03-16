@@ -53,10 +53,10 @@ filter_snps <- function(dat,
       dat <- subset(dat, MAF>=min_MAF)
     }
   }
-  # Limit range
+  #### Limit range ####
   if(!is.null(bp_distance)){
     dat <- assign_lead_snp(dat = dat,
-                                 verbose = verbose)
+                           verbose = verbose)
     lead.snp <- subset(dat, leadSNP)
     dat <- subset(dat,
                   POS >= lead.snp$POS - bp_distance &

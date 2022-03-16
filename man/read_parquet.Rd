@@ -22,10 +22,7 @@ Import a file in parquet format (from python) as a
 \link[data.table]{data.table} in R.
 }
 \examples{
-#path <- system.file(
-#    "tools/polyfun/example_data/weights.10.l2.ldscore.parquet",
-#    package = "echofinemap")
-
+ 
 #### Write a parquet file ####
 dat <- echodata::BST1
 path <- echodata::write_parquet(dat)
