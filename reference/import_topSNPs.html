@@ -81,8 +81,8 @@ the finemap_loci in querying and fine-mapping loci.</p>
   pval_col <span class="op">=</span> <span class="cn">NULL</span>,
   effect_col <span class="op">=</span> <span class="cn">NULL</span>,
   locus_col <span class="op">=</span> <span class="st">"Locus"</span>,
-  grouping_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Locus"</span><span class="op">)</span>,
   gene_col <span class="op">=</span> <span class="st">"Gene"</span>,
+  grouping_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Locus"</span><span class="op">)</span>,
   remove_variants <span class="op">=</span> <span class="cn">NULL</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -126,15 +126,15 @@ or a string to identify the tab by name.</p></dd>
 <dd><p>Column containing effect size (e.g. Beta, OR).</p></dd>
 <dt>locus_col</dt>
 <dd><p>Column containing unique locus name.</p></dd>
+<dt>gene_col</dt>
+<dd><p>An optional column to keep track of the causal 
+gene(s) in each locus (if known).</p></dd>
 <dt>grouping_vars</dt>
 <dd><p>The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
 For example, if you want one index SNP per QTL eGene - 
 GWAS locus pair, you could supply:
 <code>grouping_vars=c("Locus","Gene")</code>.</p></dd>
-<dt>gene_col</dt>
-<dd><p>An optional column to keep track of the causal 
-gene(s) in each locus (if known).</p></dd>
 <dt>remove_variants</dt>
 <dd><p>SNPs to remove from <code>topSS</code>,</p></dd>
 <dt>verbose</dt>
@@ -153,8 +153,16 @@ gene(s) in each locus (if known).</p></dd>
 <span class="r-in">    effect_col <span class="op">=</span> <span class="st">"Beta, all studies"</span>,</span>
 <span class="r-in">    locus_col <span class="op">=</span> <span class="st">"Nearest Gene"</span>, </span>
 <span class="r-in">    gene_col <span class="op">=</span> <span class="st">"QTL Nominated Gene (nearest QTL)"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "+ Assigning gene_col and locus_col independently"</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Munging top_SNPs</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: P, all studies ==&gt; P</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: Beta, all studies ==&gt; Effect</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: Nearest Gene ==&gt; Locus</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: QTL Nominated Gene (nearest QTL) ==&gt; Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "+ Assigning gene_col and locus_col independently."</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Standardising column headers.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> First line of summary statistics file: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> SNP	CHR	BP	Locus	Gene	Effect allele	Other allele	Effect allele frequency	Effect	SE, all studies	P	P, COJO, all studies	P, random effects, all studies	P, Conditional 23AndMe only	P, 23AndMe only	I2, all studies	Freq1, previous studies	Beta, previous studies	StdErr, previous studies	P, previous studies	I2, previous studies	Freq1, new studies	Beta, new studies	StdErr, new studies	P, new studies	I2, new studies	Passes pooled 23andMe QC	Known GWAS locus within 1MB	Failed final filtering and QC	Locus within 250KB	Locus Number	</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning unmapped column names without making them uppercase.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Mapping colnames from MungeSumstats ==&gt; echolocatoR</span>
 </code></pre></div>
     </div>
   </div>

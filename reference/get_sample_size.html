@@ -68,9 +68,11 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_sample_size</span><span class="op">(</span>
   <span class="va">dat</span>,
-  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ldsc"</span>, <span class="st">"giant"</span>, <span class="st">"metal"</span>, <span class="st">"sum"</span><span class="op">)</span>,
+  compute_n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ldsc"</span>, <span class="st">"giant"</span>, <span class="st">"metal"</span>, <span class="st">"sum"</span><span class="op">)</span>,
+  return_only <span class="op">=</span> <span class="cn">NULL</span>,
   force_new <span class="op">=</span> <span class="cn">FALSE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
+  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
+  <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -78,33 +80,28 @@
     <h2>Arguments</h2>
     <dl><dt>dat</dt>
 <dd><p>Fine-mapping results data.</p></dd>
-<dt>method</dt>
-<dd><p>Method for computing (effective) sample size.</p>
-<ul><li><p>"ldsc" : <br>
-\(Neff = (N_CAS+N_CON) * (N_CAS/(N_CAS+N_CON)) /
- mean((N_CAS/(N_CAS+N_CON))[(N_CAS+N_CON)==max(N_CAS+N_CON)]))\)<br><a href="https://github.com/bulik/ldsc/issues/95" class="external-link">
-bulik/ldsc GitHub Issue</a>
-<a href="https://github.com/bulik/ldsc/blob/aa33296abac9569a6422ee6ba7eb4b902422cc74/munge_sumstats.py#L321" class="external-link">
-bulik/ldsc GitHub code</a></p></li>
-<li><p>"giant" : <br>
-\(Neff = 2 / (1/N_CAS + 1/N_CON)\)<br><a href="https://www.nature.com/articles/nprot.2014.071" class="external-link">
-Winkler et al. 2014, Nature</a></p></li>
-<li><p>"metal" : <br>
-\(Neff = 4 / (1/N_CAS + 1/N_CON)\)<br><a href="https://pubmed.ncbi.nlm.nih.gov/20616382/" class="external-link">
-Willer et al. 2010, Bioinformatics</a></p></li>
-<li><p>"sum" : <br>
-\(N = N_CAS + N_CON\)<br>
-Simple summation of cases and controls
-that does not account for class imbalance.</p></li>
-<li><p>"\&lt;integer\&gt;" : <br><code>N = \&lt;integer\&gt;</code><br>
-If method is a positive integer, it will be used as N
-for every row.</p></li>
+<dt>compute_n</dt>
+<dd><p>How to compute per-SNP sample size (new column "N").</p><ul><li><p><code>0</code>: N will not be computed.</p></li>
+<li><p><code>&gt;0</code>: If any number &gt;0 is provided,
+that value will be set as N for every row.
+<strong>Note</strong>: Computing N this way is incorrect and should be avoided
+if at all possible.</p></li>
+<li><p><code>"sum"</code>: N will be computed as:
+cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
+<li><p><code>"effective"</code>: N will be computed as effective sample size:
+cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
 </ul></dd>
+<dt>return_only</dt>
+<dd><p>A function to return only a single value from the 
+inferred/imputed sample size column (e.g. <code>max</code>, <code>min</code>).</p></dd>
 <dt>force_new</dt>
 <dd><p>If "Neff" (or "N") already exists in <code>sumstats_dt</code>,
 replace it with the recomputed version.</p></dd>
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+<dt>...</dt>
+<dd><p>Additional argument passed to <code>return_only</code> function, 
+if <code>return_only</code>  is not <code>NULL</code>.</p></dd>
 </dl></div>
 
     <div id="ref-examples">

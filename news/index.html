@@ -61,6 +61,20 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.7" id="echodata-0997">echodata 0.99.7<a class="anchor" aria-label="anchor" href="#echodata-0997"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-0-99-7">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-7"></a></h3>
+<ul><li>
+<code>import_topSNPs</code>:
+<ul><li>Now uses
+<code>standardise_sumstats_column_headers_crossplatform</code> exported
+function when <code>munge=TRUE</code>.</li>
+<li>Both standardisation strategies no longer interfere with one another
+when used at the same time.</li>
+</ul></li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.6" id="echodata-0996">echodata 0.99.6<a class="anchor" aria-label="anchor" href="#echodata-0996"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-6">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-6"></a></h3>
@@ -74,6 +88,11 @@
 <li>
 <code>import_topSNPs</code>: Added example and documented all
 params.</li>
+<li>Rename <code>MUNGESUMSTATS.*</code> functions to
+<code>mungesumstats_</code>.</li>
+<li>
+<code>get_sample_size</code>: Add unit tests and new
+<code>return_only</code> function for min/max.</li>
 </ul></div>
 </div>
     <div class="section level2">
