@@ -11,13 +11,14 @@ topSNPs_reader <- function(topSS,
         if(endsWith(topSS, ".xlsx") | endsWith(topSS, ".xlsm")){
             topSS <- openxlsx::read.xlsx(topSS,
                                          sheet = sheet,
-                                         # sep.names=" ",
+                                         sep.names = " ", 
                                          # Only in some versions?
                                          check.names = FALSE)
         } else {
             topSS <- data.table::fread(file=topSS,
                                        header = TRUE,
                                        stringsAsFactors = FALSE,
+                                       check.names = FALSE,
                                        nThread=1)
         }
         return(topSS)

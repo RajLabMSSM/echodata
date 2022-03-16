@@ -17,8 +17,8 @@ import_topSNPs(
   pval_col = NULL,
   effect_col = NULL,
   locus_col = "Locus",
-  grouping_vars = c("Locus"),
   gene_col = "Gene",
+  grouping_vars = c("Locus"),
   remove_variants = NULL,
   verbose = TRUE
 )
@@ -60,14 +60,14 @@ or a string to identify the tab by name.}
 
 \item{locus_col}{Column containing unique locus name.}
 
+\item{gene_col}{An optional column to keep track of the causal 
+gene(s) in each locus (if known).}
+
 \item{grouping_vars}{The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
 For example, if you want one index SNP per QTL eGene - 
 GWAS locus pair, you could supply:
 \code{grouping_vars=c("Locus","Gene")}.}
-
-\item{gene_col}{An optional column to keep track of the causal 
-gene(s) in each locus (if known).}
 
 \item{remove_variants}{SNPs to remove from \code{topSS},}
 

@@ -1,3 +1,13 @@
+# echodata 0.99.7 
+
+## Bug fixes 
+
+- `import_topSNPs`: 
+    + Now uses `standardise_sumstats_column_headers_crossplatform`
+exported function when `munge=TRUE`. 
+    + Both standardisation strategies no longer interfere with one another when used at the same time. 
+
+
 # echodata 0.99.6
 
 ## New features

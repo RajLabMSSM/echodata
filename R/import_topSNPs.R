@@ -62,110 +62,106 @@ import_topSNPs <- function(topSS,
                            pval_col=NULL,
                            effect_col=NULL,
                            locus_col="Locus",
-                           grouping_vars=c("Locus"),
                            gene_col="Gene",
+                           grouping_vars=c("Locus"),
                            remove_variants=NULL, 
                            verbose=TRUE){
+    # echoverseTemplate:::source_all(packages = "dplyr")
+    # echoverseTemplate:::args2vars(import_topSNPs)
     CHR <- Locus <- Gene <- POS <- SNP <- max_POS <- 
-        min_POS <- P <- Effect <- . <- NULL;
+        min_POS <- P <- Effect <- . <- NULL; 
     
+    if(munge) requireNamespace("MungeSumstats")
     # Reassign colnames bc read.xlsx won't let
     ##you prevent this in some versions....
     if(!is.data.frame(topSS)){
         if(endsWith(topSS, ".xlsx") | endsWith(topSS, ".xlsm")){
-            locus_col=gsub(" ",".",trimws(locus_col))
-            gene_col=gsub(" ",".",trimws(gene_col))
-            chrom_col=gsub(" ",".",trimws(chrom_col))
-            position_col=gsub(" ",".",trimws(position_col))
-            snp_col=gsub(" ",".",trimws(snp_col))
-            pval_col=gsub(" ",".",trimws(pval_col))
-            effect_col=gsub(" ",".",trimws(effect_col))
+            #### Trim whitespace from user-supplied column names ####
+            if(!is.null(locus_col)) {
+                locus_col <- gsub(" ",".",trimws(locus_col))
+            }
+            if(!is.null(gene_col)) {
+                gene_col <- gsub(" ",".",trimws(gene_col))
+            }
+            if(!is.null(chrom_col)) {
+                chrom_col <- gsub(" ",".",trimws(chrom_col))
+            }
+            if(!is.null(position_col)) {
+                position_col <- gsub(" ",".",trimws(position_col))
+            }
+            if(!is.null(snp_col)) {
+                snp_col <- gsub(" ",".",trimws(snp_col))
+            }
+            if(!is.null(pval_col)) {
+                pval_col <- gsub(" ",".",trimws(pval_col))
+            }
+            if(!is.null(effect_col)) {
+                effect_col <- gsub(" ",".",trimws(effect_col))
+            }
         }
-    }
-    
+    } 
     #### Import top SNPs ####
-    top_SNPs <- topSNPs_reader(topSS, sheet)
-    orig_top_SNPs <- top_SNPs
-    
-    top_SNPs <- standardise_gene_locus_cols(top_SNPs=top_SNPs,
-                                            orig_top_SNPs=orig_top_SNPs,
+    top_SNPs <- topSNPs_reader(topSS = topSS, 
+                               sheet = sheet)  
+    #### Rename columns (if names supplied) ####
+    top_SNPs <- import_topSNPs_manual_rename(top_SNPs=top_SNPs,
+                                             chrom_col=chrom_col,
+                                             position_col=position_col,
+                                             snp_col=snp_col,
+                                             pval_col=pval_col,
+                                             effect_col=effect_col,
+                                             min_POS_col=min_POS_col,
+                                             max_POS_col=max_POS_col,
+                                             locus_col=locus_col,
+                                             gene_col=gene_col,
+                                             verbose=verbose)  
+    #### Create locus/gene cols #### 
+    ## Must happen AFTER any column renaming 
+    top_SNPs <- standardise_gene_locus_cols(top_SNPs=top_SNPs, 
                                             locus_col=locus_col,
-                                            gene_col=gene_col)
-    
+                                            gene_col=gene_col, 
+                                            verbose=verbose) 
+    #### Standardise colnames ####
     if(munge){
-        #### Check for necessary cols ####
-        top_SNPs <- mungesumstats_check_syn(dat = top_SNPs,
-                                            col_name=pval_col,
-                                            col_type = "P")
-        top_SNPs <- mungesumstats_check_syn(dat = top_SNPs, 
-                                            col_name=effect_col, 
-                                            col_type = "BETA")
-        messager("+ Munging top_SNPs",v=verbose) 
-        top_SNPs <- suppressMessages( 
-            standardise_sumstats_column_headers_crossplatform(
-                sumstats_dt = top_SNPs)$sumstats_dt)
-        map <- column_map(package = "MungeSumstats")
-        chrom_col <- map$chrom_col; 
-        position_col <- map$position_col; 
-        snp_col <- map$snp_col;
-        pval_col <- map$pval_col; effect_col <- map$effect_col;
-        top_SNPs <- dplyr::rename(top_SNPs,
-                                  Locus="LOCUS",
-                                  Gene="GENE")
-    }
-    
-    
-    
-    # Fill in missing cols with nonsense
-    if(is.null(chrom_col)) {
-        top_SNPs$CHR <- NA; chrom_col<-"CHR";}
-    if(is.null(position_col)) {
-        top_SNPs$POS <- NA; position_col<-"POS";}
-    if(!effect_col %in% colnames(top_SNPs)) {
-        top_SNPs$Effect <- 1; effect_col<-"Effect";}
-    
-    top_SNPs <- dplyr::rename(top_SNPs,
-                              CHR=dplyr::all_of(chrom_col),
-                              POS=dplyr::all_of(position_col),
-                              SNP=dplyr::all_of(snp_col)) %>%
-        dplyr::mutate(CHR=gsub("chr","",CHR))
-    
-    
-    
-    top_SNPs <- suppressMessages(top_SNPs %>%
-                                     dplyr::select(Locus=Locus,
-                                                   Gene=Gene,
-                                                   CHR=CHR,
-                                                   POS=POS,
-                                                   SNP=SNP,
-                                                   P=pval_col,
-                                                   Effect=effect_col,
-                                                   min_POS=min_POS_col,
-                                                   max_POS=max_POS_col))
+        top_SNPs <- 
+            MungeSumstats::standardise_sumstats_column_headers_crossplatform(
+                sumstats_dt = top_SNPs, 
+                return_list = FALSE, 
+                uppercase_unmapped = FALSE,
+            )
+        top_SNPs <- echodata::mungesumstats_to_echolocatoR(dat = top_SNPs)
+    }    
+    #### Add min/max POS cols ####
     if("min_POS" %in% colnames(top_SNPs) &
        "max_POS" %in% colnames(top_SNPs)){
         top_SNPs <- dplyr::mutate(top_SNPs, span_kb=(max_POS-min_POS)/1000)
-    }
-    
-    # Remove specific variants
+    } 
+    #### Remove specific variants ####
     if(!is.null(remove_variants)){
         top_SNPs <- subset(top_SNPs, !(SNP %in% remove_variants))
     }
-    
-    # Get the top representative SNP and Gene per locus 
-    # (by lowest p-value and effect size)
+    #### Get the top representative SNP and Gene per locus ####
+    # by lowest p-value and effect size
     if(!is.null(grouping_vars)){
-        top_SNPs <- suppressWarnings(
+        if(!"Effect" %in% colnames(top_SNPs)) top_SNPs$Effect <- NA
+        if(!"P" %in% colnames(top_SNPs)) top_SNPs$P <- NA
+        if(!"P" %in% colnames(top_SNPs)) top_SNPs$P <- NA
+        grouping_vars <- grouping_vars[grouping_vars %in% colnames(top_SNPs)]
+        top_SNPs <-  
             top_SNPs %>%
              dplyr::arrange(P, dplyr::desc(Effect)) %>%
-             dplyr::group_by(.dots=grouping_vars) %>%
+             dplyr::group_by_at(.vars = grouping_vars) %>%
              dplyr::slice(1) %>%
              replace(., .=="NA", NA) %>%
-             subset(!is.na(Locus)) %>%
-             dplyr::mutate(CHR=as.numeric(gsub("chr", "",CHR))) )
-    }
-    
-    # Make sure cols are numeric
+             subset(!is.na(Locus))  
+    } 
+    #### Standardise CHR format ####
+    # Skip? might be the same as the fullSS
+    if("CHR" %in% colnames(top_SNPs)) {
+        top_SNPs <- dplyr::mutate(top_SNPs, 
+                                  CHR=as.numeric(gsub("chr","",CHR)))
+    }  
+    #### Make sure cols are numeric ####
     top_SNPs <- top_SNPs %>% 
         dplyr::mutate_at(.vars = dplyr::vars(POS,P,Effect),
                          .funs = function(x){as.numeric(gsub(",| ","",x))})
@@ -174,9 +170,3 @@ import_topSNPs <- function(topSS,
     }
     return(data.table::data.table(top_SNPs))
 }
-
-
-
-
-
-
