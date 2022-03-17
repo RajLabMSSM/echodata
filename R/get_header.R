@@ -7,16 +7,18 @@
 #' @inheritParams data.table::fread
 #' @inheritParams base::readLines
 #' @export
+#' @examples 
+#' tmp <- tempfile(fileext = ".tsv.gz")
+#' data.table::fwrite(echodata::BST1, file = tmp, sep = "\t") 
+#' header <- echodata::get_header(file=tmp)
 get_header <- function(file,
                        colnames_only=TRUE,
-                       n=2,
-                       nThread=1){
+                       nrows=2L,
+                       nThread=1L){
   ### Reading in this way is more robust and able to handle bgz format.
-  header <- data.table::fread(text=readLines(con = file, n = n),
+  header <- data.table::fread(text=readLines(con = file,
+                                             n = nrows+1L),
                               nThread = nThread)
   if(colnames_only) header <- colnames(header)
   return(header)
 }
-
-
-

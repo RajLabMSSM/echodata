@@ -1,11 +1,17 @@
 # echodata 0.99.7 
 
+## New features
+
+* New functions:
+    - `read_bgz`
+    - `preview`
+
 ## Bug fixes 
 
-- `import_topSNPs`: 
-    + Now uses `standardise_sumstats_column_headers_crossplatform`
+* `import_topSNPs`: 
+    - Now uses `standardise_sumstats_column_headers_crossplatform`
 exported function when `munge=TRUE`. 
-    + Both standardisation strategies no longer interfere with one another when used at the same time. 
+    - Both standardisation strategies no longer interfere with one another when used at the same time. 
 
 
 # echodata 0.99.6
