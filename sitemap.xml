@@ -160,6 +160,12 @@
     <loc>/reference/portal_query.html</loc>
   </url>
   <url>
+    <loc>/reference/preview.html</loc>
+  </url>
+  <url>
+    <loc>/reference/read_bgz.html</loc>
+  </url>
+  <url>
     <loc>/reference/read_parquet.html</loc>
   </url>
   <url>
