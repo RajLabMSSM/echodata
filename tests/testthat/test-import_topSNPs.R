@@ -1,5 +1,6 @@
 test_that("import_topSNPs works", {
      
+    #### With locus/gene specified ####
     top_SNPs <- import_topSNPs(topSS=echodata::topSNPs_Nalls2019_raw,
                                 chrom_col="CHR",
                                 position_col="BP",
@@ -16,4 +17,20 @@ test_that("import_topSNPs works", {
         c("Locus","Gene","CHR","POS","SNP","P","Effect") %in% 
             colnames(top_SNPs)
     ))
+    
+    
+    #### WithOUT locus/gene specified ####
+    top_SNPs <- import_topSNPs(topSS=echodata::topSNPs_Nalls2019_raw,
+                               chrom_col="CHR",
+                               position_col="BP",
+                               snp_col="SNP",
+                               pval_col="P, all studies",
+                               effect_col="Beta, all studies",
+                               munge = TRUE)
+    testthat::expect_true(methods::is(top_SNPs,"data.table"))
+    testthat::expect_equal(nrow(top_SNPs), 107)
+    testthat::expect_true(all(
+        c("Locus","Gene","CHR","POS","SNP","P","Effect") %in% 
+            colnames(top_SNPs)
+    )) 
 })

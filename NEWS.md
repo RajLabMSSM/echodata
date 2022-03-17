@@ -5,6 +5,9 @@
 * New functions:
     - `read_bgz`
     - `preview`
+* Increased test coverage to >88%.
+* Removed `standardise_sumstats_column_headers_crossplatform` to use
+directly from `MungeSumstats`. 
 
 ## Bug fixes 
 

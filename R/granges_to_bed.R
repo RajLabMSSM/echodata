@@ -6,7 +6,7 @@
 #' Can also be a single non-list \link[GenomicRanges]{GRanges} object.
 #' 
 #' @param save_dir Where to save the BED file.
-#' @param gzip Whether the BED file should be gzip compressed.
+#' @param gzip Whether the BED file should be gzip compressed. 
 #' @param verbose Print messages.
 #' @inheritParams data.table::fwrite
 #' @importFrom data.table as.data.table fwrite
@@ -20,18 +20,22 @@ granges_to_bed <- function(grlist,
                            save_dir = tempdir(),
                            sep = "\t",
                            nThread = 1,
-                           gzip = FALSE,
+                           gzip = FALSE, 
                            verbose = TRUE) {
     
     seqnames <- start <- end <- strand <- NULL;
-    if(!is.list(grlist)) grlist <- list(GRange = grlist)
+    if(!is.list(grlist)) grlist <- list(grlist)
+    if(all(is.null(names(grlist)))) {
+        names(grlist) <- paste0("granges",seq_len(length(grlist)) )
+    }
     messager("Converting",length(grlist),
-             "GRange object to separate BED files.",
+             "GRanges object to separate BED files.",
              v=verbose)
     BED_paths <- parallel::mclapply(
         names(grlist),
             function(name,
                      .gzip = gzip) {
+                #### Convert ####
                 GR <- grlist[[name]]
                 BED <- data.table::as.data.table(GR) %>%
                     dplyr::select(
@@ -39,7 +43,8 @@ granges_to_bed <- function(grlist,
                         chromStart = start,
                         chromEnd = end,
                         strand
-                    )
+                    ) 
+                #### Save ####
                 BED_path <- file.path(save_dir, paste0(
                     gsub(":", "-", name),
                     ".bed.txt"
@@ -55,9 +60,9 @@ granges_to_bed <- function(grlist,
                                    quote = FALSE,
                                    nThread = 1
                 ) 
-                return(BED_path)
+                return(BED_path) 
             },
             mc.cores = nThread
-    ) %>% unlist()
+    ) %>% unlist() 
     return(BED_paths)
 }
