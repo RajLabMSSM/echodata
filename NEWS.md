@@ -2,9 +2,10 @@
 
 ## New features
 
-* New functions:
-    - `read_bgz`
+* New functions: 
     - `preview`
+    - `is_local`
+    - `is_url`
 * Increased test coverage to >88%.
 * Removed `standardise_sumstats_column_headers_crossplatform` to use
 directly from `MungeSumstats`. 

@@ -1,7 +1,7 @@
 #' Check if a file is empty
 #' 
 #' Check if a summary statistics file subset is empty.
-#' @param file_path File path. 
+#' @param path File path. 
 #' @return Boolean.
 #' @family general
 #' @export
@@ -10,10 +10,10 @@
 #' tmp <- tempfile()
 #' data.table::fwrite(echodata::BST1, tmp)
 #' 
-#' echodata::check_if_empty(file_path = tmp)
-check_if_empty <- function(file_path){
+#' echodata::check_if_empty(path = tmp)
+check_if_empty <- function(path){
     
-  rowCheck <- dim(data.table::fread(file_path, 
+  rowCheck <- dim(data.table::fread(path, 
                                     nrows = 2, 
                                     nThread = 1))[1]
   if(rowCheck==0){

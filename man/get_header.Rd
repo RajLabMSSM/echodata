@@ -4,10 +4,10 @@
 \alias{get_header}
 \title{Get file header}
 \usage{
-get_header(file, colnames_only = TRUE, nrows = 2L, nThread = 1L)
+get_header(path, colnames_only = TRUE, nrows = 2L, nThread = 1L)
 }
 \arguments{
-\item{file}{ File name in working directory, path to file (passed through \code{\link[base]{path.expand}} for convenience), or a URL starting http://, file://, etc. Compressed files with extension \file{.gz} and \file{.bz2} are supported if the \code{R.utils} package is installed. }
+\item{path}{Path to local file or remote URL.}
 
 \item{colnames_only}{Whether to return only column names 
 (default: \code{TRUE}), or the first \code{n} rows as well.}
@@ -22,5 +22,5 @@ Reading in this way is more robust and able to handle bgz format.
 \examples{
 tmp <- tempfile(fileext = ".tsv.gz")
 data.table::fwrite(echodata::BST1, file = tmp, sep = "\t") 
-header <- echodata::get_header(file=tmp)
+header <- echodata::get_header(path=tmp)
 }

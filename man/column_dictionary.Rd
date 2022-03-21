@@ -4,10 +4,10 @@
 \alias{column_dictionary}
 \title{Map column names to positions.}
 \usage{
-column_dictionary(file_path)
+column_dictionary(path)
 }
 \arguments{
-\item{file_path}{Path to full summary stats file
+\item{path}{Path to full summary stats file
 (or any really file you want to make a column dictionary for).}
 }
 \value{
@@ -20,5 +20,5 @@ instead of name (e.g. awk queries).
 \examples{
 tmp <- tempfile()
 data.table::fwrite(echodata::BST1, tmp)
-cdict <- echodata::column_dictionary(file_path = tmp)
+cdict <- echodata::column_dictionary(path = tmp)
 }

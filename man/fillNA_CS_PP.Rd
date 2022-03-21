@@ -32,6 +32,7 @@ dat <- echodata::fillNA_CS_PP(dat = dat)
 \seealso{
 Other general: 
 \code{\link{check_if_empty}()},
-\code{\link{createDT}()}
+\code{\link{createDT}()},
+\code{\link{get_nrows}()}
 }
 \concept{general}

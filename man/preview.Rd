@@ -4,10 +4,11 @@
 \alias{preview}
 \title{Preview formatted sum stats saved to disk}
 \usage{
-preview(file, nrows = 5L, nThread = 1L)
+preview(path, nrows = 5L, nThread = 1L)
 }
 \arguments{
-\item{file}{ File name in working directory, path to file (passed through \code{\link[base]{path.expand}} for convenience), or a URL starting http://, file://, etc. Compressed files with extension \file{.gz} and \file{.bz2} are supported if the \code{R.utils} package is installed. }
+\item{path}{Path to local file or remote URL. 
+Alternatively, can pass in a data.frame to be used directly.}
 
 \item{nrows}{ The maximum number of rows to read. Unlike \code{read.table}, you do not need to set this to an estimate of the number of rows in the file for better speed because that is already automatically determined by \code{fread} almost instantly using the large sample of lines. \code{nrows=0} returns the column names and typed empty columns determined by the large sample; useful for a dry run of a large file or to quickly check format consistency of a set of files before starting to read any of them. }
 

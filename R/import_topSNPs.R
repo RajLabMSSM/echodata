@@ -68,7 +68,7 @@ import_topSNPs <- function(topSS,
                            verbose=TRUE){
     # echoverseTemplate:::source_all(packages = "dplyr")
     # echoverseTemplate:::args2vars(import_topSNPs)
-    CHR <- Locus <- Gene <- POS <- SNP <- max_POS <- 
+    CHR <- Locus <- POS <- SNP <- max_POS <- 
         min_POS <- P <- Effect <- . <- NULL; 
     
     if(munge) requireNamespace("MungeSumstats")
@@ -124,12 +124,12 @@ import_topSNPs <- function(topSS,
     #### Standardise colnames ####
     if(munge){
         top_SNPs <- 
-            MungeSumstats::standardise_sumstats_column_headers_crossplatform(
+            MungeSumstats::standardise_header(
                 sumstats_dt = top_SNPs, 
                 return_list = FALSE, 
                 uppercase_unmapped = FALSE,
             )
-        top_SNPs <- echodata::mungesumstats_to_echolocatoR(dat = top_SNPs)
+        top_SNPs <- mungesumstats_to_echolocatoR(dat = top_SNPs)
     }    
     #### Add min/max POS cols ####
     if("min_POS" %in% colnames(top_SNPs) &
@@ -168,5 +168,5 @@ import_topSNPs <- function(topSS,
     if(show_table){
         createDT(top_SNPs, caption = "Top SNP per locus")
     }
-    return(data.table::data.table(top_SNPs))
+    return(data.table::data.table(top_SNPs, key = "Locus"))
 }

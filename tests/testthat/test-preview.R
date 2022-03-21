@@ -6,7 +6,7 @@ test_that("preview works", {
      
     ##### Feed in table ####
     out1 <- tryCatch({
-        echodata::preview(file = dat,
+        echodata::preview(path = dat,
                           nrows = 5L)
     }, message = function(m)m)
     ## Reconstruct
@@ -15,7 +15,7 @@ test_that("preview works", {
     
     #### Feed in path ####
     out2 <- tryCatch({
-        echodata::preview(file = tmp,
+        echodata::preview(path = tmp,
                           nrows = 5L)
     }, message = function(m)m)
     dat2 <- suppressWarnings(data.table::fread(text = out2$message)[,-1] ) 

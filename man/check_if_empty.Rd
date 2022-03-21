@@ -4,10 +4,10 @@
 \alias{check_if_empty}
 \title{Check if a file is empty}
 \usage{
-check_if_empty(file_path)
+check_if_empty(path)
 }
 \arguments{
-\item{file_path}{File path.}
+\item{path}{File path.}
 }
 \value{
 Boolean.
@@ -19,11 +19,12 @@ Check if a summary statistics file subset is empty.
 tmp <- tempfile()
 data.table::fwrite(echodata::BST1, tmp)
 
-echodata::check_if_empty(file_path = tmp)
+echodata::check_if_empty(path = tmp)
 }
 \seealso{
 Other general: 
 \code{\link{createDT}()},
-\code{\link{fillNA_CS_PP}()}
+\code{\link{fillNA_CS_PP}()},
+\code{\link{get_nrows}()}
 }
 \concept{general}
