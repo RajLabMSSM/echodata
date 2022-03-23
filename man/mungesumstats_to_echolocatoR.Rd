@@ -4,16 +4,26 @@
 \alias{mungesumstats_to_echolocatoR}
 \title{Convert from \pkg{MungeSumstats} to \pkg{echolocatoR} format}
 \usage{
-mungesumstats_to_echolocatoR(dat)
+mungesumstats_to_echolocatoR(dat, standardise_colnames = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{dat}{Data}
+\item{dat}{A \link[data.table]{data.table} of SNP-level summary statistics.}
+
+\item{standardise_colnames}{Automatically rename all columns to a standard 
+nomenclature using \link[MungeSumstats]{standardise_header}.}
+
+\item{verbose}{Print messages.}
 }
 \description{
 Convert column names between package-specific formats.
+Optionally, can also be used to first automatically 
+standardise column names by 
+setting \code{standardise_colnames=TRUE} before converting to 
+\pkg{echolocatoR} format.
 }
 \examples{
  
-dat <- dplyr::rename(echodata::BST1, BP=POS, FRQ=Freq, BETA=Effect)
-dat_echoR <- mungesumstats_to_echolocatoR(dat=dat) 
+dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect)
+dat_echoR <- echodata::mungesumstats_to_echolocatoR(dat=dat, 
+                                                    standardise_colnames=TRUE)
 }
