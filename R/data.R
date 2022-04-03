@@ -115,19 +115,19 @@
 #' Summary stats of the top SNP(s) per locus.
 #' Used to query locus subsets.for fine-mapping.
 #' 
-#' Formerly \code{top_SNPs}.
+#' Formerly \code{topSNPs}.
 #'
 #' @source
 #' \code{
 #' topSS <- echodata::topSNPs_Nalls2019_raw
 #' topSNPs_Nalls2019 <- echodata::import_topSNPs(topSS=topSS,
-#'                                         chrom_col="CHR",
-#'                                         position_col="BP",
-#'                                         snp_col="SNP",
-#'                                         pval_col="P, all studies",
-#'                                         effect_col="Beta, all studies",
-#'                                         gene_col="Nearest Gene",
-#'                                         locus_col="Nearest Gene",
+#'                                         CHR="CHR",
+#'                                         POS="BP",
+#'                                         SNP="SNP",
+#'                                         P="P, all studies",
+#'                                         Effect="Beta, all studies",
+#'                                         Gene="Nearest Gene",
+#'                                         Locus="Nearest Gene",
 #'                                         remove_variants="rs34637584")
 #' usethis::use_data(topSNPs_Nalls2019, overwrite=TRUE)
 #' }
@@ -168,16 +168,16 @@
 #' meta <- readxl::read_excel(paths$local_path, sheet = "GWAS")
 #' meta <- subset(meta, dataset=="Kunkle_2019")
 #' 
-#' top_SNPs <- echodata::import_topSNPs(
+#' topSNPs <- echodata::import_topSNPs(
 #'     topSS = topSS,
 #'     sheet = meta$top_sheet,
-#'     chrom_col = meta$top_chrom,
-#'     position_col = meta$top_pos,
-#'     snp_col = meta$top_snp,
-#'     pval_col = "P",
-#'     effect_col = "BETA",
-#'     locus_col = meta$top_locus)
-#' topSNPs_Kunkle2019 <- top_SNPs
+#'     CHR = meta$top_chrom,
+#'     POS = meta$top_pos,
+#'     SNP = meta$top_snp,
+#'     P = "P",
+#'     Effect = "BETA",
+#'     Locus = meta$top_locus)
+#' topSNPs_Kunkle2019 <- topSNPs
 #' usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
 #' }
 #' @usage data("topSNPs_Kunkle2019")

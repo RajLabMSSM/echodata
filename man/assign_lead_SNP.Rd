@@ -4,7 +4,7 @@
 \alias{assign_lead_snp}
 \title{Assign lead SNP}
 \usage{
-assign_lead_snp(dat, verbose = TRUE)
+assign_lead_snp(dat, grouping_vars = "Locus", verbose = TRUE)
 }
 \arguments{
 \item{dat}{Fine-mapping data.table.}

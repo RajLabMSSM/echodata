@@ -6,9 +6,9 @@
 \usage{
 reassign_lead_snps(
   merged_dat,
-  snp_col = "SNP",
-  pval_col = "P",
-  effect_col = "Effect",
+  SNP = "SNP",
+  P = "P",
+  Effect = "Effect",
   grouping_vars = c("Dataset", "Locus"),
   nThread = 1,
   verbose = TRUE
@@ -17,11 +17,11 @@ reassign_lead_snps(
 \arguments{
 \item{merged_dat}{Merged, multi-locus fine-mapping results data.}
 
-\item{snp_col}{Name of the SNP column.}
+\item{SNP}{Name of the SNP column.}
 
-\item{pval_col}{Name of the p-value column.}
+\item{P}{Name of the p-value column.}
 
-\item{effect_col}{Name of the Effect column.}
+\item{Effect}{Name of the Effect column.}
 
 \item{grouping_vars}{Column names to group by when assigning lead SNPs.}
 

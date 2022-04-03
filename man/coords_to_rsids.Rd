@@ -9,7 +9,7 @@ coords_to_rsids(
   genome_build = "hg19",
   drop_unannotated = TRUE,
   drop_duplicates = TRUE,
-  snp_colname = "SNP",
+  SNPname = "SNP",
   verbose = TRUE
 )
 }
@@ -25,7 +25,7 @@ coords_to_rsids(
 
 \item{drop_duplicates}{Drop any duplicate SNPs rows.}
 
-\item{snp_colname}{Name of the new column with RSIDs.}
+\item{SNPname}{Name of the new column with RSIDs.}
 
 \item{verbose}{Print messages.}
 }

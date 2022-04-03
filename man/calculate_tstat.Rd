@@ -4,7 +4,7 @@
 \alias{calculate_tstat}
 \title{Impute t-stat}
 \usage{
-calculate_tstat(finemap_dat, tstat_col = "t_stat")
+calculate_tstat(dat, colmap = construct_colmap(), verbose = TRUE)
 }
 \description{
 If \strong{tstat} column is missing,

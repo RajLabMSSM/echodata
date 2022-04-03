@@ -35,16 +35,16 @@ paths <- googledrive::drive_download(
 meta <- readxl::read_excel(paths$local_path, sheet = "GWAS")
 meta <- subset(meta, dataset=="Kunkle_2019")
 
-top_SNPs <- echodata::import_topSNPs(
+topSNPs <- echodata::import_topSNPs(
     topSS = topSS,
     sheet = meta$top_sheet,
-    chrom_col = meta$top_chrom,
-    position_col = meta$top_pos,
-    snp_col = meta$top_snp,
-    pval_col = "P",
-    effect_col = "BETA",
-    locus_col = meta$top_locus)
-topSNPs_Kunkle2019 <- top_SNPs
+    CHR = meta$top_chrom,
+    POS = meta$top_pos,
+    SNP = meta$top_snp,
+    P = "P",
+    Effect = "BETA",
+    Locus = meta$top_locus)
+topSNPs_Kunkle2019 <- topSNPs
 usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
 }
 }

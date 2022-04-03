@@ -3,23 +3,28 @@
 #' If \strong{tstat} column is missing,
 #' compute t-statistic from: \code{Effect / StdErr}.
 #' @family standardization functions
+#' 
 #' @keywords internal
-calculate_tstat <- function(finemap_dat,
-                            tstat_col="t_stat"){
-  Effect <- StdErr <- NULL;
-
-  if(tstat_col %in% colnames(finemap_dat)){
-    finemap_dat <- finemap_dat %>% dplyr::rename(t_stat = tstat_col)
+#' @importFrom dplyr %>% mutate
+#' @importFrom data.table data.table
+calculate_tstat <- function(dat,
+                            colmap=construct_colmap(),
+                            verbose=TRUE){ 
+    
+  if(colmap$tstat %in% colnames(dat)){
+    dat <- dplyr::rename(dat, tstat = colmap$tstat)
   } else {
-    if(("Effect" %in% colnames(finemap_dat)) &
-       ("StdErr" %in% colnames(finemap_dat))){
-      messager("+ Calculating t-statistic from Effect and StdErr...")
-      finemap_dat <- finemap_dat %>% dplyr::mutate(t_stat =  Effect/StdErr)
+    if(all(c("Effect","StdErr") %in% colnames(dat))){
+      messager("+ Imputing t-statistic from Effect and StdErr.",
+               v=verbose)
+      dat$tstat <- dat[,colmap$Effect, with=FALSE] / 
+          dat[,colmap$StdErr, with=FALSE]
     } else {
       messager(
-        "+ Could not calculate t-stat",
-        "due to missing Effect and/or StdErr columns. Returning input data.")
+        "+ Could not calculate t-statistic",
+        "due to missing Effect and/or StdErr columns. Returning input data.",
+        v=verbose)
     }
   }
-  return(data.table::data.table(finemap_dat))
+  return(dat)
 }

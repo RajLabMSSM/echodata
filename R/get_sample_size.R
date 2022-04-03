@@ -22,6 +22,7 @@ get_sample_size <- function(dat,
   
   requireNamespace("MungeSumstats")
   
+    messager("++ Preparing N col", v=verbose)
   if("N" %in% colnames(dat) && force_new==FALSE) return(dat)
   #### Check method ### 
   if(is.null(compute_n)){

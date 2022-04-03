@@ -4,10 +4,10 @@
 \alias{auto_topSNPs_sub}
 \title{Automatically identify top SNP per locus}
 \usage{
-auto_topSNPs_sub(top_SNPs, query, locus)
+auto_topSNPs_sub(topSNPs, query, locus)
 }
 \description{
-If no \code{top_SNPs} dataframe is supplied,
+If no \code{topSNPs} dataframe is supplied,
  this function will sort by p-value and then effect size,
  and use the SNP in the first row.
 }

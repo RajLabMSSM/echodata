@@ -7,7 +7,7 @@
 zscore_get_mean_and_sd(
   fullSS,
   target_col = "statistic",
-  effect_col = "beta",
+  Effect = "beta",
   stderr_col = "se",
   use_saved = TRUE,
   output_path

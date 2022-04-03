@@ -8,7 +8,7 @@
 #' (e.g. "hg19" or "hg38").
 #' @param drop_unannotated Drop SNPs that RSIDs couldn't be found for.
 #' @param drop_duplicates Drop any duplicate SNPs rows.
-#' @param snp_colname Name of the new column with RSIDs.
+#' @param SNPname Name of the new column with RSIDs.
 #' @param verbose Print messages. 
 #' @returns \link[data.table]{data.table} with new columns for RSIDs. 
 #' @export
@@ -20,14 +20,14 @@ coords_to_rsids <- function(dat,
                             genome_build = "hg19",
                             drop_unannotated = TRUE,
                             drop_duplicates = TRUE,
-                            snp_colname = "SNP",
+                            SNPname = "SNP",
                             verbose = TRUE) {
     requireNamespace("BSgenome") 
     requireNamespace("GenomicRanges") 
-    if(snp_colname %in% colnames(dat)){
+    if(SNPname %in% colnames(dat)){
         stop_msg <- paste(
-            snp_colname, "is already a column name in dat.",
-            "Either rename this column or set snp_colname=",
+            SNPname, "is already a column name in dat.",
+            "Either rename this column or set SNPname=",
             "to a different value")
         stop(stop_msg)
     }
@@ -69,8 +69,8 @@ coords_to_rsids <- function(dat,
     messager(nrow(dat.annot), "/", nrow(dat), "SNPs annotated with RSIDs.",
              v = verbose
     )
-    if(snp_colname != "RefSNP_id"){
-        data.table::setnames(dat.annot, "RefSNP_id", snp_colname)
+    if(SNPname != "RefSNP_id"){
+        data.table::setnames(dat.annot, "RefSNP_id", SNPname)
     }
     return(dat.annot)
 }

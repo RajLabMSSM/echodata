@@ -11,13 +11,13 @@ An object of class \code{data.table} (inherits from \code{data.frame}) with 97 r
 \code{
 topSS <- echodata::topSNPs_Nalls2019_raw
 topSNPs_Nalls2019 <- echodata::import_topSNPs(topSS=topSS,
-                                        chrom_col="CHR",
-                                        position_col="BP",
-                                        snp_col="SNP",
-                                        pval_col="P, all studies",
-                                        effect_col="Beta, all studies",
-                                        gene_col="Nearest Gene",
-                                        locus_col="Nearest Gene",
+                                        CHR="CHR",
+                                        POS="BP",
+                                        SNP="SNP",
+                                        P="P, all studies",
+                                        Effect="Beta, all studies",
+                                        Gene="Nearest Gene",
+                                        Locus="Nearest Gene",
                                         remove_variants="rs34637584")
 usethis::use_data(topSNPs_Nalls2019, overwrite=TRUE)
 }
@@ -30,6 +30,6 @@ Summary stats of the top SNP(s) per locus.
 Used to query locus subsets.for fine-mapping.
 }
 \details{
-Formerly \code{top_SNPs}.
+Formerly \code{topSNPs}.
 }
 \keyword{datasets}

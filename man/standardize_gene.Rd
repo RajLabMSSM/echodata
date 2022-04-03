@@ -4,12 +4,12 @@
 \alias{standardize_gene}
 \title{Standardize genes}
 \usage{
-standardize_gene(dat, gene_col = "gene", verbose = TRUE)
+standardize_gene(dat, Gene = "gene", verbose = TRUE)
 }
 \arguments{
 \item{dat}{GWAS/QTL summary statistics data.}
 
-\item{gene_col}{Name of the gene column in \code{dat}.}
+\item{Gene}{Name of the gene column in \code{dat}.}
 
 \item{verbose}{Print messages.}
 }

@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
 Title: echoverse module: Fine-mapping data access and formatting
-Version: 0.99.7
+Version: 0.99.8
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",

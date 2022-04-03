@@ -8,7 +8,7 @@
 #' @keywords internal
 zscore_get_mean_and_sd <- function(fullSS,#="./Data/GWAS/Nalls23andMe_2019/nallsEtAl2019_allSamples_allVariants.mod.txt",
                                    target_col="statistic",
-                                   effect_col="beta",
+                                   Effect="beta",
                                    stderr_col="se",
                                    use_saved=TRUE,
                                    output_path){#="./Data/GWAS/Nalls23andMe_2019/z.info.RDS"){
@@ -20,7 +20,7 @@ zscore_get_mean_and_sd <- function(fullSS,#="./Data/GWAS/Nalls23andMe_2019/nalls
     if(target_col=="calculate"){
       target_col <- "t_stat"
       sample_x <- data.table::fread(fullSS, nThread = 1,
-                                    select=c(effect_col, stderr_col),
+                                    select=c(Effect, stderr_col),
                                     col.names = c("Effect","StdErr"))
       sample_x <- subset(calculate_tstat(sample_x), select = target_col)
     }else {

@@ -1,36 +1,36 @@
 test_that("import_topSNPs works", {
      
+    
+    required_cols <- c("Locus","Gene","CHR","POS","SNP","P","Effect")
+    
     #### With locus/gene specified ####
-    top_SNPs <- import_topSNPs(topSS=echodata::topSNPs_Nalls2019_raw,
-                                chrom_col="CHR",
-                                position_col="BP",
-                                snp_col="SNP",
-                                pval_col="P, all studies",
-                                effect_col="Beta, all studies",
-                                gene_col="Nearest Gene",
-                                locus_col="QTL Nominated Gene (nearest QTL)",
-                                remove_variants="rs34637584", 
-                                munge = TRUE)
-    testthat::expect_true(methods::is(top_SNPs,"data.table"))
-    testthat::expect_equal(nrow(top_SNPs), 62)
-    testthat::expect_true(all(
-        c("Locus","Gene","CHR","POS","SNP","P","Effect") %in% 
-            colnames(top_SNPs)
-    ))
+    topSNPs <- echodata::import_topSNPs(
+        topSS = echodata::topSNPs_Nalls2019_raw,
+        colmap = construct_colmap(POS = "BP",
+                                  P = "P, all studies",
+                                  Effect = "Beta, all studies",
+                                  Locus = "Nearest Gene",
+                                  Gene = "QTL Nominated Gene (nearest QTL)"
+                                  ),
+        grouping_vars = c("Locus Number"),
+        remove_variants="rs34637584", 
+        munge=TRUE)  
+    testthat::expect_true(methods::is(topSNPs,"data.table"))
+    testthat::expect_equal(nrow(topSNPs), 78)
+    testthat::expect_true(all(required_cols %in% colnames(topSNPs)))
     
     
-    #### WithOUT locus/gene specified ####
-    top_SNPs <- import_topSNPs(topSS=echodata::topSNPs_Nalls2019_raw,
-                               chrom_col="CHR",
-                               position_col="BP",
-                               snp_col="SNP",
-                               pval_col="P, all studies",
-                               effect_col="Beta, all studies",
-                               munge = TRUE)
-    testthat::expect_true(methods::is(top_SNPs,"data.table"))
-    testthat::expect_equal(nrow(top_SNPs), 107)
-    testthat::expect_true(all(
-        c("Locus","Gene","CHR","POS","SNP","P","Effect") %in% 
-            colnames(top_SNPs)
-    )) 
+    #### WithOUT grouping var ####
+    topSNPs <- import_topSNPs(
+        topSS=echodata::topSNPs_Nalls2019_raw,
+        colmap = construct_colmap(POS = "BP",
+                                  P = "P, all studies",
+                                  Effect = "Beta, all studies",
+                                  Locus = "Nearest Gene",
+                                  Gene = "QTL Nominated Gene (nearest QTL)"
+                                  ) 
+        )
+    testthat::expect_true(methods::is(topSNPs,"data.table"))
+    testthat::expect_equal(nrow(topSNPs), 97)
+    testthat::expect_true(all(required_cols %in% colnames(topSNPs))) 
 })

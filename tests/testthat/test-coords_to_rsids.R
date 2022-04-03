@@ -2,7 +2,7 @@ test_that("coords_to_rsids works", {
   
     dat <- dplyr::rename(echodata::BST1, SNP_old=SNP)
     dat_annot <- echodata::coords_to_rsids(dat = dat,
-                                           snp_colname = "SNP")
+                                           SNPname = "SNP")
     
     testthat::expect_true(methods::is(dat_annot,"data.table"))
     testthat::expect_true(!"SNP" %in% colnames(dat))
@@ -14,6 +14,6 @@ test_that("coords_to_rsids works", {
     
     testthat::expect_error(
       echodata::coords_to_rsids(dat = dat_annot,
-                                snp_colname = "SNP")
+                                SNPname = "SNP")
     )
 })

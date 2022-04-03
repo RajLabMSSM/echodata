@@ -1,3 +1,15 @@
+# echodata 0.99.8
+
+## New features
+
+* `construct_colmap`: Collapses many column mapping args into one function.
+* `standardize_subset` --> `standardize`:
+    - Simplified workflow.  
+    - Operates on only `query` instead of both `query` and  `query_mode`. 
+    - Created subfunctions for each step. 
+    - Removed `liftover` step. 
+    
+
 # echodata 0.99.7 
 
 ## New features

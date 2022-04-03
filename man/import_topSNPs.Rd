@@ -6,20 +6,14 @@
 \usage{
 import_topSNPs(
   topSS,
-  show_table = TRUE,
   sheet = 1,
   munge = TRUE,
-  chrom_col = NULL,
-  position_col = NULL,
-  min_POS_col = NULL,
-  max_POS_col = NULL,
-  snp_col = NULL,
-  pval_col = NULL,
-  effect_col = NULL,
-  locus_col = "Locus",
-  gene_col = "Gene",
+  colmap = construct_colmap(),
+  min_POS = NULL,
+  max_POS = NULL,
   grouping_vars = c("Locus"),
   remove_variants = NULL,
+  show_table = FALSE,
   verbose = TRUE
 )
 }
@@ -33,35 +27,12 @@ If there is more than one SNP per locus, the one with the
 The lead SNP will be used as the center of the locus when
  constructing the locus subset files.}
 
-\item{show_table}{Create an interative data table.}
-
 \item{sheet}{If the \emph{topSS} file is an excel sheet, 
 you can specify which tab to use.
 You can provide either a number to identify the tab by order,
 or a string to identify the tab by name.}
 
 \item{munge}{Standardise column names.}
-
-\item{chrom_col}{Column containing chromosome (can be "chr1" or "1" format).}
-
-\item{position_col}{Column containing genomic position in units of basepairs.}
-
-\item{min_POS_col}{Column containing minimum genomic position 
-(used instead of an arbitrary window size).}
-
-\item{max_POS_col}{Column containing maximum genomic position 
-(used instead of an arbitrary window size).}
-
-\item{snp_col}{Column containing SNP RSIDs.}
-
-\item{pval_col}{Column containing uncorrected p-values.}
-
-\item{effect_col}{Column containing effect size (e.g. Beta, OR).}
-
-\item{locus_col}{Column containing unique locus name.}
-
-\item{gene_col}{An optional column to keep track of the causal 
-gene(s) in each locus (if known).}
 
 \item{grouping_vars}{The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
@@ -71,20 +42,45 @@ GWAS locus pair, you could supply:
 
 \item{remove_variants}{SNPs to remove from \code{topSS},}
 
+\item{show_table}{Create an interative data table.}
+
 \item{verbose}{Print messages.}
+
+\item{CHR}{Column containing chromosome (can be "chr1" or "1" format).}
+
+\item{POS}{Column containing genomic position in units of basepairs.}
+
+\item{SNP}{Column containing SNP RSIDs.}
+
+\item{P}{Column containing uncorrected p-values.}
+
+\item{Effect}{Column containing effect size (e.g. Beta, OR).}
+
+\item{Locus}{Column containing unique locus name.}
+
+\item{min_POS_col}{Column containing minimum genomic position 
+(used instead of an arbitrary window size).}
+
+\item{max_POS_col}{Column containing maximum genomic position 
+(used instead of an arbitrary window size).}
+
+\item{Gene}{An optional column to keep track of the causal 
+gene(s) in each locus (if known).}
 }
 \value{
 Munged topSNPs table.
 }
 \description{
-The resulting top_SNPs data.frame can be used to guide
+The resulting topSNPs data.frame can be used to guide
 the \link[echolocatoR]{finemap_loci} in querying and fine-mapping loci.
 }
 \examples{
 topSNPs <- echodata::import_topSNPs(
-    topSS = echodata::topSNPs_Nalls2019_raw, 
-    pval_col = "P, all studies",
-    effect_col = "Beta, all studies",
-    locus_col = "Nearest Gene", 
-    gene_col = "QTL Nominated Gene (nearest QTL)")
+    topSS = echodata::topSNPs_Nalls2019_raw,
+    colmap = construct_colmap(P = "P, all studies",
+                              Effect = "Beta, all studies",
+                              Locus = "Nearest Gene",
+                              Gene = "QTL Nominated Gene (nearest QTL)"
+                              )
+   )
 }

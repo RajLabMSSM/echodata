@@ -4,48 +4,53 @@
 #' GWAS/QTL summary statistics file specified by \code{fullSS_path}
 #'  (i.e. the "target").
 #'
-#' @param chrom_col Name of the chromosome column in the full summary stats
+#' @param munged Whether \code{fullSS_path} have already been
+#' standardised/filtered  full summary stats
+#' with \link[MungeSumstats]{format_sumstats}.
+#' If \code{munged=FALSE} you'll need to provide the necessary
+#'  column names to the \code{colmap} argument.
+#' @param CHR Name of the chromosome column in the full summary stats
 #' file.
 #' Can be "chr1" or "1" format.
 #' (\emph{default: ="CHR"})
-#' @param position_col Name of the genomic position column in the full summary
+#' @param POS Name of the genomic position column in the full summary
 #' stats file.
 #' Must be in units of basepairs.
 #' (\emph{default: ="POS"})
-#' @param snp_col Name of the SNP RSID column in the full summary stats file.
+#' @param SNP Name of the SNP RSID column in the full summary stats file.
 #' (\emph{default: ="SNP"})
-#' @param pval_col Name of the p-value column in the full summary stats file.
+#' @param P Name of the p-value column in the full summary stats file.
 #' Raw p-values are preferred, but if not available corrected p-values
 #' (e.g. FDR) can be used instead.
 #' (\emph{default: ="P"})
-#' @param effect_col Name of the effect size column in the full summary stats file.
+#' @param Effect Name of the effect size column in the full summary stats file.
 #' Effect size is preferred, but if not available other metrics like Beta for
 #' Odds Ratio can be used instead.
 #' (\emph{default: ="Effect"})
-#' @param stderr_col Name of the standard error
+#' @param StdErr Name of the standard error
 #' column in the full summary stats file.
-#' You can also set \code{stderr_col="calculate"} to infer standard error
+#' You can also set \code{stderr="calculate"} to infer standard error
 #' using: \code{effect / tstat}.
 #' (\emph{default: ="StdErr"})
-#' @param tstat_col Name of the t-statistic column in the full
+#' @param tstat Name of the t-statistic column in the full
 #' summary stats file.
-#' This column is not necessary unless \code{stderr_col="calculate"}
+#' This column is not necessary unless \code{stderr="calculate"}
 #' or the standard error column is missing.
 #' (\emph{default: ="t-stat"})
-#' @param locus_col Name of the locus column in the full summary stats file.
+#' @param Locus Name of the locus column in the full summary stats file.
 #' (\emph{default: ="Locus"})
-#' @param freq_col Name of the allele frequency column in the full
+#' @param Freq Name of the allele frequency column in the full
 #'  summary stats file.
 #' Effect allele frequency is preferred, but the non-effect allele can
 #' be provided instead (though this may be less accurate).
-#' This column is not necessary unless \code{MAF_col="calculate"} or
+#' This column is not necessary unless \code{MAF="calculate"} or
 #'  the MAF column is missing.
 #' (\emph{default: ="Freq"})
-#' @param MAF_col Name of the minor allele frequency column in the
+#' @param MAF Name of the minor allele frequency column in the
 #' full summary stats file.
-#' Can be inferred from \strong{freq_col} if missing from the dataset.
+#' Can be inferred from \strong{freq} if missing from the dataset.
 #' (\emph{default: ="MAF"})
-#' @param A1_col Name of the effect/risk allele column in the full
+#' @param A1 Name of the effect/risk allele column in the full
 #' summary stats.
 #'  \strong{\emph{IMPORTANT}}: Make sure this actually the case for your
 #'   full summary stats file.
@@ -84,11 +89,11 @@
 #'  is known as allele flipping.
 #' This is important when comparing individual SNPs, but can also have an
 #' impact on colocalization results.
-#' @param gene_col For QTL studies, the name of the \[e\]gene column in the
+#' @param Gene For QTL studies, the name of the \[e\]gene column in the
 #' full summary stats file (\emph{default: "gene"}).
 #' This column will be used for filtering summary stats if supplying a named
 #' list of gene:Locus pairs to \code{loci}.
-#' @param N_cases_col Name of the column in the full summary stats that has
+#' @param N_cases Name of the column in the full summary stats that has
 #'  the number of case subjects in the study.
 #' This can either be per SNP sample sizes, or one number repeated
 #' across all rows.
@@ -96,17 +101,17 @@
 #' should be included in this estimate if any were used in the study.
 #' This column is not necesssary if \code{N_cases} parameter is provided.
 #' (\emph{default: ="N_cases"})
-#' @param N_controls_col Name of the column in the full summary stats that
+#' @param N_controls Name of the column in the full summary stats that
 #'  has the number of control subjects in the study.
 #'  This can either be per SNP sample sizes, or one number repeated across
 #'   all rows.
 #'  This column is not necesssary if \code{N_controls} parameter is provided.
 #' (\emph{default: ="N_controls"})
 #' @param N_cases The number of case subjects in the study.
-#'  Instead of providing a redundant \strong{N_cases_col} column,
+#'  Instead of providing a redundant \strong{N_cases} column,
 #'  you can simply enter one value here.
 #' @param N_controls The number of control subjects in the study.
-#'  Instead of providing a redundant \strong{N_controls_col} column,
+#'  Instead of providing a redundant \strong{N_controls} column,
 #'  you can simply enter one value here.
 #' @param proportion_cases The proportion of total subjects in the
 #' study that were cases.
@@ -117,27 +122,53 @@
 #' columns are present,
 #' then sample_size is inferred to be: \code{max(N_cases) + max(N_controls)}.
 #'
-#' @export 
-construct_colmap <- function(chrom_col="CHR",
-                          chrom_type=NULL,
-                          position_col="POS",
-                          snp_col="SNP",
-                          pval_col="P",
-                          effect_col="Effect",
-                          stderr_col="StdErr",
-                          tstat_col="t-stat",
-                          locus_col="Locus",
-                          freq_col="Freq",
-                          MAF_col="MAF",
-                          A1_col = "A1",
-                          A2_col = "A2",
-                          gene_col="Gene",
-                          N_cases_col="N_cases",
-                          N_controls_col="N_controls",
-                          N_cases=NULL,
-                          N_controls=NULL,
-                          proportion_cases="calculate",
-                          sample_size=NULL){
-  match.call()
-
+#' @export
+#' @examples
+#' colmap <- echolocatoR::construct_colmap(munged=TRUE)
+construct_colmap <- function(munged = FALSE,
+                             CHR="CHR",
+                             POS="POS",
+                             SNP="SNP",
+                             P="P",
+                             Effect="Effect",
+                             StdErr="StdErr",
+                             tstat="tstat",
+                             Locus="Locus",
+                             Freq="Freq",
+                             MAF="MAF",
+                             A1="A1",
+                             A2="A2",
+                             Gene="Gene",
+                             N_cases="N_cases",
+                             N_controls="N_controls",
+                             proportion_cases="calculate",
+                             sample_size=NULL,
+                             verbose = TRUE){
+    
+    colmap <- as.list(environment())
+    ## If already munged with MungeSumstats, 
+    ## replace certain standardised colnames.
+    if(munged){
+        messager(
+            "Assuming fullSS_path summary stats have already been",
+            "processed with MungeSumstats.",
+            v=verbose)
+        mss_colmap <- list(CHR="CHR",
+                           POS="BP",
+                           SNP="SNP",
+                           P="P",
+                           Effect="BETA",
+                           StdErr="SE",
+                           MAF="MAF",
+                           Freq="FRQ",
+                           N_cases="N_CAS",
+                           N_controls="N_CON",
+                           A1="A1",
+                           A2="A2",
+                           Gene="GENE")
+        for(x in names(mss_colmap)){
+            colmap[[x]] <- mss_colmap[[x]]
+        }
+    }
+    return(colmap)
 }

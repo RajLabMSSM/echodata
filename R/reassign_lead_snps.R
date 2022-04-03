@@ -3,9 +3,9 @@
 #' Reassign lead SNPs per group.
 #' 
 #' @param merged_dat Merged, multi-locus fine-mapping results data.
-#' @param snp_col Name of the SNP column.
-#' @param pval_col Name of the p-value column.
-#' @param effect_col Name of the Effect column.
+#' @param SNP Name of the SNP column.
+#' @param P Name of the p-value column.
+#' @param Effect Name of the Effect column.
 #' @param grouping_vars Column names to group by when assigning lead SNPs.
 #' @param nThread Number of threads to parallelise across.
 #' @param verbose Print messages.
@@ -19,9 +19,9 @@
 #' merged_dat <- echodata::get_Nalls2019_merged()
 #' merged_dat2 <- echodata::reassign_lead_snps(merged_dat = merged_dat)
 reassign_lead_snps <- function(merged_dat,
-                               snp_col = "SNP",
-                               pval_col = "P",
-                               effect_col = "Effect",
+                               SNP = "SNP",
+                               P = "P",
+                               Effect = "Effect",
                                grouping_vars = c("Dataset", "Locus"),
                                nThread = 1,
                                verbose = TRUE) {  
