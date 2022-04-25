@@ -1,4 +1,4 @@
-standardise_main_colnames <- function(query,
+standardize_main_colnames <- function(query,
                                       colmap, 
                                       verbose=TRUE){
     

@@ -14,21 +14,39 @@ standardize(
   verbose = TRUE
 )
 }
+\arguments{
+\item{query}{data.frame of summary stat.}
+
+\item{subset_path}{Path where the \code{query} should be 
+saved after standardization.}
+
+\item{locus}{Locus name.}
+
+\item{colmap}{Column mapping object.}
+
+\item{return_dt}{Return data.table or path to saved data.table.}
+
+\item{nThread}{Number of threads to parallelise saving across.}
+
+\item{verbose}{Print messages.}
+}
 \description{
 After querying a subset of the full summary statistics,
 this function converts it into a standardized format
 that the rest of \emph{echolocatoR} can work with.
 }
 \examples{
-BST1 <- echodata::BST1
+query <- echodata::BST1
 #### Screw up Freq to see if function can fix it and infer MAF ####
-BST1$rsid <- BST1$SNP
-BST1 <- data.frame(BST1)[,!colnames(BST1) \%in\% c("MAF","SNP")]
-BST1[c(10,30,55),"Freq"] <- 0
-BST1[c(12,22),"Freq"] <- NA
+query$rsid <- query$SNP
+query <- data.frame(query)[,!colnames(query) \%in\% c("MAF","SNP")]
+query[c(10,30,55),"Freq"] <- 0
+query[c(12,22),"Freq"] <- NA
 
 subset_path <- file.path(tempdir(),"BST1.tsv")
-data.table::fwrite(BST1, subset_path)
-query_mod <- echodata::standardize(subset_path = subset_path,
-                                   locus = "BST1")
+data.table::fwrite(query, subset_path)
+query_mod <- echodata::standardize(query = query,
+                                   subset_path = subset_path,
+                                   locus = "BST1",
+                                   colmap = construct_colmap(SNP="rsid"))
 }

@@ -11,25 +11,20 @@
 #'  smallest p-value (then the largest effect size) is selected as the lead SNP.
 #' The lead SNP will be used as the center of the locus when
 #'  constructing the locus subset files.
-#' @param munge Standardise column names.
-#' @param CHR Column containing chromosome (can be "chr1" or "1" format).
-#' @param POS Column containing genomic position in units of basepairs.
-#' @param SNP Column containing SNP RSIDs.
-#' @param P Column containing uncorrected p-values.
-#' @param Effect Column containing effect size (e.g. Beta, OR).
+#' @param munge Standardise column names. 
 #' @param Locus Column containing unique locus name.
 #' @param remove_variants SNPs to remove from \code{topSS},
-#' @param min_POS_col Column containing minimum genomic position 
+#' @param colmap Column mappings object. 
+#' Uses \link[echodata]{construct_colmap} by default. 
+#' @param min_POS Column containing minimum genomic position 
 #' (used instead of an arbitrary window size).
-#' @param max_POS_col Column containing maximum genomic position 
+#' @param max_POS Column containing maximum genomic position 
 #' (used instead of an arbitrary window size).
 #' @param show_table Create an interative data table.
 #' @param sheet If the \emph{topSS} file is an excel sheet, 
 #' you can specify which tab to use.
 #' You can provide either a number to identify the tab by order,
 #' or a string to identify the tab by name.
-#' @param Gene An optional column to keep track of the causal 
-#' gene(s) in each locus (if known).
 #' @param grouping_vars The variables that you want to group by
 #' such that each grouping_var combination has its own index SNP.
 #' For example, if you want one index SNP per QTL eGene - 
@@ -65,7 +60,7 @@ import_topSNPs <- function(topSS,
     
     # echoverseTemplate:::source_all(packages = "dplyr")
     # echoverseTemplate:::args2vars(import_topSNPs)
-    CHR <- Locus <- SNP <- P <- Effect <- NULL;
+    CHR <- SNP <- P <- Effect <- . <- NULL;
     
     #### Check for MungeSumstats early on ####
     if(munge) requireNamespace("MungeSumstats")
@@ -93,12 +88,12 @@ import_topSNPs <- function(topSS,
                                              verbose=verbose)  
     #### Create locus/gene cols #### 
     ## Must happen AFTER any column renaming 
-    topSNPs <- standardise_gene_locus_cols(topSNPs=topSNPs, 
+    topSNPs <- standardize_gene_locus_cols(topSNPs=topSNPs, 
                                             Locus=colmap$Locus,
                                             Gene=colmap$Gene, 
                                             verbose=verbose) 
     #### Standardise colnames ####
-    if(munge){
+    if(isTRUE(munge)){
         topSNPs <- 
             MungeSumstats::standardise_header(
                 sumstats_dt = topSNPs, 

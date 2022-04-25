@@ -1,7 +1,9 @@
-standardize_Gene <- function(query, 
+standardize_gene_col <- function(query, 
                                  colmap,
                                  locus,
                                  verbose=TRUE){
+    
+    Gene <- NULL;
     
     if(colmap$Gene %in% colnames(query)){
         messager("++ Preparing Gene col", v=verbose)

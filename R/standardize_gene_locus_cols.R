@@ -1,4 +1,4 @@
-standardise_gene_locus_cols <- function(topSNPs, 
+standardize_gene_locus_cols <- function(topSNPs, 
                                         Locus="Locus",
                                         Gene="Gene",
                                         verbose=TRUE){

@@ -16,6 +16,3 @@ standardize_gene(dat, Gene = "gene", verbose = TRUE)
 \description{
 Convert ensembl IDs to gene symbols.
 }
-\examples{
-
-}

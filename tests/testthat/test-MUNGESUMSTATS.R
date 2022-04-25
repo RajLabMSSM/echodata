@@ -1,18 +1,12 @@
-test_that("MungeSumstats functions work", {
-  
-    #### mungesumstats_col_map ####
-    col_map <- echodata:::mungesumstats_col_map()
-    testthat::expect_length(col_map, 13)
-    testthat::expect_true(methods::is(col_map,"list"))
+test_that("MungeSumstats functions work", { 
     
-    #### mungesumstats_col_map ####
+    #### mungesumstats_check_syn ####
     dat <- echodata::BST1
     dat <- dplyr::rename(dat, pval = P)
     dat2 <- echodata:::mungesumstats_check_syn(dat = dat,
                                                col_name = "pval")
     testthat::expect_true(!"P" %in% colnames(dat))
     testthat::expect_true("P" %in% colnames(dat2))
-    
     
     #### mungesumstats_to_echolocatoR ####
     # eduAttainOkbayPth <- system.file("extdata","eduAttainOkbay.txt",
@@ -26,5 +20,4 @@ test_that("MungeSumstats functions work", {
     testthat::expect_true(all(c("POS","Freq","Effect") %in% colnames(dat)))
     testthat::expect_true(!all(c("POS","Freq","Effect") %in% colnames(dat_mss)))
     testthat::expect_true(all(c("POS","Freq","Effect") %in% colnames(dat_echoR)))
-    
 })

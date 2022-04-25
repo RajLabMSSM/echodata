@@ -6,12 +6,13 @@
 #'
 #' These functions are necessary for \code{PAINTOR}.
 #' @keywords internal
-zscore_get_mean_and_sd <- function(fullSS,#="./Data/GWAS/Nalls23andMe_2019/nallsEtAl2019_allSamples_allVariants.mod.txt",
+#' @importFrom stats sd
+zscore_get_mean_and_sd <- function(fullSS,
                                    target_col="statistic",
                                    Effect="beta",
                                    stderr_col="se",
                                    use_saved=TRUE,
-                                   output_path){#="./Data/GWAS/Nalls23andMe_2019/z.info.RDS"){
+                                   output_path){
   if(use_saved & file.exists(output_path)){
     messager("Reading in:",output_path,"...")
     z.info <- readRDS(output_path)
@@ -27,7 +28,7 @@ zscore_get_mean_and_sd <- function(fullSS,#="./Data/GWAS/Nalls23andMe_2019/nalls
       sample_x <- data.table::fread(fullSS, nThread = 1, select=c(target_col))
     }
     sample.mean <- mean(sample_x[[1]], na.rm = TRUE)
-    sample.stdv <- sd(sample_x[[1]])
+    sample.stdv <- stats::sd(sample_x[[1]])
     z.info <- list(file.name=fullSS,
                    colname=target_col,
                    sample.mean=sample.mean,

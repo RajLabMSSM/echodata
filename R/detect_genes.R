@@ -3,6 +3,9 @@
 #' Allows summary stats from different genes to be
 #' fine-mapped separately.
 #' 
+#' @param loci (Named) character vector of locus names.
+#' @param verbose Print messages. 
+#' 
 #' @export
 #' @importFrom dplyr n_distinct
 #' @examples

@@ -22,4 +22,3 @@ Order loci by UCS size, or alphabetically.
 merged_DT <- echodata::get_Nalls2019_merged()
 merged_DT2 <- echodata::order_loci(dat=merged_DT)
 }
-\keyword{export}

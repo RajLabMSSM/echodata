@@ -6,6 +6,11 @@
 \usage{
 detect_genes(loci, verbose = FALSE)
 }
+\arguments{
+\item{loci}{(Named) character vector of locus names.}
+
+\item{verbose}{Print messages.}
+}
 \description{
 Allows summary stats from different genes to be
 fine-mapped separately.

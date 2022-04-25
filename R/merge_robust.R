@@ -37,7 +37,7 @@ merge_robust <- function(x,
                                       ...)
     #### Check for duplicates ####
     if(!is.null(by) && dup_stop){
-        dups <- sum(duplicated( z[,..by] ))
+        dups <- sum(duplicated( z[,by,with=FALSE] ))
         if(dups>0) {
             stp <- paste(dups,"duplicates detected in",by,
                          "column after merge.")
@@ -47,8 +47,8 @@ merge_robust <- function(x,
     #### Check for equal number of NAs as before ####
     y_cols <- colnames(y)[!colnames(y) %in% by] 
     ## Check if these columns were all NAs before merging
-    all_nas_before <- all(is.na(y[,..y_cols]))
-    all_nas <- all(is.na(z[,..y_cols]))
+    all_nas_before <- all(is.na(y[,y_cols,with=FALSE]))
+    all_nas <- all(is.na(z[,y_cols,with=FALSE]))
     if(all_nas && na_stop && !all_nas_before){
         stp2 <- paste("All NAs detected in all columns from data.table y.")
         stop(stp2)

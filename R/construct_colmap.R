@@ -51,44 +51,9 @@
 #' Can be inferred from \strong{freq} if missing from the dataset.
 #' (\emph{default: ="MAF"})
 #' @param A1 Name of the effect/risk allele column in the full
-#' summary stats.
-#'  \strong{\emph{IMPORTANT}}: Make sure this actually the case for your
-#'   full summary stats file.
-#' Unfortunately, different studies report different kinds of allele
-#' information in a non-standardized way.
-#' Meaning that A1/A2 can refer to any number of things:
-#'  \describe{
-#'  \item{effect/other alleles}{in the case of diseases}
-#'  \item{ref/alt alleles}{where ref is the reference genome being used}
-#'  \item{major/minor alleles}{This dichotomy holds true for bi-allelic
-#'   SNPs but not necessary multi-allelic SNPs}
-#'  }
-#'  This makes comparing summary stats across GWAS/QTL datasets very
-#'  confusing for several reasons:
-#'  \describe{
-#'  \item{Multi-allelic SNPs}{SNPs can have more than just 2 possible
-#'  alleles (multi-allelic SNPs). Even if you compare the same SNP
-#'  between two studies, you may accidentally be comparing
-#'  totally different alleles.}
-#'  \item{Valence}{The valence (+/-) of per-SNP GWAS effect sizes/beta
-#'   can be relative to different allele types between studies.
-#'  For example, let's say in one GWAS study your effect size for
-#'   SNP A is 1.5 relative to the major allele in one study,
-#'   and the minor allele happens to be the one found in the reference genome.
-#'   You then try to compare that effect size to that of the same
-#'   SNP in another GWAS.
-#'   But, the valence of the effect sizes in the 2nd GWAS study are all
-#'   relative to the reference genome (instead of the minor allele),
-#'   giving the same SNP a value of -1.2. If you took the effect sizes
-#'    at face value you'd say the signals are in opposite directions.
-#'   But once you take into account how the valences were determined in
-#'    each study you realize that they're actually both positive relative
-#'     to the major allele.}
-#'  }
-#' This process of reversing per-SNP valences based on aligning the alleles
-#'  is known as allele flipping.
-#' This is important when comparing individual SNPs, but can also have an
-#' impact on colocalization results.
+#' summary stats. 
+#' @param A2 Name of the other/non-risk allele column in the full
+#' summary stats. 
 #' @param Gene For QTL studies, the name of the \[e\]gene column in the
 #' full summary stats file (\emph{default: "gene"}).
 #' This column will be used for filtering summary stats if supplying a named
@@ -105,7 +70,7 @@
 #'  has the number of control subjects in the study.
 #'  This can either be per SNP sample sizes, or one number repeated across
 #'   all rows.
-#'  This column is not necesssary if \code{N_controls} parameter is provided.
+#'  This column is not necessary if \code{N_controls} parameter is provided.
 #' (\emph{default: ="N_controls"})
 #' @param N_cases The number of case subjects in the study.
 #'  Instead of providing a redundant \strong{N_cases} column,
@@ -121,10 +86,11 @@
 #' If none is given, and \strong{N_cases} and \strong{N_controls}
 #' columns are present,
 #' then sample_size is inferred to be: \code{max(N_cases) + max(N_controls)}.
-#'
+#' @param verbose Print messages.
+#' 
 #' @export
 #' @examples
-#' colmap <- echolocatoR::construct_colmap(munged=TRUE)
+#' colmap <- echodata::construct_colmap(munged=TRUE)
 construct_colmap <- function(munged = FALSE,
                              CHR="CHR",
                              POS="POS",

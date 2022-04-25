@@ -6,6 +6,13 @@
 \usage{
 auto_topSNPs_sub(topSNPs, query, locus)
 }
+\arguments{
+\item{topSNPs}{Output of \link[echodata]{import_topSNPs}.}
+
+\item{query}{Summary stats subset.}
+
+\item{locus}{Locus name.}
+}
 \description{
 If no \code{topSNPs} dataframe is supplied,
  this function will sort by p-value and then effect size,
@@ -16,3 +23,4 @@ Other standardization functions:
 \code{\link{calculate_tstat}()}
 }
 \concept{standardization functions}
+\keyword{internal}

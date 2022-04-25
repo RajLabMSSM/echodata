@@ -5,6 +5,7 @@
 #' If multiple rows have the same p-value, 
 #'  the one with the largest effective size ("Effect") is used as the lead SNP.
 #' @param dat Fine-mapping data.table.
+#' @param grouping_vars Column names to group by.
 #' @param verbose Print messages.
 #' @returns Modified data.table.
 #' 

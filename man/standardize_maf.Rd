@@ -6,6 +6,13 @@
 \usage{
 standardize_maf(query, colmap, verbose = TRUE)
 }
+\arguments{
+\item{query}{data.frame of summary stat.}
+
+\item{colmap}{Column mapping object.}
+
+\item{verbose}{Print messages.}
+}
 \description{
 Standardize Minor Allele Frequency column.
 Will infer MAF from frequency column, assuming that 

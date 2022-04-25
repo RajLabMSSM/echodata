@@ -12,7 +12,7 @@ standardize_maf <- function(query,
                             colmap,
                             verbose=TRUE){
     
-    Freq <- NULL;
+    Freq <- MAF <- NULL;
     messager("++ Preparing MAF,Freq cols.", v=verbose)
     if(any(colmap$MAF %in% colnames(query))){
         query <- query %>% dplyr::rename(MAF=colmap$MAF)

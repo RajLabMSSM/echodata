@@ -5,10 +5,9 @@
 #' @param dat GWAS/QTL summary statistics data.
 #' @param Gene Name of the gene column in \code{dat}.
 #' @param verbose Print messages.
-#' @export
-#' @importFrom tidyr separate
-#' @examples 
 #' 
+#' @export
+#' @importFrom tidyr separate 
 standardize_gene <- function(dat,
                              Gene="gene",
                              verbose=TRUE){

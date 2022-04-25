@@ -34,6 +34,15 @@ or a string to identify the tab by name.}
 
 \item{munge}{Standardise column names.}
 
+\item{colmap}{Column mappings object. 
+Uses \link[echodata]{construct_colmap} by default.}
+
+\item{min_POS}{Column containing minimum genomic position 
+(used instead of an arbitrary window size).}
+
+\item{max_POS}{Column containing maximum genomic position 
+(used instead of an arbitrary window size).}
+
 \item{grouping_vars}{The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
 For example, if you want one index SNP per QTL eGene - 
@@ -46,26 +55,7 @@ GWAS locus pair, you could supply:
 
 \item{verbose}{Print messages.}
 
-\item{CHR}{Column containing chromosome (can be "chr1" or "1" format).}
-
-\item{POS}{Column containing genomic position in units of basepairs.}
-
-\item{SNP}{Column containing SNP RSIDs.}
-
-\item{P}{Column containing uncorrected p-values.}
-
-\item{Effect}{Column containing effect size (e.g. Beta, OR).}
-
 \item{Locus}{Column containing unique locus name.}
-
-\item{min_POS_col}{Column containing minimum genomic position 
-(used instead of an arbitrary window size).}
-
-\item{max_POS_col}{Column containing maximum genomic position 
-(used instead of an arbitrary window size).}
-
-\item{Gene}{An optional column to keep track of the causal 
-gene(s) in each locus (if known).}
 }
 \value{
 Munged topSNPs table.

@@ -4,8 +4,13 @@
 #'  this function will sort by p-value and then effect size,
 #'  and use the SNP in the first row.
 #'
+#' @param topSNPs Output of \link[echodata]{import_topSNPs}.
+#' @param query Summary stats subset.
+#' @param locus Locus name.
+#' 
 #' @family standardization functions
 #' @importFrom dplyr %>% arrange mutate desc group_by slice
+#' @keywords internal
 auto_topSNPs_sub <- function(topSNPs,
                              query,
                              locus){

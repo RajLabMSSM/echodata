@@ -1,6 +1,10 @@
 # echodata 0.99.9
 
+## New features
+
 * `get_header`: Can now handle VCFs (assuming #CHROM is the comment char).
+* Moved `get_CS_bins` and `get_CS_counts` from `echoannot` --> `echodata`. 
+* Passing all CRAN checks!
 
 # echodata 0.99.8
 

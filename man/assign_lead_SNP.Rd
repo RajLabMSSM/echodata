@@ -9,6 +9,8 @@ assign_lead_snp(dat, grouping_vars = "Locus", verbose = TRUE)
 \arguments{
 \item{dat}{Fine-mapping data.table.}
 
+\item{grouping_vars}{Column names to group by.}
+
 \item{verbose}{Print messages.}
 }
 \value{
