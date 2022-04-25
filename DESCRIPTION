@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
 Title: echoverse module: Fine-mapping data access and formatting
-Version: 0.99.8
+Version: 0.99.9
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -58,8 +58,7 @@ Suggests:
     SNPlocs.Hsapiens.dbSNP144.GRCh37,
     SNPlocs.Hsapiens.dbSNP144.GRCh38,
     biomaRt, 
-    arrow, 
-    Rsamtools,
+    arrow,  
     ggplot2,
     orthogene
 Remotes:

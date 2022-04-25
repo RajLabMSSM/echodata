@@ -27,10 +27,21 @@ get_header <- function(path,
         } 
         path <- tmp
     }  
-  ### Reading in this way is more robust and able to handle bgz format.
-  header <- data.table::fread(text=readLines(con = path,
-                                             n = nrows+1L),
-                              nThread = nThread)
+    #### Determine if VCF ####
+    is_vcf <-  any(endsWith(tolower(path),c(".vcf",".vcf.gz",".vcf.bgz")))
+    if(is_vcf){
+        header <- data.table::fread(text = readLines(con = path, 
+                                                     n = nrows+1000),
+                                    skip = "#CHROM",
+                                    nThread = nThread, 
+                                    nrows = nrows)
+    } else {
+        ### Reading in this way is more robust and able to handle bgz format.
+        header <- data.table::fread(text=readLines(con = path,
+                                                   n = nrows+1L),
+                                    nThread = nThread)
+    }
+    
   if(colnames_only) header <- colnames(header)
   return(header)
 }

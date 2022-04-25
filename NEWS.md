@@ -1,3 +1,7 @@
+# echodata 0.99.9
+
+* `get_header`: Can now handle VCFs (assuming #CHROM is the comment char).
+
 # echodata 0.99.8
 
 ## New features

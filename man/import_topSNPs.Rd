@@ -81,6 +81,6 @@ topSNPs <- echodata::import_topSNPs(
                               Effect = "Beta, all studies",
                               Locus = "Nearest Gene",
                               Gene = "QTL Nominated Gene (nearest QTL)"
-                              )
-   )
+                              ),
+    grouping_vars = "Locus Number")
 }
