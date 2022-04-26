@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
       </span>
     </div>
 
@@ -61,27 +61,48 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.9" id="echodata-0999">echodata 0.99.9<a class="anchor" aria-label="anchor" href="#echodata-0999"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-99-9">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-9"></a></h3>
+<ul><li>
+<code>get_header</code>: Can now handle VCFs (assuming #CHROM is the comment char).</li>
+<li>Moved <code>get_CS_bins</code> and <code>get_CS_counts</code> from <code>echoannot</code> –&gt; <code>echodata</code>.</li>
+<li>Passing all CRAN checks!</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.8" id="echodata-0998">echodata 0.99.8<a class="anchor" aria-label="anchor" href="#echodata-0998"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-99-8">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-8"></a></h3>
+<ul><li>
+<code>construct_colmap</code>: Collapses many column mapping args into one function.</li>
+<li>
+<code>standardize_subset</code> –&gt; <code>standardize</code>:
+<ul><li>Simplified workflow.<br></li>
+<li>Operates on only <code>query</code> instead of both <code>query</code> and <code>query_mode</code>.</li>
+<li>Created subfunctions for each step.</li>
+<li>Removed <code>liftover</code> step.</li>
+</ul></li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.7" id="echodata-0997">echodata 0.99.7<a class="anchor" aria-label="anchor" href="#echodata-0997"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-7">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-7"></a></h3>
 <ul><li>New functions:
-<ul><li><code>read_bgz</code></li>
-<li><code>preview</code></li>
+<ul><li><code>preview</code></li>
+<li><code>is_local</code></li>
+<li><code>is_url</code></li>
 </ul></li>
 <li>Increased test coverage to &gt;88%.</li>
-<li>Removed
-<code>standardise_sumstats_column_headers_crossplatform</code> to use
-directly from <code>MungeSumstats</code>.</li>
+<li>Removed <code>standardise_sumstats_column_headers_crossplatform</code> to use directly from <code>MungeSumstats</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-99-7">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-7"></a></h3>
 <ul><li>
 <code>import_topSNPs</code>:
-<ul><li>Now uses
-<code>standardise_sumstats_column_headers_crossplatform</code> exported
-function when <code>munge=TRUE</code>.</li>
-<li>Both standardisation strategies no longer interfere with one another
-when used at the same time.</li>
+<ul><li>Now uses <code>standardise_sumstats_column_headers_crossplatform</code> exported function when <code>munge=TRUE</code>.</li>
+<li>Both standardisation strategies no longer interfere with one another when used at the same time.</li>
 </ul></li>
 </ul></div>
 </div>
@@ -91,19 +112,15 @@ when used at the same time.</li>
 <h3 id="new-features-0-99-6">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-6"></a></h3>
 <ul><li>Added .zzz file with <code>.datatable.aware &lt;- TRUE</code>
 </li>
-<li>Added new function <code>merge_robust</code> to address issues with
-<code>data.table</code>.
+<li>Added new function <code>merge_robust</code> to address issues with <code>data.table</code>.
 <ul><li>See here for Issues: <a href="https://github.com/RajLabMSSM/echolocatoR/issues/72#issuecomment-1059423642" class="external-link uri">https://github.com/RajLabMSSM/echolocatoR/issues/72#issuecomment-1059423642</a>
 </li>
 </ul></li>
 <li>
-<code>import_topSNPs</code>: Added example and documented all
-params.</li>
-<li>Rename <code>MUNGESUMSTATS.*</code> functions to
-<code>mungesumstats_</code>.</li>
+<code>import_topSNPs</code>: Added example and documented all params.</li>
+<li>Rename <code>MUNGESUMSTATS.*</code> functions to <code>mungesumstats_</code>.</li>
 <li>
-<code>get_sample_size</code>: Add unit tests and new
-<code>return_only</code> function for min/max.</li>
+<code>get_sample_size</code>: Add unit tests and new <code>return_only</code> function for min/max.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -119,11 +136,8 @@ params.</li>
 <div class="section level3">
 <h3 id="bug-fixes-0-99-5">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-5"></a></h3>
 <ul><li>
-<code>reassign_lead_snps</code>: Handle situations where none of the
-<code>grouping_vars</code> are available.</li>
-<li>Fix error in reporting number of Consensus_SNPs in
-<code>find_consensus_snps</code> (only affected console message, not the
-actual data).</li>
+<code>reassign_lead_snps</code>: Handle situations where none of the <code>grouping_vars</code> are available.</li>
+<li>Fix error in reporting number of Consensus_SNPs in <code>find_consensus_snps</code> (only affected console message, not the actual data).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -159,20 +173,16 @@ actual data).</li>
 <h2 class="page-header" data-toc-text="0.99.3" id="echodata-0993">echodata 0.99.3<a class="anchor" aria-label="anchor" href="#echodata-0993"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-3">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-3"></a></h3>
-<ul><li>Added new function <code>coords_to_rsids</code>, copied over from
-<code>catalogueR</code>.</li>
+<ul><li>Added new function <code>coords_to_rsids</code>, copied over from <code>catalogueR</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.2" id="echodata-0992">echodata 0.99.2<a class="anchor" aria-label="anchor" href="#echodata-0992"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-2">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-2"></a></h3>
-<ul><li>Added a <code>NEWS.md</code> file to track changes to the
-package.</li>
-<li>Added new function <code>assign_lead_SNP</code> with unit
-tests.</li>
-<li>Added unit tests for <code>createDT</code> and
-<code>MUNGESUMSTATS.*</code> functions.</li>
+<ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+<li>Added new function <code>assign_lead_SNP</code> with unit tests.</li>
+<li>Added unit tests for <code>createDT</code> and <code>MUNGESUMSTATS.*</code> functions.</li>
 <li>Removed unused functions.</li>
 <li>Added dynamic badges to README.</li>
 </ul></div>
@@ -193,8 +203,7 @@ tests.</li>
 <h2 class="page-header" data-toc-text="0.99.0" id="echodata-0990-1">echodata 0.99.0<a class="anchor" aria-label="anchor" href="#echodata-0990-1"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-0-1">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-0-1"></a></h3>
-<ul><li>Functions extracted from <code>echolocatoR</code> to create
-<code>echodata</code>.</li>
+<ul><li>Functions extracted from <code>echolocatoR</code> to create <code>echodata</code>.</li>
 </ul></div>
 </div>
   </div>
@@ -211,8 +220,7 @@ tests.</li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer></div>

@@ -34,10 +34,19 @@
     <loc>/reference/MEX3C.html</loc>
   </url>
   <url>
+    <loc>/reference/Zscore.html</loc>
+  </url>
+  <url>
     <loc>/reference/assign_lead_SNP.html</loc>
   </url>
   <url>
+    <loc>/reference/auto_topSNPs_sub.html</loc>
+  </url>
+  <url>
     <loc>/reference/biomart_geneInfo.html</loc>
+  </url>
+  <url>
+    <loc>/reference/calculate_tstat.html</loc>
   </url>
   <url>
     <loc>/reference/check_if_empty.html</loc>
@@ -46,13 +55,16 @@
     <loc>/reference/column_dictionary.html</loc>
   </url>
   <url>
-    <loc>/reference/column_map.html</loc>
+    <loc>/reference/construct_colmap.html</loc>
   </url>
   <url>
     <loc>/reference/coords_to_rsids.html</loc>
   </url>
   <url>
     <loc>/reference/createDT.html</loc>
+  </url>
+  <url>
+    <loc>/reference/detect_genes.html</loc>
   </url>
   <url>
     <loc>/reference/dt_to_granges.html</loc>
@@ -79,10 +91,19 @@
     <loc>/reference/find_top_consensus.html</loc>
   </url>
   <url>
+    <loc>/reference/fix_coltypes.html</loc>
+  </url>
+  <url>
     <loc>/reference/gene_trimmer.html</loc>
   </url>
   <url>
     <loc>/reference/genome_wide_dir.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_CS_bins.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_CS_counts.html</loc>
   </url>
   <url>
     <loc>/reference/get_Kunkle2019.html</loc>
@@ -98,6 +119,9 @@
   </url>
   <url>
     <loc>/reference/get_header.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_nrows.html</loc>
   </url>
   <url>
     <loc>/reference/get_sample_size.html</loc>
@@ -130,6 +154,12 @@
     <loc>/reference/is_granges.html</loc>
   </url>
   <url>
+    <loc>/reference/is_local.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_url.html</loc>
+  </url>
+  <url>
     <loc>/reference/limit_snps.html</loc>
   </url>
   <url>
@@ -148,10 +178,10 @@
     <loc>/reference/mungesumstats_check_syn.html</loc>
   </url>
   <url>
-    <loc>/reference/mungesumstats_col_map.html</loc>
+    <loc>/reference/mungesumstats_to_echolocatoR.html</loc>
   </url>
   <url>
-    <loc>/reference/mungesumstats_to_echolocatoR.html</loc>
+    <loc>/reference/order_loci.html</loc>
   </url>
   <url>
     <loc>/reference/portal_metadata.html</loc>
@@ -161,9 +191,6 @@
   </url>
   <url>
     <loc>/reference/preview.html</loc>
-  </url>
-  <url>
-    <loc>/reference/read_bgz.html</loc>
   </url>
   <url>
     <loc>/reference/read_parquet.html</loc>
@@ -176,6 +203,15 @@
   </url>
   <url>
     <loc>/reference/snp_group_filters.html</loc>
+  </url>
+  <url>
+    <loc>/reference/standardize.html</loc>
+  </url>
+  <url>
+    <loc>/reference/standardize_gene.html</loc>
+  </url>
+  <url>
+    <loc>/reference/standardize_maf.html</loc>
   </url>
   <url>
     <loc>/reference/sumstatsColHeaders.html</loc>
@@ -197,5 +233,8 @@
   </url>
   <url>
     <loc>/reference/write_parquet.html</loc>
+  </url>
+  <url>
+    <loc>/reference/zscore_get_mean_and_sd.html</loc>
   </url>
 </urlset>

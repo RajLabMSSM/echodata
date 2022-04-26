@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
       </span>
     </div>
 
@@ -92,6 +92,10 @@
         </td>
         <td><p>Map column names to positions.</p></td>
       </tr><tr><td>
+          <p><code><a href="construct_colmap.html">construct_colmap()</a></code> </p>
+        </td>
+        <td><p>Target column map</p></td>
+      </tr><tr><td>
           <p><code><a href="coords_to_rsids.html">coords_to_rsids()</a></code> </p>
         </td>
         <td><p>Get RSIDS from SNP coordinates</p></td>
@@ -99,6 +103,10 @@
           <p><code><a href="createDT.html">createDT()</a></code> </p>
         </td>
         <td><p>Interactive DT</p></td>
+      </tr><tr><td>
+          <p><code><a href="detect_genes.html">detect_genes()</a></code> </p>
+        </td>
+        <td><p>Detect QTL genes in full summary stats file</p></td>
       </tr><tr><td>
           <p><code><a href="dt_to_granges.html">dt_to_granges()</a></code> </p>
         </td>
@@ -132,9 +140,21 @@
         </td>
         <td><p>Find the top Consensus SNP</p></td>
       </tr><tr><td>
+          <p><code><a href="fix_coltypes.html">fix_coltypes()</a></code> </p>
+        </td>
+        <td><p>Automatically fix column types</p></td>
+      </tr><tr><td>
           <p><code><a href="genome_wide_dir.html">genome_wide_dir</a></code> </p>
         </td>
         <td><p>Example results path for genome-wide results</p></td>
+      </tr><tr><td>
+          <p><code><a href="get_CS_bins.html">get_CS_bins()</a></code> </p>
+        </td>
+        <td><p>Get Credible Set bins</p></td>
+      </tr><tr><td>
+          <p><code><a href="get_CS_counts.html">get_CS_counts()</a></code> </p>
+        </td>
+        <td><p>Get Credible Set SNP counts</p></td>
       </tr><tr><td>
           <p><code><a href="get_Kunkle2019.html">get_Kunkle2019()</a></code> </p>
         </td>
@@ -151,6 +171,10 @@
           <p><code><a href="get_header.html">get_header()</a></code> </p>
         </td>
         <td><p>Get file header</p></td>
+      </tr><tr><td>
+          <p><code><a href="get_nrows.html">get_nrows()</a></code> </p>
+        </td>
+        <td><p>Get nrows</p></td>
       </tr><tr><td>
           <p><code><a href="get_sample_size.html">get_sample_size()</a></code> </p>
         </td>
@@ -180,6 +204,10 @@
         </td>
         <td><p>Is an object of class GRanges</p></td>
       </tr><tr><td>
+          <p><code><a href="is_local.html">is_local()</a></code> </p>
+        </td>
+        <td><p>Is local</p></td>
+      </tr><tr><td>
           <p><code><a href="limit_snps.html">limit_snps()</a></code> </p>
         </td>
         <td><p>Limit the number of SNPs per locus.</p></td>
@@ -196,13 +224,13 @@
         </td>
         <td><p>Merge robust</p></td>
       </tr><tr><td>
-          <p><code><a href="mungesumstats_col_map.html">mungesumstats_col_map()</a></code> </p>
-        </td>
-        <td><p>Column name mappings from <span class="pkg">MungeSumstats</span> to <span class="pkg">echolocatoR</span></p></td>
-      </tr><tr><td>
           <p><code><a href="mungesumstats_to_echolocatoR.html">mungesumstats_to_echolocatoR()</a></code> </p>
         </td>
         <td><p>Convert from <span class="pkg">MungeSumstats</span> to <span class="pkg">echolocatoR</span> format</p></td>
+      </tr><tr><td>
+          <p><code><a href="order_loci.html">order_loci()</a></code> </p>
+        </td>
+        <td><p>Order loci</p></td>
       </tr><tr><td>
           <p><code><a href="portal_metadata.html">portal_metadata()</a></code> </p>
         </td>
@@ -215,10 +243,6 @@
           <p><code><a href="preview.html">preview()</a></code> </p>
         </td>
         <td><p>Preview formatted sum stats saved to disk</p></td>
-      </tr><tr><td>
-          <p><code><a href="read_bgz.html">read_bgz()</a></code> </p>
-        </td>
-        <td><p>Read bgz</p></td>
       </tr><tr><td>
           <p><code><a href="read_parquet.html">read_parquet()</a></code> </p>
         </td>
@@ -235,6 +259,14 @@
           <p><code><a href="snp_group_filters.html">snp_group_filters()</a></code> </p>
         </td>
         <td><p>Get SNP group filters</p></td>
+      </tr><tr><td>
+          <p><code><a href="standardize.html">standardize()</a></code> </p>
+        </td>
+        <td><p>Standardize the locus subset</p></td>
+      </tr><tr><td>
+          <p><code><a href="standardize_gene.html">standardize_gene()</a></code> </p>
+        </td>
+        <td><p>Standardize genes</p></td>
       </tr><tr><td>
           <p><code><a href="sumstatsColHeaders.html">sumstatsColHeaders</a></code> </p>
         </td>
@@ -272,8 +304,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer></div>

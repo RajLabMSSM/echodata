@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
       </span>
     </div>
 
@@ -66,13 +66,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_header</span><span class="op">(</span><span class="va">file</span>, colnames_only <span class="op">=</span> <span class="cn">TRUE</span>, nrows <span class="op">=</span> <span class="fl">2L</span>, nThread <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_header</span><span class="op">(</span><span class="va">path</span>, colnames_only <span class="op">=</span> <span class="cn">TRUE</span>, nrows <span class="op">=</span> <span class="fl">2L</span>, nThread <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>file</dt>
-<dd><p>File name in working directory, path to file (passed through <code><a href="https://rdrr.io/r/base/path.expand.html" class="external-link">path.expand</a></code> for convenience), or a URL starting http://, file://, etc. Compressed files with extension <code class="file">.gz</code> and <code class="file">.bz2</code> are supported if the <code>R.utils</code> package is installed.</p></dd>
+    <dl><dt>path</dt>
+<dd><p>Path to local file or remote URL.</p></dd>
 <dt>colnames_only</dt>
 <dd><p>Whether to return only column names 
 (default: <code>TRUE</code>), or the first <code>n</code> rows as well.</p></dd>
@@ -86,7 +86,7 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".tsv.gz"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fwrite.html" class="external-link">fwrite</a></span><span class="op">(</span><span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span>, file <span class="op">=</span> <span class="va">tmp</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span> </span>
-<span class="r-in"><span class="va">header</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">get_header</span><span class="op">(</span>file<span class="op">=</span><span class="va">tmp</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">header</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">get_header</span><span class="op">(</span>path<span class="op">=</span><span class="va">tmp</span><span class="op">)</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -101,8 +101,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ Used to query locus subsets.for fine-mapping."><!-- mathjax --><script src="http
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
       </span>
     </div>
 
@@ -98,16 +98,16 @@ topSS &lt;- merge(topSS,
               "1BgLQaRZd9L7JoO8IbpzhUCRFdTdLgJvD/edit#gid=236666677"),
     overwrite = TRUE)
 meta &lt;- readxl::read_excel(paths$local_path, sheet = "GWAS")
-meta &lt;- subset(meta, dataset=="Kunkle_2019")top_SNPs &lt;- echodata::import_topSNPs(
+meta &lt;- subset(meta, dataset=="Kunkle_2019")topSNPs &lt;- echodata::import_topSNPs(
     topSS = topSS,
     sheet = meta$top_sheet,
-    chrom_col = meta$top_chrom,
-    position_col = meta$top_pos,
-    snp_col = meta$top_snp,
-    pval_col = "P",
-    effect_col = "BETA",
-    locus_col = meta$top_locus)
-topSNPs_Kunkle2019 &lt;- top_SNPs
+    CHR = meta$top_chrom,
+    POS = meta$top_pos,
+    SNP = meta$top_snp,
+    P = "P",
+    Effect = "BETA",
+    Locus = meta$top_locus)
+topSNPs_Kunkle2019 &lt;- topSNPs
 usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
 </code></p>
     </div>
@@ -124,8 +124,7 @@ usethis::use_data(topSNPs_Kunkle2019, overwrite=TRUE)
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer></div>
