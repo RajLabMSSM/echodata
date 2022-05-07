@@ -6,6 +6,11 @@
 * Moved `get_CS_bins` and `get_CS_counts` from `echoannot` --> `echodata`. 
 * Passing all CRAN checks!
 
+## Bug fixes
+
+* Fix GHA pkgdown building: 
+    - The newest version of [git introduced bugs when building pkgdown sites](https://github.com/actions/checkout/issues/760) from within Docker containers (e.g. via my Linux GHA workflow). Adjusting GHA to fix this. 
+
 # echodata 0.99.8
 
 ## New features
