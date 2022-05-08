@@ -1,4 +1,11 @@
-#' get data via \pkg{piggyback}
+#' Get data
+#' 
+#' Download remote resources stored on GitHub Releases via \pkg{piggyback}.
+#' 
+#' @param fname File name.
+#' @param repo GitHub repository name.
+#' @param save_dir Local directory to cache data in.
+#' @inheritParams piggyback::pb_download
 #' 
 #' @keywords internal
 #' @importFrom piggyback pb_download

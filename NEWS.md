@@ -5,6 +5,7 @@
 * Remove `MungeSumstats` from *Remotes*.
 * Passing all CRAN checks. 
 * Cache datasets. 
+* New `get_Nalls2019_loci` function, to easily write example loci to disk and return paths. 
 
 ## Bug fixes
 

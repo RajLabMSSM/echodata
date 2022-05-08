@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_data.R
 \name{get_data}
 \alias{get_data}
-\title{get data via \pkg{piggyback}}
+\title{Get data}
 \usage{
 get_data(
   fname,
@@ -11,7 +11,17 @@ get_data(
   overwrite = FALSE
 )
 }
+\arguments{
+\item{fname}{File name.}
+
+\item{repo}{GitHub repository name.}
+
+\item{save_dir}{Local directory to cache data in.}
+
+\item{overwrite}{Should any local files of the same name be overwritten?
+default \code{TRUE}.}
+}
 \description{
-get data via \pkg{piggyback}
+Download remote resources stored on GitHub Releases via \pkg{piggyback}.
 }
 \keyword{internal}

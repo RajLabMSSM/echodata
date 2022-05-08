@@ -43,7 +43,7 @@
 #' } 
 #' @export
 #' @importFrom data.table fread
-get_Nalls2019_merged<- function(){
+get_Nalls2019_merged<- function(){ 
     tmp <- get_data(fname = "Nalls2019_merged.tsv.gz")
     dat <- data.table::fread(tmp, nThread = 1)
     return(dat)
