@@ -30,8 +30,9 @@ github_find_pages <- function(creator = "RajLabMSSM",
         message("WARNING: No files identified.")
         return(NULL)
     }
-    gh_pages_url <- file.path(paste0("https://", creator, ".github.io"), repo)
-    gh_pages_links <- file.path(gh_pages_url, filelist)
+    gh_pages_url <- paste(paste0("https://", creator, ".github.io"), 
+                          repo,sep="/")
+    gh_pages_links <- paste(gh_pages_url, filelist, sep="/")
     if (return_table) {
         links_df <- data.table::data.table(
             creator = creator,

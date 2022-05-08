@@ -99,10 +99,10 @@
 #' \code{
 #' local <- file.path(tempdir(),"Nalls2019_TableS2.xlsx")
 #' utils::download.file(
-#'     file.path("https://github.com/RajLabMSSM/Fine_Mapping",
+#'     paste("https://github.com/RajLabMSSM/Fine_Mapping",
 #'               "raw/master/Data/GWAS/Nalls23andMe_2019",
 #'               "Nalls2019_TableS2.xlsx"),
-#'     local)
+#'     local, sep="/")
 #' topSNPs_Nalls2019_raw <- data.table::data.table(readxl::read_excel(local))
 #' usethis::use_data(topSNPs_Nalls2019_raw, overwrite=TRUE)
 #' }

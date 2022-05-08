@@ -37,7 +37,7 @@ that the rest of \emph{echolocatoR} can work with.
 }
 \examples{
 query <- echodata::BST1
-#### Screw up Freq to see if function can fix it and infer MAF ####
+#### Screw up data
 query$rsid <- query$SNP
 query <- data.frame(query)[,!colnames(query) \%in\% c("MAF","SNP")]
 query[c(10,30,55),"Freq"] <- 0

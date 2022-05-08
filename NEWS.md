@@ -1,3 +1,9 @@
+# echodata 0.99.10
+
+## Bug fixes
+
+* Use `paste` instead of `file.path` to construct portal query URLs.
+
 # echodata 0.99.9
 
 ## New features

@@ -4,7 +4,7 @@
 \alias{portal_metadata}
 \title{Import metadata}
 \usage{
-portal_metadata(verbose = TRUE)
+portal_metadata(verbose = TRUE, timeout = 60)
 }
 \arguments{
 \item{verbose}{Print messages.}

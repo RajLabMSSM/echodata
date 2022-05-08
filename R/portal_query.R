@@ -86,9 +86,10 @@ portal_query <- function(dataset_types = NULL,
         "LD" = ".LD.csv.gz",
         "plot" = ".png"
     )
-    shiny_data_url <- file.path(
+    shiny_data_url <- paste(
         "https://github.com/RajLabMSSM",
-        "Fine_Mapping_Shiny/raw/master/www/data"
+        "Fine_Mapping_Shiny/raw/master/www/data",
+        sep="/"
     )
     file_urls <- lapply(file_types, function(ftype) {
         messager("+ Searching for", ftype, "files...", v = verbose)
@@ -101,7 +102,8 @@ portal_query <- function(dataset_types = NULL,
             branch = "master",
             verbose = FALSE
         )
-        return(data.table::data.table(URL = remote_finemap, file_type = ftype))
+        return(data.table::data.table(URL = remote_finemap, 
+                                      file_type = ftype))
     }) %>% data.table::rbindlist() %>%
         # make sure to remove anything that's not in the data folder
         # (e.g. icons)

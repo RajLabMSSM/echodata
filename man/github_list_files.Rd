@@ -10,6 +10,7 @@ github_list_files(
   branch = c("main", "master"),
   query = NULL,
   return_download_api = TRUE,
+  seconds = 5 * 60,
   verbose = TRUE
 )
 }
@@ -25,6 +26,9 @@ github_list_files(
 
 \item{return_download_api}{Return the link to download each file
 (instead of its path).}
+
+\item{seconds}{number of seconds to wait for a response until giving up.
+Can not be less than 1 ms.}
 
 \item{verbose}{Print messages.}
 }

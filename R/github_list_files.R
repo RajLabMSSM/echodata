@@ -10,6 +10,7 @@
 #' @param return_download_api Return the link to download each file
 #' (instead of its path).
 #' @param verbose Print messages.
+#' @inheritParams httr::timeout
 #'
 #' @return A list of paths.
 #'
@@ -20,12 +21,14 @@ github_list_files <- function(creator = "RajLabMSSM",
                               branch = c("main", "master"),
                               query = NULL,
                               return_download_api = TRUE,
+                              seconds = 5*60,
                               verbose = TRUE) {
-    repo_api <- file.path(
+    repo_api <- paste(
         "https://api.github.com/repos", creator, repo,
-        paste0("git/trees/", branch[1], "?recursive=1")
+        paste0("git/trees/", branch[1], "?recursive=1"),
+        sep="/"
     )
-    httr::timeout(seconds = 15*60)
+    httr::timeout(seconds = seconds)
     req <- httr::GET(repo_api)
     httr::message_for_status(req)
     filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"),
@@ -44,9 +47,10 @@ github_list_files <- function(creator = "RajLabMSSM",
         )
     }
     if (return_download_api) {
-        filelist <- file.path(
+        filelist <- paste(
             "https://github.com", creator, repo, "raw",
-            branch, filelist
+            branch, filelist,
+            "/"
         )
     }
     return(filelist)
