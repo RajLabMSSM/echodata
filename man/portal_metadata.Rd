@@ -8,6 +8,8 @@ portal_metadata(verbose = TRUE, timeout = 60)
 }
 \arguments{
 \item{verbose}{Print messages.}
+
+\item{timeout}{Number of seconds before timeout.}
 }
 \description{
 Import metadata for all fine-mapping results files stored on
