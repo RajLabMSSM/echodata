@@ -33,6 +33,7 @@ Imports:
     data.table,
     methods,
     utils,
+    tools,
     tidyr,
     parallel,
     httr,
@@ -61,8 +62,6 @@ Suggests:
     arrow,  
     ggplot2,
     orthogene
-Remotes:
-    github::neurogenomics/MungeSumstats
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 License: GPL-3

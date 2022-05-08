@@ -1,5 +1,11 @@
 # echodata 0.99.10
 
+## New features
+
+* Remove `MungeSumstats` from *Remotes*.
+* Passing all CRAN checks. 
+* Cache datasets. 
+
 ## Bug fixes
 
 * Use `paste` instead of `file.path` to construct portal query URLs.

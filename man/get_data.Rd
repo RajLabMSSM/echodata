@@ -4,7 +4,12 @@
 \alias{get_data}
 \title{get data via \pkg{piggyback}}
 \usage{
-get_data(fname, repo = "RajLabMSSM/echodata", overwrite = FALSE)
+get_data(
+  fname,
+  repo = "RajLabMSSM/echodata",
+  save_dir = tools::R_user_dir(package = "echodata", which = "cache"),
+  overwrite = FALSE
+)
 }
 \description{
 get data via \pkg{piggyback}
