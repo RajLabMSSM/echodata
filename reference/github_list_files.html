@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
       </span>
     </div>
 
@@ -72,6 +72,7 @@
   branch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"main"</span>, <span class="st">"master"</span><span class="op">)</span>,
   query <span class="op">=</span> <span class="cn">NULL</span>,
   return_download_api <span class="op">=</span> <span class="cn">TRUE</span>,
+  seconds <span class="op">=</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">60</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -90,6 +91,9 @@
 <dt>return_download_api</dt>
 <dd><p>Return the link to download each file
 (instead of its path).</p></dd>
+<dt>seconds</dt>
+<dd><p>number of seconds to wait for a response until giving up.
+Can not be less than 1 ms.</p></dd>
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
 </dl></div>

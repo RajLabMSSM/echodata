@@ -18,7 +18,7 @@ Used to query locus subsets.for fine-mapping."><!-- mathjax --><script src="http
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
       </span>
     </div>
 
@@ -81,10 +81,10 @@ Used to query locus subsets.for fine-mapping.</p>
 <code>
 local &lt;- file.path(tempdir(),"Nalls2019_TableS2.xlsx")
 utils::download.file(
-    file.path("https://github.com/RajLabMSSM/Fine_Mapping",
+    paste("https://github.com/RajLabMSSM/Fine_Mapping",
               "raw/master/Data/GWAS/Nalls23andMe_2019",
               "Nalls2019_TableS2.xlsx"),
-    local)
+    local, sep="/")
 topSNPs_Nalls2019_raw &lt;- data.table::data.table(readxl::read_excel(local))
 usethis::use_data(topSNPs_Nalls2019_raw, overwrite=TRUE)
 </code></p>
