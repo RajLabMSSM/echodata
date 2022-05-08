@@ -22,9 +22,9 @@ get_Nalls2019_loci <- function(save_dir=tools::R_user_dir(package = "echodata",
     
     dataset <- file.path(save_dir,"Nalls23andMe_2019")
     dir.create(dataset, showWarnings = FALSE, recursive = TRUE)
-    loci <- list("BST1"=BST1,
-                 "LRRK2"=LRRK2,
-                 "MEX3C"=MEX3C)
+    loci <- list("BST1"=echodata::BST1,
+                 "LRRK2"=echodata::LRRK2,
+                 "MEX3C"=echodata::MEX3C)
     #### Return early ####
     if(isFALSE(return_paths)) return(loci)
     #### Write to disk ####
