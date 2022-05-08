@@ -7,6 +7,7 @@
 get_Nalls2019_loci(
   save_dir = tools::R_user_dir(package = "echodata", which = "cache"),
   return_paths = TRUE,
+  return_dir = TRUE,
   verbose = TRUE
 )
 }
@@ -15,6 +16,9 @@ get_Nalls2019_loci(
 
 \item{return_paths}{Returns local paths to cached fine-mapping results
 (default: \code{TRUE}), or the data itself as a named list (\code{FALSE}).}
+
+\item{return_dir}{Return the directory name
+instead of the individual file paths.}
 
 \item{verbose}{Print messages.}
 }

@@ -9,15 +9,20 @@
 #' 
 #' @param return_paths Returns local paths to cached fine-mapping results
 #'  (default: \code{TRUE}), or the data itself as a named list (\code{FALSE}).
+#' @param return_dir Return the directory name
+#'  instead of the individual file paths. 
 #' @param verbose Print messages. 
 #' @inheritParams get_data
+#' 
 #' @export
-#' @returns 
+#' @importFrom data.table fwrite
+#' @returns File paths 
 #' @examples 
 #' files <- get_Nalls2019_loci()
 get_Nalls2019_loci <- function(save_dir=tools::R_user_dir(package = "echodata",
                                                           which = "cache"),
                                return_paths=TRUE,
+                               return_dir=FALSE,
                                verbose=TRUE){
     
     dataset <- file.path(save_dir,"Nalls23andMe_2019")
@@ -34,7 +39,10 @@ get_Nalls2019_loci <- function(save_dir=tools::R_user_dir(package = "echodata",
     )
     names(files) <- names(loci)
     #### Return early if files already written ####
-    if(all(file.exists(unlist(files)))) return(files)
+    if(all(file.exists(unlist(files)))) {
+        if(isTRUE(return_dir)) files <- dirname(files[[1]])
+        return(files)
+    }
     for(l in names(loci)){
         messager("Writing fine-mapped locus data ==>",
                  files[[l]],v=verbose)
@@ -43,5 +51,6 @@ get_Nalls2019_loci <- function(save_dir=tools::R_user_dir(package = "echodata",
             file = files[[l]]
             )
     }
+    if(isTRUE(return_dir)) files <- dirname(files[[1]])
     return(files)
 }
