@@ -49,7 +49,10 @@ mungesumstats_to_echolocatoR <- function(dat,
                 )
     colMap <- colMap[names(colMap) %in% colnames(dat)]
     for(x in names(colMap)){
-        data.table::setnames(dat, x, colMap[[x]])
+        ### If not already an existing col, rename
+        if(!colMap[[x]] %in% names(colMap)){
+            data.table::setnames(dat, x, colMap[[x]])
+        }
     }
     return(dat)
 }
