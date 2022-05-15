@@ -15,7 +15,7 @@
 #' @importFrom data.table data.table setnames
 #' 
 #' @examples  
-#' dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect)
+#' dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect) 
 #' dat_echoR <- echodata::mungesumstats_to_echolocatoR(dat=dat, 
 #'                                                     standardise_colnames=TRUE)
 mungesumstats_to_echolocatoR <- function(dat, 
@@ -25,7 +25,7 @@ mungesumstats_to_echolocatoR <- function(dat,
     messager("+ Mapping colnames from MungeSumstats ==> echolocatoR",
              v=verbose)
     dat <- data.table::data.table(dat)
-    if(isTRUE(standardise_colnames)){ 
+    if(isTRUE(standardise_colnames)){  
         dat <- MungeSumstats::standardise_header(
             sumstats_dt = dat, 
             uppercase_unmapped = TRUE,
