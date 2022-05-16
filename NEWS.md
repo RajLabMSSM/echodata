@@ -3,6 +3,7 @@
 ## New features
 
 * Pass up `compute_n` as arg in `standardize`. 
+* Add `get_Nalls2019_coloc` function.
 
 # echodata 0.99.10
 
