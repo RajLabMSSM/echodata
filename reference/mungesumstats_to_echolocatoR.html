@@ -21,7 +21,7 @@ echolocatoR format."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
       </span>
     </div>
 
@@ -92,8 +92,9 @@ nomenclature using <a href="https://rdrr.io/pkg/MungeSumstats/man/standardise_he
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> </span>
 <span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span>, BPOS<span class="op">=</span><span class="va">POS</span>, SEBETA<span class="op">=</span><span class="va">StdErr</span>, B<span class="op">=</span><span class="va">Effect</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dat_echoR</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">mungesumstats_to_echolocatoR</span><span class="op">(</span>dat<span class="op">=</span><span class="va">dat</span>, </span>
-<span class="r-in">                                                    standardise_colnames<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">dat_echoR</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">mungesumstats_to_echolocatoR</span><span class="op">(</span></span>
+<span class="r-in">    dat<span class="op">=</span><span class="va">dat</span>,</span>
+<span class="r-in">    standardise_colnames<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Mapping colnames from MungeSumstats ==&gt; echolocatoR</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Standardising column headers.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> First line of summary statistics file: </span>

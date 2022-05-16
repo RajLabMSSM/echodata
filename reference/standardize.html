@@ -19,7 +19,7 @@ that the rest of echolocatoR can work with."><!-- mathjax --><script src="https:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
       </span>
     </div>
 
@@ -75,6 +75,7 @@ that the rest of <em>echolocatoR</em> can work with.</p>
   subset_path <span class="op">=</span> <span class="cn">NULL</span>,
   locus <span class="op">=</span> <span class="cn">NULL</span>,
   colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,
+  compute_n <span class="op">=</span> <span class="st">"ldsc"</span>,
   return_dt <span class="op">=</span> <span class="cn">TRUE</span>,
   nThread <span class="op">=</span> <span class="fl">1</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
@@ -92,6 +93,17 @@ saved after standardization.</p></dd>
 <dd><p>Locus name.</p></dd>
 <dt>colmap</dt>
 <dd><p>Column mapping object.</p></dd>
+<dt>compute_n</dt>
+<dd><p>How to compute per-SNP sample size (new column "N").</p><ul><li><p><code>0</code>: N will not be computed.</p></li>
+<li><p><code>&gt;0</code>: If any number &gt;0 is provided,
+that value will be set as N for every row.
+<strong>Note</strong>: Computing N this way is incorrect and should be avoided
+if at all possible.</p></li>
+<li><p><code>"sum"</code>: N will be computed as:
+cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
+<li><p><code>"effective"</code>: N will be computed as effective sample size:
+cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
+</ul></dd>
 <dt>return_dt</dt>
 <dd><p>Return data.table or path to saved data.table.</p></dd>
 <dt>nThread</dt>
@@ -135,7 +147,7 @@ saved after standardization.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Ensuring 1 SNP per row and per genomic coordinate.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Removing extra whitespace</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Standardized query: 6,211 SNPs x 27 columns.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Saving standardized query ==&gt; /tmp/RtmpnAv0yf/BST1.tsv</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Saving standardized query ==&gt; /tmp/RtmpNVPAfc/BST1.tsv</span>
 </code></pre></div>
     </div>
   </div>
