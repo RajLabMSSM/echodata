@@ -1,6 +1,7 @@
 test_that("get_sample_size works", {
   
     dat <- echodata::BST1
+    
     dat2 <- echodata::get_sample_size(dat = dat)
     testthat::expect_equal(nrow(dat2),nrow(dat))
     testthat::expect_false("N" %in% colnames(dat))
@@ -24,4 +25,26 @@ test_that("get_sample_size works", {
                                       return_only = min, 
                                       na.rm=TRUE)
     testthat::expect_equal(dat6, min(dat2$N))
+    
+    #### compute_n: giant ####
+    dat7 <- echodata::get_sample_size(dat = dat,
+                                      compute_n = "giant",
+                                      return_only = max)
+    testthat::expect_equal(dat7, 108310)
+    #### compute_n: metal ####
+    dat8 <- echodata::get_sample_size(dat = dat,
+                                      compute_n = "metal",
+                                      return_only = max)
+    testthat::expect_equal(dat8, 216621)
+    #### compute_n: sum ####
+    dat9 <- echodata::get_sample_size(dat = dat,
+                                      compute_n = "sum",
+                                      return_only = max)
+    testthat::expect_equal(dat9, 1474097)
+    #### compute_n: number ####
+    dat10 <- echodata:: get_sample_size(dat = dat,
+                                      compute_n = 10000,
+                                      return_only = max)
+    testthat::expect_equal(dat9, 1474097)
+    
 })

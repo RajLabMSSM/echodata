@@ -17,6 +17,7 @@ get_sample_size <- function(dat,
                             compute_n = c("ldsc", "giant", "metal", "sum"),
                             return_only = NULL,
                             force_new = FALSE,
+                            standardise_headers = FALSE,
                             verbose = TRUE,
                             ...){
   
@@ -32,7 +33,7 @@ get_sample_size <- function(dat,
   #### Check method ### 
   if(is.null(compute_n)){
     compute_n <- "ldsc" 
-  } else {
+  } else if(is.character(compute_n)) {
     compute_n <- tolower(compute_n)[1]
   } 
   dat2 <- data.table::copy(dat)
@@ -42,18 +43,21 @@ get_sample_size <- function(dat,
   if("N_cases" %in% colnames(dat2)){
     data.table::setnames(dat2,"N_cases","N_CAS")
   }
-  dat2 <- MungeSumstats::compute_nsize(sumstats_dt = dat2,
-                                       compute_n = compute_n, 
-                                       return_list = FALSE,
-                                       force_new = force_new) 
+  dat2 <- MungeSumstats::compute_nsize(
+      sumstats_dt = dat2,
+      compute_n = compute_n, 
+      return_list = FALSE,
+      standardise_headers = standardise_headers,
+      force_new = force_new) 
   #### Rename Neff to N ####
   if((!"N" %in% colnames(dat2)) | isTRUE(force_new)){
     if("Neff" %in% colnames(dat2)){
       data.table::setnames(dat2,"Neff","N")
     } 
   }  
-  dat2 <- mungesumstats_to_echolocatoR(dat=dat2,
-                                       verbose=verbose)  
+  dat2 <- mungesumstats_to_echolocatoR(
+      dat=dat2,
+      verbose=verbose)  
   #### Return ####
   if(!is.null(return_only)){
       if("N" %in% names(dat2)){

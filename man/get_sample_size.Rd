@@ -9,6 +9,7 @@ get_sample_size(
   compute_n = c("ldsc", "giant", "metal", "sum"),
   return_only = NULL,
   force_new = FALSE,
+  standardise_headers = FALSE,
   verbose = TRUE,
   ...
 )
@@ -34,6 +35,8 @@ inferred/imputed sample size column (e.g. \code{max}, \code{min}).}
 
 \item{force_new}{If "Neff" (or "N") already exists in \code{sumstats_dt},
 replace it with the recomputed version.}
+
+\item{standardise_headers}{Standardise headers first.}
 
 \item{verbose}{Print messages.}
 

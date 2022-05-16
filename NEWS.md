@@ -7,7 +7,8 @@
 
 ## Bug fixes
 
-* `get_sample_size`: Return NULL when "N" col not present at end of func.  
+* `get_sample_size`: Return NULL when "N" col not present at end of func. 
+Otherwise, `max(NULL)` can give you `-Inf`.  
 
 # echodata 0.99.10
 
