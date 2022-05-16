@@ -35,7 +35,7 @@ standardize <- function(query,
                         subset_path=NULL,
                         locus=NULL,
                         colmap = construct_colmap(),
-                        compute_n = "effective",
+                        compute_n = "ldsc",
                         return_dt = TRUE,
                         nThread = 1, 
                         verbose = TRUE){ 
