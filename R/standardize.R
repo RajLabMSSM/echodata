@@ -12,6 +12,7 @@
 #' @param return_dt Return data.table or path to saved data.table.
 #' @param nThread Number of threads to parallelise saving across.
 #' @param verbose Print messages.
+#' @inheritParams MungeSumstats::compute_nsize
 #'
 #' @export 
 #' @importFrom dplyr %>% rename mutate arrange mutate_at 
@@ -34,6 +35,7 @@ standardize <- function(query,
                         subset_path=NULL,
                         locus=NULL,
                         colmap = construct_colmap(),
+                        compute_n = "effective",
                         return_dt = TRUE,
                         nThread = 1, 
                         verbose = TRUE){ 
@@ -72,6 +74,7 @@ standardize <- function(query,
                                          verbose=verbose)
     #### sample size #### 
     query_mod <- get_sample_size(dat = query,
+                                 compute_n = compute_n,
                                  method = colmap$sample_size,
                                  force_new = FALSE,
                                  verbose=verbose)

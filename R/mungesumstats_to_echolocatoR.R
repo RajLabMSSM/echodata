@@ -15,9 +15,10 @@
 #' @importFrom data.table data.table setnames
 #' 
 #' @examples  
-#' dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect) 
-#' dat_echoR <- echodata::mungesumstats_to_echolocatoR(dat=dat, 
-#'                                                     standardise_colnames=TRUE)
+#' dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect)
+#' dat_echoR <- echodata::mungesumstats_to_echolocatoR(
+#'     dat=dat,
+#'     standardise_colnames=TRUE)
 mungesumstats_to_echolocatoR <- function(dat, 
                                          standardise_colnames = FALSE, 
                                          verbose = TRUE){

@@ -24,6 +24,7 @@ setting \code{standardise_colnames=TRUE} before converting to
 \examples{
  
 dat <- dplyr::rename(echodata::BST1, BPOS=POS, SEBETA=StdErr, B=Effect)
-dat_echoR <- echodata::mungesumstats_to_echolocatoR(dat=dat, 
-                                                    standardise_colnames=TRUE)
+dat_echoR <- echodata::mungesumstats_to_echolocatoR(
+    dat=dat,
+    standardise_colnames=TRUE)
 }

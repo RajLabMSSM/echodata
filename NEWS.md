@@ -1,3 +1,9 @@
+# echodata 0.99.11
+
+## New features
+
+* Pass up `compute_n` as arg in `standardize`. 
+
 # echodata 0.99.10
 
 ## New features

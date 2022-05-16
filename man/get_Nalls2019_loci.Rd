@@ -7,7 +7,7 @@
 get_Nalls2019_loci(
   save_dir = tools::R_user_dir(package = "echodata", which = "cache"),
   return_paths = TRUE,
-  return_dir = TRUE,
+  return_dir = FALSE,
   verbose = TRUE
 )
 }
@@ -23,7 +23,7 @@ instead of the individual file paths.}
 \item{verbose}{Print messages.}
 }
 \value{
-
+File paths
 }
 \description{
 An example results file after running \code{finemap_loci}

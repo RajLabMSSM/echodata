@@ -9,6 +9,7 @@ standardize(
   subset_path = NULL,
   locus = NULL,
   colmap = construct_colmap(),
+  compute_n = "effective",
   return_dt = TRUE,
   nThread = 1,
   verbose = TRUE
@@ -23,6 +24,19 @@ saved after standardization.}
 \item{locus}{Locus name.}
 
 \item{colmap}{Column mapping object.}
+
+\item{compute_n}{How to compute per-SNP sample size (new column "N").
+\itemize{
+\item{\code{0}: }{N will not be computed.}
+\item{\code{>0}: }{If any number >0 is provided,
+that value will be set as N for every row.
+\strong{Note}: Computing N this way is incorrect and should be avoided
+if at all possible.}
+\item{\code{"sum"}: }{N will be computed as:
+cases (N_CAS) + controls (N_CON), so long as both columns are present}.
+\item{\code{"effective"}: }{N will be computed as effective sample size:
+cases (N_CAS) + controls (N_CON), so long as both columns are present}.
+}}
 
 \item{return_dt}{Return data.table or path to saved data.table.}
 

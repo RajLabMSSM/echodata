@@ -11,10 +11,7 @@ data.table docs}
 merge_robust(x, y, by = NULL, dup_stop = TRUE, na_stop = TRUE, ...)
 }
 \arguments{
-\item{x}{\code{data table}s. \code{y} is coerced to a \code{data.table} if
-it isn't one already.}
-
-\item{y}{\code{data table}s. \code{y} is coerced to a \code{data.table} if
+\item{x, y}{\code{data table}s. \code{y} is coerced to a \code{data.table} if
 it isn't one already.}
 
 \item{by}{A vector of shared column names in \code{x} and \code{y} to merge on.
