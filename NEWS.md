@@ -5,6 +5,10 @@
 * Pass up `compute_n` as arg in `standardize`. 
 * Add `get_Nalls2019_coloc` function.
 
+## Bug fixes
+
+* `get_sample_size`: Return `NULL` when "N" col not present at end of func. 
+
 # echodata 0.99.10
 
 ## New features

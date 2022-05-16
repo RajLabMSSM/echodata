@@ -15,22 +15,26 @@
 #' dat2 <- echodata::get_sample_size(dat = dat)
 get_sample_size <- function(dat,
                             compute_n = c("ldsc", "giant", "metal", "sum"),
-                            return_only=NULL,
+                            return_only = NULL,
                             force_new = FALSE,
-                            verbose=TRUE,
+                            verbose = TRUE,
                             ...){
   
   requireNamespace("MungeSumstats")
   
-    messager("++ Preparing N col", v=verbose)
-  if("N" %in% colnames(dat) && force_new==FALSE) return(dat)
+  messager("Preparing sample size column (N).", v=verbose)
+  if("N" %in% colnames(dat) && isFALSE(force_new)){
+      if(!is.null(return_only)){
+          return(return_only(dat$N, ...))
+      }
+      return(dat)
+  } 
   #### Check method ### 
   if(is.null(compute_n)){
     compute_n <- "ldsc" 
   } else {
     compute_n <- tolower(compute_n)[1]
-  }
-  message("--")
+  } 
   dat2 <- data.table::copy(dat)
   if("N_controls" %in% colnames(dat2)){
     data.table::setnames(dat2,"N_controls","N_CON")
@@ -43,15 +47,20 @@ get_sample_size <- function(dat,
                                        return_list = FALSE,
                                        force_new = force_new) 
   #### Rename Neff to N ####
-  if(!"N" %in% colnames(dat2) || isTRUE(force_new)){
+  if((!"N" %in% colnames(dat2)) | isTRUE(force_new)){
     if("Neff" %in% colnames(dat2)){
       data.table::setnames(dat2,"Neff","N")
     } 
-  } 
-  message("--")
-  dat2 <- mungesumstats_to_echolocatoR(dat2)  
+  }  
+  dat2 <- mungesumstats_to_echolocatoR(dat=dat2,
+                                       verbose=verbose)  
+  #### Return ####
   if(!is.null(return_only)){
-    return(return_only(dat2$N, ...))
-  }
+      if("N" %in% names(dat2)){
+          return(return_only(dat2$N, ...))
+      } else {
+          return(NULL)
+      } 
+  } 
   return(dat2)
 }
