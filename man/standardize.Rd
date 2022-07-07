@@ -34,8 +34,12 @@ that value will be set as N for every row.
 if at all possible.}
 \item{\code{"sum"}: }{N will be computed as:
 cases (N_CAS) + controls (N_CON), so long as both columns are present}.
-\item{\code{"effective"}: }{N will be computed as effective sample size:
-cases (N_CAS) + controls (N_CON), so long as both columns are present}.
+\item{\code{"ldsc"}: }{N will be computed as effective sample size:
+Neff =(N_CAS+N_CON)*(N_CAS/(N_CAS+N_CON)) / mean((N_CAS/(N_CAS+N_CON))(N_CAS+N_CON)==max(N_CAS+N_CON))}
+\item{\code{"giant"}: }{N will be computed as effective sample size:
+Neff = 2 / (1/N_CAS + 1/N_CON)}.
+\item{\code{"metal"}: }{N will be computed as effective sample size:
+Neff = 4 / (1/N_CAS + 1/N_CON)}.
 }}
 
 \item{return_dt}{Return data.table or path to saved data.table.}
@@ -59,8 +63,8 @@ query[c(12,22),"Freq"] <- NA
 
 subset_path <- file.path(tempdir(),"BST1.tsv")
 data.table::fwrite(query, subset_path)
-query_mod <- echodata::standardize(query = query,
-                                   subset_path = subset_path,
-                                   locus = "BST1",
-                                   colmap = construct_colmap(SNP="rsid"))
+query2 <- echodata::standardize(query = query,
+                                subset_path = subset_path,
+                                locus = "BST1",
+                                colmap = construct_colmap(SNP="rsid"))
 }

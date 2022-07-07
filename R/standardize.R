@@ -27,10 +27,10 @@
 #'
 #' subset_path <- file.path(tempdir(),"BST1.tsv")
 #' data.table::fwrite(query, subset_path)
-#' query_mod <- echodata::standardize(query = query,
-#'                                    subset_path = subset_path,
-#'                                    locus = "BST1",
-#'                                    colmap = construct_colmap(SNP="rsid"))
+#' query2 <- echodata::standardize(query = query,
+#'                                 subset_path = subset_path,
+#'                                 locus = "BST1",
+#'                                 colmap = construct_colmap(SNP="rsid"))
 standardize <- function(query,
                         subset_path=NULL,
                         locus=NULL,
@@ -73,11 +73,11 @@ standardize <- function(query,
                                          colmap=colmap, 
                                          verbose=verbose)
     #### sample size #### 
-    query_mod <- get_sample_size(dat = query,
-                                 compute_n = compute_n,
-                                 method = colmap$sample_size,
-                                 force_new = FALSE,
-                                 verbose=verbose)
+    query <- get_sample_size(dat = query,
+                             compute_n = compute_n,
+                             method = colmap$sample_size,
+                             force_new = FALSE,
+                             verbose=verbose)
     #### Impute t-stat #### 
     ## Assign renamed values  
     colmap$Effect <- "Effect"; colmap$StdErr <- "StdErr"
@@ -86,13 +86,13 @@ standardize <- function(query,
                              colmap=colmap,
                              verbose=verbose)
     #### P ####
-    query_mod <- standardize_p(query=query,
-                               verbose=verbose) 
+    query <- standardize_p(query=query,
+                           verbose=verbose) 
+    #### Remove duplicate columns ####
+    query <- data.frame(query)[,!duplicated(colnames(query))]
     #### leadSNP ####
     query <- assign_lead_snp(dat = query, 
-                             verbose = verbose) 
-    #### Remove duplicate columns ####
-    query_mod <- data.frame(query_mod)[,!duplicated(colnames(query_mod))]
+                             verbose = verbose)  
     ## Only convert to numeric AFTER removing NAs
     ## (otherwise as.numeric will turn them into 0s)
     query <- standardize_coltypes(query=query, 
@@ -118,7 +118,7 @@ standardize <- function(query,
                  v=verbose)
         dir.create(dirname(subset_path), 
                    showWarnings = FALSE, recursive = TRUE)
-        data.table::fwrite(query_mod,
+        data.table::fwrite(query,
                            subset_path,
                            sep = "\t",
                            nThread = nThread)
@@ -127,6 +127,6 @@ standardize <- function(query,
     if(isFALSE(return_dt) && !is.null(subset_path)){
         return(subset_path) 
     } else { 
-        return(data.table::data.table(query_mod))
+        return(data.table::data.table(query))
     } 
 }
