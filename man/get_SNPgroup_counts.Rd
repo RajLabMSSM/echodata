@@ -27,6 +27,7 @@ snp_groups <- get_SNPgroup_counts(merged_DT = merged_DT)
 \seealso{
 Other summarise: 
 \code{\link{get_CS_bins}()},
-\code{\link{get_CS_counts}()}
+\code{\link{get_CS_counts}()},
+\code{\link{results_report}()}
 }
 \concept{summarise}

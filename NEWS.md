@@ -7,8 +7,10 @@
 * `standardize_gene_locus_cols`: Will replaced Locus names 
     with new *Locus_Gene* naming scheme when `grouping_vars` 
     contain both Locus and Gene. 
-* `get_SNPgroup_counts`: Move from `echoannot`. 
-
+*  Move over functions from `echoannot`:
+    - `get_SNPgroup_counts`
+    - `results_report`
+    - `merge_finemapping_results`
 
 ## Bug fixes
 
