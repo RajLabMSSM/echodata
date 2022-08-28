@@ -1,3 +1,17 @@
+# echodata 0.99.12
+
+## New features
+
+* New function: `get_Kunkle2019_coloc`.
+* Remove `zscore*` functions (not used anymore). 
+* `standardize_gene_locus_cols`: Will replaced Locus names 
+    with new *Locus_Gene* naming scheme when `grouping_vars` 
+    contain both Locus and Gene. 
+
+## Bug fixes
+
+* `portal_query`: Forgot to add `sep=` name in URL construction. 
+
 # echodata 0.99.11
 
 ## New features

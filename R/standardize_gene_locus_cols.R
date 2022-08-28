@@ -1,6 +1,14 @@
+#' Standardizse gene/locus columns
+#' 
+#' Standardizse Gene and Locus columns in \code{topSNPs}.
+#' @inheritParams import_topSNPs
+#' @keywords internal
+#' @returns topSNPs
+#' @importFrom data.table data.table := .SD
 standardize_gene_locus_cols <- function(topSNPs, 
                                         Locus="Locus",
                                         Gene="Gene",
+                                        grouping_vars=Locus,
                                         verbose=TRUE){
     SNP <- CHR <- NULL;
     
@@ -55,6 +63,13 @@ standardize_gene_locus_cols <- function(topSNPs,
             topSNPs$Gene <- gsub(bad_chars,"_",topSNPs$Locus)  
             if(Locus!="Locus") topSNPs[[Locus]] <- NULL; 
         }
+    }
+    #### Make each locus name unique when dealing with QTLs ####
+    if(length(grouping_vars)>1){
+        ### Can take an arbitrary number of columns 
+        topSNPs <- data.table::data.table(topSNPs)
+        topSNPs[,Locus:= do.call(paste, c(.SD, sep = "_")), 
+                 .SDcols=grouping_vars] 
     }
     return(topSNPs)
 }

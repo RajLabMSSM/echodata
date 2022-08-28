@@ -27,25 +27,21 @@
 #' @param overwrite Whether to overwrite previously saved queries
 #' with the same names.
 #' @param nThread Number of threads to parallelise downloads across.
-#' @param verbose Print messages.
-#'
-#' @examples
-#' \dontrun{
-#' local_finemap <- portal_query(
-#'     dataset_types = "GWAS",
-#'     phenotypes = c("schizophrenia", "parkinson"),
-#'     file_types = "multi_finemap",
-#'     loci = c("BST1", "CHRNB1", "LRRK2"),
-#'     LD_panels = "1KGphase3"
-#' )
-#' }
+#' @param verbose Print messages. 
 #' @return List of local paths where the requested files were downloaded to.
 #'
 #' @export
 #' @importFrom parallel detectCores
 #' @importFrom data.table data.table rbindlist
-#' @importFrom dplyr %>% mutate
+#' @importFrom dplyr mutate
 #' @importFrom tidyr separate
+#' @examples 
+#' local_finemap <- portal_query(
+#'     dataset_types = "GWAS",
+#'     phenotypes = c("schizophrenia", "parkinson"),
+#'     file_types = "multi_finemap",
+#'     loci = c("BST1", "CHRNB1", "LRRK2"),
+#'     LD_panels = "1KGphase3") 
 portal_query <- function(dataset_types = NULL,
                          datasets = NULL,
                          phenotypes = NULL,
@@ -56,7 +52,9 @@ portal_query <- function(dataset_types = NULL,
                          overwrite = FALSE,
                          nThread = 1,
                          verbose = TRUE) {
-    dataset_type <- URL <- dataset <- locus <- NULL
+    dataset_type <- URL <- dataset <- locus <- NULL;
+    # echoverseTemplate:::source_all()
+    # echoverseTemplate:::args2vars(portal_query)
     #### Search metadata ####
     meta <- portal_metadata(verbose = verbose)
     meta <- if (!is.null(dataset_types)) {
@@ -91,7 +89,8 @@ portal_query <- function(dataset_types = NULL,
         "Fine_Mapping_Shiny/raw/master/www/data",
         sep="/"
     )
-    file_urls <- lapply(file_types, function(ftype) {
+    file_urls <- lapply(file_types, 
+                        function(ftype) {
         messager("+ Searching for", ftype, "files...", v = verbose)
         remote_finemap <- github_list_files(
             creator = "RajLabMSSM",
@@ -104,7 +103,7 @@ portal_query <- function(dataset_types = NULL,
         )
         return(data.table::data.table(URL = remote_finemap, 
                                       file_type = ftype))
-    }) %>% data.table::rbindlist() %>%
+    }) |> data.table::rbindlist() |>
         # make sure to remove anything that's not in the data folder
         # (e.g. icons)
         subset(startsWith(URL, shiny_data_url))

@@ -89,9 +89,10 @@ import_topSNPs <- function(topSS,
     #### Create locus/gene cols #### 
     ## Must happen AFTER any column renaming 
     topSNPs <- standardize_gene_locus_cols(topSNPs=topSNPs, 
-                                            Locus=colmap$Locus,
-                                            Gene=colmap$Gene, 
-                                            verbose=verbose) 
+                                           Locus=colmap$Locus,
+                                           Gene=colmap$Gene,
+                                           grouping_vars=grouping_vars,
+                                           verbose=verbose) 
     #### Standardise colnames ####
     if(isTRUE(munge)){
         topSNPs <- 
