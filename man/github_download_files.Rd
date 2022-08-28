@@ -8,6 +8,7 @@ github_download_files(
   filelist,
   download_dir = tempdir(),
   overwrite = FALSE,
+  timeout = 5 * 60,
   nThread = 1,
   verbose = TRUE
 )

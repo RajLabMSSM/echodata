@@ -27,6 +27,9 @@
 #' @param overwrite Whether to overwrite previously saved queries
 #' with the same names.
 #' @param nThread Number of threads to parallelise downloads across.
+#' @param as_datatable Return results organized in a 
+#' \link[data.table]{data.table}. 
+#' Otherwise, will return a list of local file paths.
 #' @param verbose Print messages. 
 #' @return List of local paths where the requested files were downloaded to.
 #'
@@ -50,6 +53,7 @@ portal_query <- function(dataset_types = NULL,
                          file_types = c("multi_finemap", "LD", "plot"),
                          results_dir = tempdir(),
                          overwrite = FALSE,
+                         as_datatable = FALSE,
                          nThread = 1,
                          verbose = TRUE) {
     dataset_type <- URL <- dataset <- locus <- NULL;
@@ -109,36 +113,43 @@ portal_query <- function(dataset_types = NULL,
         subset(startsWith(URL, shiny_data_url))
 
     #### Format url results ####
-    file_filt <- file_urls %>%
+    file_filt <- file_urls |>
         dplyr::mutate(url_strip = gsub(
             paste0(shiny_data_url, "/"), "", URL
-        )) %>%
+        )) |>
         tidyr::separate(
             col = "url_strip", sep = "/",
             into = c("dataset_type", "dataset", "locus"),
             remove = FALSE,
             extra = "drop"
-        ) %>%
+        ) |>
         subset(dataset_type %in% unique(meta$dataset_type) &
             dataset %in% unique(meta$dataset))
 
     ## Let's just download the loci of interest.
     if (!is.null(loci)) file_filt <- subset(file_filt, locus %in% loci)
-    messager("+", nrow(file_filt), "unique files identified.", v = verbose)
+    messager("+", formatC(nrow(file_filt),big.mark = ","),
+             "unique files identified.", v = verbose)
     ## Filter by LD panel
     file_filt <- file_filt[grepl(
         paste(LD_panels, collapse = "|"),
         file_filt$URL
-    ), ]
+    ), ] |> unique()
 
     ### Download files ####
-    local_finemap <- github_download_files(
-        filelist = unique(file_filt$URL),
+    local_file <- github_download_files(
+        filelist = file_filt$URL,
         download_dir = results_dir,
         overwrite = overwrite,
         nThread = nThread,
         verbose = verbose
     )
-    messager("+ Returning local file paths.", v = verbose)
-    return(local_finemap)
+    if(isTRUE(as_datatable)){
+        file_filt$local_file <- unlist(local_file)
+        messager("+ Returning table with local file paths.", v = verbose)
+        return(file_filt)
+    } else {
+        messager("+ Returning local file paths.", v = verbose)
+        return(local_file)
+    }   
 }

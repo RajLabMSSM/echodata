@@ -13,6 +13,7 @@ portal_query(
   file_types = c("multi_finemap", "LD", "plot"),
   results_dir = tempdir(),
   overwrite = FALSE,
+  as_datatable = FALSE,
   nThread = 1,
   verbose = TRUE
 )
@@ -46,6 +47,10 @@ merged with GWAS/QTL summary statistics.}
 
 \item{overwrite}{Whether to overwrite previously saved queries
 with the same names.}
+
+\item{as_datatable}{Return results organized in a 
+\link[data.table]{data.table}. 
+Otherwise, will return a list of local file paths.}
 
 \item{nThread}{Number of threads to parallelise downloads across.}
 
