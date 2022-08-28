@@ -76,7 +76,8 @@ portal_query <- function(dataset_types = NULL,
     } else {
         meta
     }
-    messager("+", nrow(meta), "datasets remain after filtering.", v = verbose)
+    messager("+", nrow(meta), "dataset(s) remain after filtering.", 
+             v = verbose)
     if(nrow(meta)==0) stop("Stopping.")
     #### Find URLs ####
     file_type_dict <- c(
@@ -97,7 +98,6 @@ portal_query <- function(dataset_types = NULL,
             repo = "Fine_Mapping_Shiny",
             query = file_type_dict[[ftype]],
             # IMPORTANT! not "main"
-            # like other repos for some reason
             branch = "master",
             verbose = FALSE
         )

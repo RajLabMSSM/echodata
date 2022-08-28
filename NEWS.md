@@ -7,10 +7,13 @@
 * `standardize_gene_locus_cols`: Will replaced Locus names 
     with new *Locus_Gene* naming scheme when `grouping_vars` 
     contain both Locus and Gene. 
+* `get_SNPgroup_counts`: Move from `echoannot`. 
+
 
 ## Bug fixes
 
 * `portal_query`: Forgot to add `sep=` name in URL construction. 
+* `get_sample_size`: Fix unit tests.
 
 # echodata 0.99.11
 

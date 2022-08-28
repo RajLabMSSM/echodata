@@ -60,13 +60,10 @@ echolocatoR Fine-mapping Portal}
 for fine-mapping results, LD, and locus plots.
 }
 \examples{
-\dontrun{
 local_finemap <- portal_query(
     dataset_types = "GWAS",
     phenotypes = c("schizophrenia", "parkinson"),
     file_types = "multi_finemap",
     loci = c("BST1", "CHRNB1", "LRRK2"),
-    LD_panels = "1KGphase3"
-)
-}
+    LD_panels = "1KGphase3") 
 }
