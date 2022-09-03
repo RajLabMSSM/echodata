@@ -61,10 +61,7 @@ Suggests:
     biomaRt, 
     arrow,  
     ggplot2,
-    orthogene,
-    genetics.binaRies
-Remotes:
-    github::MRCIEU/genetics.binaRies
+    orthogene
 RoxygenNote: 7.2.1.9000
 VignetteBuilder: knitr
 License: GPL-3
