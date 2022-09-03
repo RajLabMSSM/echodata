@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -66,15 +66,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">github_list_files</span><span class="op">(</span>
-  creator <span class="op">=</span> <span class="st">"RajLabMSSM"</span>,
-  repo <span class="op">=</span> <span class="st">"Fine_Mapping_Shiny"</span>,
-  branch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"main"</span>, <span class="st">"master"</span><span class="op">)</span>,
-  query <span class="op">=</span> <span class="cn">NULL</span>,
-  return_download_api <span class="op">=</span> <span class="cn">TRUE</span>,
-  seconds <span class="op">=</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">60</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">github_list_files</span><span class="op">(</span></span>
+<span>  creator <span class="op">=</span> <span class="st">"RajLabMSSM"</span>,</span>
+<span>  repo <span class="op">=</span> <span class="st">"Fine_Mapping_Shiny"</span>,</span>
+<span>  branch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"main"</span>, <span class="st">"master"</span><span class="op">)</span>,</span>
+<span>  query <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  return_download_api <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  seconds <span class="op">=</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">60</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -82,24 +82,39 @@
     <dl><dt>creator</dt>
 <dd><p>Repo creator name
 (can be organization or individual GitHub account name).</p></dd>
+
+
 <dt>repo</dt>
 <dd><p>GitHub repository name.</p></dd>
+
+
 <dt>branch</dt>
 <dd><p>Which branch to search.</p></dd>
+
+
 <dt>query</dt>
 <dd><p>Query substring.</p></dd>
+
+
 <dt>return_download_api</dt>
 <dd><p>Return the link to download each file
 (instead of its path).</p></dd>
+
+
 <dt>seconds</dt>
 <dd><p>number of seconds to wait for a response until giving up.
 Can not be less than 1 ms.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list of paths.</p>
+    
+
+<p>A list of paths.</p>
     </div>
 
   </div>
@@ -114,7 +129,7 @@ Can not be less than 1 ms.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

@@ -19,7 +19,7 @@ GWAS/QTL summary statistics file specified by fullSS_path
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,27 +70,27 @@ GWAS/QTL summary statistics file specified by <code>fullSS_path</code>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">construct_colmap</span><span class="op">(</span>
-  munged <span class="op">=</span> <span class="cn">FALSE</span>,
-  CHR <span class="op">=</span> <span class="st">"CHR"</span>,
-  POS <span class="op">=</span> <span class="st">"POS"</span>,
-  SNP <span class="op">=</span> <span class="st">"SNP"</span>,
-  P <span class="op">=</span> <span class="st">"P"</span>,
-  Effect <span class="op">=</span> <span class="st">"Effect"</span>,
-  StdErr <span class="op">=</span> <span class="st">"StdErr"</span>,
-  tstat <span class="op">=</span> <span class="st">"tstat"</span>,
-  Locus <span class="op">=</span> <span class="st">"Locus"</span>,
-  Freq <span class="op">=</span> <span class="st">"Freq"</span>,
-  MAF <span class="op">=</span> <span class="st">"MAF"</span>,
-  A1 <span class="op">=</span> <span class="st">"A1"</span>,
-  A2 <span class="op">=</span> <span class="st">"A2"</span>,
-  Gene <span class="op">=</span> <span class="st">"Gene"</span>,
-  N_cases <span class="op">=</span> <span class="st">"N_cases"</span>,
-  N_controls <span class="op">=</span> <span class="st">"N_controls"</span>,
-  proportion_cases <span class="op">=</span> <span class="st">"calculate"</span>,
-  sample_size <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">construct_colmap</span><span class="op">(</span></span>
+<span>  munged <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  CHR <span class="op">=</span> <span class="st">"CHR"</span>,</span>
+<span>  POS <span class="op">=</span> <span class="st">"POS"</span>,</span>
+<span>  SNP <span class="op">=</span> <span class="st">"SNP"</span>,</span>
+<span>  P <span class="op">=</span> <span class="st">"P"</span>,</span>
+<span>  Effect <span class="op">=</span> <span class="st">"Effect"</span>,</span>
+<span>  StdErr <span class="op">=</span> <span class="st">"StdErr"</span>,</span>
+<span>  tstat <span class="op">=</span> <span class="st">"tstat"</span>,</span>
+<span>  Locus <span class="op">=</span> <span class="st">"Locus"</span>,</span>
+<span>  Freq <span class="op">=</span> <span class="st">"Freq"</span>,</span>
+<span>  MAF <span class="op">=</span> <span class="st">"MAF"</span>,</span>
+<span>  A1 <span class="op">=</span> <span class="st">"A1"</span>,</span>
+<span>  A2 <span class="op">=</span> <span class="st">"A2"</span>,</span>
+<span>  Gene <span class="op">=</span> <span class="st">"Gene"</span>,</span>
+<span>  N_cases <span class="op">=</span> <span class="st">"N_cases"</span>,</span>
+<span>  N_controls <span class="op">=</span> <span class="st">"N_controls"</span>,</span>
+<span>  proportion_cases <span class="op">=</span> <span class="st">"calculate"</span>,</span>
+<span>  sample_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -101,44 +101,62 @@ standardised/filtered  full summary stats
 with <a href="https://rdrr.io/pkg/MungeSumstats/man/format_sumstats.html" class="external-link">format_sumstats</a>.
 If <code>munged=FALSE</code> you'll need to provide the necessary
  column names to the <code>colmap</code> argument.</p></dd>
+
+
 <dt>CHR</dt>
 <dd><p>Name of the chromosome column in the full summary stats
 file.
 Can be "chr1" or "1" format.
 (<em>default: ="CHR"</em>)</p></dd>
+
+
 <dt>POS</dt>
 <dd><p>Name of the genomic position column in the full summary
 stats file.
 Must be in units of basepairs.
 (<em>default: ="POS"</em>)</p></dd>
+
+
 <dt>SNP</dt>
 <dd><p>Name of the SNP RSID column in the full summary stats file.
 (<em>default: ="SNP"</em>)</p></dd>
+
+
 <dt>P</dt>
 <dd><p>Name of the p-value column in the full summary stats file.
 Raw p-values are preferred, but if not available corrected p-values
 (e.g. FDR) can be used instead.
 (<em>default: ="P"</em>)</p></dd>
+
+
 <dt>Effect</dt>
 <dd><p>Name of the effect size column in the full summary stats file.
 Effect size is preferred, but if not available other metrics like Beta for
 Odds Ratio can be used instead.
 (<em>default: ="Effect"</em>)</p></dd>
+
+
 <dt>StdErr</dt>
 <dd><p>Name of the standard error
 column in the full summary stats file.
 You can also set <code>stderr="calculate"</code> to infer standard error
 using: <code>effect / tstat</code>.
 (<em>default: ="StdErr"</em>)</p></dd>
+
+
 <dt>tstat</dt>
 <dd><p>Name of the t-statistic column in the full
 summary stats file.
 This column is not necessary unless <code>stderr="calculate"</code>
 or the standard error column is missing.
 (<em>default: ="t-stat"</em>)</p></dd>
+
+
 <dt>Locus</dt>
 <dd><p>Name of the locus column in the full summary stats file.
 (<em>default: ="Locus"</em>)</p></dd>
+
+
 <dt>Freq</dt>
 <dd><p>Name of the allele frequency column in the full
  summary stats file.
@@ -147,47 +165,66 @@ be provided instead (though this may be less accurate).
 This column is not necessary unless <code>MAF="calculate"</code> or
  the MAF column is missing.
 (<em>default: ="Freq"</em>)</p></dd>
+
+
 <dt>MAF</dt>
 <dd><p>Name of the minor allele frequency column in the
 full summary stats file.
 Can be inferred from <strong>freq</strong> if missing from the dataset.
 (<em>default: ="MAF"</em>)</p></dd>
+
+
 <dt>A1</dt>
 <dd><p>Name of the effect/risk allele column in the full
 summary stats.</p></dd>
+
+
 <dt>A2</dt>
 <dd><p>Name of the other/non-risk allele column in the full
 summary stats.</p></dd>
+
+
 <dt>Gene</dt>
 <dd><p>For QTL studies, the name of the \[e\]gene column in the
 full summary stats file (<em>default: "gene"</em>).
 This column will be used for filtering summary stats if supplying a named
 list of gene:Locus pairs to <code>loci</code>.</p></dd>
+
+
 <dt>N_cases</dt>
 <dd><p>The number of case subjects in the study.
 Instead of providing a redundant <strong>N_cases</strong> column,
 you can simply enter one value here.</p></dd>
+
+
 <dt>N_controls</dt>
 <dd><p>The number of control subjects in the study.
 Instead of providing a redundant <strong>N_controls</strong> column,
 you can simply enter one value here.</p></dd>
+
+
 <dt>proportion_cases</dt>
 <dd><p>The proportion of total subjects in the
 study that were cases.
  if <code>proportion_cases="calculate"</code> then this is inferred:
  <code>N_controls / N_controls</code>.</p></dd>
+
+
 <dt>sample_size</dt>
 <dd><p>The overall sample size of the study.
 If none is given, and <strong>N_cases</strong> and <strong>N_controls</strong>
 columns are present,
 then sample_size is inferred to be: <code>max(N_cases) + max(N_controls)</code>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">colmap</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">construct_colmap</span><span class="op">(</span>munged<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">colmap</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">construct_colmap</span><span class="op">(</span>munged<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Assuming fullSS_path summary stats have already been processed with MungeSumstats.</span>
 </code></pre></div>
     </div>
@@ -203,7 +240,7 @@ then sample_size is inferred to be: <code>max(N_cases) + max(N_controls)</code>.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ and save as a text file."><!-- mathjax --><script src="https://cdnjs.cloudflare.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -68,14 +68,14 @@ and save as a text file.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">granges_to_bed</span><span class="op">(</span>
-  <span class="va">grlist</span>,
-  save_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,
-  sep <span class="op">=</span> <span class="st">"\t"</span>,
-  nThread <span class="op">=</span> <span class="fl">1</span>,
-  gzip <span class="op">=</span> <span class="cn">FALSE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">granges_to_bed</span><span class="op">(</span></span>
+<span>  <span class="va">grlist</span>,</span>
+<span>  save_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">"\t"</span>,</span>
+<span>  nThread <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  gzip <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,25 +83,36 @@ and save as a text file.</p>
     <dl><dt>grlist</dt>
 <dd><p>A list of <a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html" class="external-link">GRanges</a> objects. 
 Can also be a single non-list <a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html" class="external-link">GRanges</a> object.</p></dd>
+
+
 <dt>save_dir</dt>
 <dd><p>Where to save the BED file.</p></dd>
+
+
 <dt>sep</dt>
 <dd><p>The separator between columns. Default is <code>","</code>.</p></dd>
+
+
 <dt>nThread</dt>
 <dd><p>The number of threads to use. Experiment to see what works best for your data on your hardware.</p></dd>
+
+
 <dt>gzip</dt>
 <dd><p>Whether the BED file should be gzip compressed.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">gr</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="dt_to_granges.html">dt_to_granges</a></span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">gr</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="dt_to_granges.html">dt_to_granges</a></span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converting dat to GRanges object.</span>
-<span class="r-in"><span class="va">bed_path</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">granges_to_bed</span><span class="op">(</span>grlist <span class="op">=</span> <span class="va">gr</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">bed_path</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">granges_to_bed</span><span class="op">(</span>grlist <span class="op">=</span> <span class="va">gr</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Converting 1 GRanges object to separate BED files.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Saving BED file ==&gt; /tmp/RtmpNVPAfc/granges1.bed.txt</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Saving BED file ==&gt; /tmp/RtmpY95YZS/granges1.bed.txt</span>
 </code></pre></div>
     </div>
   </div>
@@ -116,7 +127,7 @@ Can also be a single non-list <a href="https://rdrr.io/pkg/GenomicRanges/man/GRa
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

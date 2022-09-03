@@ -34,9 +34,6 @@
     <loc>/reference/MEX3C.html</loc>
   </url>
   <url>
-    <loc>/reference/Zscore.html</loc>
-  </url>
-  <url>
     <loc>/reference/assign_lead_SNP.html</loc>
   </url>
   <url>
@@ -47,6 +44,9 @@
   </url>
   <url>
     <loc>/reference/calculate_tstat.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_executable.html</loc>
   </url>
   <url>
     <loc>/reference/check_if_empty.html</loc>
@@ -88,10 +88,16 @@
     <loc>/reference/find_consensus_snps_no_polyfun.html</loc>
   </url>
   <url>
+    <loc>/reference/find_executable.html</loc>
+  </url>
+  <url>
     <loc>/reference/find_top_consensus.html</loc>
   </url>
   <url>
     <loc>/reference/fix_coltypes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gene_locus_list.html</loc>
   </url>
   <url>
     <loc>/reference/gene_trimmer.html</loc>
@@ -109,13 +115,22 @@
     <loc>/reference/get_Kunkle2019.html</loc>
   </url>
   <url>
+    <loc>/reference/get_Kunkle2019_coloc.html</loc>
+  </url>
+  <url>
     <loc>/reference/get_Nalls2019.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_Nalls2019_coloc.html</loc>
   </url>
   <url>
     <loc>/reference/get_Nalls2019_loci.html</loc>
   </url>
   <url>
     <loc>/reference/get_Nalls2019_merged.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_SNPgroup_counts.html</loc>
   </url>
   <url>
     <loc>/reference/get_data.html</loc>
@@ -125,6 +140,9 @@
   </url>
   <url>
     <loc>/reference/get_nrows.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_os.html</loc>
   </url>
   <url>
     <loc>/reference/get_sample_size.html</loc>
@@ -172,6 +190,12 @@
     <loc>/reference/melt_finemapping_results.html</loc>
   </url>
   <url>
+    <loc>/reference/merge_finemapping_results.html</loc>
+  </url>
+  <url>
+    <loc>/reference/merge_finemapping_results_each.html</loc>
+  </url>
+  <url>
     <loc>/reference/merge_robust.html</loc>
   </url>
   <url>
@@ -202,6 +226,12 @@
     <loc>/reference/reassign_lead_snps.html</loc>
   </url>
   <url>
+    <loc>/reference/results_report.html</loc>
+  </url>
+  <url>
+    <loc>/reference/set_permissions.html</loc>
+  </url>
+  <url>
     <loc>/reference/snp_group_colorDict.html</loc>
   </url>
   <url>
@@ -212,6 +242,9 @@
   </url>
   <url>
     <loc>/reference/standardize_gene.html</loc>
+  </url>
+  <url>
+    <loc>/reference/standardize_gene_locus_cols.html</loc>
   </url>
   <url>
     <loc>/reference/standardize_maf.html</loc>
@@ -236,8 +269,5 @@
   </url>
   <url>
     <loc>/reference/write_parquet.html</loc>
-  </url>
-  <url>
-    <loc>/reference/zscore_get_mean_and_sd.html</loc>
   </url>
 </urlset>

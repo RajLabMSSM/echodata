@@ -19,7 +19,7 @@ for fine-mapping results, LD, and locus plots."><!-- mathjax --><script src="htt
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,18 +70,19 @@ for fine-mapping results, LD, and locus plots.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">portal_query</span><span class="op">(</span>
-  dataset_types <span class="op">=</span> <span class="cn">NULL</span>,
-  datasets <span class="op">=</span> <span class="cn">NULL</span>,
-  phenotypes <span class="op">=</span> <span class="cn">NULL</span>,
-  loci <span class="op">=</span> <span class="cn">NULL</span>,
-  LD_panels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"UKB"</span>, <span class="st">"1KGphase1"</span>, <span class="st">"1KGphase3"</span><span class="op">)</span>,
-  file_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multi_finemap"</span>, <span class="st">"LD"</span>, <span class="st">"plot"</span><span class="op">)</span>,
-  results_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  nThread <span class="op">=</span> <span class="fl">1</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">portal_query</span><span class="op">(</span></span>
+<span>  dataset_types <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  datasets <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  phenotypes <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  loci <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  LD_panels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"UKB"</span>, <span class="st">"1KGphase1"</span>, <span class="st">"1KGphase3"</span><span class="op">)</span>,</span>
+<span>  file_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multi_finemap"</span>, <span class="st">"LD"</span>, <span class="st">"plot"</span><span class="op">)</span>,</span>
+<span>  results_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  as_datatable <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  nThread <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -89,51 +90,82 @@ for fine-mapping results, LD, and locus plots.</p>
     <dl><dt>dataset_types</dt>
 <dd><p>Dataset types to search for
 (e.g. "GWAS", "QTL").</p></dd>
+
+
 <dt>datasets</dt>
 <dd><p>Dataset names to search for
 (e.g. "Ripke_2014", "Wray_2018").</p></dd>
+
+
 <dt>phenotypes</dt>
 <dd><p>Phenotypes to search for
 (e.g. "Schizophrenia", "Major Depressive Disorder").</p></dd>
+
+
 <dt>loci</dt>
 <dd><p>Locus names to search for
 (e.g. "BST1", "CHRNB1", "LRRK2").</p></dd>
+
+
 <dt>LD_panels</dt>
 <dd><p>LD panels to search for,
 or results generated using different LD panels
 (e.g. "UKB", "1KGphase1", "1KGphase3").</p></dd>
+
+
 <dt>file_types</dt>
 <dd><p>File types to search for:</p><ul><li><p>"multi_finemap":Fine-mapping results 
 merged with GWAS/QTL summary statistics.</p></li>
 <li><p>"LD":Linkage Disequilibrium with the lead SNP in each locus.</p></li>
 <li><p>"plot" : Locus plots of fine-mapped results.</p></li>
 </ul></dd>
+
+
 <dt>results_dir</dt>
 <dd><p>Where to save the matching queries.</p></dd>
+
+
 <dt>overwrite</dt>
 <dd><p>Whether to overwrite previously saved queries
 with the same names.</p></dd>
+
+
+<dt>as_datatable</dt>
+<dd><p>Return results organized in a 
+<a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a>. 
+Otherwise, will return a list of local file paths.</p></dd>
+
+
 <dt>nThread</dt>
 <dd><p>Number of threads to parallelise downloads across.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>List of local paths where the requested files were downloaded to.</p>
+    
+
+<p>List of local paths where the requested files were downloaded to.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">local_finemap</span> <span class="op">&lt;-</span> <span class="fu">portal_query</span><span class="op">(</span></span>
-<span class="r-in">    dataset_types <span class="op">=</span> <span class="st">"GWAS"</span>,</span>
-<span class="r-in">    phenotypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"schizophrenia"</span>, <span class="st">"parkinson"</span><span class="op">)</span>,</span>
-<span class="r-in">    file_types <span class="op">=</span> <span class="st">"multi_finemap"</span>,</span>
-<span class="r-in">    loci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BST1"</span>, <span class="st">"CHRNB1"</span>, <span class="st">"LRRK2"</span><span class="op">)</span>,</span>
-<span class="r-in">    LD_panels <span class="op">=</span> <span class="st">"1KGphase3"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">local_finemap</span> <span class="op">&lt;-</span> <span class="fu">portal_query</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    dataset_types <span class="op">=</span> <span class="st">"GWAS"</span>,</span></span>
+<span class="r-in"><span>    phenotypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"schizophrenia"</span>, <span class="st">"parkinson"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    file_types <span class="op">=</span> <span class="st">"multi_finemap"</span>,</span></span>
+<span class="r-in"><span>    loci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BST1"</span>, <span class="st">"CHRNB1"</span>, <span class="st">"LRRK2"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    LD_panels <span class="op">=</span> <span class="st">"1KGphase3"</span><span class="op">)</span> </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Fetching echolocatoR Fine-mapping Portal study metadata.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + 2 dataset(s) remain after filtering.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Searching for multi_finemap files...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> OK (HTTP 200).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + 6 unique files identified.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Downloading 3 files...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Returning local file paths.</span>
 </code></pre></div>
     </div>
   </div>
@@ -148,7 +180,7 @@ with the same names.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

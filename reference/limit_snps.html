@@ -19,7 +19,7 @@ dat should only contain one locus from one chromosome."><!-- mathjax --><script 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,7 +70,7 @@ the desired number of SNPs.
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">limit_snps</span><span class="op">(</span><span class="va">dat</span>, max_snps <span class="op">=</span> <span class="fl">500</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">limit_snps</span><span class="op">(</span><span class="va">dat</span>, max_snps <span class="op">=</span> <span class="fl">500</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,15 +84,22 @@ the desired number of SNPs.
 
 
 </dl></dd>
+
+
 <dt>max_snps</dt>
 <dd><p>The maximum number of SNPs to keep in the resulting
 <a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A  filtered <a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a>.</p>
+    
+
+<p>A  filtered <a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html" class="external-link">data.table</a>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -103,7 +110,7 @@ the desired number of SNPs.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">limit_snps</span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">limit_snps</span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Limiting to only 500 SNPs.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Reduced number of SNPs: 6,216 ==&gt; 500</span>
 </code></pre></div>
@@ -120,7 +127,7 @@ the desired number of SNPs.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

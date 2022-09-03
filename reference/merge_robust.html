@@ -19,7 +19,7 @@ are evaluated in different scopes."><!-- mathjax --><script src="https://cdnjs.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,7 +70,7 @@ are evaluated in different scopes.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">merge_robust</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, by <span class="op">=</span> <span class="cn">NULL</span>, dup_stop <span class="op">=</span> <span class="cn">TRUE</span>, na_stop <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">merge_robust</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, by <span class="op">=</span> <span class="cn">NULL</span>, dup_stop <span class="op">=</span> <span class="cn">TRUE</span>, na_stop <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -83,27 +83,36 @@ data.table docs</a></p>
     <dl><dt>x, y</dt>
 <dd><p><code>data table</code>s. <code>y</code> is coerced to a <code>data.table</code> if
 it isn't one already.</p></dd>
+
+
 <dt>by</dt>
 <dd><p>A vector of shared column names in <code>x</code> and <code>y</code> to merge on.
 This defaults to the shared key columns between the two tables.
 If <code>y</code> has no key columns, this defaults to the key of <code>x</code>.</p></dd>
+
+
 <dt>dup_stop</dt>
 <dd><p>Throw an error if duplicates of the <code>by</code> 
 column are detected after merging.</p></dd>
+
+
 <dt>na_stop</dt>
 <dd><p>Throw an error if all of the data from <code>y</code> 
 has been converted to NAs (unless they were all NAs before merging).</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to 
 <a href="https://Rdatatable.gitlab.io/data.table/reference/merge.html" class="external-link">merge.data.table</a>.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SNP"</span>,<span class="st">"CHR"</span>,<span class="st">"POS"</span><span class="op">)</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SNP"</span>,<span class="st">"Support"</span>,<span class="st">"leadSNP"</span><span class="op">)</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">merge_robust</span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span>, by<span class="op">=</span><span class="st">"SNP"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SNP"</span>,<span class="st">"CHR"</span>,<span class="st">"POS"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SNP"</span>,<span class="st">"Support"</span>,<span class="st">"leadSNP"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">merge_robust</span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span>, by<span class="op">=</span><span class="st">"SNP"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -118,7 +127,7 @@ has been converted to NAs (unless they were all NAs before merging).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ the finemap_loci in querying and fine-mapping loci."><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -68,18 +68,18 @@ the finemap_loci in querying and fine-mapping loci.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">import_topSNPs</span><span class="op">(</span>
-  <span class="va">topSS</span>,
-  sheet <span class="op">=</span> <span class="fl">1</span>,
-  munge <span class="op">=</span> <span class="cn">TRUE</span>,
-  colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,
-  min_POS <span class="op">=</span> <span class="cn">NULL</span>,
-  max_POS <span class="op">=</span> <span class="cn">NULL</span>,
-  grouping_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Locus"</span><span class="op">)</span>,
-  remove_variants <span class="op">=</span> <span class="cn">NULL</span>,
-  show_table <span class="op">=</span> <span class="cn">FALSE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">import_topSNPs</span><span class="op">(</span></span>
+<span>  <span class="va">topSS</span>,</span>
+<span>  sheet <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  munge <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  min_POS <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max_POS <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  grouping_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Locus"</span><span class="op">)</span>,</span>
+<span>  remove_variants <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  show_table <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -93,52 +93,75 @@ If there is more than one SNP per locus, the one with the
  smallest p-value (then the largest effect size) is selected as the lead SNP.
 The lead SNP will be used as the center of the locus when
  constructing the locus subset files.</p></dd>
+
+
 <dt>sheet</dt>
 <dd><p>If the <em>topSS</em> file is an excel sheet, 
 you can specify which tab to use.
 You can provide either a number to identify the tab by order,
 or a string to identify the tab by name.</p></dd>
+
+
 <dt>munge</dt>
 <dd><p>Standardise column names.</p></dd>
+
+
 <dt>colmap</dt>
 <dd><p>Column mappings object. 
 Uses <a href="construct_colmap.html">construct_colmap</a> by default.</p></dd>
+
+
 <dt>min_POS</dt>
 <dd><p>Column containing minimum genomic position 
 (used instead of an arbitrary window size).</p></dd>
+
+
 <dt>max_POS</dt>
 <dd><p>Column containing maximum genomic position 
 (used instead of an arbitrary window size).</p></dd>
+
+
 <dt>grouping_vars</dt>
 <dd><p>The variables that you want to group by
 such that each grouping_var combination has its own index SNP.
 For example, if you want one index SNP per QTL eGene - 
 GWAS locus pair, you could supply:
 <code>grouping_vars=c("Locus","Gene")</code>.</p></dd>
+
+
 <dt>remove_variants</dt>
 <dd><p>SNPs to remove from <code>topSS</code>,</p></dd>
+
+
 <dt>show_table</dt>
 <dd><p>Create an interative data table.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
+
 <dt>Locus</dt>
 <dd><p>Column containing unique locus name.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Munged topSNPs table.</p>
+    
+
+<p>Munged topSNPs table.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">topSNPs</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">import_topSNPs</span><span class="op">(</span></span>
-<span class="r-in">    topSS <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="topSNPs_Nalls2019_raw.html">topSNPs_Nalls2019_raw</a></span>,</span>
-<span class="r-in">    colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span>P <span class="op">=</span> <span class="st">"P, all studies"</span>,</span>
-<span class="r-in">                              Effect <span class="op">=</span> <span class="st">"Beta, all studies"</span>,</span>
-<span class="r-in">                              Locus <span class="op">=</span> <span class="st">"Nearest Gene"</span>,</span>
-<span class="r-in">                              Gene <span class="op">=</span> <span class="st">"QTL Nominated Gene (nearest QTL)"</span></span>
-<span class="r-in">                              <span class="op">)</span>,</span>
-<span class="r-in">    grouping_vars <span class="op">=</span> <span class="st">"Locus Number"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">topSNPs</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">import_topSNPs</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    topSS <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="topSNPs_Nalls2019_raw.html">topSNPs_Nalls2019_raw</a></span>,</span></span>
+<span class="r-in"><span>    colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span>P <span class="op">=</span> <span class="st">"P, all studies"</span>,</span></span>
+<span class="r-in"><span>                              Effect <span class="op">=</span> <span class="st">"Beta, all studies"</span>,</span></span>
+<span class="r-in"><span>                              Locus <span class="op">=</span> <span class="st">"Nearest Gene"</span>,</span></span>
+<span class="r-in"><span>                              Gene <span class="op">=</span> <span class="st">"QTL Nominated Gene (nearest QTL)"</span></span></span>
+<span class="r-in"><span>                              <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    grouping_vars <span class="op">=</span> <span class="st">"Locus Number"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: P, all studies ==&gt; P</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: Beta, all studies ==&gt; Effect</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Renaming column: Nearest Gene ==&gt; Locus</span>
@@ -163,7 +186,7 @@ GWAS locus pair, you could supply:
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

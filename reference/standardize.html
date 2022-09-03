@@ -19,7 +19,7 @@ that the rest of echolocatoR can work with."><!-- mathjax --><script src="https:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,29 +70,37 @@ that the rest of <em>echolocatoR</em> can work with.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">standardize</span><span class="op">(</span>
-  <span class="va">query</span>,
-  subset_path <span class="op">=</span> <span class="cn">NULL</span>,
-  locus <span class="op">=</span> <span class="cn">NULL</span>,
-  colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,
-  compute_n <span class="op">=</span> <span class="st">"ldsc"</span>,
-  return_dt <span class="op">=</span> <span class="cn">TRUE</span>,
-  nThread <span class="op">=</span> <span class="fl">1</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">standardize</span><span class="op">(</span></span>
+<span>  <span class="va">query</span>,</span>
+<span>  subset_path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  locus <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  compute_n <span class="op">=</span> <span class="st">"ldsc"</span>,</span>
+<span>  return_dt <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nThread <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>query</dt>
 <dd><p>data.frame of summary stat.</p></dd>
+
+
 <dt>subset_path</dt>
 <dd><p>Path where the <code>query</code> should be 
 saved after standardization.</p></dd>
+
+
 <dt>locus</dt>
 <dd><p>Locus name.</p></dd>
+
+
 <dt>colmap</dt>
 <dd><p>Column mapping object.</p></dd>
+
+
 <dt>compute_n</dt>
 <dd><p>How to compute per-SNP sample size (new column "N").</p><ul><li><p><code>0</code>: N will not be computed.</p></li>
 <li><p><code>&gt;0</code>: If any number &gt;0 is provided,
@@ -101,32 +109,43 @@ that value will be set as N for every row.
 if at all possible.</p></li>
 <li><p><code>"sum"</code>: N will be computed as:
 cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
-<li><p><code>"effective"</code>: N will be computed as effective sample size:
-cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
+<li><p><code>"ldsc"</code>: N will be computed as effective sample size:
+Neff =(N_CAS+N_CON)*(N_CAS/(N_CAS+N_CON)) / mean((N_CAS/(N_CAS+N_CON))(N_CAS+N_CON)==max(N_CAS+N_CON)).</p></li>
+<li><p><code>"giant"</code>: N will be computed as effective sample size:
+Neff = 2 / (1/N_CAS + 1/N_CON).</p></li>
+<li><p><code>"metal"</code>: N will be computed as effective sample size:
+Neff = 4 / (1/N_CAS + 1/N_CON).</p></li>
 </ul></dd>
+
+
 <dt>return_dt</dt>
 <dd><p>Return data.table or path to saved data.table.</p></dd>
+
+
 <dt>nThread</dt>
 <dd><p>Number of threads to parallelise saving across.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span></span>
-<span class="r-in"><span class="co">#### Screw up data</span></span>
-<span class="r-in"><span class="va">query</span><span class="op">$</span><span class="va">rsid</span> <span class="op">&lt;-</span> <span class="va">query</span><span class="op">$</span><span class="va">SNP</span></span>
-<span class="r-in"><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span><span class="op">[</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAF"</span>,<span class="st">"SNP"</span><span class="op">)</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">query</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">30</span>,<span class="fl">55</span><span class="op">)</span>,<span class="st">"Freq"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span class="r-in"><span class="va">query</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>,<span class="fl">22</span><span class="op">)</span>,<span class="st">"Freq"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">subset_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"BST1.tsv"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fwrite.html" class="external-link">fwrite</a></span><span class="op">(</span><span class="va">query</span>, <span class="va">subset_path</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">query_mod</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">standardize</span><span class="op">(</span>query <span class="op">=</span> <span class="va">query</span>,</span>
-<span class="r-in">                                   subset_path <span class="op">=</span> <span class="va">subset_path</span>,</span>
-<span class="r-in">                                   locus <span class="op">=</span> <span class="st">"BST1"</span>,</span>
-<span class="r-in">                                   colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span>SNP<span class="op">=</span><span class="st">"rsid"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span></span></span>
+<span class="r-in"><span><span class="co">#### Screw up data</span></span></span>
+<span class="r-in"><span><span class="va">query</span><span class="op">$</span><span class="va">rsid</span> <span class="op">&lt;-</span> <span class="va">query</span><span class="op">$</span><span class="va">SNP</span></span></span>
+<span class="r-in"><span><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span><span class="op">[</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAF"</span>,<span class="st">"SNP"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">query</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">30</span>,<span class="fl">55</span><span class="op">)</span>,<span class="st">"Freq"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span><span class="va">query</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>,<span class="fl">22</span><span class="op">)</span>,<span class="st">"Freq"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">subset_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"BST1.tsv"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fwrite.html" class="external-link">fwrite</a></span><span class="op">(</span><span class="va">query</span>, <span class="va">subset_path</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">query2</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">standardize</span><span class="op">(</span>query <span class="op">=</span> <span class="va">query</span>,</span></span>
+<span class="r-in"><span>                                subset_path <span class="op">=</span> <span class="va">subset_path</span>,</span></span>
+<span class="r-in"><span>                                locus <span class="op">=</span> <span class="st">"BST1"</span>,</span></span>
+<span class="r-in"><span>                                colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span>SNP<span class="op">=</span><span class="st">"rsid"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Standardizing summary statistics subset.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Standardizing main column names.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Preparing A1,A1 cols</span>
@@ -136,18 +155,16 @@ cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Preparing N_cases,N_controls cols.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Preparing proportion_cases col.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Calculating proportion_cases from N_cases and N_controls.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Preparing N col</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> --</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Preparing sample size column (N).</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Computing effective sample size using the LDSC method:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  Neff = (N_CAS+N_CON) * (N_CAS/(N_CAS+N_CON)) / mean((N_CAS/(N_CAS+N_CON))[(N_CAS+N_CON)==max(N_CAS+N_CON)]))</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> --</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Mapping colnames from MungeSumstats ==&gt; echolocatoR</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Imputing t-statistic from Effect and StdErr.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Ensuring Effect,StdErr,P are numeric.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Ensuring 1 SNP per row and per genomic coordinate.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Removing extra whitespace</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Standardized query: 6,211 SNPs x 27 columns.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Saving standardized query ==&gt; /tmp/RtmpNVPAfc/BST1.tsv</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Standardized query: 6,211 SNPs x 28 columns.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ++ Saving standardized query ==&gt; /tmp/RtmpY95YZS/BST1.tsv</span>
 </code></pre></div>
     </div>
   </div>
@@ -162,7 +179,7 @@ cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

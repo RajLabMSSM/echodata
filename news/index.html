@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -61,10 +61,45 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.12" id="echodata-09912">echodata 0.99.12<a class="anchor" aria-label="anchor" href="#echodata-09912"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-99-12">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-12"></a></h3>
+<ul><li>New function: <code>get_Kunkle2019_coloc</code>.</li>
+<li>Remove <code>zscore*</code> functions (not used anymore).</li>
+<li>
+<code>standardize_gene_locus_cols</code>: Will replaced Locus names with new <em>Locus_Gene</em> naming scheme when <code>grouping_vars</code> contain both Locus and Gene.</li>
+<li>Move over functions from <code>echoannot</code>:
+<ul><li><code>get_SNPgroup_counts</code></li>
+<li><code>results_report</code></li>
+<li><code>merge_finemapping_results</code></li>
+</ul></li>
+<li>
+<code>portal_query</code>: add arg to return results in table format.</li>
+<li>Add and export new functions:
+<ul><li><code>set_permissions</code></li>
+<li><code>get_os</code></li>
+<li><code>find_executable</code></li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-99-12">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-12"></a></h3>
+<ul><li>
+<code>portal_query</code>: Forgot to add <code>sep=</code> name in URL construction.</li>
+<li>
+<code>get_sample_size</code>: Fix unit tests.</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.11" id="echodata-09911">echodata 0.99.11<a class="anchor" aria-label="anchor" href="#echodata-09911"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-11">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-11"></a></h3>
 <ul><li>Pass up <code>compute_n</code> as arg in <code>standardize</code>.</li>
+<li>Add <code>get_Nalls2019_coloc</code> function.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-99-11">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-11"></a></h3>
+<ul><li>
+<code>get_sample_size</code>: Return NULL when “N” col not present at end of func. Otherwise, <code>max(NULL)</code> can give you <code>-Inf</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -247,7 +282,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

@@ -19,7 +19,7 @@ You can also explicitly remove certain variants."><!-- mathjax --><script src="h
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
       </span>
     </div>
 
@@ -70,41 +70,58 @@ You can also explicitly remove certain variants.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">filter_snps</span><span class="op">(</span>
-  <span class="va">dat</span>,
-  bp_distance <span class="op">=</span> <span class="fl">5e+05</span>,
-  remove_variants <span class="op">=</span> <span class="cn">FALSE</span>,
-  min_POS <span class="op">=</span> <span class="cn">NA</span>,
-  max_POS <span class="op">=</span> <span class="cn">NA</span>,
-  max_snps <span class="op">=</span> <span class="cn">NULL</span>,
-  min_MAF <span class="op">=</span> <span class="cn">NULL</span>,
-  trim_gene_limits <span class="op">=</span> <span class="cn">FALSE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">filter_snps</span><span class="op">(</span></span>
+<span>  <span class="va">dat</span>,</span>
+<span>  bp_distance <span class="op">=</span> <span class="fl">5e+05</span>,</span>
+<span>  remove_variants <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  min_POS <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  max_POS <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  max_snps <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min_MAF <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  trim_gene_limits <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dat</dt>
 <dd><p>Fine-mapping results data.</p></dd>
+
+
 <dt>bp_distance</dt>
 <dd><p>Distance around the lead SNP to include.</p></dd>
+
+
 <dt>remove_variants</dt>
 <dd><p>A list of SNP RSIDs to remove.</p></dd>
+
+
 <dt>min_POS</dt>
 <dd><p>Minimum genomic position to include.</p></dd>
+
+
 <dt>max_POS</dt>
 <dd><p>Maximum genomic position to include.</p></dd>
+
+
 <dt>max_snps</dt>
 <dd><p>Maximum number of SNPs to include.</p></dd>
+
+
 <dt>min_MAF</dt>
 <dd><p>Minimum Minor Allele Frequency (MAF) of SNPs to include.</p></dd>
+
+
 <dt>trim_gene_limits</dt>
 <dd><p>If a gene name is supplied to this argument 
 (e.g. <code>trim_gene_limits="BST"</code>), only SNPs within the gene body
  will be included.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -115,7 +132,7 @@ You can also explicitly remove certain variants.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">filter_snps</span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">filter_snps</span><span class="op">(</span>dat <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> FILTER:: Filtering by SNP features.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + FILTER:: Post-filtered data: 2913 x 26</span>
 </code></pre></div>
@@ -132,7 +149,7 @@ You can also explicitly remove certain variants.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>
