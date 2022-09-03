@@ -1,16 +1,16 @@
 <img src='https://github.com/RajLabMSSM/echodata/raw/main/inst/hex/hex.png' height='300'><br><br>
-[![](https://img.shields.io/badge/devel%20version-0.99.3-black.svg)](https://github.com/RajLabMSSM/echodata)
+[![](https://img.shields.io/badge/devel%20version-0.99.12-black.svg)](https://github.com/RajLabMSSM/echodata)
 [![R build
 status](https://github.com/RajLabMSSM/echodata/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/RajLabMSSM/echodata/actions)
 [![](https://img.shields.io/github/last-commit/RajLabMSSM/echodata.svg)](https://github.com/RajLabMSSM/echodata/commits/main)
-[![](https://codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://codecov.io/gh/RajLabMSSM/echodata)
+[![](https://app.codecov.io/gh/RajLabMSSM/echodata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/RajLabMSSM/echodata)
 [![License:
 GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3)
 <h5>
 Author: <i>Brian M. Schilder</i>
 </h5>
 <h5>
-README updated: <i>Dec-03-2021</i>
+README updated: <i>Sep-03-2022</i>
 </h5>
 
 ## `echodata`: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
