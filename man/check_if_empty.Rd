@@ -25,6 +25,7 @@ echodata::check_if_empty(path = tmp)
 Other general: 
 \code{\link{createDT}()},
 \code{\link{fillNA_CS_PP}()},
-\code{\link{get_nrows}()}
+\code{\link{get_nrows}()},
+\code{\link{get_os}()}
 }
 \concept{general}

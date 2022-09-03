@@ -12,6 +12,7 @@
     - `results_report`
     - `merge_finemapping_results`
 * `portal_query`: add arg to return results in table format.
+* Add and export `set_permissions` and `get_os` functions. 
 
 ## Bug fixes
 
