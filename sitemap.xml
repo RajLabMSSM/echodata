@@ -46,9 +46,6 @@
     <loc>/reference/calculate_tstat.html</loc>
   </url>
   <url>
-    <loc>/reference/check_executable.html</loc>
-  </url>
-  <url>
     <loc>/reference/check_if_empty.html</loc>
   </url>
   <url>
@@ -86,9 +83,6 @@
   </url>
   <url>
     <loc>/reference/find_consensus_snps_no_polyfun.html</loc>
-  </url>
-  <url>
-    <loc>/reference/find_executable.html</loc>
   </url>
   <url>
     <loc>/reference/find_top_consensus.html</loc>
