@@ -17,6 +17,7 @@
 
 * `portal_query`: Forgot to add `sep=` name in URL construction. 
 * `get_sample_size`: Fix unit tests.
+- `get_header`: Fix misnamed variable.
 
 # echodata 0.99.11
 

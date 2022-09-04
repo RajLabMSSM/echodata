@@ -1,0 +1,12 @@
+PLINK v1.90b6.21 64-bit (19 Oct 2020)
+Options in effect:
+  --hekp
+
+Hostname: Imperial_MBP
+Working directory: /Users/schilder/Desktop/echoverse/echodata
+Start time: Sat Sep  3 14:12:53 2022
+
+Error: Unrecognized flag ('--hekp').
+For more information, try "plink --help <flag name>" or "plink --help | more".
+
+End time: Sat Sep  3 14:12:53 2022

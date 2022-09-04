@@ -19,7 +19,7 @@ get_header <- function(path,
     ## Remote bgz files are a little trickier ####
     ## You have to download them first.
     if((!is_local(path)) & (endsWith(path,".bgz"))){
-        tmp <- file.path(tempdir(), basename(file))
+        tmp <- file.path(tempdir(), basename(path))
         ## Only download it if you have to
         if(!file.exists(tmp)){
             utils::download.file(url = path, 
