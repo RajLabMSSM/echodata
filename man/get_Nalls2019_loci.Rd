@@ -5,9 +5,11 @@
 \title{\pkg{echolocatoR} output example: select loci}
 \usage{
 get_Nalls2019_loci(
-  save_dir = tools::R_user_dir(package = "echodata", which = "cache"),
+  save_dir = tempdir(),
   return_paths = TRUE,
   return_dir = FALSE,
+  limit_snps = NULL,
+  force_new = FALSE,
   verbose = TRUE
 )
 }
@@ -19,6 +21,10 @@ get_Nalls2019_loci(
 
 \item{return_dir}{Return the directory name
 instead of the individual file paths.}
+
+\item{limit_snps}{Limit the number of SNPs saved in each file.}
+
+\item{force_new}{Force the creation of new files even if old ones exists.}
 
 \item{verbose}{Print messages.}
 }

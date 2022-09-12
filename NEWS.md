@@ -13,6 +13,11 @@
     - `merge_finemapping_results`
 * `portal_query`: add arg to return results in table format.
 * Export `get_data`
+* `get_Nalls2019_loci`: 
+    - Add `limit_snps` arg
+    = Save `tempdir()` instead of cache by default, to allow 
+    subsetting different numbers of SNPs more easily. 
+    - Add `force_new` arg. 
 
 ## Bug fixes
 
