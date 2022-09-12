@@ -24,4 +24,6 @@ default \code{TRUE}.}
 \description{
 Download remote resources stored on GitHub Releases via \pkg{piggyback}.
 }
-\keyword{internal}
+\examples{
+tmp <- get_data(fname = "Kunkle2019.tsv.gz")
+}

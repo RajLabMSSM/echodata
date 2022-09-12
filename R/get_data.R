@@ -7,9 +7,11 @@
 #' @param save_dir Local directory to cache data in.
 #' @inheritParams piggyback::pb_download
 #' 
-#' @keywords internal
+#' @export
 #' @importFrom piggyback pb_download
 #' @importFrom tools R_user_dir
+#' @examples 
+#' tmp <- get_data(fname = "Kunkle2019.tsv.gz")
 get_data <- function(fname,
                      repo = "RajLabMSSM/echodata",
                      save_dir = tools::R_user_dir(package = "echodata",
