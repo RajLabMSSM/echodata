@@ -8,13 +8,10 @@
 Borrowed from \code{seqminer} internal function}
 }
 \usage{
-is_url(
-  fileName,
-  protocols = c("http", "https", "ftp", "ftps", "fttp", "fttps")
-)
+is_url(path, protocols = c("http", "https", "ftp", "ftps", "fttp", "fttps"))
 }
 \arguments{
-\item{fileName}{character vector}
+\item{path}{Path to local file or remote URL.}
 
 \item{protocols}{URL protocols to search for.}
 }
@@ -23,5 +20,5 @@ Check if the input is url e.g. http:// or ftp://
 }
 \examples{
 fileName <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
-out <- is_url(fileName=fileName)
+out <- is_url(path=path)
 }

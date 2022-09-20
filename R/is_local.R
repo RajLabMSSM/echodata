@@ -1,7 +1,6 @@
 #' Is local
 #' 
 #' Determine whether a file exist locally.
-#' @param path Path to local file or remote URL.
 #' @inheritParams is_url
 #' @export
 #' @examples
@@ -13,6 +12,6 @@ is_local <- function(path,
                                  "ftp","ftps",
                                  "fttp","fttps")) {
     # ssh.utils::file.exists.remote(file = path) # Doesn't work?
-    (!is_url(fileName = path, 
+    (!is_url(path = path, 
              protocols = protocols)) && (file.exists(path))
 }
