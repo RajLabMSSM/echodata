@@ -18,7 +18,7 @@ and merge into a single data.frame."><!-- mathjax --><script src="https://cdnjs.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.14</span>
       </span>
     </div>
 
@@ -110,10 +110,13 @@ of fine-mapping tools that contained the SNP in their Credible Set.</p></dd>
 <dd><p>LD reference to use:</p><ul><li><p>"1KGphase1" : 1000 Genomes Project Phase 1 (genome build: hg19).</p></li>
 <li><p>"1KGphase3" : 1000 Genomes Project Phase 3 (genome build: hg19).</p></li>
 <li><p>"UKB" : Pre-computed LD from a British
-European-decent subset of UK Biobank (genome build: hg19).</p></li>
+European-decent subset of UK Biobank.
+<em>Genome build</em> : hg19</p></li>
 <li><p>"&lt;vcf_path&gt;" : User-supplied path to a custom VCF file 
-to compute LD matrix from 
-(genome build: defined by user with <code>target_genome</code>).</p></li>
+to compute LD matrix from.<br><em>Accepted formats</em>: <em>.vcf</em> / <em>.vcf.gz</em> / <em>.vcf.bgz</em><br><em>Genome build</em> : defined by user with <code>target_genome</code>.</p></li>
+<li><p>"&lt;matrix_path&gt;" : User-supplied path to a pre-computed LD matrix   
+<em>Accepted formats</em>:  <em>.rds</em> / <em>.rda</em> / <em>.csv</em> / 
+<em>.tsv</em> / <em>.txt</em><br><em>Genome build</em> : defined by user with <code>target_genome</code>.</p></li>
 </ul></dd>
 
 
@@ -162,16 +165,16 @@ in which a SNP is in the Credible Set in order to be included in the
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Gathering all fine-mapping results from storage...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 3 multi-finemap files found.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Removing duplicate Multi-finemap files per locus.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... echodata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... echodata</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... echodata</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... Rtmphibbiy</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... Rtmphibbiy</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Importing results... Rtmphibbiy</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Identifying Consensus SNPs...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + support_thresh = 2</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Calculating mean Posterior Probability (mean.PP)...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 4 fine-mapping methods used.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 20 Credible Set SNPs identified.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 9 Consensus SNPs identified.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Saving merged results ==&gt; /tmp/RtmpADmBX4/file8ee54042211merged_results.csv.gz</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Saving merged results ==&gt; /tmp/Rtmphibbiy/file13a675f2066amerged_results.csv.gz</span>
 </code></pre></div>
     </div>
   </div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.14</span>
       </span>
     </div>
 
@@ -84,10 +84,15 @@
 
 
 <dt>compute_n</dt>
-<dd><p>How to compute per-SNP sample size (new column "N").</p><ul><li><p><code>0</code>: N will not be computed.</p></li>
+<dd><p>How to compute per-SNP sample size (new column "N").<br>
+If the column "N" is already present in <code>dat</code>, this column 
+will be used to extract per-SNP sample sizes
+and the argument <code>compute_n</code> will be ignored.<br>
+If the column "N" is <em>not</em> present in <code>dat</code>, one of the following 
+options can be supplied to <code>compute_n</code>:</p><ul><li><p><code>0</code>: N will not be computed.</p></li>
 <li><p><code>&gt;0</code>: If any number &gt;0 is provided,
 that value will be set as N for every row.
-<strong>Note</strong>: Computing N this way is incorrect and should be avoided
+**Note**: Computing N this way is incorrect and should be avoided
 if at all possible.</p></li>
 <li><p><code>"sum"</code>: N will be computed as:
 cases (N_CAS) + controls (N_CON), so long as both columns are present.</p></li>
