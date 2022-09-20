@@ -82,10 +82,7 @@
 #' study that were cases.
 #'  if \code{proportion_cases="calculate"} then this is inferred:
 #'  \code{N_controls / N_controls}.
-#' @param sample_size The overall sample size of the study.
-#' If none is given, and \strong{N_cases} and \strong{N_controls}
-#' columns are present,
-#' then sample_size is inferred to be: \code{max(N_cases) + max(N_controls)}.
+#' @param N Name of the column containing the total sample size.
 #' @param verbose Print messages.
 #' 
 #' @export
@@ -108,8 +105,8 @@ construct_colmap <- function(munged = FALSE,
                              N_cases="N_cases",
                              N_controls="N_controls",
                              proportion_cases="calculate",
-                             sample_size=NULL,
-                             verbose = TRUE){
+                             N=NULL,
+                             verbose=TRUE){
     
     colmap <- as.list(environment())
     ## If already munged with MungeSumstats, 
@@ -129,6 +126,8 @@ construct_colmap <- function(munged = FALSE,
                            Freq="FRQ",
                            N_cases="N_CAS",
                            N_controls="N_CON",
+                           N="N",
+                           # N_col="Neff",
                            A1="A1",
                            A2="A2",
                            Gene="GENE")

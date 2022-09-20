@@ -22,7 +22,7 @@ construct_colmap(
   N_cases = "N_cases",
   N_controls = "N_controls",
   proportion_cases = "calculate",
-  sample_size = NULL,
+  N = NULL,
   verbose = TRUE
 )
 }
@@ -108,10 +108,7 @@ study that were cases.
  if \code{proportion_cases="calculate"} then this is inferred:
  \code{N_controls / N_controls}.}
 
-\item{sample_size}{The overall sample size of the study.
-If none is given, and \strong{N_cases} and \strong{N_controls}
-columns are present,
-then sample_size is inferred to be: \code{max(N_cases) + max(N_controls)}.}
+\item{N}{Name of the column containing the total sample size.}
 
 \item{verbose}{Print messages.}
 }

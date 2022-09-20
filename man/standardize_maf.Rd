@@ -9,7 +9,8 @@ standardize_maf(query, colmap, verbose = TRUE)
 \arguments{
 \item{query}{data.frame of summary stat.}
 
-\item{colmap}{Column mapping object.}
+\item{colmap}{Column mapping object created using 
+\link[echodata]{contruct_colmap}.}
 
 \item{verbose}{Print messages.}
 }

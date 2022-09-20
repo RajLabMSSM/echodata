@@ -26,7 +26,7 @@
 #' \item{\code{"metal"}: }{N will be computed as effective sample size:
 #' Neff = 4 / (1/N_CAS + 1/N_CON)}.
 #' }
-#' @inheritParams filter_snps
+#' @inheritParams filter_snps 
 #' @inheritParams MungeSumstats::compute_nsize
 #' @importFrom stats setNames
 #' @importFrom data.table setnames
@@ -48,6 +48,8 @@ get_sample_size <- function(dat,
         stp <- "echodata requires MungeSumstats >=1.3.14"
         stop(stp)
     } 
+    #### Ensure dt format ####
+    dat <- data.table::data.table(dat) 
     messager("Preparing sample size column (N).", v=verbose)
     if("N" %in% colnames(dat) && isFALSE(force_new)){
         if(!is.null(return_only)){

@@ -9,6 +9,7 @@
 ## Bug fixes
 
 * Make `R.utils` an Import to avoid any issues with reading gz files. 
+* Make sure `standardize` uses `construct_colmap` to rename "N" column. 
 
 # echodata 0.99.13
 

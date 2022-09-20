@@ -8,14 +8,15 @@
 #' @param subset_path Path where the \code{query} should be 
 #' saved after standardization.
 #' @param locus Locus name.
-#' @param colmap Column mapping object.
+#' @param colmap Column mapping object created using 
+#' \link[echodata]{contruct_colmap}. 
 #' @param return_dt Return data.table or path to saved data.table.
 #' @param nThread Number of threads to parallelise saving across.
 #' @param verbose Print messages.
 #' @inheritParams MungeSumstats::compute_nsize
 #'
 #' @export 
-#' @importFrom dplyr %>% rename mutate arrange mutate_at 
+#' @importFrom dplyr rename mutate arrange mutate_at 
 #' @importFrom data.table fread data.table fwrite
 #' @examples
 #' query <- echodata::BST1
@@ -23,23 +24,23 @@
 #' query$rsid <- query$SNP
 #' query <- data.frame(query)[,!colnames(query) %in% c("MAF","SNP")]
 #' query[c(10,30,55),"Freq"] <- 0
-#' query[c(12,22),"Freq"] <- NA
-#'
+#' query[c(12,22),"Freq"] <- NA 
 #' subset_path <- file.path(tempdir(),"BST1.tsv")
-#' data.table::fwrite(query, subset_path)
+#' colmap = construct_colmap(SNP="rsid")
 #' query2 <- echodata::standardize(query = query,
 #'                                 subset_path = subset_path,
 #'                                 locus = "BST1",
-#'                                 colmap = construct_colmap(SNP="rsid"))
+#'                                 colmap = colmap)
 standardize <- function(query,
-                        subset_path=NULL,
-                        locus=NULL,
+                        subset_path = NULL,
+                        locus = NULL,
                         colmap = construct_colmap(),
                         compute_n = "ldsc",
                         return_dt = TRUE,
                         nThread = 1, 
                         verbose = TRUE){ 
    
+    query <- data.table::data.table(query)
     messager("Standardizing summary statistics subset.",v=verbose) 
     # ------ Required columns ------ #
     #### Rename main cols ####
@@ -72,11 +73,10 @@ standardize <- function(query,
     query <- standardize_proportion_cases(query=query, 
                                          colmap=colmap, 
                                          verbose=verbose)
-    #### sample size #### 
-    query <- get_sample_size(dat = query,
-                             compute_n = compute_n,
-                             method = colmap$sample_size,
-                             force_new = FALSE,
+    #### sample size ####  
+    query <- get_sample_size(dat=query,
+                             compute_n=compute_n, 
+                             force_new=FALSE,
                              verbose=verbose)
     #### Impute t-stat #### 
     ## Assign renamed values  

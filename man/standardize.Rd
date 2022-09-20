@@ -23,7 +23,8 @@ saved after standardization.}
 
 \item{locus}{Locus name.}
 
-\item{colmap}{Column mapping object.}
+\item{colmap}{Column mapping object created using 
+\link[echodata]{contruct_colmap}.}
 
 \item{compute_n}{How to compute per-SNP sample size (new column "N").
 \itemize{
@@ -59,12 +60,11 @@ query <- echodata::BST1
 query$rsid <- query$SNP
 query <- data.frame(query)[,!colnames(query) \%in\% c("MAF","SNP")]
 query[c(10,30,55),"Freq"] <- 0
-query[c(12,22),"Freq"] <- NA
-
+query[c(12,22),"Freq"] <- NA 
 subset_path <- file.path(tempdir(),"BST1.tsv")
-data.table::fwrite(query, subset_path)
+colmap = construct_colmap(SNP="rsid")
 query2 <- echodata::standardize(query = query,
                                 subset_path = subset_path,
                                 locus = "BST1",
-                                colmap = construct_colmap(SNP="rsid"))
+                                colmap = colmap)
 }
