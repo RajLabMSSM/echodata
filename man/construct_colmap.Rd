@@ -22,7 +22,7 @@ construct_colmap(
   N_cases = "N_cases",
   N_controls = "N_controls",
   proportion_cases = "calculate",
-  N = NULL,
+  N = "N",
   verbose = TRUE
 )
 }

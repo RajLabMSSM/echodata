@@ -105,7 +105,7 @@ construct_colmap <- function(munged = FALSE,
                              N_cases="N_cases",
                              N_controls="N_controls",
                              proportion_cases="calculate",
-                             N=NULL,
+                             N="N",
                              verbose=TRUE){
     
     colmap <- as.list(environment())
