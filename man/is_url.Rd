@@ -8,12 +8,20 @@
 Borrowed from \code{seqminer} internal function}
 }
 \usage{
-is_url(fileName)
+is_url(
+  fileName,
+  protocols = c("http", "https", "ftp", "ftps", "fttp", "fttps")
+)
 }
 \arguments{
 \item{fileName}{character vector}
+
+\item{protocols}{URL protocols to search for.}
 }
 \description{
 Check if the input is url e.g. http:// or ftp://
 }
-\keyword{internal}
+\examples{
+fileName <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
+out <- is_url(fileName=fileName)
+}

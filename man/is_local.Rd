@@ -4,10 +4,12 @@
 \alias{is_local}
 \title{Is local}
 \usage{
-is_local(path)
+is_local(path, protocols = c("http", "https", "ftp", "ftps", "fttp", "fttps"))
 }
 \arguments{
 \item{path}{Path to local file or remote URL.}
+
+\item{protocols}{URL protocols to search for.}
 }
 \description{
 Determine whether a file exist locally.

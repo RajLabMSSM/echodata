@@ -6,6 +6,9 @@
     - Add more complete documentation on what happens when "N" column is present. 
     - Add extra check to make sure `MungeSumstats` >=1.3.9 is installed. 
     - `compute_n` can now be a numeric vector of length equal to `nrow(dat)`. 
+* `is_url`:
+    - New export function.
+    - User-specified URL `protocols` to search for.
 
 ## Bug fixes
 
