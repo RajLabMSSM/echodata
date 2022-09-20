@@ -1,4 +1,16 @@
-# echodata 0.99.12
+# echodata 0.99.14
+
+## New features
+
+* `get_sample_size`:
+    - Add more complete documentation on what happens when "N" column is present. 
+    - Add extra check to make sure `MungeSumstats` >=1.3.9 is installed. 
+
+## Bug fixes
+
+* Make `R.utils` an Import to avoid any issues with reading gz files. 
+
+# echodata 0.99.13
 
 ## New features
 

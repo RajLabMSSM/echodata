@@ -1,7 +1,7 @@
 Package: echodata
 Type: Package
 Title: echoverse module: Fine-mapping data access and formatting
-Version: 0.99.12
+Version: 0.99.14
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -31,6 +31,7 @@ biocViews:
 Imports: 
     dplyr,
     data.table,
+    R.utils,
     methods,
     utils,
     tools,
