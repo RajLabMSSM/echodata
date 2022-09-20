@@ -2,6 +2,7 @@ test_that("get_sample_size works", {
   
     dat <- echodata::BST1
     
+    #### defalts ####
     dat2 <- echodata::get_sample_size(dat = dat)
     testthat::expect_equal(nrow(dat2),nrow(dat))
     testthat::expect_false("N" %in% colnames(dat))
@@ -45,9 +46,23 @@ test_that("get_sample_size works", {
                                       na.rm=TRUE)
     testthat::expect_equal(dat9, 1474097)
     #### compute_n: number ####
-    dat10 <- echodata:: get_sample_size(dat = dat,
-                                      compute_n = 10000,
-                                      return_only = max,
-                                      na.rm=TRUE)
-    testthat::expect_equal(dat9, 1474097)
+    dat10 <- echodata::get_sample_size(dat = dat,
+                                       compute_n = 10000,
+                                       return_only = max,
+                                       na.rm=TRUE)
+    testthat::expect_equal(dat10, 10000)
+    #### compute_n: vector of numbers (correct length) ####
+    compute_n_vec <- rep(c(10000,10010),nrow(dat)/2)
+    dat11 <- echodata::get_sample_size(dat = dat,
+                                       compute_n = compute_n_vec, 
+                                       na.rm=TRUE)
+    testthat::expect_equal(dat11$N, compute_n_vec)
+    
+    #### compute_n: vector of numbers (correct length) ####
+    testthat::expect_error(
+        dat12 <- echodata::get_sample_size(dat = dat,
+                                           compute_n = rep(10000,nrow(dat)-10),
+                                           return_only = max,
+                                           na.rm=TRUE)
+    ) 
 })

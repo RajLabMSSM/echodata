@@ -51,23 +51,47 @@ get_sample_size <- function(dat,
     #### Ensure dt format ####
     dat <- data.table::data.table(dat) 
     messager("Preparing sample size column (N).", v=verbose)
-    if("N" %in% colnames(dat) && isFALSE(force_new)){
+    if("N" %in% names(dat) && isFALSE(force_new)){
+        messager("Using existing 'N' column.",v=verbose)
         if(!is.null(return_only)){
             return(return_only(dat$N, ...))
         }
         return(dat)
     } 
-    #### Check method ### 
+    #### Numeric vector ####
+    if(is.numeric(compute_n) &&
+       length(compute_n)>1){
+        messager("Numeric vector supplied to compute_n.",v=verbose)
+        if(length(compute_n)!=nrow(dat)){
+            stp <- paste(
+                "When compute_n is a numeric vector,",
+                "its length must be exactly equal to the number of rows",
+                "in your summary statistics data (dat)."
+            )
+            stop(stp)
+        } else {
+            dat$N <- compute_n
+            if(!is.null(return_only)){
+                return(return_only(dat$N, ...))
+            }
+            return(dat)
+        }
+    }
+    #### MungeSumstats ####
+    #### copy dt ####
+    dat2 <- data.table::copy(dat)
+    #### Check method ###
+    ### Character
     if(is.null(compute_n)){
       compute_n <- "ldsc" 
     } else if(is.character(compute_n)) {
       compute_n <- tolower(compute_n)[1]
-    } 
-    dat2 <- data.table::copy(dat)
-    if("N_controls" %in% colnames(dat2)){
+    }  
+    #### Rename cols to be used by MungeSumstats ####
+    if("N_controls" %in% names(dat2)){
       data.table::setnames(dat2,"N_controls","N_CON")
     }
-    if("N_cases" %in% colnames(dat2)){
+    if("N_cases" %in% names(dat2)){
       data.table::setnames(dat2,"N_cases","N_CAS")
     }
     dat2 <- MungeSumstats::compute_nsize(
