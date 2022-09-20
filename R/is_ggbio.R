@@ -1,6 +1,6 @@
 #' Is an object of class ggbio
 #'
-#' Check whether an object is of the class \link[ggbio]{ggbio}.
+#' Check whether an object is of the class \code{ggbio}.
 #' @param obj Any R object.
 #' @returns Boolean.
 #' @export

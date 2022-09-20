@@ -24,14 +24,19 @@ saved after standardization.}
 \item{locus}{Locus name.}
 
 \item{colmap}{Column mapping object created using 
-\link[echodata]{contruct_colmap}.}
+\link[echodata]{construct_colmap}.}
 
-\item{compute_n}{How to compute per-SNP sample size (new column "N").
+\item{compute_n}{How to compute per-SNP sample size (new column "N").\cr
+If the column "N" is already present in \code{dat}, this column 
+will be used to extract per-SNP sample sizes
+and the argument \code{compute_n} will be ignored.\cr
+If the column "N" is \emph{not} present in \code{dat}, one of the following 
+options can be supplied to \code{compute_n}: 
 \itemize{
 \item{\code{0}: }{N will not be computed.}
 \item{\code{>0}: }{If any number >0 is provided,
 that value will be set as N for every row.
-\strong{Note}: Computing N this way is incorrect and should be avoided
+**Note**: Computing N this way is incorrect and should be avoided
 if at all possible.}
 \item{\code{"sum"}: }{N will be computed as:
 cases (N_CAS) + controls (N_CON), so long as both columns are present}.
@@ -58,7 +63,7 @@ that the rest of \emph{echolocatoR} can work with.
 query <- echodata::BST1
 #### Screw up data
 query$rsid <- query$SNP
-query <- data.frame(query)[,!colnames(query) \%in\% c("MAF","SNP")]
+query <- query[,-c("MAF","SNP")]
 query[c(10,30,55),"Freq"] <- 0
 query[c(12,22),"Freq"] <- NA 
 subset_path <- file.path(tempdir(),"BST1.tsv")

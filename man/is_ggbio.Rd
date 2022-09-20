@@ -13,7 +13,7 @@ is_ggbio(obj)
 Boolean.
 }
 \description{
-Check whether an object is of the class \link[ggbio]{ggbio}.
+Check whether an object is of the class \code{ggbio}.
 }
 \examples{
 bool <- echodata::is_ggbio(mtcars)

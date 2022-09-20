@@ -9,10 +9,11 @@
 #' saved after standardization.
 #' @param locus Locus name.
 #' @param colmap Column mapping object created using 
-#' \link[echodata]{contruct_colmap}. 
+#' \link[echodata]{construct_colmap}. 
 #' @param return_dt Return data.table or path to saved data.table.
 #' @param nThread Number of threads to parallelise saving across.
 #' @param verbose Print messages.
+#' @inheritParams get_sample_size
 #' @inheritParams MungeSumstats::compute_nsize
 #'
 #' @export 
@@ -22,7 +23,7 @@
 #' query <- echodata::BST1
 #' #### Screw up data
 #' query$rsid <- query$SNP
-#' query <- data.frame(query)[,!colnames(query) %in% c("MAF","SNP")]
+#' query <- query[,-c("MAF","SNP")]
 #' query[c(10,30,55),"Freq"] <- 0
 #' query[c(12,22),"Freq"] <- NA 
 #' subset_path <- file.path(tempdir(),"BST1.tsv")
