@@ -19,6 +19,6 @@ is_url(path, protocols = c("http", "https", "ftp", "ftps", "fttp", "fttps"))
 Check if the input is url e.g. http:// or ftp://
 }
 \examples{
-fileName <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
+path <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
 out <- is_url(path=path)
 }

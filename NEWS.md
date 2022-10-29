@@ -16,6 +16,7 @@
 * Fix GHA: @master --> @v2  
 * Fix `reassign_lead_snps` warnings.
 * Fix `biomart_geneInfo` warnings.
+* Fix `is_url` example.
 
 
 # echodata 0.99.14

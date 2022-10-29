@@ -5,7 +5,7 @@
 #' Borrowed from \code{seqminer} internal function}
 #' @export
 #' @examples 
-#' fileName <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
+#' path <- "https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"
 #' out <- is_url(path=path)
 is_url <- function(path,
                    protocols=c("http","https",
@@ -13,7 +13,7 @@ is_url <- function(path,
                                "fttp","fttps")) {
     
     pattern <- paste(paste0("^",protocols,"://"),collapse = "|")
-    if (grepl(pattern =pattern, x = path, ignore.case = TRUE)) {
+    if (grepl(pattern = pattern, x = path, ignore.case = TRUE)) {
         return(TRUE)
     }
     return(FALSE)
