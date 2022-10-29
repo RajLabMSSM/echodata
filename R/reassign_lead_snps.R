@@ -11,8 +11,8 @@
 #' @param verbose Print messages.
 #' 
 #' @export
-#' @importFrom dplyr %>%  slice_min n_distinct all_of group_by_at
-#' @importFrom data.table rbindlist
+#' @importFrom dplyr  slice_min n_distinct all_of group_by_at
+#' @importFrom data.table rbindlist :=
 #' @importFrom parallel mclapply
 #' @importFrom tidyr unite
 #' @examples  
@@ -25,15 +25,19 @@ reassign_lead_snps <- function(merged_dat,
                                grouping_vars = c("Dataset", "Locus"),
                                nThread = 1,
                                verbose = TRUE) {  
-    P <- NULL;
+    P <- leadSNP <- NULL;
     
     messager("Reassigning lead SNPs by:",
              paste(grouping_vars,collapse = ", "), v=verbose)
-    grouping_vars <- grouping_vars[grouping_vars %in% colnames(merged_dat)]
+    #### Select only grouping_vars that are actually available ####
+    grouping_vars <- grouping_vars[
+        grouping_vars %in% colnames(merged_dat)
+    ]
     if(length(grouping_vars)==0){
         messager("Warning: None of the grouping_vars were",
                  "found in merged_dat columns.",
-                 "Grouping by a new dummy variable called 'Dataset'.")
+                 "Grouping by a new dummy variable called 'Dataset'.",
+                 v=verbose)
         merged_dat$Dataset <- "Dataset"
         grouping_vars <- "Dataset"
     }
@@ -44,18 +48,24 @@ reassign_lead_snps <- function(merged_dat,
                                sep = ".", 
                                remove = FALSE) 
     #### Find lead SNPs ####
-    lead_snps <- (merged_dat %>% 
-        dplyr::group_by_at(.vars = dplyr::all_of(grouping_vars)) %>%
-        dplyr::slice_min(order_by = dplyr::all_of(P)) %>%
+    lead_snps <- (merged_dat |> 
+        dplyr::group_by_at(.vars = grouping_vars) |>
+        dplyr::slice_min(order_by = P,
+                         with_ties = FALSE) |>
         dplyr::mutate(leadSNP=TRUE)
         )
     #### Merge with original data ####
+    if("leadSNP" %in% names(merged_dat)){
+        merged_dat[,leadSNP:=NULL]
+    }
     merged_dat <- data.table::merge.data.table(
-        x = merged_dat[,-c("leadSNP")], 
+        x = merged_dat, 
          y = lead_snps[,c(grouping_vars,"SNP","leadSNP")], 
          by = c(grouping_vars,"SNP"), 
-         all.x = TRUE) 
-    merged_dat[is.na(merged_dat$leadSNP),"leadSNP"] <- FALSE
+         all.x = TRUE)  
+    if(sum(is.na(merged_dat$leadSNP))>0){
+        merged_dat[is.na(merged_dat$leadSNP),"leadSNP"] <- FALSE
+    }
     #### Report ####
     if (!sum(merged_dat$leadSNP) == dplyr::n_distinct(merged_dat$id)) {
         warning("leadSNP count doesn't match up with unique id count.")

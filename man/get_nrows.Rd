@@ -14,9 +14,9 @@ Get the number of rows of a large file without reading it into memory.
 }
 \seealso{
 Other general: 
-\code{\link{check_if_empty}()},
 \code{\link{createDT}()},
 \code{\link{fillNA_CS_PP}()},
-\code{\link{get_os}()}
+\code{\link{get_os}()},
+\code{\link{is_empty}()}
 }
 \concept{general}

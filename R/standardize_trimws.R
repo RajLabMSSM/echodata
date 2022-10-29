@@ -6,8 +6,8 @@ standardize_trimws <- function(query,
     ]
     if(length(cols_to_be_rectified)>0){
         messager("++ Removing extra whitespace", v=verbose)
-        query <- query %>%
-            dplyr::mutate_at(.vars =dplyr::vars(cols_to_be_rectified),
+        query <- query |>
+            dplyr::mutate_at(.vars = cols_to_be_rectified,
                              .funs = trimws )
     } 
     return(query)

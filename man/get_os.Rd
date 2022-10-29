@@ -17,9 +17,9 @@ os <- get_os()
 }
 \seealso{
 Other general: 
-\code{\link{check_if_empty}()},
 \code{\link{createDT}()},
 \code{\link{fillNA_CS_PP}()},
-\code{\link{get_nrows}()}
+\code{\link{get_nrows}()},
+\code{\link{is_empty}()}
 }
 \concept{general}

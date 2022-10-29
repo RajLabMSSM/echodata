@@ -5,6 +5,7 @@
 * `import_topSNPs`:
     - Automatically downloads data is `topSS` is a remote file.
     - New arg `startRow` for skipping rows.
+* `check_if_empty` --> `is_empty` (more concise)
 
 ## Bug fixes
 
@@ -13,6 +14,9 @@
 * `standardize_proportion_cases`: 
     - When `colmap$proportion_cases` is NULL, just return `query`. 
 * Fix GHA: @master --> @v2  
+* Fix `reassign_lead_snps` warnings.
+* Fix `biomart_geneInfo` warnings.
+
 
 # echodata 0.99.14
 
@@ -169,7 +173,7 @@ the `grouping_vars` are available.
     - `gene_trimmer` 
     - `fillNA_CS_PP`
     - `determine_chrom_type`
-    - `check_if_empty`
+    - `is_empty`
     - `column_dictionary`
     - `get_header`
     - `melt_finemapping_results`

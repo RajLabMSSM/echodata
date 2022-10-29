@@ -16,7 +16,7 @@ test_that("import_topSNPs works", {
         remove_variants="rs34637584", 
         munge=TRUE)  
     testthat::expect_true(methods::is(topSNPs,"data.table"))
-    testthat::expect_equal(nrow(topSNPs), 78)
+    testthat::expect_equal(nrow(topSNPs), 79)
     testthat::expect_true(all(required_cols %in% colnames(topSNPs)))
     
     

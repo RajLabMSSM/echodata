@@ -16,7 +16,7 @@ test_that("filter_snps works", {
     
     dat_lrrk2 <- echodata::LRRK2
     
-    dat5 <- echodata::filter_snps(dat = dat, 
+    dat5 <- echodata:: filter_snps(dat = dat, 
                                   min_POS = min(dat$POS)+500, 
                                   max_POS = max(dat$POS)-500)
     testthat::expect_equal(nrow(dat5), 2913)

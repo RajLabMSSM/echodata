@@ -11,7 +11,7 @@
 #' @inheritParams data.table::fwrite
 #' @importFrom data.table as.data.table fwrite
 #' @importFrom parallel mclapply
-#' @importFrom dplyr %>% select 
+#' @importFrom dplyr select 
 #' @export
 #' @examples 
 #' gr <- echodata::dt_to_granges(dat = echodata::BST1)
@@ -37,7 +37,7 @@ granges_to_bed <- function(grlist,
                      .gzip = gzip) {
                 #### Convert ####
                 GR <- grlist[[name]]
-                BED <- data.table::as.data.table(GR) %>%
+                BED <- data.table::as.data.table(GR) |>
                     dplyr::select(
                         chrom = seqnames,
                         chromStart = start,
@@ -63,6 +63,6 @@ granges_to_bed <- function(grlist,
                 return(BED_path) 
             },
             mc.cores = nThread
-    ) %>% unlist() 
+    ) |> unlist() 
     return(BED_paths)
 }

@@ -15,7 +15,7 @@ biomart_geneInfo <- function(geneList,
     # listDatasets(useMart("ENSEMBL_MART_ENSEMBL") )
     gene_mart <- biomaRt::useMart("ENSEMBL_MART_ENSEMBL",
         dataset = "hsapiens_gene_ensembl",
-        host = paste0(reference_genome, ".ensembl.org")
+        host = paste0("https://",reference_genome, ".ensembl.org")
     )
     # View(listFilters(gene_mart))
     # View(listAttributes(gene_mart))

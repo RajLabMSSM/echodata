@@ -10,8 +10,9 @@
 #' @returns Modified data.table.
 #' 
 #' @export 
-#' @importFrom dplyr arrange desc
+#' @importFrom dplyr arrange desc group_by_at
 #' @importFrom utils head
+#' @importFrom data.table copy
 #' @examples 
 #' dat <- echodata::assign_lead_snp(dat = echodata::BST1)
 assign_lead_snp <- function (dat, 
@@ -25,8 +26,8 @@ assign_lead_snp <- function (dat,
         messager("+ leadSNP missing. Assigning new one by min p-value.", 
                 v = verbose)
         top_snps <- (
-            data.table::copy(dat) %>% 
-                dplyr::group_by(dplyr::all_of(grouping_vars)) %>%
+            data.table::copy(dat) |>
+                dplyr::group_by_at(.vars = grouping_vars) |>
                 dplyr::arrange(P, dplyr::desc(Effect))
         )$SNP[1]
         dat$leadSNP <- dat$SNP == top_snps

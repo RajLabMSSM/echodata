@@ -22,5 +22,4 @@ test_that("standardize works", {
     'FINEMAP.PP','Support','Consensus_SNP',
     'mean.PP','mean.CS','SNP','MAF','tstat')
     testthat::expect_true(all(final_cols %in% colnames(query)))
-    
 })
