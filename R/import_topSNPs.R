@@ -31,13 +31,14 @@
 #' GWAS locus pair, you could supply:
 #' \code{grouping_vars=c("Locus","Gene")}. 
 #' @param verbose Print messages.
-#' 
+#' @inheritParams openxlsx::read.xlsx
 #' @returns Munged topSNPs table.
 #' 
 #' @export
-#' @importFrom dplyr %>% rename mutate arrange group_by filter_at
+#' @importFrom dplyr rename mutate arrange group_by filter_at
 #' @importFrom dplyr vars slice mutate_at select all_of
 #' @importFrom data.table data.table
+#' @importFrom utils download.file
 #' @examples
 #' topSNPs <- echodata::import_topSNPs(
 #'     topSS = echodata::topSNPs_Nalls2019_raw,
@@ -49,6 +50,8 @@
 #'     grouping_vars = "Locus Number")
 import_topSNPs <- function(topSS, 
                            sheet=1,
+                           startRow=1,
+                           cols=NULL,
                            munge=TRUE,
                            colmap=construct_colmap(),
                            min_POS=NULL,
@@ -58,18 +61,25 @@ import_topSNPs <- function(topSS,
                            show_table=FALSE,
                            verbose=TRUE){
     
-    # echoverseTemplate:::source_all(packages = "dplyr")
+    # echoverseTemplate:::source_all()
     # echoverseTemplate:::args2vars(import_topSNPs)
     CHR <- SNP <- P <- Effect <- . <- NULL;
     
     #### Check for MungeSumstats early on ####
-    if(munge) requireNamespace("MungeSumstats")
+    if(isTRUE(munge)) requireNamespace("MungeSumstats")
     #### Add min/max POS #####
     colmap$min_POS <- min_POS
     colmap$max_POS <- max_POS 
     # Reassign colnames bc read.xlsx won't let
     ##you prevent this in some versions....
     if(!is.data.frame(topSS)){
+        #### Download file is necessary ####
+        if(!is_local(topSS)){
+            tmp <- tempfile(fileext = basename(topSS))
+            utils::download.file(url = topSS, 
+                                 destfile = tmp)
+            topSS <- tmp
+        }
         if(endsWith(topSS, ".xlsx") | endsWith(topSS, ".xlsm")){
             #### Trim whitespace from user-supplied column names ####
             for(x in c("Locus","Gene","CHR","POS","SNP","P","Effect")){
@@ -81,7 +91,9 @@ import_topSNPs <- function(topSS,
     } 
     #### Import top SNPs ####
     topSNPs <- topSNPs_reader(topSS = topSS, 
-                               sheet = sheet)  
+                              sheet = sheet, 
+                              startRow = startRow,
+                              cols = cols)  
     #### Rename columns (if names supplied) ####
     topSNPs <- import_topSNPs_manual_rename(topSNPs=topSNPs,
                                              colmap=colmap,
@@ -99,7 +111,7 @@ import_topSNPs <- function(topSS,
             MungeSumstats::standardise_header(
                 sumstats_dt = topSNPs, 
                 return_list = FALSE, 
-                uppercase_unmapped = FALSE,
+                uppercase_unmapped = FALSE
             )
         topSNPs <- mungesumstats_to_echolocatoR(dat = topSNPs,
                                                  verbose = verbose)
@@ -121,11 +133,11 @@ import_topSNPs <- function(topSS,
         if(!"P" %in% colnames(topSNPs)) topSNPs$P <- NA
         grouping_vars <- grouping_vars[grouping_vars %in% colnames(topSNPs)]
         topSNPs <-  
-            topSNPs %>%
-             dplyr::arrange(P, dplyr::desc(Effect)) %>%
-             dplyr::group_by_at(.vars = grouping_vars) %>%
-             dplyr::slice(1) %>% 
-             replace(., .=="NA", NA) %>%
+            topSNPs |>
+             dplyr::arrange(P, dplyr::desc(Effect)) |>
+             dplyr::group_by_at(.vars = grouping_vars) |>
+             dplyr::slice(1) |> 
+             # replace(.=="NA", NA) |>
             dplyr::filter_at(.vars = grouping_vars, 
                              .vars_predicate = function(x){!is.na(x)}) 
     } 
@@ -136,10 +148,10 @@ import_topSNPs <- function(topSS,
                                   CHR=as.numeric(gsub("chr","",CHR)))
     }  
     #### Make sure cols are numeric ####
-    topSNPs <- topSNPs %>% 
+    topSNPs <- topSNPs |> 
         dplyr::mutate_at(.vars = c("POS","P","Effect"),
                          .funs = function(x){as.numeric(gsub(",| ","",x))})
-    if(show_table){
+    if(isTRUE(show_table)){
         createDT(topSNPs, caption = "Top SNP per locus")
     }
     return(data.table::data.table(topSNPs, key = "Locus"))

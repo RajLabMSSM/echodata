@@ -7,6 +7,8 @@
 import_topSNPs(
   topSS,
   sheet = 1,
+  startRow = 1,
+  cols = NULL,
   munge = TRUE,
   colmap = construct_colmap(),
   min_POS = NULL,
@@ -31,6 +33,12 @@ The lead SNP will be used as the center of the locus when
 you can specify which tab to use.
 You can provide either a number to identify the tab by order,
 or a string to identify the tab by name.}
+
+\item{startRow}{first row to begin looking for data.  Empty rows at the top of a file are always skipped,
+regardless of the value of startRow.}
+
+\item{cols}{A numeric vector specifying which columns in the Excel file to read.
+If NULL, all columns are read.}
 
 \item{munge}{Standardise column names.}
 

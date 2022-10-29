@@ -1,3 +1,11 @@
+# echodata 0.99.15
+
+## New features
+
+* `import_topSNPs`:
+    - Automatically downloads data is `topSS` is a remote file.
+    - New arg `startRow` for skipping rows.
+
 # echodata 0.99.14
 
 ## New features

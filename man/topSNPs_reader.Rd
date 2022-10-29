@@ -2,11 +2,40 @@
 % Please edit documentation in R/topSNPs_reader.R
 \name{topSNPs_reader}
 \alias{topSNPs_reader}
-\title{topSNPs_reader}
+\title{Read in top SNPs}
 \usage{
-topSNPs_reader(topSS, sheet = 1)
+topSNPs_reader(topSS, sheet = 1, startRow = 1, cols, ...)
+}
+\arguments{
+\item{sheet}{The name or index of the sheet to read data from.}
+
+\item{startRow}{first row to begin looking for data.  Empty rows at the top of a file are always skipped,
+regardless of the value of startRow.}
+
+\item{cols}{A numeric vector specifying which columns in the Excel file to read.
+If NULL, all columns are read.}
+
+\item{...}{
+  Arguments passed on to \code{\link[openxlsx:read.xlsx]{openxlsx::read.xlsx}}
+  \describe{
+    \item{\code{xlsxFile}}{An xlsx file, Workbook object or URL to xlsx file.}
+    \item{\code{colNames}}{If \code{TRUE}, the first row of data will be used as column names.}
+    \item{\code{rowNames}}{If \code{TRUE}, first column of data will be used as row names.}
+    \item{\code{detectDates}}{If \code{TRUE}, attempt to recognise dates and perform conversion.}
+    \item{\code{skipEmptyRows}}{If \code{TRUE}, empty rows are skipped else empty rows after the first row containing data
+will return a row of NAs.}
+    \item{\code{skipEmptyCols}}{If \code{TRUE}, empty columns are skipped.}
+    \item{\code{rows}}{A numeric vector specifying which rows in the Excel file to read.
+If NULL, all rows are read.}
+    \item{\code{check.names}}{logical. If TRUE then the names of the variables in the data frame
+are checked to ensure that they are syntactically valid variable names}
+    \item{\code{sep.names}}{One character which substitutes blanks in column names. By default, "."}
+    \item{\code{namedRegion}}{A named region in the Workbook. If not NULL startRow, rows and cols parameters are ignored.}
+    \item{\code{na.strings}}{A character vector of strings which are to be interpreted as NA. Blank cells will be returned as NA.}
+    \item{\code{fillMergedCells}}{If TRUE, the value in a merged cell is given to all cells within the merge.}
+  }}
 }
 \description{
-topSNPs_reader
+Read in topSNPs (from disk).
 }
 \keyword{internal}
