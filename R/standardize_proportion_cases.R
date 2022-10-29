@@ -2,6 +2,7 @@ standardize_proportion_cases <- function(query,
                                          colmap, 
                                          verbose=FALSE){
     
+    if(is.null(colmap$proportion_cases)) return(query)
     messager("++ Preparing proportion_cases col.", v=verbose)
     #### Rename column ####
     if(colmap$proportion_cases !="calculate"){

@@ -6,6 +6,14 @@
     - Automatically downloads data is `topSS` is a remote file.
     - New arg `startRow` for skipping rows.
 
+## Bug fixes
+
+* `standardize_maf`:  
+    - Fix flaw in logic preventing MAF being imputed from Freq. 
+* `standardize_proportion_cases`: 
+    - When `colmap$proportion_cases` is NULL, just return `query`. 
+* Fix GHA: @master --> @v2  
+
 # echodata 0.99.14
 
 ## New features
