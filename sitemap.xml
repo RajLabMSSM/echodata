@@ -49,9 +49,6 @@
     <loc>/reference/calculate_tstat.html</loc>
   </url>
   <url>
-    <loc>/reference/check_if_empty.html</loc>
-  </url>
-  <url>
     <loc>/reference/column_dictionary.html</loc>
   </url>
   <url>
@@ -161,6 +158,9 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_empty.html</loc>
   </url>
   <url>
     <loc>/reference/is_ggbio.html</loc>

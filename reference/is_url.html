@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
       </span>
     </div>
 
@@ -66,7 +66,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_url</span><span class="op">(</span><span class="va">fileName</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_url</span><span class="op">(</span><span class="va">path</span>, protocols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"http"</span>, <span class="st">"https"</span>, <span class="st">"ftp"</span>, <span class="st">"ftps"</span>, <span class="st">"fttp"</span>, <span class="st">"fttps"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -76,11 +76,21 @@ Borrowed from <code>seqminer</code> internal function</a></p>
     </div>
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>fileName</dt>
-<dd><p>character vector</p></dd>
+    <dl><dt>path</dt>
+<dd><p>Path to local file or remote URL.</p></dd>
+
+
+<dt>protocols</dt>
+<dd><p>URL protocols to search for.</p></dd>
 
 </dl></div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/RajLabMSSM/echolocatoR/raw/master/NEWS.md"</span></span></span>
+<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">is_url</span><span class="op">(</span>path<span class="op">=</span><span class="va">path</span><span class="op">)</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

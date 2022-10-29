@@ -18,7 +18,7 @@ the finemap_loci in querying and fine-mapping loci."><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
       </span>
     </div>
 
@@ -71,6 +71,8 @@ the finemap_loci in querying and fine-mapping loci.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">import_topSNPs</span><span class="op">(</span></span>
 <span>  <span class="va">topSS</span>,</span>
 <span>  sheet <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  startRow <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  munge <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  colmap <span class="op">=</span> <span class="fu"><a href="construct_colmap.html">construct_colmap</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  min_POS <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -100,6 +102,16 @@ The lead SNP will be used as the center of the locus when
 you can specify which tab to use.
 You can provide either a number to identify the tab by order,
 or a string to identify the tab by name.</p></dd>
+
+
+<dt>startRow</dt>
+<dd><p>first row to begin looking for data.  Empty rows at the top of a file are always skipped,
+regardless of the value of startRow.</p></dd>
+
+
+<dt>cols</dt>
+<dd><p>A numeric vector specifying which columns in the Excel file to read.
+If NULL, all columns are read.</p></dd>
 
 
 <dt>munge</dt>
