@@ -29,7 +29,8 @@ get_data <- function(fname,
                                dest = save_dir,
                                repo = repo, 
                                tag = tag,
-                               overwrite = overwrite)
+                               overwrite = overwrite,
+                               ...)
     }
     return(tmp)
 }
