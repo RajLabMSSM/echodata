@@ -114,11 +114,11 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span>, SNP_old<span class="op">=</span><span class="va">SNP</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span>, SNP_old<span class="op">=</span><span class="va">SNP</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>,<span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">dat_annot</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">coords_to_rsids</span><span class="op">(</span>dat <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Searching for RSIDs using: hg19</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: SNPlocs.Hsapiens.dbSNP144.GRCh37</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 6217 / 6216 SNPs annotated with RSIDs.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 5 / 5 SNPs annotated with RSIDs.</span>
 </code></pre></div>
     </div>
   </div>
