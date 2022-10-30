@@ -4,6 +4,7 @@
 #' @param path Path to local file or remote URL.
 #' @param colnames_only Whether to return only column names 
 #' (default: \code{TRUE}), or the first \code{n} rows as well.
+#' @param verbose Print messages.
 #' @inheritParams data.table::fread
 #' @inheritParams base::readLines
 #' @export
@@ -14,7 +15,19 @@
 get_header <- function(path,
                        colnames_only=TRUE,
                        nrows=2L,
-                       nThread=1L){
+                       nThread=1L,
+                       verbose=TRUE){
+    
+    #### Parquet ####
+    if(grepl("\\.parquet$|\\.pq$",path,ignore.case = TRUE)){
+        header <- read_parquet(path=path,
+                               verbose=verbose)
+        if(!is.null(nrows) && 
+           !is.infinite(nrows)){
+            header <- header[seq_len(nrows),]
+        }
+        return(header)
+    } 
     #### Remote bgz #####
     ## Remote bgz files are a little trickier ####
     ## You have to download them first.
@@ -28,6 +41,7 @@ get_header <- function(path,
         path <- tmp
     }  
     #### Determine if VCF ####
+    if(is.null(nrows)) nrows <- -2L
     is_vcf <-  any(endsWith(tolower(path),c(".vcf",".vcf.gz",".vcf.bgz")))
     if(is_vcf){
         header <- data.table::fread(text = readLines(con = path, 

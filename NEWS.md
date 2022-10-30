@@ -8,6 +8,7 @@
 * `check_if_empty` --> `is_empty` (more concise)
 * `get_data`:
     - Allow users to specify `tag` and ... args.
+* `get_header` can read parquet now.
 
 ## Bug fixes
 

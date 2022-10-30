@@ -4,6 +4,7 @@
 #' \link[data.table]{data.table}.
 #' @param path Path to parquet file. 
 #' @param verbose Print messages. 
+#' @inheritDotParams arrow::read_parquet
 #'  
 #' @export
 #' @examples  
@@ -13,9 +14,12 @@
 #' #### Read the parquet file back into R ####
 #' dat2 <- echodata::read_parquet(path=path)
 read_parquet <- function(path,
-                         verbose=TRUE){ 
+                         verbose=TRUE,
+                         ...){ 
+    
     requireNamespace("arrow") 
     messager("Reading parquet file.",v=verbose) 
-    parquor <- arrow::read_parquet(file = path)
+    parquor <- arrow::read_parquet(file = path,
+                                   ...)
     return(data.table::data.table(parquor))
 }
