@@ -6,6 +6,8 @@
     - Automatically downloads data is `topSS` is a remote file.
     - New arg `startRow` for skipping rows.
 * `check_if_empty` --> `is_empty` (more concise)
+* `get_data`:
+    - Allow users to specify `tag` and ... args.
 
 ## Bug fixes
 

@@ -8,7 +8,9 @@ get_data(
   fname,
   repo = "RajLabMSSM/echodata",
   save_dir = tools::R_user_dir(package = "echodata", which = "cache"),
-  overwrite = FALSE
+  overwrite = FALSE,
+  tag = "latest",
+  ...
 )
 }
 \arguments{
@@ -20,6 +22,24 @@ get_data(
 
 \item{overwrite}{Should any local files of the same name be overwritten?
 default \code{TRUE}.}
+
+\item{tag}{tag for the GitHub release to which this data should be attached.}
+
+\item{...}{
+  Arguments passed on to \code{\link[piggyback:pb_download]{piggyback::pb_download}}
+  \describe{
+    \item{\code{file}}{name or vector of names of files to be downloaded. If \code{NULL},
+all assets attached to the release will be downloaded.}
+    \item{\code{dest}}{name of vector of names of where file should be downloaded.
+Can be a directory or a list of filenames the same length as \code{file}
+vector. Any directories in the path provided must already exist.}
+    \item{\code{ignore}}{a list of files to ignore (if downloading "all" because
+\code{file=NULL}).}
+    \item{\code{use_timestamps}}{DEPRECATED.}
+    \item{\code{show_progress}}{logical, show a progress bar be shown for uploading?
+Defaults to \verb{[interactive()]} - can also set globally with options("piggyback.verbose")}
+    \item{\code{.token}}{GitHub authentication token, see \verb{[gh::gh_token()]}}
+  }}
 }
 \description{
 Download remote resources stored on GitHub Releases via \pkg{piggyback}.

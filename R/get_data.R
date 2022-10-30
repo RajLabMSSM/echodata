@@ -6,6 +6,7 @@
 #' @param repo GitHub repository name.
 #' @param save_dir Local directory to cache data in.
 #' @inheritParams piggyback::pb_download
+#' @inheritDotParams piggyback::pb_download
 #' 
 #' @export
 #' @importFrom piggyback pb_download
@@ -16,7 +17,9 @@ get_data <- function(fname,
                      repo = "RajLabMSSM/echodata",
                      save_dir = tools::R_user_dir(package = "echodata",
                                                   which = "cache"),
-                     overwrite = FALSE){
+                     overwrite = FALSE,
+                     tag = "latest",
+                     ...){
     
     tmp <- file.path(save_dir,fname)
     if(!file.exists(tmp)){
@@ -25,6 +28,7 @@ get_data <- function(fname,
         piggyback::pb_download(file = fname,
                                dest = save_dir,
                                repo = repo, 
+                               tag = tag,
                                overwrite = overwrite)
     }
     return(tmp)

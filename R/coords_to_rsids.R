@@ -14,7 +14,7 @@
 #' @export
 #' @importFrom data.table data.table merge.data.table setnames 
 #' @examples
-#' dat <- dplyr::rename(echodata::BST1, SNP_old=SNP)
+#' dat <- dplyr::rename(echodata::BST1, SNP_old=SNP)[seq_len(5),]
 #' dat_annot <- echodata::coords_to_rsids(dat = dat)
 coords_to_rsids <- function(dat,
                             genome_build = "hg19",
@@ -22,6 +22,7 @@ coords_to_rsids <- function(dat,
                             drop_duplicates = TRUE,
                             SNPname = "SNP",
                             verbose = TRUE) {
+    
     requireNamespace("BSgenome") 
     requireNamespace("GenomicRanges") 
     if(SNPname %in% colnames(dat)){
