@@ -45,7 +45,8 @@ gene_locus_list <- function(loci = NULL,
     if(isTRUE(drop_missing_loci)){
         missing_loci <- loci[!loci %in% topSNPs$Locus]
         if(length(missing_loci)>0){
-            messager("Dropping",formatC(length(missing_loci),big.mark = ","),
+            messager("WARNING:",
+                     "Dropping",formatC(length(missing_loci),big.mark = ","),
                      "loci not present in topSNPs:",
                      paste("\n -",missing_loci,collapse = ""),
                      v=verbose)
