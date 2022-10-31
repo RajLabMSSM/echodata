@@ -20,7 +20,8 @@
 * Fix `reassign_lead_snps` warnings.
 * Fix `biomart_geneInfo` warnings.
 * Fix `is_url` example.
-
+* `gene_locus_list`:
+    - Drop loci missing from topSNPs.
 
 # echodata 0.99.14
 

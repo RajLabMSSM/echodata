@@ -7,6 +7,7 @@
 gene_locus_list(
   loci = NULL,
   topSNPs = NULL,
+  drop_missing_loci = TRUE,
   dataset_type = NULL,
   verbose = TRUE
 )
@@ -16,6 +17,9 @@ gene_locus_list(
 
 \item{topSNPs}{Output of the function \link[echodata]{import_topSNPs}, 
 containing the top (index) SNPs per locus.}
+
+\item{drop_missing_loci}{Drop \code{loci} that are missing from 
+\code{topSNPs$Locus}.}
 
 \item{dataset_type}{The kind dataset you're fine-mapping
 (e.g. GWAS, eQTL, tQTL).}
