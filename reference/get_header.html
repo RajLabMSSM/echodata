@@ -66,7 +66,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_header</span><span class="op">(</span><span class="va">path</span>, colnames_only <span class="op">=</span> <span class="cn">TRUE</span>, nrows <span class="op">=</span> <span class="fl">2L</span>, nThread <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_header</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  colnames_only <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nrows <span class="op">=</span> <span class="fl">2L</span>,</span>
+<span>  nThread <span class="op">=</span> <span class="fl">1L</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,6 +92,10 @@
 
 <dt>nThread</dt>
 <dd><p>The number of threads to use. Experiment to see what works best for your data on your hardware.</p></dd>
+
+
+<dt>verbose</dt>
+<dd><p>Print messages.</p></dd>
 
 </dl></div>
 

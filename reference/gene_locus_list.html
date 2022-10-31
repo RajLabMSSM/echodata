@@ -71,6 +71,7 @@ echolocatoR::finemap_loci()."><!-- mathjax --><script src="https://cdnjs.cloudfl
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gene_locus_list</span><span class="op">(</span></span>
 <span>  loci <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  topSNPs <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  drop_missing_loci <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  dataset_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -85,6 +86,11 @@ echolocatoR::finemap_loci()."><!-- mathjax --><script src="https://cdnjs.cloudfl
 <dt>topSNPs</dt>
 <dd><p>Output of the function <a href="import_topSNPs.html">import_topSNPs</a>, 
 containing the top (index) SNPs per locus.</p></dd>
+
+
+<dt>drop_missing_loci</dt>
+<dd><p>Drop <code>loci</code> that are missing from 
+<code>topSNPs$Locus</code>.</p></dd>
 
 
 <dt>dataset_type</dt>
@@ -107,6 +113,105 @@ containing the top (index) SNPs per locus.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">loci</span> <span class="op">&lt;-</span> <span class="fu">gene_locus_list</span><span class="op">(</span>topSNPs <span class="op">=</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="topSNPs_Nalls2019.html">topSNPs_Nalls2019</a></span>,</span></span>
 <span class="r-in"><span>                        dataset_type <span class="op">=</span> <span class="st">"QTL"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropping 97 loci not present in topSNPs: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - ASXL3_ASXL3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - BAG3_BAG3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - BIN3_BIN3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - BRIP1_BRIP1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - BST1_BST1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - C5orf24_C5orf24</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CAB39L_CAB39L</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CAMK2D_CAMK2D</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CASC16_CASC16</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CD19_CD19</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CHD9_CHD9</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CHRNB1_CHRNB1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CLCN3_CLCN3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CNTN1_CNTN1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CRHR1_CRHR1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CRLS1_CRLS1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - CTSB_CTSB</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - DDRGK1_DDRGK1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - DLG2_DLG2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - DNAH17_DNAH17</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - DYRK1A_DYRK1A</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - ELOVL7_ELOVL7</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FAM171A2_FAM171A2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FAM47E_FAM47E</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FAM47E-STBD1_FAM47E-STBD1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FAM49B_FAM49B</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FBRSL1_FBRSL1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FCGR2A_FCGR2A</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FGD4_FGD4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FGF20_FGF20</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - FYN_FYN</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GAK_GAK</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GALC_GALC</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GBAP1_GBAP1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GBF1_GBF1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GCH1_GCH1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GPNMB_GPNMB</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GS1-124K5.11_GS1-124K5.11</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - GXYLT1_GXYLT1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - HIP1R_HIP1R</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - HLA-DRB5_HLA-DRB5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - IGSF9B_IGSF9B</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - INPP5F_INPP5F</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - IP6K2_IP6K2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - ITGA8_ITGA8</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - ITPKB_ITPKB</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - KANSL1_KANSL1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - KCNIP3_KCNIP3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - KCNS3_KCNS3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - KPNA1_KPNA1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - KRTCAP2_KRTCAP2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - LCORL_LCORL</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - LINC00693_LINC00693</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - LOC100131289_LOC100131289</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - LRRK2_LRRK2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MAP3K14_MAP3K14</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MAP4K4_MAP4K4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MAPT-AS1_MAPT-AS1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MBNL2_MBNL2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MCCC1_MCCC1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MED12L_MED12L</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MEX3C_MEX3C</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - MIPOL1_MIPOL1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - NOD2_NOD2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - NSF_NSF</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - NUCKS1_NUCKS1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - PAM_PAM</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - PMVK_PMVK</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RAB29_RAB29</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RETREG3_RETREG3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RIMS1_RIMS1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RIT2_RIT2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RNF141_RNF141</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RPS12_RPS12</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - RPS6KL1_RPS6KL1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SATB1_SATB1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SCAF11_SCAF11</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SCARB2_SCARB2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SEMA4A_SEMA4A</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SETD1A_SETD1A</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SH3GL2_SH3GL2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SIPA1L2_SIPA1L2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SLC44A4_SLC44A4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SNCA_SNCA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SPPL2B_SPPL2B</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SPTSSB_SPTSSB</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - STK39_STK39</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - SYT17_SYT17</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - TMEM163_TMEM163</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - TMEM175_TMEM175</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - TRIM40_TRIM40</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - UBAP2_UBAP2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - UBTF_UBTF</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - VAMP4_VAMP4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - VPS13C_VPS13C</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - WNT3_WNT3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - ZNF608_ZNF608</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Reassigning gene-specific locus names.</span>
 </code></pre></div>
     </div>
   </div>

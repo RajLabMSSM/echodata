@@ -68,7 +68,7 @@ data.table."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_parquet</span><span class="op">(</span><span class="va">path</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_parquet</span><span class="op">(</span><span class="va">path</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,6 +80,31 @@ data.table."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
 <dt>verbose</dt>
 <dd><p>Print messages.</p></dd>
 
+
+<dt>...</dt>
+<dd><p>Arguments passed on to <code><a href="https://arrow.apache.org/docs/r/reference/read_parquet.html" class="external-link">arrow::read_parquet</a></code></p><dl><dt><code>file</code></dt>
+<dd><p>A character file name or URI, <code>raw</code> vector, an Arrow input stream,
+or a <code>FileSystem</code> with path (<code>SubTreeFileSystem</code>).
+If a file name or URI, an Arrow <a href="https://arrow.apache.org/docs/r/reference/InputStream.html" class="external-link">InputStream</a> will be opened and
+closed when finished. If an input stream is provided, it will be left
+open.</p></dd>
+
+    <dt><code>col_select</code></dt>
+<dd><p>A character vector of column names to keep, as in the
+"select" argument to <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code>, or a
+<a href="https://tidyselect.r-lib.org/reference/vars_select.html" class="external-link">tidy selection specification</a>
+of columns, as used in <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">dplyr::select()</a></code>.</p></dd>
+
+    <dt><code>as_data_frame</code></dt>
+<dd><p>Should the function return a <code>data.frame</code> (default) or
+an Arrow <a href="https://arrow.apache.org/docs/r/reference/Table.html" class="external-link">Table</a>?</p></dd>
+
+    <dt><code>props</code></dt>
+<dd><p><a href="https://arrow.apache.org/docs/r/reference/ParquetArrowReaderProperties.html" class="external-link">ParquetArrowReaderProperties</a></p></dd>
+
+  
+</dl></dd>
+
 </dl></div>
 
     <div id="ref-examples">
@@ -89,7 +114,7 @@ data.table."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="va"><a href="BST1.html">BST1</a></span></span></span>
 <span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: arrow</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Writing parquet file ==&gt; /tmp/Rtmp8Se0Zw/file9ad6fb1e18.parquet</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Writing parquet file ==&gt; /tmp/RtmpxFkaMA/file9ae27329f5c.parquet</span>
 <span class="r-in"><span><span class="co">#### Read the parquet file back into R ####</span></span></span>
 <span class="r-in"><span><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu">read_parquet</span><span class="op">(</span>path<span class="op">=</span><span class="va">path</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Reading parquet file.</span>
