@@ -22,6 +22,9 @@
 * Fix `is_url` example.
 * `gene_locus_list`:
     - Drop loci missing from topSNPs.
+* Fix `melt_finemapping_results`: 
+    - Alphanumerically sort `Methods` col consistently via new internal function:
+        `order_methods`
 
 # echodata 0.99.14
 

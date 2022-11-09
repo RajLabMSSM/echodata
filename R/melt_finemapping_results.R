@@ -14,6 +14,7 @@
 #' finemap_melt <- echodata::melt_finemapping_results(dat = echodata::BST1)
 melt_finemapping_results <- function(dat,
                                      verbose=TRUE){
+    
     PP_cols <- grep("\\.PP$",colnames(dat), value = TRUE)
     CS_cols <- grep("\\.CS$",colnames(dat), value = TRUE)
     messager("Melting PP and CS from",length(CS_cols),
@@ -27,8 +28,8 @@ melt_finemapping_results <- function(dat,
     )
     methods_key <- stats::setNames(gsub("\\.PP","",PP_cols),
                                    unique(finemap_melt$Method))
-    finemap_melt$Method <- factor(methods_key[finemap_melt$Method],
-                                  levels = unname(methods_key), 
-                                  ordered = TRUE)
+    finemap_melt$Method <- methods_key[finemap_melt$Method]
+    finemap_melt <- order_methods(finemap_melt = finemap_melt, 
+                                  verbose = verbose)
     return(finemap_melt)
 }
