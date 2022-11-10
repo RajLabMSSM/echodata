@@ -1,3 +1,13 @@
+# echodata 0.99.16
+
+## New features
+
+* Use `rworkflows` GHA.
+
+## Bug fixes
+
+* use remote `MungeSumstats` until it passes bioc devel again
+
 # echodata 0.99.15
 
 ## New features
