@@ -63,6 +63,8 @@ Suggests:
     arrow,  
     ggplot2,
     orthogene
+Remotes:
+    github::neurogenomics/MungeSumstats
 RoxygenNote: 7.2.1.9000
 VignetteBuilder: knitr
 License: GPL-3
