@@ -1,12 +1,6 @@
 ---
 title: ""  
-author: "<img src='https://github.com/RajLabMSSM/`r read.dcf('DESCRIPTION', fields = 'Package')[1]`/raw/main/inst/hex/hex.png' height='300'><br><br>
-        `r badger::badge_github_version(color = 'black')` 
-        `r badger::badge_github_actions(action = 'R-CMD-check-bioc')`
-        `r badger::badge_last_commit(branch='main')`
-        `r badger::badge_codecov(branch='main')` 
-        `r badger::badge_license()` 
-        <h5>Author: <i>Brian M. Schilder</i></h5>" 
+author: "`r echodata::readme_header()`" 
 date: "<h5>README updated: <i>`r format( Sys.Date(), '%b-%d-%Y')`</i></h5>"
 output:
   github_document
@@ -37,7 +31,7 @@ library(`r pkg`)
 ## Documentation 
 
 ### [Website](https://rajlabmssm.github.io/`r pkg`) 
-### [Getting started](https://rajlabmssm.github.io/`r pkg`/articles/`r pkg`) 
+### [Getting started](https://rajlabmssm.github.io/`r pkg`/articles/`r pkg`)  
 
 <hr>
 

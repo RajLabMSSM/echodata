@@ -3,6 +3,8 @@
 ## New features
 
 * Use `rworkflows` GHA.
+* Moved all GitHub-related functions to new package: `echogithub`
+    - Kept portal-related function in `echodata`: e.g. `portal_query`
 
 ## Bug fixes
 

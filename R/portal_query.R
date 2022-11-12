@@ -44,21 +44,26 @@
 #'     phenotypes = c("schizophrenia", "parkinson"),
 #'     file_types = "multi_finemap",
 #'     loci = c("BST1", "CHRNB1", "LRRK2"),
-#'     LD_panels = "1KGphase3") 
+#'     LD_panels="1KGphase3") 
 portal_query <- function(dataset_types = NULL,
                          datasets = NULL,
                          phenotypes = NULL,
+                         file_types = c("multi_finemap", "LD", "plot"),
                          loci = NULL,
                          LD_panels = c("UKB", "1KGphase1", "1KGphase3"),
-                         file_types = c("multi_finemap", "LD", "plot"),
                          results_dir = tempdir(),
                          overwrite = FALSE,
                          as_datatable = FALSE,
                          nThread = 1,
                          verbose = TRUE) {
-    dataset_type <- URL <- dataset <- locus <- NULL;
     # echoverseTemplate:::source_all()
     # echoverseTemplate:::args2vars(portal_query)
+    
+    requireNamespace("echogithub")
+    
+    dataset_type <- path_local <- dataset <- locus <- link <- 
+        url_strip <- link_raw <- NULL;
+    
     #### Search metadata ####
     meta <- portal_metadata(verbose = verbose)
     meta <- if (!is.null(dataset_types)) {
@@ -80,8 +85,8 @@ portal_query <- function(dataset_types = NULL,
     } else {
         meta
     }
-    messager("+", nrow(meta), "dataset(s) remain after filtering.", 
-             v = verbose)
+    messager("+", formatC(nrow(meta),big.mark = ","),
+             "dataset(s) remain after filtering.", v = verbose)
     if(nrow(meta)==0) stop("Stopping.")
     #### Find URLs ####
     file_type_dict <- c(
@@ -91,65 +96,55 @@ portal_query <- function(dataset_types = NULL,
     )
     shiny_data_url <- paste(
         "https://github.com/RajLabMSSM",
-        "Fine_Mapping_Shiny/raw/master/www/data",
+        ## "*.*: can be "blob" or "raw"
+        "Fine_Mapping_Shiny/*.*/master/www/data",
         sep="/"
     )
     file_urls <- lapply(file_types, 
                         function(ftype) {
         messager("+ Searching for", ftype, "files...", v = verbose)
-        remote_finemap <- github_list_files(
-            creator = "RajLabMSSM",
+        dt <- echogithub::github_files(
+            owner = "RajLabMSSM",
             repo = "Fine_Mapping_Shiny",
-            query = file_type_dict[[ftype]],
+            query = paste0("www/data/.*",file_type_dict[[ftype]]),
             # IMPORTANT! not "main"
             branch = "master",
-            verbose = FALSE
+            verbose = verbose
         )
-        return(data.table::data.table(URL = remote_finemap, 
-                                      file_type = ftype))
-    }) |> data.table::rbindlist() |>
-        # make sure to remove anything that's not in the data folder
-        # (e.g. icons)
-        subset(startsWith(URL, shiny_data_url))
+        return(cbind(dt,file_type = ftype))
+    }) |> data.table::rbindlist(fill = TRUE) 
 
     #### Format url results ####
     file_filt <- file_urls |>
-        dplyr::mutate(url_strip = gsub(
-            paste0(shiny_data_url, "/"), "", URL
-        )) |>
+        dplyr::mutate(url_strip = gsub(paste0(shiny_data_url, "/"),"",link)) |>
         tidyr::separate(
-            col = "url_strip", sep = "/",
+            col = "url_strip", 
+            sep = "/",
             into = c("dataset_type", "dataset", "locus"),
             remove = FALSE,
             extra = "drop"
         ) |>
+        dplyr::select(-url_strip) |>
         subset(dataset_type %in% unique(meta$dataset_type) &
-            dataset %in% unique(meta$dataset))
-
-    ## Let's just download the loci of interest.
+            dataset %in% unique(meta$dataset)) 
+    #### Just download the loci of interest ####
     if (!is.null(loci)) file_filt <- subset(file_filt, locus %in% loci)
     messager("+", formatC(nrow(file_filt),big.mark = ","),
              "unique files identified.", v = verbose)
-    ## Filter by LD panel
-    file_filt <- file_filt[grepl(
-        paste(LD_panels, collapse = "|"),
-        file_filt$URL
-    ), ] |> unique()
-
+    #### Filter by LD panel #####
+    file_filt <- file_filt[grepl(paste(LD_panels, collapse = "|"),
+                                 file_filt$path, 
+                                 ignore.case = TRUE), ]
     ### Download files ####
-    local_file <- github_download_files(
-        filelist = file_filt$URL,
+    local_file <- echogithub::github_files_download(
+        ### "url" is a temporary file path meant for quick downloads.
+        ## "link_raw" is a more permanent path that you would see in the browser
+        filelist = file_filt[["link_raw"]],
         download_dir = results_dir,
         overwrite = overwrite,
         nThread = nThread,
-        verbose = verbose
-    )
-    if(isTRUE(as_datatable)){
-        file_filt$local_file <- unlist(local_file)
-        messager("+ Returning table with local file paths.", v = verbose)
-        return(file_filt)
-    } else {
-        messager("+ Returning local file paths.", v = verbose)
-        return(local_file)
-    }   
+        verbose = verbose)
+    #### Return ####
+    file_filt[,path_local:=local_file[unlist(link_raw)]]
+    return(file_filt)
 }

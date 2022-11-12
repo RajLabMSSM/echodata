@@ -8,9 +8,9 @@ portal_query(
   dataset_types = NULL,
   datasets = NULL,
   phenotypes = NULL,
+  file_types = c("multi_finemap", "LD", "plot"),
   loci = NULL,
   LD_panels = c("UKB", "1KGphase1", "1KGphase3"),
-  file_types = c("multi_finemap", "LD", "plot"),
   results_dir = tempdir(),
   overwrite = FALSE,
   as_datatable = FALSE,
@@ -28,13 +28,6 @@ portal_query(
 \item{phenotypes}{Phenotypes to search for
 (e.g. "Schizophrenia", "Major Depressive Disorder").}
 
-\item{loci}{Locus names to search for
-(e.g. "BST1", "CHRNB1", "LRRK2").}
-
-\item{LD_panels}{LD panels to search for,
-or results generated using different LD panels
-(e.g. "UKB", "1KGphase1", "1KGphase3").}
-
 \item{file_types}{File types to search for:
 \itemize{
 \item{"multi_finemap":}{Fine-mapping results 
@@ -42,6 +35,13 @@ merged with GWAS/QTL summary statistics.}
 \item{"LD":}{Linkage Disequilibrium with the lead SNP in each locus.}
 \item{"plot" : }{Locus plots of fine-mapped results.}
 }}
+
+\item{loci}{Locus names to search for
+(e.g. "BST1", "CHRNB1", "LRRK2").}
+
+\item{LD_panels}{LD panels to search for,
+or results generated using different LD panels
+(e.g. "UKB", "1KGphase1", "1KGphase3").}
 
 \item{results_dir}{Where to save the matching queries.}
 
@@ -70,5 +70,5 @@ local_finemap <- portal_query(
     phenotypes = c("schizophrenia", "parkinson"),
     file_types = "multi_finemap",
     loci = c("BST1", "CHRNB1", "LRRK2"),
-    LD_panels = "1KGphase3") 
+    LD_panels="1KGphase3") 
 }

@@ -28,17 +28,16 @@ Depends: R (>= 4.1)
 SystemRequirements:
     xml2
 biocViews:
+    Genetics, FunctionalGenomics, SystemsBiology
 Imports: 
     dplyr,
     data.table,
-    R.utils,
+    R.utils, 
     methods,
     utils,
     tools,
     tidyr,
     parallel,
-    httr,
-    stringr,
     openxlsx,
     DT,
     readr,
@@ -62,10 +61,12 @@ Suggests:
     biomaRt, 
     arrow,  
     ggplot2,
+    echogithub,
     orthogene
 Remotes:
-    github::neurogenomics/MungeSumstats
-RoxygenNote: 7.2.1.9000
+    github::neurogenomics/MungeSumstats,
+    github::RajLabMSSM/echogithub
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 License: GPL-3
 Config/testthat/edition: 3
