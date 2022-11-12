@@ -9,7 +9,7 @@ GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-pro
 Authors: <i>Brian Schilder, Jack Humphrey, Towfique Raj</i>
 </h4>
 <h5>
-README updated: <i>Nov-11-2022</i>
+README updated: <i>Nov-12-2022</i>
 </h5>
 
 ## `echodata`: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
@@ -40,73 +40,6 @@ library(echodata)
 
 ### [Getting started](https://rajlabmssm.github.io/echodata/articles/echodata)
 
-# echoverse table of contents
-
-``` r
-scKirby::source_all()
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-    ## Sourcing 100 files.
-
-``` r
-toc <-  github_pages_toc(owner = c("RajLabMSSM","neurogenomics"), 
-                         repo = c("echodata","MungeSumstats"))
-```
-
-<ul class="toc-list" style="ul {list-style: none};ul li h2 a:before { content:&#39;🦇&#39;};">
-<li>
-<h2>
-🦇 <a href='https://rajlabmssm.github.io/echodata/'>echodata</a>
-</h2>
-<ul>
-<li>
-<h3>
-<a href='https://rajlabmssm.github.io/echodata//articles/echodata.html' target='blank'>echodata</a>
-</h3>
-</li>
-<li>
-<h3>
-<a href='https://rajlabmssm.github.io/echodata//articles/echolocatoR_Finemapping_Portal.html' target='blank'>echolocatoR
-Finemapping Portal</a>
-</h3>
-</li>
-</ul>
-</li>
-<li>
-<h2>
-🦇
-<a href='https://neurogenomics.github.io/MungeSumstats/'>MungeSumstats</a>
-</h2>
-<ul>
-<li>
-<h3>
-<a href='https://neurogenomics.github.io/MungeSumstats//articles/MungeSumstats.html' target='blank'>MungeSumstats</a>
-</h3>
-</li>
-<li>
-<h3>
-<a href='https://neurogenomics.github.io/MungeSumstats//articles/OpenGWAS.html' target='blank'>OpenGWAS</a>
-</h3>
-</li>
-<li>
-<h3>
-<a href='https://neurogenomics.github.io/MungeSumstats//articles/docker.html' target='blank'>docker</a>
-</h3>
-</li>
-</ul>
-</li>
-</ul>
 <hr>
 
 ## Contact
