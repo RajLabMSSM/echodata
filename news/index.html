@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.16</span>
       </span>
     </div>
 
@@ -61,6 +61,21 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.16" id="echodata-09916">echodata 0.99.16<a class="anchor" aria-label="anchor" href="#echodata-09916"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-99-16">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-16"></a></h3>
+<ul><li>Use <code>rworkflows</code> GHA.</li>
+<li>Moved all GitHub-related functions to new package: <code>echogithub</code>
+<ul><li>Kept portal-related function in <code>echodata</code>: e.g. <code>portal_query</code>
+</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-99-16">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-16"></a></h3>
+<ul><li>use remote <code>MungeSumstats</code> until it passes bioc devel again</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.15" id="echodata-09915">echodata 0.99.15<a class="anchor" aria-label="anchor" href="#echodata-09915"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-99-15">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-15"></a></h3>
@@ -95,6 +110,10 @@
 <li>
 <code>gene_locus_list</code>:
 <ul><li>Drop loci missing from topSNPs.</li>
+</ul></li>
+<li>Fix <code>melt_finemapping_results</code>:
+<ul><li>Alphanumerically sort <code>Methods</code> col consistently via new internal function: <code>order_methods</code>
+</li>
 </ul></li>
 </ul></div>
 </div>
@@ -347,7 +366,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

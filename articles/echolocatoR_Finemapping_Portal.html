@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.16</span>
       </span>
     </div>
 
@@ -85,8 +85,8 @@
                         <h4 data-toc-skip class="author"><h4> ¶ Author:
 <i>Brian M. Schilder</i> ¶ </h4></h4>
             
-            <h4 data-toc-skip class="date"><h4> ¶ Most recent update:
-<i>Oct-31-2022</i> ¶ </h4></h4>
+            <h4 data-toc-skip class="date"><h4> ¶ Updated:
+<i>Nov-12-2022</i> ¶ </h4></h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RajLabMSSM/echodata/blob/HEAD/vignettes/echolocatoR_Finemapping_Portal.Rmd" class="external-link"><code>vignettes/echolocatoR_Finemapping_Portal.Rmd</code></a></small>
       <div class="hidden name"><code>echolocatoR_Finemapping_Portal.Rmd</code></div>
@@ -240,25 +240,489 @@ has been downloaded locally, in a hierarchical folder structure
 (i.e. <code>dataset_type --&gt; dataset --&gt; locus --&gt; data_types</code>
 )</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">local_finemap</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/portal_query.html">portal_query</a></span><span class="op">(</span>dataset_types<span class="op">=</span><span class="st">"GWAS"</span>,</span>
-<span>                                        phenotypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"schizophrenia"</span>,</span>
-<span>                                                       <span class="st">"parkinson"</span><span class="op">)</span>,</span>
-<span>                                        file_types <span class="op">=</span> <span class="st">"multi_finemap"</span>,</span>
-<span>                                        loci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BST1"</span>,<span class="st">"CHRNB1"</span>,<span class="st">"LRRK2"</span><span class="op">)</span>,</span>
-<span>                                        LD_panels <span class="op">=</span> <span class="st">"1KGphase3"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">local_files</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/portal_query.html">portal_query</a></span><span class="op">(</span>dataset_types<span class="op">=</span><span class="st">"GWAS"</span>,</span>
+<span>                                      phenotypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"schizophrenia"</span>,</span>
+<span>                                                     <span class="st">"parkinson"</span><span class="op">)</span>,</span>
+<span>                                      file_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multi_finemap"</span>,<span class="st">"LD"</span><span class="op">)</span>,</span>
+<span>                                      loci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BST1"</span>,<span class="st">"CHRNB1"</span>,<span class="st">"LRRK2"</span><span class="op">)</span>,</span>
+<span>                                      LD_panels <span class="op">=</span> <span class="st">"UKB"</span>,</span>
+<span>                                      results_dir <span class="op">=</span> <span class="va">results_dir</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">local_files</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="12%">
+<col width="1%">
+<col width="0%">
+<col width="5%">
+<col width="1%">
+<col width="15%">
+<col width="21%">
+<col width="21%">
+<col width="2%">
+<col width="1%">
+<col width="2%">
+<col width="1%">
+<col width="13%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">path</th>
+<th align="left">mode</th>
+<th align="left">type</th>
+<th align="left">sha</th>
+<th align="left">size</th>
+<th align="left">url</th>
+<th align="left">link</th>
+<th align="left">link_raw</th>
+<th align="left">file_type</th>
+<th align="left">dataset_type</th>
+<th align="left">dataset</th>
+<th align="left">locus</th>
+<th align="left">path_local</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">fcb1d95f114260462530b77a7cb04de6f8ddb3dd</td>
+<td align="left">224076</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/fcb1d95f114260462530b77a7cb04de6f8ddb3dd" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/fcb1d95f114260462530b77a7cb04de6f8ddb3dd</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz</a></td>
+<td align="left">multi_finemap</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">BST1</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.UKB.multi_finemap.csv.gz</td>
+</tr>
+<tr class="even">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">e08d555ec3d3d409c15f1518955db402c95cc92e</td>
+<td align="left">206438</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e08d555ec3d3d409c15f1518955db402c95cc92e" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e08d555ec3d3d409c15f1518955db402c95cc92e</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz</a></td>
+<td align="left">multi_finemap</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">CHRNB1</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.UKB.multi_finemap.csv.gz</td>
+</tr>
+<tr class="odd">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">5076ae9d6ce536a3e80e8789975faa31dfc95191</td>
+<td align="left">137919</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/5076ae9d6ce536a3e80e8789975faa31dfc95191" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/5076ae9d6ce536a3e80e8789975faa31dfc95191</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz</a></td>
+<td align="left">multi_finemap</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">LRRK2</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.UKB.multi_finemap.csv.gz</td>
+</tr>
+<tr class="even">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">e7c92d2b9b41d30f454db315acb301be54fd7137</td>
+<td align="left">98471</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e7c92d2b9b41d30f454db315acb301be54fd7137" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e7c92d2b9b41d30f454db315acb301be54fd7137</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz</a></td>
+<td align="left">LD</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">BST1</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/BST1/LD/BST1.UKB.LD.csv.gz</td>
+</tr>
+<tr class="odd">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">198a136e32bd47cd3b5d2927329b29cbc2b052ef</td>
+<td align="left">90115</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/198a136e32bd47cd3b5d2927329b29cbc2b052ef" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/198a136e32bd47cd3b5d2927329b29cbc2b052ef</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz</a></td>
+<td align="left">LD</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">CHRNB1</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/CHRNB1/LD/CHRNB1.UKB.LD.csv.gz</td>
+</tr>
+<tr class="even">
+<td align="left">www/data/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz</td>
+<td align="left">100644</td>
+<td align="left">blob</td>
+<td align="left">e55f05b6eab492d0cada8466a5d706bdefd48958</td>
+<td align="left">91751</td>
+<td align="left"><a href="https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e55f05b6eab492d0cada8466a5d706bdefd48958" class="external-link uri">https://api.github.com/repos/RajLabMSSM/Fine_Mapping_Shiny/git/blobs/e55f05b6eab492d0cada8466a5d706bdefd48958</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/blob/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz</a></td>
+<td align="left"><a href="https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz" class="external-link uri">https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz</a></td>
+<td align="left">LD</td>
+<td align="left">GWAS</td>
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">LRRK2</td>
+<td align="left">/tmp/RtmpJ4yTaj/GWAS/Nalls23andMe_2019/LRRK2/LD/LRRK2.UKB.LD.csv.gz</td>
+</tr>
+</tbody>
+</table>
+<div class="section level4">
+<h4 id="merge-fine-mapping-results">Merge fine-mapping results<a class="anchor" aria-label="anchor" href="#merge-fine-mapping-results"></a>
+</h4>
+<p>Next, we can gather all of the fine-mapping results generated by
+<code>finemap_loci()</code> previously.<br><code>merge_finemapping_results</code> recursively searches for the
+correct files within a hierarchical folder structure and imports only
+the multi-finemap files.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">merged_DT</span> <span class="op">&lt;-</span> <span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/merge_finemapping_results.html">merge_finemapping_results</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">results_dir</span>,   </span>
+<span>                                                 minimum_support <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                                 include_leadSNPs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                 consensus_thresh <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu">echodata</span><span class="fu">::</span><span class="fu"><a href="../reference/results_report.html">results_report</a></span><span class="op">(</span><span class="va">merged_DT</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">merged_DT</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="6%">
+<col width="2%">
+<col width="3%">
+<col width="1%">
+<col width="3%">
+<col width="1%">
+<col width="2%">
+<col width="2%">
+<col width="1%">
+<col width="1%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
+<col width="3%">
+<col width="5%">
+<col width="2%">
+<col width="3%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
+<col width="3%">
+<col width="3%">
+<col width="5%">
+<col width="5%">
+<col width="3%">
+<col width="3%">
+<col width="2%">
+<col width="4%">
+<col width="2%">
+<col width="2%">
+<col width="3%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Dataset</th>
+<th align="left">Locus</th>
+<th align="left">SNP</th>
+<th align="right">CHR</th>
+<th align="right">POS</th>
+<th align="right">P</th>
+<th align="right">Effect</th>
+<th align="right">StdErr</th>
+<th align="left">A1</th>
+<th align="left">A2</th>
+<th align="right">Freq</th>
+<th align="right">MAF</th>
+<th align="right">N_cases</th>
+<th align="right">N_controls</th>
+<th align="right">proportion_cases</th>
+<th align="right">N</th>
+<th align="right">t_stat</th>
+<th align="left">leadSNP</th>
+<th align="right">ABF.CS</th>
+<th align="right">ABF.PP</th>
+<th align="right">SUSIE.CS</th>
+<th align="right">SUSIE.PP</th>
+<th align="right">POLYFUN_SUSIE.CS</th>
+<th align="right">POLYFUN_SUSIE.PP</th>
+<th align="right">FINEMAP.CS</th>
+<th align="right">FINEMAP.PP</th>
+<th align="right">Support</th>
+<th align="left">Consensus_SNP</th>
+<th align="right">mean.PP</th>
+<th align="right">mean.CS</th>
+<th align="right">Mb</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">BST1</td>
+<td align="left">rs4541502</td>
+<td align="right">4</td>
+<td align="right">15712787</td>
+<td align="right">0</td>
+<td align="right">-0.0897</td>
+<td align="right">0.0093</td>
+<td align="left">T</td>
+<td align="left">G</td>
+<td align="right">0.4749</td>
+<td align="right">0.4749</td>
+<td align="right">56306</td>
+<td align="right">1417791</td>
+<td align="right">0.0382</td>
+<td align="right">216621</td>
+<td align="right">-9.645161</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">TRUE</td>
+<td align="right">0.75</td>
+<td align="right">0</td>
+<td align="right">15.712787</td>
+</tr>
+<tr class="even">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">CHRNB1</td>
+<td align="left">rs12600861</td>
+<td align="right">17</td>
+<td align="right">7355621</td>
+<td align="right">0</td>
+<td align="right">-0.0565</td>
+<td align="right">0.0099</td>
+<td align="left">A</td>
+<td align="left">C</td>
+<td align="right">0.6484</td>
+<td align="right">0.3516</td>
+<td align="right">56306</td>
+<td align="right">1417791</td>
+<td align="right">0.0382</td>
+<td align="right">216621</td>
+<td align="right">-5.707071</td>
+<td align="left">TRUE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">TRUE</td>
+<td align="right">0.75</td>
+<td align="right">0</td>
+<td align="right">7.355621</td>
+</tr>
+<tr class="odd">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">LRRK2</td>
+<td align="left">rs7294619</td>
+<td align="right">12</td>
+<td align="right">40617202</td>
+<td align="right">0</td>
+<td align="right">-0.1276</td>
+<td align="right">0.0140</td>
+<td align="left">T</td>
+<td align="left">C</td>
+<td align="right">0.8783</td>
+<td align="right">0.1217</td>
+<td align="right">56306</td>
+<td align="right">1417791</td>
+<td align="right">0.0382</td>
+<td align="right">216621</td>
+<td align="right">-9.114286</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">TRUE</td>
+<td align="right">0.75</td>
+<td align="right">0</td>
+<td align="right">40.617202</td>
+</tr>
+<tr class="even">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">LRRK2</td>
+<td align="left">rs76904798</td>
+<td align="right">12</td>
+<td align="right">40614434</td>
+<td align="right">0</td>
+<td align="right">0.1439</td>
+<td align="right">0.0130</td>
+<td align="left">T</td>
+<td align="left">C</td>
+<td align="right">0.1444</td>
+<td align="right">0.1444</td>
+<td align="right">56306</td>
+<td align="right">1417791</td>
+<td align="right">0.0382</td>
+<td align="right">216621</td>
+<td align="right">11.069231</td>
+<td align="left">TRUE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">TRUE</td>
+<td align="right">0.75</td>
+<td align="right">0</td>
+<td align="right">40.614434</td>
+</tr>
+<tr class="odd">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">BST1</td>
+<td align="left">rs34559912</td>
+<td align="right">4</td>
+<td align="right">15730146</td>
+<td align="right">0</td>
+<td align="right">0.1030</td>
+<td align="right">0.0095</td>
+<td align="left">T</td>
+<td align="left">G</td>
+<td align="right">0.5526</td>
+<td align="right">0.4474</td>
+<td align="right">56306</td>
+<td align="right">1417791</td>
+<td align="right">0.0382</td>
+<td align="right">216621</td>
+<td align="right">10.842105</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="left">TRUE</td>
+<td align="right">0.50</td>
+<td align="right">0</td>
+<td align="right">15.730146</td>
+</tr>
+<tr class="even">
+<td align="left">Nalls23andMe_2019</td>
+<td align="left">BST1</td>
+<td align="left">rs4389574</td>
+<td align="right">4</td>
+<td align="right">15730398</td>
+<td align="right">0</td>
+<td align="right">-0.0977</td>
+<td align="right">0.0116</td>
+<td align="left">A</td>
+<td align="left">G</td>
+<td align="right">0.4443</td>
+<td align="right">0.4443</td>
+<td align="right">42598</td>
+<td align="right">1322509</td>
+<td align="right">0.0312</td>
+<td align="right">165075</td>
+<td align="right">-8.422414</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="left">TRUE</td>
+<td align="right">0.50</td>
+<td align="right">0</td>
+<td align="right">15.730398</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="import-ld">Import LD<a class="anchor" aria-label="anchor" href="#import-ld"></a>
+</h3>
+<p>Next, we import the a subset of the LD matrices for only the lead
+SNP.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ld_files</span> <span class="op">&lt;-</span> <span class="va">local_files</span><span class="op">[</span><span class="va">file_type</span><span class="op">==</span><span class="st">"LD"</span>,<span class="op">]</span></span>
+<span><span class="va">ld_matrices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="va">ld_files</span><span class="op">$</span><span class="va">path_local</span>, </span>
+<span>                                      <span class="va">ld_files</span><span class="op">$</span><span class="va">locus</span><span class="op">)</span>,</span>
+<span>                      <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span> </span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ld_matrices</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">SNP</th>
+<th align="right">rs4698412</th>
+<th align="right">rs4698412.1</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">rs61337515</td>
+<td align="right">0.0022108</td>
+<td align="right">0.0022108</td>
+</tr>
+<tr class="even">
+<td align="left">rs58950976</td>
+<td align="right">0.0149364</td>
+<td align="right">0.0149364</td>
+</tr>
+<tr class="odd">
+<td align="left">rs13152654</td>
+<td align="right">-0.0047314</td>
+<td align="right">-0.0047314</td>
+</tr>
+<tr class="even">
+<td align="left">rs13103770</td>
+<td align="right">-0.0037451</td>
+<td align="right">-0.0037451</td>
+</tr>
+<tr class="odd">
+<td align="left">rs6837632</td>
+<td align="right">0.0061673</td>
+<td align="right">0.0061673</td>
+</tr>
+<tr class="even">
+<td align="left">rs114563990</td>
+<td align="right">-0.0004498</td>
+<td align="right">-0.0004498</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<details><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<details><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## R version 4.2.1 (2022-06-23)</span></span>
+<pre><code><span><span class="co">## R Under development (unstable) (2022-11-10 r83330)</span></span>
 <span><span class="co">## Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span><span class="co">## Running under: Ubuntu 20.04.5 LTS</span></span>
+<span><span class="co">## Running under: Ubuntu 22.04.1 LTS</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
 <span><span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
-<span><span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3</span></span>
+<span><span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
 <span><span class="co">##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
@@ -268,35 +732,40 @@ has been downloaded locally, in a hierarchical folder structure
 <span><span class="co">##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
 <span><span class="co">## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## time zone: UTC</span></span>
+<span><span class="co">## tzcode source: system (glibc)</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## attached base packages:</span></span>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] echodata_0.99.15 BiocStyle_2.25.0</span></span>
+<span><span class="co">## [1] echodata_0.99.16 BiocStyle_2.27.0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##  [1] tidyselect_1.2.0    xfun_0.34           bslib_0.4.0        </span></span>
-<span><span class="co">##  [4] purrr_0.3.5         vctrs_0.5.0         generics_0.1.3     </span></span>
-<span><span class="co">##  [7] htmltools_0.5.3     piggyback_0.1.4     yaml_2.3.6         </span></span>
-<span><span class="co">## [10] utf8_1.2.2          rlang_1.0.6         R.oo_1.25.0        </span></span>
-<span><span class="co">## [13] pkgdown_2.0.6.9000  jquerylib_0.1.4     pillar_1.8.1       </span></span>
-<span><span class="co">## [16] withr_2.5.0         glue_1.6.2          DBI_1.1.3          </span></span>
-<span><span class="co">## [19] R.utils_2.12.0      lifecycle_1.0.3     stringr_1.4.1      </span></span>
-<span><span class="co">## [22] ragg_1.2.4          R.methodsS3_1.8.2   zip_2.2.2          </span></span>
-<span><span class="co">## [25] htmlwidgets_1.5.4   memoise_2.0.1       evaluate_0.17      </span></span>
-<span><span class="co">## [28] knitr_1.40          tzdb_0.3.0          fastmap_1.1.0      </span></span>
-<span><span class="co">## [31] curl_4.3.3          parallel_4.2.1      fansi_1.0.3        </span></span>
-<span><span class="co">## [34] highr_0.9           Rcpp_1.0.9          readr_2.1.3        </span></span>
-<span><span class="co">## [37] DT_0.26             BiocManager_1.30.19 cachem_1.0.6       </span></span>
-<span><span class="co">## [40] desc_1.4.2          jsonlite_1.8.3      systemfonts_1.0.4  </span></span>
-<span><span class="co">## [43] fs_1.5.2            textshaping_0.3.6   hms_1.1.2          </span></span>
-<span><span class="co">## [46] digest_0.6.30       stringi_1.7.8       openxlsx_4.2.5.1   </span></span>
-<span><span class="co">## [49] bookdown_0.29       dplyr_1.0.10        rprojroot_2.0.3    </span></span>
-<span><span class="co">## [52] cli_3.4.1           tools_4.2.1         magrittr_2.0.3     </span></span>
-<span><span class="co">## [55] sass_0.4.2          tibble_3.1.8        tidyr_1.2.1        </span></span>
-<span><span class="co">## [58] pkgconfig_2.0.3     ellipsis_0.3.2      data.table_1.14.4  </span></span>
-<span><span class="co">## [61] assertthat_0.2.1    rmarkdown_2.17      httr_1.4.4         </span></span>
-<span><span class="co">## [64] R6_2.5.1            compiler_4.2.1</span></span></code></pre>
+<span><span class="co">##  [1] tidyr_1.2.1         sass_0.4.2          utf8_1.2.2         </span></span>
+<span><span class="co">##  [4] generics_0.1.3      stringi_1.7.8       hms_1.1.2          </span></span>
+<span><span class="co">##  [7] digest_0.6.30       magrittr_2.0.3      evaluate_0.18      </span></span>
+<span><span class="co">## [10] bookdown_0.30       fastmap_1.1.0       R.oo_1.25.0        </span></span>
+<span><span class="co">## [13] rprojroot_2.0.3     jsonlite_1.8.3      R.utils_2.12.2     </span></span>
+<span><span class="co">## [16] zip_2.2.2           brio_1.1.3          DBI_1.1.3          </span></span>
+<span><span class="co">## [19] BiocManager_1.30.19 httr_1.4.4          purrr_0.3.5        </span></span>
+<span><span class="co">## [22] fansi_1.0.3         textshaping_0.3.6   jquerylib_0.1.4    </span></span>
+<span><span class="co">## [25] cli_3.4.1           rlang_1.0.6         R.methodsS3_1.8.2  </span></span>
+<span><span class="co">## [28] gitcreds_0.1.2      ellipsis_0.3.2      withr_2.5.0        </span></span>
+<span><span class="co">## [31] cachem_1.0.6        yaml_2.3.6          tools_4.3.0        </span></span>
+<span><span class="co">## [34] parallel_4.3.0      tzdb_0.3.0          memoise_2.0.1      </span></span>
+<span><span class="co">## [37] dplyr_1.0.10        DT_0.26             curl_4.3.3         </span></span>
+<span><span class="co">## [40] assertthat_0.2.1    vctrs_0.5.0         R6_2.5.1           </span></span>
+<span><span class="co">## [43] lifecycle_1.0.3     stringr_1.4.1       fs_1.5.2           </span></span>
+<span><span class="co">## [46] htmlwidgets_1.5.4   ragg_1.2.4          pkgconfig_2.0.3    </span></span>
+<span><span class="co">## [49] desc_1.4.2          pkgdown_2.0.6       bslib_0.4.1        </span></span>
+<span><span class="co">## [52] pillar_1.8.1        openxlsx_4.2.5.1    gh_1.3.1           </span></span>
+<span><span class="co">## [55] data.table_1.14.4   glue_1.6.2          Rcpp_1.0.9         </span></span>
+<span><span class="co">## [58] systemfonts_1.0.4   highr_0.9           xfun_0.34          </span></span>
+<span><span class="co">## [61] tibble_3.1.8        tidyselect_1.2.0    knitr_1.40         </span></span>
+<span><span class="co">## [64] htmltools_0.5.3     rmarkdown_2.18      piggyback_0.1.4    </span></span>
+<span><span class="co">## [67] testthat_3.1.5      readr_2.1.3         echogithub_0.99.0  </span></span>
+<span><span class="co">## [70] compiler_4.3.0</span></span></code></pre>
 </details>
 </div>
   </div>
@@ -318,7 +787,7 @@ has been downloaded locally, in a hierarchical folder structure
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

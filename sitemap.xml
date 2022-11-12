@@ -142,15 +142,6 @@
     <loc>/reference/get_sample_size.html</loc>
   </url>
   <url>
-    <loc>/reference/github_download_files.html</loc>
-  </url>
-  <url>
-    <loc>/reference/github_find_pages.html</loc>
-  </url>
-  <url>
-    <loc>/reference/github_list_files.html</loc>
-  </url>
-  <url>
     <loc>/reference/granges_to_bed.html</loc>
   </url>
   <url>
@@ -260,6 +251,9 @@
   </url>
   <url>
     <loc>/reference/topSNPs_reader.html</loc>
+  </url>
+  <url>
+    <loc>/reference/unlist_dt.html</loc>
   </url>
   <url>
     <loc>/reference/update_cols.html</loc>

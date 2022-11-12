@@ -19,7 +19,7 @@ for fine-mapping results, LD, and locus plots."><!-- mathjax --><script src="htt
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.16</span>
       </span>
     </div>
 
@@ -74,9 +74,9 @@ for fine-mapping results, LD, and locus plots.</p>
 <span>  dataset_types <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  datasets <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phenotypes <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  file_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multi_finemap"</span>, <span class="st">"LD"</span>, <span class="st">"plot"</span><span class="op">)</span>,</span>
 <span>  loci <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  LD_panels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"UKB"</span>, <span class="st">"1KGphase1"</span>, <span class="st">"1KGphase3"</span><span class="op">)</span>,</span>
-<span>  file_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multi_finemap"</span>, <span class="st">"LD"</span>, <span class="st">"plot"</span><span class="op">)</span>,</span>
 <span>  results_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  as_datatable <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -102,6 +102,14 @@ for fine-mapping results, LD, and locus plots.</p>
 (e.g. "Schizophrenia", "Major Depressive Disorder").</p></dd>
 
 
+<dt>file_types</dt>
+<dd><p>File types to search for:</p><ul><li><p>"multi_finemap":Fine-mapping results 
+merged with GWAS/QTL summary statistics.</p></li>
+<li><p>"LD":Linkage Disequilibrium with the lead SNP in each locus.</p></li>
+<li><p>"plot" : Locus plots of fine-mapped results.</p></li>
+</ul></dd>
+
+
 <dt>loci</dt>
 <dd><p>Locus names to search for
 (e.g. "BST1", "CHRNB1", "LRRK2").</p></dd>
@@ -111,14 +119,6 @@ for fine-mapping results, LD, and locus plots.</p>
 <dd><p>LD panels to search for,
 or results generated using different LD panels
 (e.g. "UKB", "1KGphase1", "1KGphase3").</p></dd>
-
-
-<dt>file_types</dt>
-<dd><p>File types to search for:</p><ul><li><p>"multi_finemap":Fine-mapping results 
-merged with GWAS/QTL summary statistics.</p></li>
-<li><p>"LD":Linkage Disequilibrium with the lead SNP in each locus.</p></li>
-<li><p>"plot" : Locus plots of fine-mapped results.</p></li>
-</ul></dd>
 
 
 <dt>results_dir</dt>
@@ -158,14 +158,21 @@ Otherwise, will return a list of local file paths.</p></dd>
 <span class="r-in"><span>    phenotypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"schizophrenia"</span>, <span class="st">"parkinson"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    file_types <span class="op">=</span> <span class="st">"multi_finemap"</span>,</span></span>
 <span class="r-in"><span>    loci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BST1"</span>, <span class="st">"CHRNB1"</span>, <span class="st">"LRRK2"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    LD_panels <span class="op">=</span> <span class="st">"1KGphase3"</span><span class="op">)</span> </span></span>
+<span class="r-in"><span>    LD_panels<span class="op">=</span><span class="st">"1KGphase3"</span><span class="op">)</span> </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: echogithub</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Fetching echolocatoR Fine-mapping Portal study metadata.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 2 dataset(s) remain after filtering.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + Searching for multi_finemap files...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> OK (HTTP 200).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Searching for all branches in: RajLabMSSM/Fine_Mapping_Shiny</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1 matching branch(es) found: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  - master</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 6,529 files found in GitHub repo: RajLabMSSM/Fine_Mapping_Shiny</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 801 file(s) found matching query.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> + 6 unique files identified.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Downloading 3 files...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> + Returning local file paths.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> + Downloading 3 files.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading: https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/BST1/multi_finemap/BST1.1KGphase3.multi_finemap.csv.gz</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading: https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/CHRNB1/multi_finemap/CHRNB1.1KGphase3.multi_finemap.csv.gz</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading: https://github.com/RajLabMSSM/Fine_Mapping_Shiny/raw/master/www/data/GWAS/Nalls23andMe_2019/LRRK2/multi_finemap/LRRK2.1KGphase3.multi_finemap.csv.gz</span>
 </code></pre></div>
     </div>
   </div>
@@ -180,7 +187,7 @@ Otherwise, will return a list of local file paths.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
