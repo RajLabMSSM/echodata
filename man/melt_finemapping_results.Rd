@@ -12,7 +12,8 @@ melt_finemapping_results(dat, verbose = TRUE)
 \item{verbose}{Print messages.}
 }
 \value{
-Melted \link[data.table]{data.table}
+Modified \link[data.table]{data.table}
+ with the new columns "Method","PP", and "CS".
 }
 \description{
 Melt fine-mapping results into long format such that 

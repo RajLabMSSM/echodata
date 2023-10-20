@@ -23,7 +23,7 @@ open.}
 "select" argument to \code{data.table::fread()}, or a
 \link[tidyselect:eval_select]{tidy selection specification}
 of columns, as used in \code{dplyr::select()}.}
-    \item{\code{as_data_frame}}{Should the function return a \code{data.frame} (default) or
+    \item{\code{as_data_frame}}{Should the function return a \code{tibble} (default) or
 an Arrow \link[arrow]{Table}?}
     \item{\code{props}}{\link[arrow]{ParquetArrowReaderProperties}}
   }}
