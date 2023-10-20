@@ -34,8 +34,8 @@
 #' @return List of local paths where the requested files were downloaded to.
 #'
 #' @export
+#' @import data.table 
 #' @importFrom parallel detectCores
-#' @importFrom data.table data.table rbindlist
 #' @importFrom dplyr mutate
 #' @importFrom tidyr separate
 #' @examples 
@@ -56,13 +56,10 @@ portal_query <- function(dataset_types = NULL,
                          as_datatable = FALSE,
                          nThread = 1,
                          verbose = TRUE) {
-    # echoverseTemplate:::source_all()
-    # echoverseTemplate:::args2vars(portal_query)
-    
+    # devoptera::args2vars(portal_query)
     requireNamespace("echogithub")
-    
     dataset_type <- path_local <- dataset <- locus <- link <- 
-        url_strip <- link_raw <- NULL;
+        url_strip <- link_raw <- path <- NULL;
     
     #### Search metadata ####
     meta <- portal_metadata(verbose = verbose)
@@ -126,14 +123,15 @@ portal_query <- function(dataset_types = NULL,
         ) |>
         dplyr::select(-url_strip) |>
         subset(dataset_type %in% unique(meta$dataset_type) &
-            dataset %in% unique(meta$dataset)) 
+            dataset %in% unique(meta$dataset)) |>
+        data.table::data.table()
     #### Just download the loci of interest ####
     if (!is.null(loci)) file_filt <- subset(file_filt, locus %in% loci)
     messager("+", formatC(nrow(file_filt),big.mark = ","),
              "unique files identified.", v = verbose)
     #### Filter by LD panel #####
     file_filt <- file_filt[grepl(paste(LD_panels, collapse = "|"),
-                                 file_filt$path, 
+                                 path, 
                                  ignore.case = TRUE), ]
     ### Download files ####
     local_file <- echogithub::github_files_download(

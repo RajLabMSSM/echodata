@@ -19,13 +19,5 @@ test_that("get_header works", {
     header3 <- echodata::get_header(path=path, 
                                     colnames_only = FALSE, 
                                     nrows = 5) 
-    testthat::expect_equal(dim(header3), c(5,387)) 
-    
-    
-    #### Parquet #### 
-    path <- echodata::write_parquet(dat)
-    header4 <- echodata::get_header(path=path, 
-                                    colnames_only = FALSE, 
-                                    nrows = 5) 
-    testthat::expect_equal(header4, head(dat,5))
+    testthat::expect_equal(dim(header3), c(5,387))  
 })

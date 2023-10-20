@@ -14,8 +14,9 @@
 #' @export
 #' @importFrom data.table data.table merge.data.table setnames 
 #' @examples
-#' dat <- dplyr::rename(echodata::BST1, SNP_old=SNP)[seq_len(5),]
-#' dat_annot <- echodata::coords_to_rsids(dat = dat)
+#' dat <- echodata::BST1[seq(5),]
+#' data.table::setnames(dat,"SNP","SNP_old")
+#' dat_annot <- coords_to_rsids(dat = dat)
 coords_to_rsids <- function(dat,
                             genome_build = "hg19",
                             drop_unannotated = TRUE,

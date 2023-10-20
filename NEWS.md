@@ -1,3 +1,21 @@
+# echodata 0.99.17
+
+## New features
+
+* `melt_finemapping_results`: 
+    - Check to see if already melted.
+* Update *rworkflows.yml*
+
+## Bug fixes
+
+* `portal_query`:
+    - Ensure `files_filt` is in `data.table` format.    
+* `reassign_lead_snps`
+    - Ensure `merged_dat` is in `data.table` format.    
+* *parquet* functions:
+    - Remove unit tests for now, as they cause segfault errors during checks 
+    (but not when run manually).
+    
 # echodata 0.99.16
 
 ## New features

@@ -16,8 +16,8 @@
 #' @importFrom parallel mclapply
 #' @importFrom tidyr unite
 #' @examples  
-#' merged_dat <- echodata::get_Nalls2019_merged()
-#' merged_dat2 <- echodata::reassign_lead_snps(merged_dat = merged_dat)
+#' merged_dat <- get_Nalls2019_merged()
+#' merged_dat2 <- reassign_lead_snps(merged_dat = merged_dat)
 reassign_lead_snps <- function(merged_dat,
                                SNP = "SNP",
                                P = "P",
@@ -25,6 +25,7 @@ reassign_lead_snps <- function(merged_dat,
                                grouping_vars = c("Dataset", "Locus"),
                                nThread = 1,
                                verbose = TRUE) {  
+    # devoptera::args2vars(reassign_lead_snps)
     P <- leadSNP <- NULL;
     
     messager("Reassigning lead SNPs by:",
@@ -46,7 +47,8 @@ reassign_lead_snps <- function(merged_dat,
                                col = "id",
                                dplyr::all_of(grouping_vars), 
                                sep = ".", 
-                               remove = FALSE) 
+                               remove = FALSE) |>
+        data.table::data.table()
     #### Find lead SNPs ####
     lead_snps <- (merged_dat |> 
         dplyr::group_by_at(.vars = grouping_vars) |>
