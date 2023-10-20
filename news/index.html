@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">echodata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.17</span>
       </span>
     </div>
 
@@ -60,6 +60,33 @@
       <small>Source: <a href="https://github.com/RajLabMSSM/echodata/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.99.17" id="echodata-09917">echodata 0.99.17<a class="anchor" aria-label="anchor" href="#echodata-09917"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-99-17">New features<a class="anchor" aria-label="anchor" href="#new-features-0-99-17"></a></h3>
+<ul><li>
+<code>melt_finemapping_results</code>:
+<ul><li>Check to see if already melted.</li>
+</ul></li>
+<li>Update <em>rworkflows.yml</em>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-99-17">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-99-17"></a></h3>
+<ul><li>
+<code>portal_query</code>:
+<ul><li>Ensure <code>files_filt</code> is in <code>data.table</code> format.<br></li>
+</ul></li>
+<li>
+<code>reassign_lead_snps</code>
+<ul><li>Ensure <code>merged_dat</code> is in <code>data.table</code> format.<br></li>
+</ul></li>
+<li>
+<em>parquet</em> functions:
+<ul><li>Remove unit tests for now, as they cause segfault errors during checks (but not when run manually).</li>
+</ul></li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99.16" id="echodata-09916">echodata 0.99.16<a class="anchor" aria-label="anchor" href="#echodata-09916"></a></h2>
 <div class="section level3">
@@ -366,7 +393,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
