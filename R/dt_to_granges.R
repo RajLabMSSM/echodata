@@ -13,6 +13,7 @@
 #' 
 #' @family utils
 #' @export
+#' @import data.table
 #' @examples 
 #' gr <- echodata::dt_to_granges(dat = echodata::BST1)
 dt_to_granges <- function(dat,
@@ -23,15 +24,20 @@ dt_to_granges <- function(dat,
                           verbose = TRUE) {
     requireNamespace("GenomicRanges")
     requireNamespace("GenomeInfoDb")
+    
+    
     if (is_granges(dat)) {
         messager("dat is already a GRanges object.", v = verbose)
         gr.snp <- dat
     } else {
         messager("Converting dat to GRanges object.", v = verbose)
-        dat[["SEQnames"]] <- dat[[chrom_col]]
+        dat <- data.table::as.data.table(dat)
+        if(chrom_col=="seqnames"){
+            data.table::setnames(dat,"seqnames","SEQnames")
+        } 
         gr.snp <- GenomicRanges::makeGRangesFromDataFrame(
             dat,
-            seqnames.field = "SEQnames",
+            seqnames.field = chrom_col,
             start.field = start_col,
             end.field = end_col,
             keep.extra.columns = TRUE

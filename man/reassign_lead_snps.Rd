@@ -34,6 +34,6 @@ Reassign lead SNPs per group.
 }
 \examples{
  
-merged_dat <- echodata::get_Nalls2019_merged()
-merged_dat2 <- echodata::reassign_lead_snps(merged_dat = merged_dat)
+merged_dat <- get_Nalls2019_merged()
+merged_dat2 <- reassign_lead_snps(merged_dat = merged_dat)
 }

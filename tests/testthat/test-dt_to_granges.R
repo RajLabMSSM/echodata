@@ -7,7 +7,7 @@ test_that("dt_to_granges works", {
     testthat::expect_true(
         all.equal(
             colnames(GenomicRanges::mcols(gr)),
-            colnames(dat)[colnames(dat)!="POS"]
+            colnames(dat)[!colnames(dat)%in% c("CHR","POS")]
             )
         )
     
@@ -18,7 +18,7 @@ test_that("dt_to_granges works", {
     testthat::expect_true(
       all.equal(
         colnames(GenomicRanges::mcols(gr2)),
-        colnames(dat)[colnames(dat)!="POS"]
+        colnames(dat)[!colnames(dat)%in% c("CHR","POS")]
       )
     ) 
 })
