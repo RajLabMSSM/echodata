@@ -1,3 +1,9 @@
+# echodata 0.99.18
+
+## New features
+
+* Add `docker_registry: ghcr.io` to `rworkflows.yml` for GHCR Docker builds.
+
 # echodata 0.99.17
 
 ## New features
