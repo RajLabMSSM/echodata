@@ -40,4 +40,6 @@ vignettes/*.R
 *.knit.md
 # R Environment Variables
 .Renviron
+*.tbi
+Rplots.pdf
 ieugwasr_oauth
