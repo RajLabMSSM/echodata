@@ -6,8 +6,8 @@
 #'  (\emph{NOTE} : Formerly \code{merged_DT})
 #'
 #' Data originally comes from the PD GWAS
-#' by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. (The Lancet Neurology)}.
+#' by Nalls et al. (The Lancet Neurology)
+#' (\doi{10.1016/S1474-4422(19)30320-5}).
 #'
 #' @format data.table
 #' \describe{
@@ -16,7 +16,7 @@
 #'   \item{POS}{Genomic position (in basepairs)}
 #'   \item{...}{Optional: extra columns}
 #' }
-#' @source \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+#' @source \doi{10.1016/S1474-4422(19)30320-5}
 #' @examples
 #' \dontrun{
 #' library(dplyr)

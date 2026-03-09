@@ -2,13 +2,12 @@
 #'
 #' Save downsampled genome-wide summary statistics from different GWAS to disk.
 #'
-#' \itemize{
-#' \item{"Nalls2019"}{Parkinson's Disease GWAS from
-#' \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. 2019} (excluding 23andMe data).}
-#' \item{"Kunkle2019"}{Alzheimer's Disease GWAS from
-#' \href{https://doi.org/10.1038/s41588-019-0358-2}{
-#' Kunkle et al. 2019}.}
+#' \describe{
+#' \item{Nalls2019}{Parkinson's Disease GWAS from
+#' Nalls et al. 2019 (\doi{10.1016/S1474-4422(19)30320-5}),
+#' excluding 23andMe data.}
+#' \item{Kunkle2019}{Alzheimer's Disease GWAS from
+#' Kunkle et al. 2019 (\doi{10.1038/s41588-019-0358-2}).}
 #' }
 #'
 #' @param save_dir Path to save the example summary statistics to.

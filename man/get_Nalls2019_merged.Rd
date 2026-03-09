@@ -13,7 +13,7 @@ data.table
 }
 }
 \source{
-\url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+\doi{10.1016/S1474-4422(19)30320-5}
 }
 \usage{
 get_Nalls2019_merged()
@@ -26,8 +26,8 @@ An example results file after running \code{finemap_loci}
 }
 \details{
 Data originally comes from the PD GWAS
-by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-Nalls et al. (The Lancet Neurology)}.
+by Nalls et al. (The Lancet Neurology)
+(\doi{10.1016/S1474-4422(19)30320-5}).
 }
 \examples{
 \dontrun{

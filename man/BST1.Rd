@@ -14,7 +14,7 @@ data.table
 }
 }
 \source{
-\url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+\doi{10.1016/S1474-4422(19)30320-5}
 }
 \usage{
 data("BST1")
@@ -25,8 +25,8 @@ An example results file after running
 }
 \details{
 Data originally comes from the Parkinson's disease GWAS
-by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-Nalls et al. (The Lancet Neurology)}.
+by Nalls et al. (The Lancet Neurology)
+(\doi{10.1016/S1474-4422(19)30320-5}).
 }
 \examples{
 \dontrun{

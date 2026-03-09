@@ -29,7 +29,7 @@ portal_query(
 (e.g. "Schizophrenia", "Major Depressive Disorder").}
 
 \item{file_types}{File types to search for:
-\itemize{
+\describe{
 \item{"multi_finemap":}{Fine-mapping results 
 merged with GWAS/QTL summary statistics.}
 \item{"LD":}{Linkage Disequilibrium with the lead SNP in each locus.}

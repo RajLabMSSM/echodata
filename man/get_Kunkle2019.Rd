@@ -4,8 +4,8 @@
 \alias{get_Kunkle2019}
 \title{Example GWAS summary statistics: Kunkle2019}
 \source{
-\href{https://doi.org/10.1038/s41588-019-0358-2}{
-Kunkle et al. 2019, The Lancet Neurology}
+Kunkle et al. 2019, The Lancet Neurology
+(\doi{10.1038/s41588-019-0358-2})
 
 \code{
 # meta <- MungeSumstats::find_sumstats(ids = "ieu_b_2")
@@ -14,10 +14,8 @@ path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
                   "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
 Kunkle2019 <- data.table::fread(path)
 Kunkle2019 <- subset(Kunkle2019, P<5e-8)
-
-Kunkle2019 <- extract_loci(topSNPs = echodata::topSNPs_Kunkle2019, 
+Kunkle2019 <- extract_loci(topSNPs = echodata::topSNPs_Kunkle2019,
                            fullSS = Kunkle2019)
-                           
 #### piggyback ####                  
 tmp <- file.path(tempdir(),"Kunkle2019.tsv.gz")
 data.table::fwrite(Kunkle2019,tmp,sep="\t")

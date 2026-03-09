@@ -1,3 +1,8 @@
+# echodata 0.99.19
+
+## Bug fixes
+* Local R CMD check fixes and compatibility updates.
+
 # echodata 0.99.18
 
 ## New features

@@ -1,7 +1,8 @@
 Package: echodata
 Type: Package
-Title: echoverse module: Fine-mapping data access and formatting
-Version: 0.99.18
+Title: Echoverse Module: Fine-Mapping Data Access and Formatting
+Version: 0.99.19
+Date: 2026-03-08
 Authors@R: 
     c(person(given = "Brian",
            family = "Schilder",
@@ -19,7 +20,7 @@ Authors@R:
            email = "towfique.raj@mssm.edu",
            comment = c(ORCID = "0000-0002-9355-5704"))
            ) 
-Description: echoverse module: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
+Description: Echoverse module: Examples of fine-mapped GWAS summary statistics, data formatting functions, and API access to the echolocatoR Fine-mapping Portal.
 URL: https://github.com/RajLabMSSM/echodata
 BugReports: https://github.com/RajLabMSSM/echodata/issues
 Encoding: UTF-8
@@ -64,9 +65,8 @@ Suggests:
     echogithub,
     orthogene
 Remotes:
-    github::neurogenomics/MungeSumstats,
     github::RajLabMSSM/echogithub
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 License: GPL-3
 Config/testthat/edition: 3

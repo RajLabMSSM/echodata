@@ -14,8 +14,8 @@ read_parquet(path, verbose = TRUE, ...)
 \item{...}{
   Arguments passed on to \code{\link[arrow:read_parquet]{arrow::read_parquet}}
   \describe{
-    \item{\code{file}}{A character file name or URI, \code{raw} vector, an Arrow input stream,
-or a \code{FileSystem} with path (\code{SubTreeFileSystem}).
+    \item{\code{file}}{A character file name or URI, connection, \code{raw} vector, an
+Arrow input stream, or a \code{FileSystem} with path (\code{SubTreeFileSystem}).
 If a file name or URI, an Arrow \link[arrow]{InputStream} will be opened and
 closed when finished. If an input stream is provided, it will be left
 open.}
@@ -26,6 +26,7 @@ of columns, as used in \code{dplyr::select()}.}
     \item{\code{as_data_frame}}{Should the function return a \code{tibble} (default) or
 an Arrow \link[arrow]{Table}?}
     \item{\code{props}}{\link[arrow]{ParquetArrowReaderProperties}}
+    \item{\code{mmap}}{Use TRUE to use memory mapping where possible}
   }}
 }
 \description{

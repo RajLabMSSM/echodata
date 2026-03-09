@@ -15,7 +15,7 @@ data.table
 }
 \source{
 \url{https://www.ukbiobank.ac.uk}
-\url{https://doi.org/10.1038/s41588-020-00735-5}
+\doi{10.1038/s41588-020-00735-5}
  @examples
  \code{ 
 data("BST1")
@@ -50,6 +50,6 @@ Only includes a subset of all the SNPs for storage purposes
 \details{
 Data originally comes from \href{https://www.ukbiobank.ac.uk}{UK Biobank}.
 LD was pre-computed and stored by the Alkes Price lab
-(see \href{https://doi.org/10.1038/s41588-020-00735-5}{here}).
+(see \doi{10.1038/s41588-020-00735-5}).
 }
 \keyword{datasets}

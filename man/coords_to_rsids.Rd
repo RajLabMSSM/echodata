@@ -36,7 +36,9 @@ coords_to_rsids(
 Get RSIDS from SNP coordinates using Bioconductor genome references.
 }
 \examples{
+\donttest{
 dat <- echodata::BST1[seq(5),]
 data.table::setnames(dat,"SNP","SNP_old")
 dat_annot <- coords_to_rsids(dat = dat)
+}
 }

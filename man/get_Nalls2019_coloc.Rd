@@ -18,9 +18,9 @@ get_Nalls2019_coloc()
 }
 \description{
 Get colocalization results computed by 
-\href{https://doi.org/10.1093/hmg/ddab294}{Schilder et al. 2022}
-between the \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-Nalls2019 Parkinson's disease GWAS} and all eQTL datasets in the 
+Schilder et al. 2022 (\doi{10.1093/hmg/ddab294})
+between the
+Nalls2019 Parkinson's disease GWAS (\doi{10.1016/S1474-4422(19)30320-5}) and all eQTL datasets in the 
 \href{https://www.ebi.ac.uk/eqtl/}{eQTL Catalogue}.
 }
 \examples{

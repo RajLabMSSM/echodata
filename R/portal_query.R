@@ -16,7 +16,7 @@
 #' or results generated using different LD panels
 #' (e.g. "UKB", "1KGphase1", "1KGphase3").  
 #' @param file_types File types to search for:
-#' \itemize{
+#' \describe{
 #' \item{"multi_finemap":}{Fine-mapping results 
 #' merged with GWAS/QTL summary statistics.}
 #' \item{"LD":}{Linkage Disequilibrium with the lead SNP in each locus.}

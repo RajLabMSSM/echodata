@@ -28,9 +28,9 @@ Default: \code{FALSE}.}
 }
 \description{
 Get colocalization results computed by 
-\href{https://doi.org/10.1038/s41588-021-00976-y}{Lopes et al. 2022}
-between the \href{https://doi.org/10.1038/s41588-019-0358-25}{
-Kunkle2019 Alzheimer's disease GWAS} and microglia eQTL datasets.
+Lopes et al. 2022 (\doi{10.1038/s41588-021-00976-y})
+between the
+Kunkle2019 Alzheimer's disease GWAS (\doi{10.1038/s41588-019-0358-2}) and microglia eQTL datasets.
 }
 \examples{
 coloc_res <- get_Kunkle2019_coloc()

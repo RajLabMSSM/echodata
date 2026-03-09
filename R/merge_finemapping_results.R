@@ -5,11 +5,11 @@
 #'
 #' @param dataset Path to the folder you want to recursively search
 #' for results files within
-#'  (e.g. \url{"Data/GWAS/Nalls23andMe_2019"}).
+#'  (e.g. \code{"Data/GWAS/Nalls23andMe_2019"}).
 #' Set this to a path that includes multiple subfolders if you want
 #' to gather results
 #' from multiple studies at once
-#' (e.g. \url{"Data/GWAS"}).
+#' (e.g. \code{"Data/GWAS"}).
 #' @param minimum_support Filter SNPs by the minimum number
 #'  of fine-mapping tools that contained the SNP in their Credible Set.
 #' @param include_leadSNPs Include lead GWAS/QTL SNPs per locus
@@ -21,8 +21,23 @@
 #' @param top_CS_only Only include the top 1 CS per fine-mapping method.
 #' @param nThread Number of threads to parallelise across.
 #' @param verbose Print messages.
+#' @param LD_reference LD reference to use:
+#' \describe{
+#' \item{1KGphase1}{1000 Genomes Project Phase 1 (genome build: hg19).}
+#' \item{1KGphase3}{1000 Genomes Project Phase 3 (genome build: hg19).}
+#' \item{UKB}{Pre-computed LD from a British
+#' European-decent subset of UK Biobank.
+#' \emph{Genome build} : hg19}
+#' \item{<vcf_path>}{User-supplied path to a custom VCF file
+#' to compute LD matrix from.\cr
+#' \emph{Accepted formats}: \emph{.vcf} / \emph{.vcf.gz} / \emph{.vcf.bgz}\cr
+#' \emph{Genome build} : defined by user with \code{target_genome}.}
+#' \item{<matrix_path>}{User-supplied path to a pre-computed LD matrix.
+#' \emph{Accepted formats}: \emph{.rds} / \emph{.rda} / \emph{.csv} /
+#' \emph{.tsv} / \emph{.txt}\cr
+#' \emph{Genome build} : defined by user with \code{target_genome}.}
+#' }
 #' @inheritParams find_consensus_snps
-#' @inheritParams echoLD::get_LD
 #'
 #' @export
 #' @importFrom dplyr rename 

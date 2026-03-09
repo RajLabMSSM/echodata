@@ -6,8 +6,8 @@
 #' \link[echolocatoR]{finemap_loci}.
 #'
 #' Data originally comes from the Parkinson's disease GWAS
-#' by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. (The Lancet Neurology)}.
+#' by Nalls et al. (The Lancet Neurology)
+#' (\doi{10.1016/S1474-4422(19)30320-5}).
 #'
 #' @format data.table
 #' \describe{
@@ -16,7 +16,7 @@
 #'   \item{POS}{Genomic position (in basepairs)}
 #'   \item{...}{Optional: extra columns}
 #' }
-#' @source \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+#' @source \doi{10.1016/S1474-4422(19)30320-5}
 #' @examples
 #' \dontrun{
 #' BST1 <- echolocatoR::BST1
@@ -32,8 +32,8 @@
 #' \link[echolocatoR]{finemap_loci}.
 #'
 #' Data originally comes from the Parkinson's disease GWAS
-#' by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. (The Lancet Neurology)}.
+#' by Nalls et al. (The Lancet Neurology)
+#' (\doi{10.1016/S1474-4422(19)30320-5}).
 #'
 #' @format data.table
 #' \describe{
@@ -42,7 +42,7 @@
 #'   \item{POS}{Genomic position (in basepairs)}
 #'   \item{...}{Optional: extra columns}
 #' }
-#' @source \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+#' @source \doi{10.1016/S1474-4422(19)30320-5}
 #' @examples
 #' \dontrun{
 #' library(echodata)
@@ -61,8 +61,8 @@
 #' \link[echolocatoR]{finemap_loci}.
 #'
 #' Data originally comes from the Parkinson's disease GWAS
-#' by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. (The Lancet Neurology)}.
+#' by Nalls et al. (The Lancet Neurology)
+#' (\doi{10.1016/S1474-4422(19)30320-5}).
 #'
 #' @format data.table
 #' \describe{
@@ -71,7 +71,7 @@
 #'   \item{POS}{Genomic position (in basepairs)}
 #'   \item{...}{Optional: extra columns}
 #' }
-#' @source \url{https://doi.org/10.1016/S1474-4422(19)30320-5}
+#' @source \doi{10.1016/S1474-4422(19)30320-5}
 #' @examples
 #' \dontrun{
 #' library(echodata)
@@ -93,8 +93,8 @@
 #' 
 #' Formerly \code{topSNPs_Nalls2019}.
 #'
-#' Data from \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-#' Nalls et al. (bioRxiv)}, Table S2.
+#' Data from Nalls et al. (bioRxiv)
+#' (\doi{10.1016/S1474-4422(19)30320-5}), Table S2.
 #' @source \url{https://github.com/RajLabMSSM/Fine_Mapping/raw/master/Data/GWAS/Nalls23andMe_2019/Nalls2019_TableS2.xlsx}
 #' \code{
 #' local <- file.path(tempdir(),"Nalls2019_TableS2.xlsx")
@@ -146,7 +146,6 @@
 #' path <- file.path("/Volumes/bms20/projects/neurogenomics-lab/live",
 #'                   "GWAS_sumstats/OpenGWAS/ieu-b-2.tsv.gz")
 #' fullSS <- data.table::fread(path)
-#'
 #' supp_remote <- file.path(
 #'     "https://static-content.springer.com/esm",
 #'     "art%3A10.1038%2Fs41588-019-0358-2",
@@ -160,14 +159,12 @@
 #' topSS <- merge(topSS,
 #'       subset(fullSS, SNP %in% topSS$SNP),
 #'       by="SNP")
-#' 
 #' paths <- googledrive::drive_download(
 #'     file.path("https://docs.google.com/spreadsheets/d",
 #'               "1BgLQaRZd9L7JoO8IbpzhUCRFdTdLgJvD/edit#gid=236666677"),
 #'     overwrite = TRUE)
 #' meta <- readxl::read_excel(paths$local_path, sheet = "GWAS")
 #' meta <- subset(meta, dataset=="Kunkle_2019")
-#' 
 #' topSNPs <- echodata::import_topSNPs(
 #'     topSS = topSS,
 #'     sheet = meta$top_sheet,
@@ -196,7 +193,7 @@
 #'
 #' Data originally comes from \href{https://www.ukbiobank.ac.uk}{UK Biobank}.
 #' LD was pre-computed and stored by the Alkes Price lab
-#' (see \href{https://doi.org/10.1038/s41588-020-00735-5}{here}).
+#' (see \doi{10.1038/s41588-020-00735-5}).
 #'
 #' @format data.table
 #' \describe{
@@ -207,7 +204,7 @@
 #' }
 #' @source
 #' \url{https://www.ukbiobank.ac.uk}
-#' \url{https://doi.org/10.1038/s41588-020-00735-5}
+#' \doi{10.1038/s41588-020-00735-5}
 #'  @examples
 #'  \code{ 
 #' data("BST1")

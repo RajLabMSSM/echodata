@@ -36,8 +36,8 @@ An example results file after running \code{finemap_loci}
  on 3 Parkinson's disease (PD)-associated loci (BST1, LRRK2, and MEX3C).
  
 Data originally comes from the PD GWAS
-by \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-Nalls et al. (The Lancet Neurology)}.
+by Nalls et al. (The Lancet Neurology)
+(\doi{10.1016/S1474-4422(19)30320-5}).
 }
 \examples{
 files <- get_Nalls2019_loci()

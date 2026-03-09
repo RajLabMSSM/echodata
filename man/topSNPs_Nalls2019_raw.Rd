@@ -30,7 +30,7 @@ Used to query locus subsets.for fine-mapping.
 \details{
 Formerly \code{topSNPs_Nalls2019}.
 
-Data from \href{https://doi.org/10.1016/S1474-4422(19)30320-5}{
-Nalls et al. (bioRxiv)}, Table S2.
+Data from Nalls et al. (bioRxiv)
+(\doi{10.1016/S1474-4422(19)30320-5}), Table S2.
 }
 \keyword{datasets}

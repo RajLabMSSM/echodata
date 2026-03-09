@@ -14,9 +14,11 @@
 #' @export
 #' @importFrom data.table data.table merge.data.table setnames 
 #' @examples
+#' \donttest{
 #' dat <- echodata::BST1[seq(5),]
 #' data.table::setnames(dat,"SNP","SNP_old")
 #' dat_annot <- coords_to_rsids(dat = dat)
+#' }
 coords_to_rsids <- function(dat,
                             genome_build = "hg19",
                             drop_unannotated = TRUE,
