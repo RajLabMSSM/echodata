@@ -32,9 +32,9 @@ If you use `echodata`, please cite:
 ## Installation
 
 ``` r
-if(!require("remotes")) install.packages("remotes")
+if(!require("BiocManager")) install.packages("BiocManager")
 
-remotes::install_github("RajLabMSSM/echodata")
+BiocManager::install("RajLabMSSM/echodata")
 library(echodata)
 ```
 
