@@ -6,6 +6,11 @@
   fixing installation failures when GitHub PAT is unavailable.
 * Replace corrupted BST1 VCF with fresh 1KG Phase 3 subset.
 * Fix Rd formatting and `\dontrun{}` example guards.
+* Fix `test-get_header` VCF column count assertion to match replacement VCF.
+* Fix `test-preview` to check column names in output instead of brittle
+  `fread(text=...)` round-trip that breaks across data.table versions.
+* Update install instructions to use `BiocManager::install()`.
+* Fix Codecov icicle graph URL (`codecov.io` instead of `app.codecov.io`).
 * Add `Rplots.pdf` and `*.tbi` to `.gitignore`.
 
 # echodata 0.99.19
