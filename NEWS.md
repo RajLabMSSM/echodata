@@ -1,3 +1,13 @@
+# echodata 1.0.0
+
+## Bug fixes
+
+* Switch MungeSumstats from GitHub remote to Bioconductor dependency,
+  fixing installation failures when GitHub PAT is unavailable.
+* Replace corrupted BST1 VCF with fresh 1KG Phase 3 subset.
+* Fix Rd formatting and `\dontrun{}` example guards.
+* Add `Rplots.pdf` and `*.tbi` to `.gitignore`.
+
 # echodata 0.99.19
 
 ## Bug fixes
