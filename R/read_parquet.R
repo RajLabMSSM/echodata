@@ -17,9 +17,16 @@ read_parquet <- function(path,
                          verbose=TRUE,
                          ...){ 
     
-    requireNamespace("arrow") 
-    messager("Reading parquet file.",v=verbose) 
-    parquor <- arrow::read_parquet(file = path,
-                                   ...)
+    if(!requireNamespace("arrow", quietly = TRUE)){
+        stop("The 'arrow' package is required for parquet support. ",
+             "Install with: install.packages('arrow')")
+    }
+    messager("Reading parquet file.",v=verbose)
+    parquor <- tryCatch({
+        arrow::read_parquet(file = path, ...)
+    }, error = function(e){
+        stop("arrow::read_parquet failed: ", conditionMessage(e),
+             "\nIf this is a segfault, try: arrow::install_arrow()")
+    })
     return(data.table::data.table(parquor))
 }
