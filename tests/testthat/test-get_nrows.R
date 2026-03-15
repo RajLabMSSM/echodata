@@ -17,6 +17,7 @@ test_that("get_nrows returns a numeric value for plain text file", {
 
 test_that("get_nrows uses zcat path for .gz files", {
 
+    testthat::skip_on_os("windows")
     tmp_gz <- tempfile(fileext = ".tsv.gz")
     on.exit(unlink(tmp_gz), add = TRUE)
     data.table::fwrite(echodata::BST1[seq_len(10), ], tmp_gz, sep = "\t")
