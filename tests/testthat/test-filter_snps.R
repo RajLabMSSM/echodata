@@ -21,17 +21,24 @@ test_that("filter_snps works", {
                                   max_POS = max(dat$POS)-500)
     testthat::expect_equal(nrow(dat5), 2913)
     
-    dat6 <- echodata::filter_snps(dat = dat,  
+})
+
+test_that("filter_snps works with trim_gene_limits", {
+
+    testthat::skip_if_not_installed("EnsDb.Hsapiens.v75")
+    dat <- echodata::BST1
+
+    dat6 <- echodata::filter_snps(dat = dat,
                                   trim_gene_limits = "BST1")
     testthat::expect_equal(nrow(dat6), 1610)
-    
-    dat7 <- echodata::filter_snps(dat = dat,  
+
+    dat7 <- echodata::filter_snps(dat = dat,
                                   trim_gene_limits = "LRRK2")
     testthat::expect_equal(nrow(dat7), 0)
-    
-    dat8 <- echodata::filter_snps(dat = dat,  
+
+    dat8 <- echodata::filter_snps(dat = dat,
                                   trim_gene_limits = "BST1",
-                                  min_POS = min(dat$POS), 
+                                  min_POS = min(dat$POS),
                                   max_POS = max(dat$POS))
     testthat::expect_equal(nrow(dat8), 1727)
 })
