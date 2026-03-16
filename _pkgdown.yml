@@ -172,6 +172,16 @@ reference:
       - genome_wide_dir
       - sumstatsColHeaders
 
-  - title: Re-exports
+  - title: Other
     contents:
-      - reexports
+      - starts_with("R.utils")
+      - starts_with("auto_")
+      - starts_with("biomart_")
+      - starts_with("calculate_")
+      - starts_with("gene_trimmer")
+      - starts_with("merge_finemapping_results_each")
+      - starts_with("message_parallel")
+      - starts_with("mungesumstats_check")
+      - starts_with("standardize_gene_locus")
+      - starts_with("standardize_maf")
+      - starts_with("topSNPs_reader")
