@@ -171,3 +171,7 @@ reference:
       - locus_dir
       - genome_wide_dir
       - sumstatsColHeaders
+
+  - title: Re-exports
+    contents:
+      - reexports
