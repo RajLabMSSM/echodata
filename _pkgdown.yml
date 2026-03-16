@@ -1,0 +1,173 @@
+url: https://rajlabmssm.github.io/echodata/
+
+template:
+  bootstrap: 5
+  bslib:
+    bg: "#1a2744"
+    fg: "#e8f4f4"
+    primary: "#4ecdc4"
+    secondary: "#3a8d8c"
+    success: "#2ee8d6"
+    info: "#5bc0be"
+    code-bg: "#d6e4ee"
+    code-color: "#1a2744"
+    border-color: "#2a4060"
+    link-color: "#4ecdc4"
+    link-hover-color: "#2ee8d6"
+    font-size-base: "1rem"
+  includes:
+    in_header: |
+      <style>
+      .navbar {
+        background-color: #162038 !important;
+        border-bottom: 2px solid #4ecdc4;
+      }
+      .navbar-brand, .nav-link { color: #e8f4f4 !important; }
+      .nav-link:hover { color: #2ee8d6 !important; }
+      .nav-link.active { color: #2ee8d6 !important; border-bottom: 2px solid #2ee8d6; }
+      pre {
+        background-color: #d6e4ee !important;
+        color: #1a2744 !important;
+        border: none !important;
+        border-radius: 12px;
+        margin: 0;
+        padding: 0.8em 1em;
+      }
+      code { color: #1a6b68 !important; border: none !important; }
+      pre code { color: #1a2744 !important; border: none !important; background: transparent !important; }
+      pre code span { border: none !important; background: transparent !important; }
+      .table { color: #e8f4f4 !important; }
+      .table-striped > tbody > tr:nth-of-type(odd) > * {
+        background-color: rgba(78, 205, 196, 0.05) !important;
+        color: #e8f4f4 !important;
+      }
+      .table-striped > tbody > tr:nth-of-type(even) > * {
+        background-color: transparent !important;
+        color: #e8f4f4 !important;
+      }
+      .table > thead { border-bottom: 2px solid #4ecdc4; }
+      h1, h2, h3, h4, h5, h6 { color: #4ecdc4 !important; }
+      a { color: #5bc0be; }
+      a:hover { color: #2ee8d6; }
+      .card { background-color: #1e3050; border-color: #2a4060; }
+      .footer { background-color: #162038 !important; border-top: 1px solid #2a4060; }
+      .page-header { border-bottom: 2px solid #3a8d8c; }
+      .sourceCode {
+        background-color: #d6e4ee !important;
+        border: 1px solid #3a8d8c;
+        border-radius: 12px !important;
+        overflow: hidden;
+      }
+      .sourceCode code span,
+      .sourceCode code a {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+      </style>
+
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [search, github]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/RajLabMSSM/echodata/
+
+articles:
+  - title: Vignettes
+    navbar: ~
+    contents:
+      - echodata
+      - echolocatoR_Finemapping_Portal
+
+reference:
+  - title: Data access
+    desc: Download and access example GWAS summary statistics and portal data.
+    contents:
+      - get_data
+      - get_Nalls2019
+      - get_Nalls2019_loci
+      - get_Nalls2019_merged
+      - get_Nalls2019_coloc
+      - get_Kunkle2019
+      - get_Kunkle2019_coloc
+      - example_fullSS
+      - portal_metadata
+      - portal_query
+
+  - title: Data processing
+    desc: Standardize, format, and import summary statistics.
+    contents:
+      - standardize
+      - standardize_gene
+      - construct_colmap
+      - column_dictionary
+      - import_topSNPs
+      - mungesumstats_to_echolocatoR
+      - extract_loci
+      - fix_coltypes
+      - update_cols
+      - get_header
+      - get_nrows
+      - get_sample_size
+      - coords_to_rsids
+
+  - title: Fine-mapping results
+    desc: Process, merge, and summarize fine-mapping results.
+    contents:
+      - find_consensus_snps
+      - find_consensus_snps_no_polyfun
+      - find_top_consensus
+      - merge_finemapping_results
+      - melt_finemapping_results
+      - results_report
+      - fillNA_CS_PP
+      - get_CS_bins
+      - get_CS_counts
+      - get_SNPgroup_counts
+      - filter_snps
+      - limit_snps
+      - snp_group_filters
+      - snp_group_colorDict
+      - assign_lead_snp
+      - reassign_lead_snps
+
+  - title: Utilities
+    desc: General-purpose helper functions.
+    contents:
+      - is_granges
+      - is_empty
+      - is_ggbio
+      - is_ggplot
+      - is_local
+      - is_url
+      - dt_to_granges
+      - granges_to_bed
+      - merge_robust
+      - unlist_dt
+      - createDT
+      - preview
+      - detect_genes
+      - gene_locus_list
+      - order_loci
+      - get_os
+      - set_permissions
+      - read_parquet
+      - write_parquet
+
+  - title: Bundled datasets
+    desc: Pre-computed example datasets included with the package.
+    contents:
+      - BST1
+      - LRRK2
+      - MEX3C
+      - BST1_LD_matrix
+      - topSNPs_Nalls2019
+      - topSNPs_Nalls2019_raw
+      - topSNPs_Kunkle2019
+      - locus_dir
+      - genome_wide_dir
+      - sumstatsColHeaders

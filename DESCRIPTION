@@ -45,6 +45,7 @@ Imports:
     piggyback,
     MungeSumstats (>= 1.3.14)
 Suggests:
+    curl,
     markdown,
     rmarkdown,
     remotes,
